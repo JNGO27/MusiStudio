@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import useLoadFonts from "./hooks/useLoadFonts";
 import { HomeScreen, Students } from "./screens";
 
 export type RootStackParamList = {
@@ -15,6 +16,8 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
+  useLoadFonts();
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

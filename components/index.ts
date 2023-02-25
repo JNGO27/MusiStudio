@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as HomeOption } from "./HomeOption/HomeOption";
+export { default as NavigationMenu } from "./NavigationMenu/NavigationMenu";

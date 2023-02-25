@@ -3,9 +3,10 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import type { RootStackParamList } from "../../App";
+import type { Options } from "../../types";
 
 type Props = {
-  title: "Students" | "Calender" | "Repertoire" | "Milage" | "Billing";
+  title: Options;
 };
 
 export type NavigationProps = NativeStackNavigationProp<
@@ -17,9 +18,12 @@ const HomeOption = ({ title }: Props) => {
   const navigator = useNavigation<NavigationProps>();
 
   return (
-    <TouchableOpacity onPress={() => navigator.navigate(title)}>
-      <SafeAreaView className="flex items-center justify-center rounded-full bg-gray-300 w-32 h-32">
-        <Text>{title}</Text>
+    <TouchableOpacity
+      className="flex items-center justify-center rounded-full bg-gray-300 w-32 h-32"
+      onPress={() => navigator.navigate(title)}
+    >
+      <SafeAreaView>
+        <Text className="font-ft-reg">{title}</Text>
       </SafeAreaView>
     </TouchableOpacity>
   );

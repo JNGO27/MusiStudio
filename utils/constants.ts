@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const HomeOptionsArr = [
   {
     title: "Students",
@@ -15,4 +14,12 @@ export const HomeOptionsArr = [
   {
     title: "Billing",
   },
+] as const;
+
+export const optionsOnlyArr = [
+  "Students",
+  "Calender",
+  "Repertoire",
+  "Milage",
+  "Billing",
 ] as const;
