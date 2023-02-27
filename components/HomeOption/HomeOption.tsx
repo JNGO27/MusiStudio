@@ -23,7 +23,7 @@ const HomeOption = ({ title }: Props) => {
       onPress={() => navigator.navigate(title)}
     >
       <SafeAreaView>
-        <Text className="font-ft-reg">{title}</Text>
+        <Text className="font-ft-black">{title}</Text>
       </SafeAreaView>
     </TouchableOpacity>
   );

@@ -1,10 +1,11 @@
 import { SafeAreaView } from "react-native";
 
-import { NavigationMenu } from "../components";
+import { NavigationMenu, Table } from "../components";
 
 const Students = () => {
   return (
-    <SafeAreaView className="pt-16 pl-6 w-full h-full">
+    <SafeAreaView className="w-full h-full pt-16">
+      <Table />
       <NavigationMenu />
     </SafeAreaView>
   );
