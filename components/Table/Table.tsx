@@ -1,4 +1,13 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import "react-native-url-polyfill/auto";
+import { useEffect } from "react";
 import { SafeAreaView, View, Text, FlatList } from "react-native";
+import { SUPABASE_URL, SUPABASE_KEY } from "@env";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = SUPABASE_URL;
+const supabaseKey = SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const idGenerator = (() => {
   let id = 0;
@@ -204,6 +213,17 @@ const Item = ({ id, name }: Obj) => {
 };
 
 const Table = () => {
+  useEffect(() => {
+    async function getData() {
+      const { data: Students } = await supabase.from("Students").select("*");
+
+      // eslint-disable-next-line no-console
+      console.log(Students);
+    }
+
+    getData();
+  }, []);
+
   return (
     <SafeAreaView className="">
       <FlatList
