@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { Provider } from "react-redux";
 import {
   useFonts,
   Figtree_300Light,
@@ -19,6 +19,7 @@ import {
   Figtree_900Black_Italic,
 } from "@expo-google-fonts/figtree";
 
+import { store } from "./redux/app/store";
 import { HomeScreen, Students } from "./screens";
 
 export type RootStackParamList = {
@@ -54,20 +55,22 @@ const App = () => {
     return null;
   }
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="Home"
-          component={HomeScreen}
-        />
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="Students"
-          component={Students}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Home"
+            component={HomeScreen}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Students"
+            component={Students}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 

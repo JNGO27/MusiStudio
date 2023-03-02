@@ -8,6 +8,8 @@
     "react-app",
     "react-app/jest",
     "airbnb",
+    "airbnb-base",
+    "airbnb-typescript/base",
     "airbnb-typescript",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -17,20 +19,23 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true,
-      "modules": true
-    },
     "project": "./tsconfig.json",
     "emcaVersion": "latest",
     "sourceType": "module",
-    "ecmaVersion": 6
+    "ecmaVersion": "latest"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "import",
+    "@typescript-eslint"
+  ],
   "settings": {
     "import/resolver": {
-      "typescript": {}
+      "node": {
+        "paths": ["."]
+      }
     }
   },
   "rules": {
@@ -48,6 +53,14 @@
       "error",
       {
         "endOfLine": "auto"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false
       }
     ],
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
