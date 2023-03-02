@@ -1,13 +1,10 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import "react-native-url-polyfill/auto";
 import { useEffect } from "react";
 import { SafeAreaView, View, Text, FlatList } from "react-native";
 import { SUPABASE_URL, SUPABASE_KEY } from "@env";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = SUPABASE_URL;
-const supabaseKey = SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const idGenerator = (() => {
   let id = 0;
