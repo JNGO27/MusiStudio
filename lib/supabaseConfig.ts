@@ -7,7 +7,7 @@ import { SUPABASE_URL, SUPABASE_KEY } from "@env";
 // eslint-disable-next-line import/prefer-default-export
 export const supabaseConfig = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: {
-    storage: AsyncStorage as any,
+    storage: AsyncStorage,
     autoRefreshToken: true,
     persistSession: true,
     detectSessionInUrl: false,

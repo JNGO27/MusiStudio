@@ -13,7 +13,7 @@ import { supabaseConfig } from "../../lib/supabaseConfig";
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
   async function signInWithEmail() {
     setLoading(true);
