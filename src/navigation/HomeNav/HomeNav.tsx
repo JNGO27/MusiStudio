@@ -2,15 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { HomeScreen, Students } from "../../screens";
-
-export type RootStackParamList = {
-  Home: undefined;
-  Students: undefined;
-  Calender: undefined;
-  Repertoire: undefined;
-  Milage: undefined;
-  Billing: undefined;
-};
+import type { RootStackParamList } from "../../types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
