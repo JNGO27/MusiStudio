@@ -1,7 +1,6 @@
 import { registerRootComponent } from "expo";
 import { useState, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import { Provider } from "react-redux";
 import {
   useFonts,
@@ -24,19 +23,7 @@ import {
 import type { Session } from "@supabase/supabase-js";
 import { supabaseConfig } from "./lib/supabaseConfig";
 import { store } from "./redux/app/store";
-import { Auth } from "./components";
-import { HomeScreen, Students } from "./screens";
-
-export type RootStackParamList = {
-  Home: undefined;
-  Students: undefined;
-  Calender: undefined;
-  Repertoire: undefined;
-  Milage: undefined;
-  Billing: undefined;
-};
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
+import { HomeNav, AuthNav } from "./navigation";
 
 const App = () => {
   const [userSession, setUserSession] = useState<Session | null>(null);
@@ -73,24 +60,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      {userSession && userSession?.user ? (
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              options={{ headerShown: false }}
-              name="Home"
-              component={HomeScreen}
-            />
-            <Stack.Screen
-              options={{ headerShown: false }}
-              name="Students"
-              component={Students}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      ) : (
-        <Auth />
-      )}
+      {userSession && userSession?.user ? <HomeNav /> : <AuthNav />}
     </Provider>
   );
 };
