@@ -1,6 +1,5 @@
 import { registerRootComponent } from "expo";
 import { useState, useEffect } from "react";
-
 import { Provider } from "react-redux";
 import {
   useFonts,
