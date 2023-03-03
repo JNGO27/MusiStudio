@@ -1,6 +1,6 @@
 import { SafeAreaView, View } from "react-native";
 
-import { HomeOption } from "../components";
+import { HomeOption, Account } from "../components";
 import { HomeOptionsArr } from "../utils/constants";
 
 const HomeScreen = () => {
@@ -11,6 +11,7 @@ const HomeScreen = () => {
           <HomeOption key={title} title={title} />
         ))}
       </View>
+      <Account />
     </SafeAreaView>
   );
 };
