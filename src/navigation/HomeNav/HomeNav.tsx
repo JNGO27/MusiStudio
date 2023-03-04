@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { HomeScreen, Students } from "../../screens";
-import type { RootStackParamList } from "../../types";
+import { HomeScreen, Students } from "@screens";
+import type { RootStackParamList } from "@types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

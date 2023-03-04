@@ -39,6 +39,7 @@
     "@types/react": "~18.0.14",
     "@types/react-native": "^0.70.11",
     "@types/react-native-dotenv": "^0.2.0",
+    "babel-plugin-module-resolver": "^5.0.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",

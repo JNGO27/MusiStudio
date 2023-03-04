@@ -1,6 +1,6 @@
 import { TouchableOpacity, View, Text } from "react-native";
 
-import { optionsOnlyArr } from "../../utils/constants";
+import { optionsOnlyArr } from "@utils/constants";
 
 const NavigationMenu = () => {
   return (

@@ -6,10 +6,9 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Formik } from "formik";
 
-import { supabaseConfig } from "../../lib/supabaseConfig";
+import { supabaseConfig } from "@lib/supabaseConfig";
 
 type MyFormValues = {
   email: string;

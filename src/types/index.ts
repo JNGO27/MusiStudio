@@ -1,4 +1,4 @@
-import { optionsOnlyArr } from "../utils/constants";
+import { optionsOnlyArr } from "@utils/constants";
 
 export type Options = (typeof optionsOnlyArr)[number];
 
