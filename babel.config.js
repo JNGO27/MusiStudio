@@ -16,14 +16,6 @@ module.exports = function (api) {
         {
           alias: {
             "@src": ["./src"],
-            "@components": ["./src/components"],
-            "@hooks": ["./src/hooks"],
-            "@lib": ["./src/lib"],
-            "@navigation": ["./src/navigation"],
-            "@redux": ["./src/redux"],
-            "@screens": ["./src/screens"],
-            "@types": ["./src/types"],
-            "@utils": ["./src/utils"],
           },
           extensions: [".js", ".jsx", ".ts", ".tsx"],
         },

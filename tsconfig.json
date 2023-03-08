@@ -5,15 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@navigation/*": ["./src/navigation/*"],
-      "@redux/*": ["./src/redux/*"],
-      "@screens/*": ["./src/screens/*"],
-      "@types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@src/*": ["./src/*"]
     }
   },
   "include": ["./src/**/*"],
