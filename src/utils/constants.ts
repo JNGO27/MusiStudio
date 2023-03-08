@@ -23,3 +23,5 @@ export const optionsOnlyArr = [
   "Milage",
   "Billing",
 ] as const;
+
+export const AuthOptionsOnlyArr = ["AuthHome", "SignUp", "SignIn"] as const;
