@@ -1,7 +1,7 @@
 import { SafeAreaView, View } from "react-native";
 
-import { HomeOption, Account } from "../../components";
-import { HomeOptionsArr } from "../../utils/constants";
+import { HomeOption, Account } from "@src/components";
+import { HomeOptionsArr } from "@src/utils/constants";
 
 const HomeScreen = () => {
   return (

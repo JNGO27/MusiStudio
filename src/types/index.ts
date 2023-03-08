@@ -1,5 +1,5 @@
-import { optionsOnlyArr } from "@utils/constants";
+import { HomeOptionsOnlyArr } from "@src/utils/constants";
 
-export type Options = (typeof optionsOnlyArr)[number];
+export type Options = (typeof HomeOptionsOnlyArr)[number];
 
 export * from "./navigationTypes";

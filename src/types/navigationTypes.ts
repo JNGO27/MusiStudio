@@ -1,3 +1,5 @@
+import { HomeOptionsOnlyArr, AuthOptionsOnlyArr } from "@src/utils/constants";
+
 export type RootStackParamList = {
   Home: undefined;
   Students: undefined;
@@ -7,8 +9,12 @@ export type RootStackParamList = {
   Billing: undefined;
 };
 
+export type HomeNavOptions = (typeof HomeOptionsOnlyArr)[number];
+
 export type AuthStackParamList = {
   AuthHome: undefined;
   SignUp: undefined;
   SignIn: undefined;
 };
+
+export type AuthNavOptions = (typeof AuthOptionsOnlyArr)[number];

@@ -20,9 +20,9 @@ import {
 } from "@expo-google-fonts/figtree";
 
 import type { Session } from "@supabase/supabase-js";
-import { supabaseConfig } from "./lib/supabaseConfig";
-import { store } from "./redux/app/store";
-import { HomeNav, AuthNav } from "./navigation";
+import { supabaseConfig } from "@src/lib/supabaseConfig";
+import { HomeNav, AuthNav } from "@src/navigation";
+import { store } from "@src/redux/app/store";
 
 const App = () => {
   const [userSession, setUserSession] = useState<Session | null>(null);

@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 
-import { supabaseConfig } from "../../lib/supabaseConfig";
+import { supabaseConfig } from "@src/lib/supabaseConfig";
 
 type MyFormValues = {
   email: string;

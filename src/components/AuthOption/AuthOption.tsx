@@ -1,7 +1,7 @@
 import { TouchableOpacity, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { AuthStackParamList, AuthNavOptions } from "@types";
+import { AuthStackParamList, AuthNavOptions } from "@src/types";
 
 type AuthNavigationProps = NativeStackNavigationProp<
   AuthStackParamList,

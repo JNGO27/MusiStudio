@@ -16,7 +16,7 @@ export const HomeOptionsArr = [
   },
 ] as const;
 
-export const optionsOnlyArr = [
+export const HomeOptionsOnlyArr = [
   "Students",
   "Calender",
   "Repertoire",

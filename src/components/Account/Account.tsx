@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 
-import { supabaseConfig } from "@lib/supabaseConfig";
+import { supabaseConfig } from "@src/lib/supabaseConfig";
 
 const Account = () => {
   const handleSignOut = async () => {

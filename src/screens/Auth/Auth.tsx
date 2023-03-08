@@ -1,7 +1,7 @@
 import { SafeAreaView } from "react-native";
 
 import { AuthOption, OAuthOption } from "@src/components";
-import { AuthOptionsOnlyArr } from "@utils/constants";
+import { AuthOptionsOnlyArr } from "@src/utils/constants";
 
 const Auth = () => {
   return (
