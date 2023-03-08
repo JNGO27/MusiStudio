@@ -4,7 +4,7 @@ import { NavigationMenu, Table } from "../../components";
 
 const Students = () => {
   return (
-    <SafeAreaView className="w-full h-full pt-16">
+    <SafeAreaView>
       <Table />
       <NavigationMenu />
     </SafeAreaView>

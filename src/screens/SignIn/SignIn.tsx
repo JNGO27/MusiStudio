@@ -30,23 +30,21 @@ const SignIn = () => {
   return (
     <Formik initialValues={formValues} onSubmit={signInWithEmail}>
       {({ handleChange, handleBlur, handleSubmit, values }) => (
-        <SafeAreaView className="w-full h-full flex justify-center items-center">
-          <View className="w-80 h-2/4 bg-slate-100 flex justify-center gap-4 py-4 px-12 shadow-md shadow-black">
+        <SafeAreaView>
+          <View>
             <TextInput
-              className="flex bg-slate-300"
               onChangeText={handleChange("email")}
               onBlur={handleBlur("email")}
               value={values.email}
               placeholder="Email Address"
             />
             <TextInput
-              className="flex bg-slate-300"
               onChangeText={handleChange("password")}
               onBlur={handleBlur("password")}
               value={values.password}
               placeholder="Password"
             />
-            <View className="flex flex-row gap-5">
+            <View>
               <TouchableOpacity onPress={handleSubmit} title="Submit">
                 <Text>Sign In</Text>
               </TouchableOpacity>

@@ -202,9 +202,9 @@ const dummyData: Obj[] = [
 
 const Item = ({ id, name }: Obj) => {
   return (
-    <View className="flex flex-row">
-      <Text className="flex flex-1">{id}</Text>
-      <Text className="flex flex-1">{name}</Text>
+    <View>
+      <Text>{id}</Text>
+      <Text>{name}</Text>
     </View>
   );
 };
@@ -222,7 +222,7 @@ const Table = () => {
   }, []);
 
   return (
-    <SafeAreaView className="">
+    <SafeAreaView>
       <FlatList
         data={dummyData}
         renderItem={({ item }) => <Item id={item.id} name={item.name} />}

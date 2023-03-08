@@ -5,8 +5,8 @@ import { HomeOptionsArr } from "../../utils/constants";
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView className="pt-12 w-full h-full">
-      <View className="flex flex-row justify-center items-center flex-wrap">
+    <SafeAreaView>
+      <View>
         {HomeOptionsArr.map(({ title }) => (
           <HomeOption key={title} title={title} />
         ))}
