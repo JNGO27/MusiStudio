@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
 import { Formik } from "formik";
 

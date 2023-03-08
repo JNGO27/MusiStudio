@@ -1,5 +1,6 @@
 import { registerRootComponent } from "expo";
 import { useState, useEffect } from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
 import { Provider } from "react-redux";
 import {
   useFonts,
@@ -23,6 +24,13 @@ import type { Session } from "@supabase/supabase-js";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { HomeNav, AuthNav } from "@src/navigation";
 import { store } from "@src/redux/app/store";
+
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+  },
+});
 
 const App = () => {
   const [userSession, setUserSession] = useState<Session | null>(null);
@@ -59,7 +67,9 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      {userSession && userSession?.user ? <HomeNav /> : <AuthNav />}
+      <SafeAreaView style={styles.container}>
+        {userSession && userSession?.user ? <HomeNav /> : <AuthNav />}
+      </SafeAreaView>
     </Provider>
   );
 };

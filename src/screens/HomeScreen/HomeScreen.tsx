@@ -1,18 +1,16 @@
-import { SafeAreaView, View } from "react-native";
+import { View } from "react-native";
 
 import { HomeOption, Account } from "@src/components";
 import { HomeOptionsArr } from "@src/utils/constants";
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView>
-      <View>
-        {HomeOptionsArr.map(({ title }) => (
-          <HomeOption key={title} title={title} />
-        ))}
-      </View>
+    <View>
+      {HomeOptionsArr.map(({ title }) => (
+        <HomeOption key={title} title={title} />
+      ))}
       <Account />
-    </SafeAreaView>
+    </View>
   );
 };
 
