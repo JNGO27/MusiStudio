@@ -17,12 +17,9 @@ const HomeOption = ({ title }: Props) => {
   const navigator = useNavigation<NavigationProps>();
 
   return (
-    <TouchableOpacity
-      className="flex items-center justify-center rounded-full bg-gray-300 w-32 h-32"
-      onPress={() => navigator.navigate(title)}
-    >
+    <TouchableOpacity onPress={() => navigator.navigate(title)}>
       <SafeAreaView>
-        <Text className="font-ft-black">{title}</Text>
+        <Text>{title}</Text>
       </SafeAreaView>
     </TouchableOpacity>
   );

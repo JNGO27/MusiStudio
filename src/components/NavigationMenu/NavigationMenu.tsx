@@ -4,10 +4,10 @@ import { optionsOnlyArr } from "@utils/constants";
 
 const NavigationMenu = () => {
   return (
-    <View className="flex flex-row absolute bottom-0 h-12 gap-4">
+    <View>
       {optionsOnlyArr.map((option) => (
         <TouchableOpacity key={option}>
-          <Text className="font-ft-reg">{option}</Text>
+          <Text>{option}</Text>
         </TouchableOpacity>
       ))}
     </View>
