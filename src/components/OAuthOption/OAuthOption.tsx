@@ -1,23 +1,28 @@
-import { Text, TouchableOpacity, Alert } from "react-native";
-import { makeRedirectUri, startAsync } from "expo-auth-session";
+import { Text, TouchableOpacity } from "react-native";
 import type { Provider } from "@supabase/supabase-js";
+import { makeRedirectUri } from "expo-auth-session";
+import * as Linking from "expo-linking";
 
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { SUPABASE_URL } from "@env";
+import { capitalize, getTokens } from "./helpers";
 
 type Props = {
   provider: Provider;
 };
 
 const OAuthOption = ({ provider }: Props) => {
-  const firstLetter = provider.charAt(0).toUpperCase();
-  const restOfLetters = provider.slice(1);
-  const providerCapitalized = firstLetter + restOfLetters;
+  const providerCapitalized = capitalize(provider);
+
+  const redirectUri = makeRedirectUri({
+    path: SUPABASE_URL,
+  });
 
   const signInWithProvider = async () => {
-    const { error } = await supabaseConfig.auth.signInWithOAuth({
+    const { data } = await supabaseConfig.auth.signInWithOAuth({
       provider,
       options: {
+        redirectTo: redirectUri,
         queryParams: {
           access_type: "offline",
           prompt: "consent",
@@ -25,23 +30,17 @@ const OAuthOption = ({ provider }: Props) => {
       },
     });
 
-    if (error) Alert.alert(error.message);
+    Linking.openURL(data.url as string);
 
-    const redirectUri = makeRedirectUri({
-      path: SUPABASE_URL,
-    });
+    Linking.addEventListener("url", (event) => {
+      const { url } = event;
+      const [accessToken, refreshToken] = getTokens(url);
 
-    const authResponse = await startAsync({
-      authUrl: `${SUPABASE_URL}/auth/v1/authorize?provider=${provider}&redirect_to=${redirectUri}`,
-      returnUrl: redirectUri,
-    });
-
-    if (authResponse.type === "success") {
       supabaseConfig.auth.setSession({
-        access_token: authResponse.params.access_token,
-        refresh_token: authResponse.params.refresh_token,
+        access_token: accessToken,
+        refresh_token: refreshToken,
       });
-    }
+    });
   };
 
   return (

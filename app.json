@@ -23,10 +23,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+
+      "package": "com.jngo27.revenuecat"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fd6c79b4-e092-4bdb-abfe-b5adf835ee70"
+      }
     }
   }
 }
