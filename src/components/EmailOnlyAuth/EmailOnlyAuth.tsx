@@ -24,7 +24,7 @@ const EmailOnlyAuth = () => {
       path: SUPABASE_URL,
     });
 
-    const { data, error } = await supabaseConfig.auth.signInWithOtp({
+    const { error } = await supabaseConfig.auth.signInWithOtp({
       email,
       options: {
         emailRedirectTo: redirectUri,
