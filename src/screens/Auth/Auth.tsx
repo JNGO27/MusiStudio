@@ -1,3 +1,4 @@
+import { View } from "react-native";
 import { AuthOption, OAuthOption } from "@src/components";
 import { LinearGradient } from "expo-linear-gradient";
 import globalStyles from "@src/globalStyles";
@@ -18,8 +19,10 @@ const Auth = () => {
       start={purpleGradient.start}
       end={purpleGradient.end}
     >
-      <AuthOption authOption="SignIn" />
-      <OAuthOption provider="google" />
+      <View style={styles.card}>
+        <AuthOption authOption="SignIn" />
+        <OAuthOption provider="google" />
+      </View>
     </LinearGradient>
   );
 };

@@ -1,8 +1,16 @@
 export const SPACING = {
-  multiple: 2,
+  multipleXS: 2,
+  multipleS: 4,
+  multipleM: 6,
+  multipleReg: 8,
+  multipleL: 10,
+  multipleXL: 12,
 };
 
 export const COLORS = {
+  whites: {
+    white100: "hsl(44, 48%, 95%)",
+  },
   gradients: {
     purpleGradient: {
       colors: [
