@@ -1,7 +1,10 @@
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
 import { AuthStackParamList, AuthNavOptions } from "@src/types";
+import EmailSVG from "./EmailSVG";
+import styles from "./styles";
 
 type AuthNavigationProps = NativeStackNavigationProp<
   AuthStackParamList,
@@ -15,9 +18,18 @@ type Props = {
 const AuthOption = ({ authOption }: Props) => {
   const navigator = useNavigation<AuthNavigationProps>();
 
+  const optionInText =
+    authOption === "SignIn" || authOption === "SignUp" ? "Email" : authOption;
+
   return (
-    <TouchableOpacity onPress={() => navigator.navigate(authOption)}>
-      <Text>{authOption}</Text>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigator.navigate(authOption)}
+    >
+      <View style={styles.optionContainer}>
+        <EmailSVG style={styles.icon} />
+        <Text>Continue With {optionInText}</Text>
+      </View>
     </TouchableOpacity>
   );
 };

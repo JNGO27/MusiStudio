@@ -20,8 +20,8 @@ const Auth = () => {
       end={purpleGradient.end}
     >
       <View style={styles.card}>
-        <AuthOption authOption="SignIn" />
         <OAuthOption provider="google" />
+        <AuthOption authOption="SignIn" />
       </View>
     </LinearGradient>
   );

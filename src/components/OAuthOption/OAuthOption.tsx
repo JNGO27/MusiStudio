@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import type { Provider } from "@supabase/supabase-js";
 import { makeRedirectUri } from "expo-auth-session";
 import * as Linking from "expo-linking";
@@ -6,6 +6,8 @@ import * as Linking from "expo-linking";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { SUPABASE_URL } from "@env";
 import { capitalize, getTokens } from "./helpers";
+import GoogleSVG from "./GoogleSVG";
+import styles from "./styles";
 
 type Props = {
   provider: Provider;
@@ -44,8 +46,11 @@ const OAuthOption = ({ provider }: Props) => {
   };
 
   return (
-    <TouchableOpacity onPress={signInWithProvider}>
-      <Text>{providerCapitalized}</Text>
+    <TouchableOpacity onPress={signInWithProvider} style={styles.container}>
+      <View style={styles.optionContainer}>
+        <GoogleSVG style={styles.icon} />
+        <Text>Continue with {providerCapitalized}</Text>
+      </View>
     </TouchableOpacity>
   );
 };
