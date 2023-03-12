@@ -14,12 +14,14 @@ const COLORS = {
   },
   grays: {
     gray300: "hsl(24, 6%, 80%)",
+    gray400: "hsl(24, 4%, 40%)",
   },
   purples: {
     purple100: "hsl(243 85% 18%)",
   },
   pinks: {
     pink100: "hsl(360, 100%, 87%)",
+    pink300: "hsl(360, 85%, 78%)",
   },
   gradients: {
     purpleGradient: {

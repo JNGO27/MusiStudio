@@ -3,7 +3,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { whites, purples, pinks },
+  colors: { whites, grays, purples, pinks },
 } = globalStyles;
 
 export default StyleSheet.create({
@@ -18,7 +18,7 @@ export default StyleSheet.create({
     display: "flex",
     gap: spacing.multipleReg * 2,
     width: spacing.multipleReg * 40,
-    height: spacing.multipleReg * 50,
+    height: spacing.multipleReg * 42.5,
     margin: -spacing.multipleReg * 7,
     paddingTop: spacing.multipleL * 2,
     backgroundColor: whites.white200,
@@ -61,5 +61,15 @@ export default StyleSheet.create({
     width: spacing.multipleL * 3,
     height: spacing.multipleL * 3,
     marginBottom: spacing.multipleXL,
+  },
+  logInContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: spacing.multipleM,
+    width: "100%",
+    marginTop: spacing.multipleReg * 3.5,
+  },
+  text: {
+    color: grays.gray400,
   },
 });

@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import { AuthStackParamList, RootStackParamList } from "@src/types";
+import styles from "./styles";
 
 type AllNavStackOptions = AuthStackParamList & RootStackParamList;
 
@@ -18,7 +19,7 @@ const LinkGeneral = ({ link, linkText }: LinkOptionsProps) => {
 
   return (
     <TouchableOpacity onPress={() => navigator.navigate(link)}>
-      <Text>{linkText}</Text>
+      <Text style={styles.text}>{linkText}</Text>
     </TouchableOpacity>
   );
 };
