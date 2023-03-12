@@ -21,7 +21,7 @@ export default StyleSheet.create({
     gap: spacing.multipleL,
     width: "90%",
     height: spacing.multipleXL * 4,
-    paddingLeft: spacing.multipleReg * 2,
+    paddingLeft: spacing.multipleReg * 4.5,
     borderColor: "hsl(24, 6%, 80%)",
     borderWidth: 2,
     borderRadius: spacing.multipleReg * 4,
@@ -34,5 +34,6 @@ export default StyleSheet.create({
   optionText: {
     fontFamily: typography.semiBold,
     fontSize: 12,
+    marginTop: spacing.multipleS,
   },
 });

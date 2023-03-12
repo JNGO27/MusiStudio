@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { AuthOption, OAuthOption } from "@src/components";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
@@ -36,6 +36,7 @@ const Auth = () => {
         <OAuthOption provider="google" />
         <AuthOption authOption="SignIn" />
       </View>
+      <Text>Already have an account?</Text>
     </LinearGradient>
   );
 };
