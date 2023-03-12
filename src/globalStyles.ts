@@ -9,7 +9,17 @@ export const SPACING = {
 
 export const COLORS = {
   whites: {
-    white100: "hsl(44, 48%, 95%)",
+    white100: "hsl(38, 60%, 95%)",
+    white200: "hsl(44, 48%, 95%)",
+  },
+  grays: {
+    gray300: "hsl(24, 6%, 80%)",
+  },
+  purples: {
+    purple100: "hsl(243 85% 18%)",
+  },
+  pinks: {
+    pink100: "hsl(360, 100%, 87%)",
   },
   gradients: {
     purpleGradient: {

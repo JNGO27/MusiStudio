@@ -3,7 +3,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { whites },
+  colors: { whites, purples, pinks },
 } = globalStyles;
 
 export default StyleSheet.create({
@@ -21,7 +21,7 @@ export default StyleSheet.create({
     height: spacing.multipleReg * 50,
     margin: -spacing.multipleReg * 7,
     paddingTop: spacing.multipleL * 2,
-    backgroundColor: whites.white100,
+    backgroundColor: whites.white200,
     borderRadius: spacing.multipleReg * 4.5,
   },
   image: {
@@ -44,13 +44,13 @@ export default StyleSheet.create({
     marginBottom: spacing.multipleReg,
   },
   decorationCircle: {
-    backgroundColor: "pink",
+    backgroundColor: pinks.pink100,
     width: spacing.multipleXS,
     height: spacing.multipleXS,
     borderRadius: 50,
   },
   decorationBox: {
-    backgroundColor: "purple",
+    backgroundColor: purples.purple100,
     height: spacing.multipleXS,
     width: spacing.multipleReg * 4,
     borderRadius: spacing.multipleReg * 4.5,
@@ -58,8 +58,8 @@ export default StyleSheet.create({
   accountPerson: {
     display: "flex",
     justifyContent: "center",
-    width: 30,
-    height: 30,
-    marginBottom: spacing.multipleReg * 2,
+    width: spacing.multipleL * 3,
+    height: spacing.multipleL * 3,
+    marginBottom: spacing.multipleXL,
   },
 });

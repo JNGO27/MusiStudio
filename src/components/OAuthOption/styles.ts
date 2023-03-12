@@ -1,7 +1,10 @@
 import { StyleSheet } from "react-native";
 import globalStyles from "@src/globalStyles";
 
-const { spacing } = globalStyles;
+const {
+  spacing,
+  colors: { whites },
+} = globalStyles;
 
 export default StyleSheet.create({
   container: {
@@ -21,6 +24,7 @@ export default StyleSheet.create({
     borderColor: "hsl(24, 6%, 80%)",
     borderWidth: 2,
     borderRadius: spacing.multipleReg * 4,
+    backgroundColor: whites.white100,
   },
   icon: {
     width: spacing.multipleReg * 4,
