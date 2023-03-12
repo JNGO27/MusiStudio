@@ -49,7 +49,9 @@ const OAuthOption = ({ provider }: Props) => {
     <TouchableOpacity onPress={signInWithProvider} style={styles.container}>
       <View style={styles.optionContainer}>
         <GoogleSVG style={styles.icon} />
-        <Text>Continue with {providerCapitalized}</Text>
+        <Text style={styles.optionText}>
+          Continue with {providerCapitalized}
+        </Text>
       </View>
     </TouchableOpacity>
   );

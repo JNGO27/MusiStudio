@@ -1,4 +1,4 @@
-export const SPACING = {
+const SPACING = {
   multipleXS: 2,
   multipleS: 4,
   multipleM: 6,
@@ -7,7 +7,7 @@ export const SPACING = {
   multipleXL: 12,
 };
 
-export const COLORS = {
+const COLORS = {
   whites: {
     white100: "hsl(38, 60%, 95%)",
     white200: "hsl(44, 48%, 95%)",
@@ -46,7 +46,29 @@ export const COLORS = {
   },
 };
 
+const TYPOGRAPHY = {
+  thin: "Poppins_100Thin",
+  thinItalic: "Poppins_100Thin_Italic",
+  extraLight: "Poppins_200ExtraLight",
+  extraLightItalic: "Poppins_200ExtraLight_Italic",
+  light: "Poppins_300Light",
+  lightItalic: "Poppins_300Light_Italic",
+  regular: "Poppins_400Regular",
+  regularItalic: "Poppins_400Regular_Italic",
+  medium: "Poppins_500Medium",
+  mediumItalic: "Poppins_500Medium_Italic",
+  semiBold: "Poppins_600SemiBold",
+  semiBoldItalic: "Poppins_600SemiBold_Italic",
+  bold: "Poppins_700Bold",
+  boldItalic: "Poppins_700Bold_Italic",
+  extraBold: "Poppins_800ExtraBold",
+  extraBoldItalic: "Poppins_800ExtraBold_Italic",
+  black: "Poppins_900Black",
+  blackItalic: "Poppins_900Black_Italic",
+};
+
 export default {
   spacing: SPACING,
   colors: COLORS,
+  typography: TYPOGRAPHY,
 };

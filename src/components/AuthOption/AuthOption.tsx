@@ -28,7 +28,7 @@ const AuthOption = ({ authOption }: Props) => {
     >
       <View style={styles.optionContainer}>
         <EmailSVG style={styles.icon} />
-        <Text>Continue With {optionInText}</Text>
+        <Text style={styles.optionText}>Continue With {optionInText}</Text>
       </View>
     </TouchableOpacity>
   );

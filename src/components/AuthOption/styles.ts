@@ -4,6 +4,7 @@ import globalStyles from "@src/globalStyles";
 const {
   spacing,
   colors: { grays, whites },
+  typography,
 } = globalStyles;
 
 export default StyleSheet.create({
@@ -29,5 +30,9 @@ export default StyleSheet.create({
   icon: {
     width: spacing.multipleReg * 4,
     height: spacing.multipleReg * 4,
+  },
+  optionText: {
+    fontFamily: typography.semiBold,
+    fontSize: 12,
   },
 });
