@@ -23,6 +23,13 @@ const Auth = () => {
       start={purpleGradient.start}
       end={purpleGradient.end}
     >
+      <View style={styles.headlineContainer}>
+        <Text style={styles.headlineText}>Welcome to ProtegeCoreSuite</Text>
+        <Text style={styles.headlineSubText}>
+          {" "}
+          Create an account to get started.
+        </Text>
+      </View>
       <Image source={People} contentFit="contain" style={styles.image} />
       <View style={styles.card}>
         <View style={styles.decorationsContainer}>

@@ -4,6 +4,7 @@ import globalStyles from "@src/globalStyles";
 const {
   spacing,
   colors: { whites, grays, purples, pinks },
+  typography,
 } = globalStyles;
 
 export default StyleSheet.create({
@@ -71,5 +72,23 @@ export default StyleSheet.create({
   },
   text: {
     color: grays.gray400,
+  },
+  headlineContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: spacing.multipleReg * 2,
+  },
+  headlineText: {
+    color: "hsl(252.5, 94.7%, 85.1%)",
+    fontFamily: typography.bold,
+    fontSize: 28,
+    textAlign: "center",
+  },
+  headlineSubText: {
+    color: grays.gray300,
+    fontFamily: typography.medium,
+    fontSize: 14,
+    paddingHorizontal: spacing.multipleReg * 4,
   },
 });
