@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { AuthOption, OAuthOption } from "@src/components";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
@@ -7,6 +7,7 @@ import globalStyles from "@src/globalStyles";
 import styles from "./styles";
 import People from "./people.png";
 import AccountPerson from "./AccountPerson";
+import { LinkGeneral } from "@src/components";
 
 const {
   colors: {
@@ -34,9 +35,12 @@ const Auth = () => {
           <AccountPerson style={styles.accountPerson} />
         </View>
         <OAuthOption provider="google" />
-        <AuthOption authOption="SignIn" />
+        <AuthOption authOption="SignUp" />
       </View>
-      <Text>Already have an account?</Text>
+      <View>
+        <Text>Already have an account?</Text>
+        <LinkGeneral link="SignIn" linkText="Log in" />
+      </View>
     </LinearGradient>
   );
 };
