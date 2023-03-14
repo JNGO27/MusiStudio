@@ -1,5 +1,17 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import globalStyles from "@src/globalStyles";
+
+const { width, height } = Dimensions.get("window");
+
+const guidelineBaseWidth = 365;
+const guidelineBaseHeight = 655;
+
+const horizontalScale = (size: number) => (width / guidelineBaseWidth) * size;
+const verticalScale = (size: number) => (height / guidelineBaseHeight) * size;
+const moderateScale = (size: number, factor = 0.5) =>
+  size + (horizontalScale(size) - size) * factor;
+
+export { horizontalScale, verticalScale, moderateScale };
 
 const {
   spacing,
@@ -17,19 +29,22 @@ export default StyleSheet.create({
   },
   card: {
     display: "flex",
-    gap: spacing.multipleReg * 2,
-    width: spacing.multipleReg * 40,
-    height: spacing.multipleReg * 42.5,
-    margin: -spacing.multipleReg * 7,
-    paddingTop: spacing.multipleL * 2,
+    flexShrink: 1,
+    alignContent: "stretch",
+    gap: spacing.multipleReg,
+    width: horizontalScale(spacing.multipleReg * 35),
+    height: verticalScale(spacing.multipleReg * 35),
+    margin: horizontalScale(-spacing.multipleReg * 6),
+    paddingTop: verticalScale(spacing.multipleL * 1.5),
     backgroundColor: whites.white200,
     borderRadius: spacing.multipleReg * 4.5,
   },
   image: {
-    width: spacing.multipleReg * 42,
-    height: spacing.multipleReg * 30,
+    display: "flex",
+    flexShrink: 1,
+    width: horizontalScale(spacing.multipleReg * 36),
+    height: verticalScale(spacing.multipleReg * 24),
     marginRight: 11,
-    borderRadius: spacing.multipleReg * 4.5,
   },
   decorationsContainer: {
     display: "flex",
@@ -41,8 +56,8 @@ export default StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    gap: spacing.multipleXS,
-    marginBottom: spacing.multipleReg,
+    gap: verticalScale(spacing.multipleXS),
+    marginBottom: verticalScale(spacing.multipleS),
   },
   decorationCircle: {
     backgroundColor: pinks.pink100,
@@ -66,9 +81,9 @@ export default StyleSheet.create({
   logInContainer: {
     display: "flex",
     alignItems: "center",
-    gap: spacing.multipleM,
+    gap: verticalScale(spacing.multipleS),
     width: "100%",
-    marginTop: spacing.multipleReg * 3.5,
+    marginTop: verticalScale(spacing.multipleReg * 3),
   },
   text: {
     color: grays.gray400,
@@ -77,18 +92,18 @@ export default StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: spacing.multipleReg * 2,
+    marginBottom: verticalScale(spacing.multipleM),
   },
   headlineText: {
     color: "hsl(252.5, 94.7%, 85.1%)",
     fontFamily: typography.bold,
-    fontSize: 28,
+    fontSize: moderateScale(24),
     textAlign: "center",
   },
   headlineSubText: {
     color: grays.gray300,
     fontFamily: typography.medium,
-    fontSize: 14,
-    paddingHorizontal: spacing.multipleReg * 4,
+    fontSize: moderateScale(12),
+    paddingHorizontal: horizontalScale(spacing.multipleReg * 4),
   },
 });

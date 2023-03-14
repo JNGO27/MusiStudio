@@ -3,7 +3,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { whites },
+  colors: { whites, grays },
   typography,
 } = globalStyles;
 
@@ -20,16 +20,16 @@ export default StyleSheet.create({
     alignItems: "center",
     gap: spacing.multipleL,
     width: "90%",
-    height: spacing.multipleXL * 4,
-    paddingLeft: spacing.multipleReg * 4.5,
-    borderColor: "hsl(24, 6%, 80%)",
+    height: spacing.multipleXL * 3.5,
+    paddingLeft: spacing.multipleReg * 3,
+    borderColor: grays.gray300,
     borderWidth: 2,
     borderRadius: spacing.multipleReg * 4,
     backgroundColor: whites.white100,
   },
   icon: {
-    width: spacing.multipleReg * 4,
-    height: spacing.multipleReg * 4,
+    width: spacing.multipleReg * 3,
+    height: spacing.multipleReg * 3,
   },
   optionText: {
     fontFamily: typography.semiBold,
