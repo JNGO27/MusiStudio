@@ -3,8 +3,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
 
 import { AuthOption, OAuthOption, LinkGeneral } from "@src/components";
+import useResponsiveness from "@src/hooks/useResponsiveness";
 import globalStyles from "@src/globalStyles";
-import styles from "./styles";
+import createStyleSheet from "./styles";
 import People from "./people.png";
 import AccountPerson from "./AccountPerson";
 
@@ -15,6 +16,13 @@ const {
 } = globalStyles;
 
 const Auth = () => {
+  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const styles = createStyleSheet(
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+  );
+
   return (
     <LinearGradient
       style={styles.container}

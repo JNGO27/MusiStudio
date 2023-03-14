@@ -2,9 +2,10 @@ import { TouchableOpacity, View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-import { AuthStackParamList, AuthNavOptions } from "@src/types";
+import useResponsiveness from "@src/hooks/useResponsiveness";
+import type { AuthStackParamList, AuthNavOptions } from "@src/types";
 import EmailSVG from "./EmailSVG";
-import styles from "./styles";
+import createStyleSheet from "./styles";
 
 type AuthNavigationProps = NativeStackNavigationProp<
   AuthStackParamList,
@@ -16,6 +17,12 @@ type Props = {
 };
 
 const AuthOption = ({ authOption }: Props) => {
+  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const styles = createStyleSheet(
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+  );
   const navigator = useNavigation<AuthNavigationProps>();
 
   const optionInText =

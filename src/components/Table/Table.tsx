@@ -1,4 +1,4 @@
-import "react-native-url-polyfill/auto";
+// import "react-native-url-polyfill/auto";
 import { useEffect } from "react";
 import { SafeAreaView, View, Text, FlatList } from "react-native";
 import { SUPABASE_URL, SUPABASE_KEY } from "@env";

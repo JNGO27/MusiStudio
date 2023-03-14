@@ -1,3 +1,7 @@
+import { StyleSheet } from "react-native";
+
+import { DirectionalScale, CalculatedScale } from "@src/types";
+
 const SPACING = {
   multipleXS: 2,
   multipleS: 4,
@@ -69,8 +73,50 @@ const TYPOGRAPHY = {
   blackItalic: "Poppins_900Black_Italic",
 };
 
+const ComponentStyles = {
+  authContainerOption: (
+    horizontalScale: DirectionalScale,
+    verticalScale: DirectionalScale,
+    moderateScale: CalculatedScale,
+  ) => {
+    return StyleSheet.create({
+      container: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      },
+      optionContainer: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: verticalScale(SPACING.multipleL),
+        width: "90%",
+        height: moderateScale(SPACING.multipleXL * 3.5),
+        maxHeight: SPACING.multipleXL * 4.5,
+        paddingLeft: moderateScale(SPACING.multipleReg * 3),
+        borderColor: COLORS.grays.gray300,
+        borderWidth: 2,
+        borderRadius: SPACING.multipleReg * 4,
+        backgroundColor: COLORS.whites.white100,
+      },
+      icon: {
+        width: moderateScale(SPACING.multipleReg * 3, 2),
+        maxWidth: SPACING.multipleReg * 4,
+        height: moderateScale(SPACING.multipleReg * 3, 2),
+      },
+      optionText: {
+        fontFamily: TYPOGRAPHY.semiBold,
+        fontSize: moderateScale(12, 0.25),
+        marginTop: SPACING.multipleS,
+      },
+    });
+  },
+};
+
 export default {
   spacing: SPACING,
   colors: COLORS,
   typography: TYPOGRAPHY,
+  componentStyles: ComponentStyles,
 };

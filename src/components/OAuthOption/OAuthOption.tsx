@@ -5,15 +5,23 @@ import * as Linking from "expo-linking";
 
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { SUPABASE_URL } from "@env";
+import useResponsiveness from "@src/hooks/useResponsiveness";
 import { capitalize, getTokens } from "./helpers";
 import GoogleSVG from "./GoogleSVG";
-import styles from "./styles";
+import createStyleSheet from "./styles";
 
 type Props = {
   provider: Provider;
 };
 
 const OAuthOption = ({ provider }: Props) => {
+  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const styles = createStyleSheet(
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+  );
+
   const providerCapitalized = capitalize(provider);
 
   const redirectUri = makeRedirectUri({
