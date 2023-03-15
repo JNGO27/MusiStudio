@@ -9,6 +9,8 @@ import {
 import { Formik } from "formik";
 
 import { supabaseConfig } from "@src/lib/supabaseConfig";
+import useResponsiveness from "@src/hooks/useResponsiveness";
+import createStyleSheet from "./styles";
 
 type MyFormValues = {
   email: string;
@@ -16,6 +18,12 @@ type MyFormValues = {
 };
 
 const SignIn = () => {
+  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const styles = createStyleSheet(
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+  );
   const formValues: MyFormValues = { email: "", password: "" };
 
   const signInWithEmail = async ({ email, password }: MyFormValues) => {
@@ -30,7 +38,7 @@ const SignIn = () => {
   return (
     <Formik initialValues={formValues} onSubmit={signInWithEmail}>
       {({ handleChange, handleBlur, handleSubmit, values }) => (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
           <View>
             <TextInput
               onChangeText={handleChange("email")}
@@ -43,6 +51,7 @@ const SignIn = () => {
               onBlur={handleBlur("password")}
               value={values.password}
               placeholder="Password"
+              autoComplete="password"
             />
             <View>
               <TouchableOpacity onPress={handleSubmit} title="Submit">
