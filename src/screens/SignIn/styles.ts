@@ -12,6 +12,7 @@ export default (
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      gap: 50,
       width: "100%",
       height: "100%",
     },

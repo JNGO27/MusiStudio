@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Alert,
   SafeAreaView,
@@ -7,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Formik } from "formik";
+import Checkbox from "expo-checkbox";
 
 import type { FormikSubmit } from "@src/types";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
@@ -19,6 +21,7 @@ type MyFormValues = {
 };
 
 const SignIn = () => {
+  const [checked, setChecked] = useState(true);
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -39,8 +42,8 @@ const SignIn = () => {
   return (
     <Formik initialValues={formValues} onSubmit={signInWithEmail}>
       {({ handleChange, handleBlur, handleSubmit, values }) => (
-        <SafeAreaView style={styles.container}>
-          <View>
+        <SafeAreaView>
+          <View style={styles.container}>
             <TextInput
               onChangeText={handleChange("email")}
               onBlur={handleBlur("email")}
@@ -53,7 +56,12 @@ const SignIn = () => {
               value={values.password}
               placeholder="Password"
               autoComplete="password"
+              secureTextEntry={!checked}
             />
+            <View>
+              <Text>Show Password</Text>
+              <Checkbox value={checked} onValueChange={setChecked} />
+            </View>
             <View>
               <TouchableOpacity onPress={handleSubmit as FormikSubmit}>
                 <Text>Sign In</Text>
