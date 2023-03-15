@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 
+import type { FormikSubmit } from "@src/types";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
@@ -54,7 +55,7 @@ const SignIn = () => {
               autoComplete="password"
             />
             <View>
-              <TouchableOpacity onPress={handleSubmit} title="Submit">
+              <TouchableOpacity onPress={handleSubmit as FormikSubmit}>
                 <Text>Sign In</Text>
               </TouchableOpacity>
             </View>

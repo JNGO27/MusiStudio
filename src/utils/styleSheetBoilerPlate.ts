@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // This is meant to just be copied and pasted in other parts of the application.
 
 //component.tsx

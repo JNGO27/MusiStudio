@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 
+import { FormikSubmit } from "@src/types";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
 type MyFormValues = {
@@ -44,7 +45,7 @@ const SignUp = () => {
               value={values.password}
               placeholder="Password"
             />
-            <TouchableOpacity onPress={handleSubmit} title="Submit">
+            <TouchableOpacity onPress={handleSubmit as FormikSubmit}>
               <Text>Sign up</Text>
             </TouchableOpacity>
           </View>
