@@ -1,5 +1,4 @@
 import {
-  Alert,
   SafeAreaView,
   View,
   Text,
@@ -10,18 +9,17 @@ import { Formik } from "formik";
 import Checkbox from "expo-checkbox";
 
 import type { FormikSubmit } from "@src/types";
+// import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { useCheckboxContext } from "@src/Contexts/CheckboxContext";
-import { LinkGeneral } from "@src/components";
-import { supabaseConfig } from "@src/lib/supabaseConfig";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
 type MyFormValues = {
-  email: string;
   password: string;
+  passwordConfirmation: string;
 };
 
-const SignIn = () => {
+const ResetForm = () => {
   const { checked, setChecked } = useCheckboxContext();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -29,49 +27,45 @@ const SignIn = () => {
     verticalScale,
     moderateScale,
   );
-  const formValues: MyFormValues = { email: "", password: "" };
+  const formValues: MyFormValues = { password: "", passwordConfirmation: "" };
 
-  const signInWithEmail = async ({ email, password }: MyFormValues) => {
-    const { error } = await supabaseConfig.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) Alert.alert(error.message);
-  };
+  // const resetPassword = () => {
+  //   console.log("password reset");
+  // };
 
   return (
-    <Formik initialValues={formValues} onSubmit={signInWithEmail}>
+    <Formik initialValues={formValues} onSubmit={() => {}}>
       {({ handleChange, handleBlur, handleSubmit, values }) => (
         <SafeAreaView>
           <View style={styles.container}>
             <TextInput
-              onChangeText={handleChange("email")}
-              onBlur={handleBlur("email")}
-              value={values.email}
-              placeholder="Email Address"
-            />
-            <TextInput
               onChangeText={handleChange("password")}
-              onBlur={handleBlur("password")}
+              onBlur={handleBlur("Password")}
               value={values.password}
               placeholder="Password"
               autoComplete="password"
               secureTextEntry={!checked}
             />
+            <TextInput
+              onChangeText={handleChange("passwordConfirmation")}
+              onBlur={handleBlur("password")}
+              value={values.passwordConfirmation}
+              placeholder="Confirm Password"
+              secureTextEntry={!checked}
+            />
             <View>
               <Text>Show Password</Text>
-              <Checkbox value={checked} onValueChange={setChecked} />
             </View>
+            <Checkbox
+              style={{ width: 40, height: 40 }}
+              value={checked}
+              onValueChange={setChecked}
+            />
             <View>
               <TouchableOpacity onPress={handleSubmit as FormikSubmit}>
-                <Text>Sign In</Text>
+                <Text>Reset</Text>
               </TouchableOpacity>
             </View>
-            <LinkGeneral
-              link="ForgotPassword"
-              linkText="Forgot your password?"
-            />
           </View>
         </SafeAreaView>
       )}
@@ -79,4 +73,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default ResetForm;
