@@ -11,6 +11,7 @@ import { Formik } from "formik";
 import Checkbox from "expo-checkbox";
 
 import type { FormikSubmit } from "@src/types";
+import { LinkGeneral } from "@src/components";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
@@ -21,7 +22,7 @@ type MyFormValues = {
 };
 
 const SignIn = () => {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -67,6 +68,10 @@ const SignIn = () => {
                 <Text>Sign In</Text>
               </TouchableOpacity>
             </View>
+            <LinkGeneral
+              link="ForgotPassword"
+              linkText="Forgot your password?"
+            />
           </View>
         </SafeAreaView>
       )}

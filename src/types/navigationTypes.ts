@@ -15,6 +15,7 @@ export type AuthStackParamList = {
   AuthHome: undefined;
   SignUp: undefined;
   SignIn: undefined;
+  ForgotPassword: undefined;
 };
 
 export type AuthNavOptions = (typeof AuthOptionsOnlyArr)[number];
