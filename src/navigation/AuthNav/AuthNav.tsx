@@ -3,7 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import type { LinkingOptions } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 
-import { Auth, SignUp, SignIn, ForgotPassword } from "@src/screens";
+import { CheckboxContext } from "@src/Contexts/CheckboxContext";
+import { SignUp, SignIn, ForgotPassword, ResetForm } from "@src/screens";
 import type { AuthStackParamList } from "@src/types";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
@@ -19,24 +20,36 @@ const linking: LinkingOptions<AuthStackParamList> = {
       AuthHome: "home",
       SignUp: "signup",
       SignIn: "signin",
+      ResetForm: "reset-form",
     },
   },
 };
 
 const AuthNav = () => {
   return (
-    <NavigationContainer linking={linking}>
-      <Stack.Navigator>
-        <Stack.Screen options={noHeader} name="AuthHome" component={Auth} />
-        <Stack.Screen options={noHeader} name="SignUp" component={SignUp} />
-        <Stack.Screen options={noHeader} name="SignIn" component={SignIn} />
-        <Stack.Screen
-          options={noHeader}
-          name="ForgotPassword"
-          component={ForgotPassword}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <CheckboxContext>
+      <NavigationContainer linking={linking}>
+        <Stack.Navigator>
+          <Stack.Screen
+            options={noHeader}
+            name="AuthHome"
+            component={ResetForm}
+          />
+          <Stack.Screen options={noHeader} name="SignUp" component={SignUp} />
+          <Stack.Screen options={noHeader} name="SignIn" component={SignIn} />
+          <Stack.Screen
+            options={noHeader}
+            name="ForgotPassword"
+            component={ForgotPassword}
+          />
+          <Stack.Screen
+            options={noHeader}
+            name="ResetForm"
+            component={ResetForm}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CheckboxContext>
   );
 };
 
