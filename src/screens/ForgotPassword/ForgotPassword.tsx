@@ -24,7 +24,8 @@ const ForgotPassword = () => {
   const styles = createStyleSheet();
 
   const mostRecentURL = Linking.useURL();
-  const resetPasswordFormURLScreen = Linking.createURL("/auth/home");
+  const desiredScreenUrl = "/auth/reset-form";
+  const resetPasswordFormURLScreen = Linking.createURL(desiredScreenUrl);
   const redirectUri = makeRedirectUri({
     path: resetPasswordFormURLScreen,
   });
@@ -45,7 +46,7 @@ const ForgotPassword = () => {
   };
 
   useEffect(() => {
-    if (mostRecentURL?.includes("/auth/home")) {
+    if (mostRecentURL?.includes(desiredScreenUrl)) {
       Linking.openURL(resetPasswordFormURLScreen);
     }
   }, [mostRecentURL, resetPasswordFormURLScreen]);

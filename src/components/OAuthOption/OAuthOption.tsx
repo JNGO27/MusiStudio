@@ -15,6 +15,7 @@ type Props = {
 };
 
 const OAuthOption = ({ provider }: Props) => {
+  const deepLinkSupaBaseUrl = Linking.createURL(SUPABASE_URL);
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -25,7 +26,7 @@ const OAuthOption = ({ provider }: Props) => {
   const providerCapitalized = capitalize(provider);
 
   const redirectUri = makeRedirectUri({
-    path: SUPABASE_URL,
+    path: deepLinkSupaBaseUrl,
   });
 
   const signInWithProvider = async () => {
