@@ -25,9 +25,6 @@ const AuthOption = ({ authOption }: Props) => {
   );
   const navigator = useNavigation<AuthNavigationProps>();
 
-  const optionInText =
-    authOption === "SignIn" || authOption === "SignUp" ? "Email" : authOption;
-
   return (
     <TouchableOpacity
       style={styles.container}
@@ -35,7 +32,7 @@ const AuthOption = ({ authOption }: Props) => {
     >
       <View style={styles.optionContainer}>
         <EmailSVG style={styles.icon} />
-        <Text style={styles.optionText}>Continue With {optionInText}</Text>
+        <Text style={styles.optionText}>Continue With {authOption}</Text>
       </View>
     </TouchableOpacity>
   );

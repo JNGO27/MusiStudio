@@ -13,6 +13,7 @@ export type HomeNavOptions = (typeof HomeOptionsOnlyArr)[number];
 
 export type AuthStackParamList = {
   AuthHome: undefined;
+  Email: undefined;
   SignUp: undefined;
   SignIn: undefined;
   ForgotPassword: undefined;

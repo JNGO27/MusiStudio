@@ -2,7 +2,7 @@ import { ScrollView, View, Text, Linking } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
 
-import { AuthOption, OAuthOption, LinkGeneral } from "@src/components";
+import { AuthOption, OAuthOption } from "@src/components";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
@@ -53,11 +53,7 @@ const Auth = () => {
             <AccountPerson style={styles.accountPerson} />
           </View>
           <OAuthOption provider="google" />
-          <AuthOption authOption="SignUp" />
-          <View style={styles.logInContainer}>
-            <Text style={styles.text}>Already have an account?</Text>
-            <LinkGeneral link="SignIn" linkText="Log in" />
-          </View>
+          <AuthOption authOption="Email" />
         </View>
         <View style={styles.footer}>
           <Text style={styles.footerText}>

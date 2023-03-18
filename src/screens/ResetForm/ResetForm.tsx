@@ -7,9 +7,11 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import Checkbox from "expo-checkbox";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
 
-import type { FormikSubmit } from "@src/types";
-// import { supabaseConfig } from "@src/lib/supabaseConfig";
+import type { FormikSubmit, AuthStackParamList } from "@src/types";
+import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { useCheckboxContext } from "@src/Contexts/CheckboxContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
@@ -19,6 +21,11 @@ type MyFormValues = {
   passwordConfirmation: string;
 };
 
+type NavigationProps = NativeStackNavigationProp<
+  AuthStackParamList,
+  "AuthHome"
+>;
+
 const ResetForm = () => {
   const { checked, setChecked } = useCheckboxContext();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
@@ -27,14 +34,26 @@ const ResetForm = () => {
     verticalScale,
     moderateScale,
   );
-  const formValues: MyFormValues = { password: "", passwordConfirmation: "" };
+  const navigator = useNavigation<NavigationProps>();
 
-  // const resetPassword = () => {
-  //   console.log("password reset");
-  // };
+  const formValues: MyFormValues = {
+    password: "",
+    passwordConfirmation: "",
+  };
+
+  const resetPassword = async ({ password }: MyFormValues) => {
+    const { error } = await supabaseConfig.auth.updateUser({
+      password,
+    });
+
+    // eslint-disable-next-line no-console
+    if (error) console.error(error);
+
+    navigator.navigate("AuthHome");
+  };
 
   return (
-    <Formik initialValues={formValues} onSubmit={() => {}}>
+    <Formik initialValues={formValues} onSubmit={resetPassword}>
       {({ handleChange, handleBlur, handleSubmit, values }) => (
         <SafeAreaView>
           <View style={styles.container}>

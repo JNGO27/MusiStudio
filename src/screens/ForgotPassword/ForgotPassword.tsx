@@ -8,10 +8,10 @@ import {
 } from "react-native";
 import { makeRedirectUri } from "expo-auth-session";
 import * as Linking from "expo-linking";
-
-// import useResponsiveness from "@src/hooks/useResponsiveness";
 import { Formik } from "formik";
 
+// import useResponsiveness from "@src/hooks/useResponsiveness";
+import { getTokens } from "@src/utils/linkHelpers";
 import type { FormikSubmit } from "@src/types";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import createStyleSheet from "./styles";
@@ -46,6 +46,20 @@ const ForgotPassword = () => {
   };
 
   useEffect(() => {
+    let accessToken: string;
+    let refreshToken: string;
+    let haveTokens = false;
+
+    if (mostRecentURL !== null && !haveTokens) {
+      [accessToken, refreshToken] = getTokens(mostRecentURL);
+      haveTokens = true;
+
+      supabaseConfig.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
+    }
+
     if (mostRecentURL?.includes(desiredScreenUrl)) {
       Linking.openURL(resetPasswordFormURLScreen);
     }

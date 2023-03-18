@@ -24,4 +24,9 @@ export const HomeOptionsOnlyArr = [
   "Billing",
 ] as const;
 
-export const AuthOptionsOnlyArr = ["AuthHome", "SignUp", "SignIn"] as const;
+export const AuthOptionsOnlyArr = [
+  "AuthHome",
+  "Email",
+  "SignUp",
+  "SignIn",
+] as const;

@@ -4,7 +4,14 @@ import type { LinkingOptions } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 
 import { CheckboxContext } from "@src/Contexts/CheckboxContext";
-import { SignUp, SignIn, ForgotPassword, ResetForm } from "@src/screens";
+import {
+  Auth,
+  EmailOnlyAuth,
+  SignUp,
+  SignIn,
+  ForgotPassword,
+  ResetForm,
+} from "@src/screens";
 import type { AuthStackParamList } from "@src/types";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
@@ -18,6 +25,7 @@ const linking: LinkingOptions<AuthStackParamList> = {
   config: {
     screens: {
       AuthHome: "home",
+      Email: "email",
       SignUp: "signup",
       SignIn: "signin",
       ResetForm: "reset-form",
@@ -30,10 +38,11 @@ const AuthNav = () => {
     <CheckboxContext>
       <NavigationContainer linking={linking}>
         <Stack.Navigator>
+          <Stack.Screen options={noHeader} name="AuthHome" component={Auth} />
           <Stack.Screen
             options={noHeader}
-            name="AuthHome"
-            component={ResetForm}
+            name="Email"
+            component={EmailOnlyAuth}
           />
           <Stack.Screen options={noHeader} name="SignUp" component={SignUp} />
           <Stack.Screen options={noHeader} name="SignIn" component={SignIn} />
