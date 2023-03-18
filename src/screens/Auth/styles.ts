@@ -5,7 +5,7 @@ import { DirectionalScale, CalculatedScale } from "@src/types";
 
 const {
   spacing,
-  colors: { whites, grays, purples, pinks },
+  colors: { whites, grays, purples, lightPurples, pinks },
   typography,
 } = globalStyles;
 
@@ -26,14 +26,14 @@ export default (
     },
     card: {
       display: "flex",
+      justifyContent: "center",
       flexShrink: 1,
       alignContent: "stretch",
       gap: spacing.multipleReg,
       width: horizontalScale(spacing.multipleReg * 32.5),
-      height: verticalScale(spacing.multipleReg * 25),
+      height: verticalScale(spacing.multipleReg * 27),
       maxWidth: spacing.multipleReg * 45,
       maxHeight: spacing.multipleReg * 70,
-      paddingTop: verticalScale(spacing.multipleL * 1.5),
       backgroundColor: whites.white200,
       borderRadius: spacing.multipleReg * 4.5,
     },
@@ -52,6 +52,7 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
+      marginTop: -verticalScale(spacing.multipleXL * 3),
     },
     decorationsContainerInner: {
       display: "flex",
@@ -101,7 +102,7 @@ export default (
       paddingTop: spacing.multipleReg * 6,
     },
     headlineText: {
-      color: "hsl(252.5, 94.7%, 85.1%)",
+      color: lightPurples.lightPurple100,
       fontFamily: typography.bold,
       fontSize: horizontalScale(24),
       textAlign: "center",

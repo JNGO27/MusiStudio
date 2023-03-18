@@ -21,6 +21,9 @@ const COLORS = {
     gray400: "hsl(24, 4%, 40%)",
     gray600: "hsl(24, 4%, 35%)",
   },
+  lightPurples: {
+    lightPurple100: "hsl(252.5, 94.7%, 85.1%)",
+  },
   purples: {
     purple100: "hsl(243 85% 18%)",
   },
@@ -95,7 +98,7 @@ const ComponentStyles = {
         width: "90%",
         height: moderateScale(SPACING.multipleXL * 3.5),
         maxHeight: SPACING.multipleXL * 4.5,
-        paddingLeft: moderateScale(SPACING.multipleReg * 3),
+        paddingLeft: moderateScale(SPACING.multipleReg * 2.5),
         borderColor: COLORS.grays.gray300,
         borderWidth: 2,
         borderRadius: SPACING.multipleReg * 4,
