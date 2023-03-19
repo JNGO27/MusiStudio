@@ -103,10 +103,9 @@ const EmailOnlyAuth = () => {
               >
                 <Text style={styles.text}>Email Magic Link</Text>
               </TouchableOpacity>
-            </View>
-            <View style={styles.backgroundDecoration}>
               <ArrowSVG style={styles.arrow} />
             </View>
+            <View style={styles.backgroundDecoration} />
           </View>
         )}
       </Formik>

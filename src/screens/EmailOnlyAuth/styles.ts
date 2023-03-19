@@ -108,11 +108,12 @@ export default (
       zIndex: -1,
     },
     arrow: {
-      position: "relative",
-      top: dimensionsHeight - dimensionsHeight / 1.35,
+      position: "absolute",
+      top: dimensionsHeight - dimensionsHeight / 1.4,
       color: whites.white100,
-      width: moderateScale(spacing.multipleXL * 20),
-      height: moderateScale(spacing.multipleXL * 20),
+      width: moderateScale(spacing.multipleXL * 12),
+      height: moderateScale(spacing.multipleXL * 12),
+      opacity: 0.85,
       zIndex: 2,
     },
   });
