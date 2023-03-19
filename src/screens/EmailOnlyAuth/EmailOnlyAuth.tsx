@@ -16,7 +16,7 @@ import ArrowSVG from "./ArrowSvg";
 
 const {
   colors: {
-    gradients: { purpleGradient },
+    gradients: { purpleGradient, pinkGradient },
     purples,
   },
 } = globalStyles;
@@ -97,12 +97,17 @@ const EmailOnlyAuth = () => {
                 autoComplete="email"
                 placeholder="Email address"
               />
-              <TouchableOpacity
+              <LinearGradient
+                colors={pinkGradient.colors}
+                locations={pinkGradient.locations}
                 style={styles.magicLinkButton}
-                onPress={handleSubmit as FormikSubmit}
+                start={{ x: -0.2, y: 0.3 }}
+                end={{ x: 2, y: 0 }}
               >
-                <Text style={styles.text}>Email Magic Link</Text>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={handleSubmit as FormikSubmit}>
+                  <Text style={styles.text}>Email Magic Link</Text>
+                </TouchableOpacity>
+              </LinearGradient>
               <ArrowSVG style={styles.arrow} />
             </View>
             <View style={styles.backgroundDecoration} />
