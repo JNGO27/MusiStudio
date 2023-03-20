@@ -1,20 +1,32 @@
 import { Modal, TouchableOpacity, View, Text } from "react-native";
-
-import useResponsiveness from "@src/hooks/useResponsiveness";
+import { Image } from "expo-image";
 
 import { useModalContext } from "@src/Contexts/ModalContext";
+import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
+import ErrorIcon from "./error.png";
+import SuccessIcon from "./success.png";
+import SecurityIcon from "./security.png";
 
 const ModalComponent = () => {
   const { modalVisible, setModalVisible, message } = useModalContext();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
-    // horizontalScale,
-    // verticalScale,
-    // moderateScale,
+    horizontalScale,
+    verticalScale,
+    moderateScale,
     modalVisible,
   );
+  let icon;
+
+  if (message.includes("wrong")) {
+    icon = ErrorIcon;
+  } else if (message.includes("security")) {
+    icon = SecurityIcon;
+  } else {
+    icon = SuccessIcon;
+  }
 
   const closeModal = () => {
     setModalVisible(false);
@@ -30,12 +42,13 @@ const ModalComponent = () => {
       >
         <View style={styles.modalBackground}>
           <View style={styles.modalCard}>
+            <Image style={styles.icon} source={icon} />
             <View style={styles.innerContainer}>
               <Text style={styles.text}>{message}</Text>
-              <TouchableOpacity style={styles.button} onPress={closeModal}>
-                <Text style={styles.buttonText}>Ok</Text>
-              </TouchableOpacity>
             </View>
+            <TouchableOpacity style={styles.button} onPress={closeModal}>
+              <Text style={styles.buttonText}>Ok</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>

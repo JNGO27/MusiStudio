@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-// import { DirectionalScale, CalculatedScale } from "@src/types";
+import { DirectionalScale, CalculatedScale } from "@src/types";
 import globalStyles from "@src/globalStyles";
 
 const {
@@ -10,9 +10,9 @@ const {
 } = globalStyles;
 
 export default (
-  // horizontalScale: DirectionalScale,
-  // verticalScale: DirectionalScale,
-  // moderateScale: CalculatedScale,
+  horizontalScale: DirectionalScale,
+  verticalScale: DirectionalScale,
+  moderateScale: CalculatedScale,
   modalVisible: boolean,
 ) => {
   return StyleSheet.create({
@@ -29,7 +29,8 @@ export default (
       display: "flex",
       backgroundColor: purples.purple100,
       borderRadius: spacing.multipleReg * 4,
-      padding: spacing.multipleReg * 2,
+      paddingVertical: verticalScale(spacing.multipleReg * 2),
+      paddingHorizontal: horizontalScale(spacing.multipleReg),
       height: "30%",
       width: "75%",
     },
@@ -38,7 +39,7 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       flex: 1,
-      gap: spacing.multipleReg * 2,
+      gap: verticalScale(spacing.multipleReg * 2),
     },
     text: {
       color: whites.white100,
@@ -46,6 +47,7 @@ export default (
       fontSize: 12,
     },
     button: {
+      alignSelf: "center",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -60,6 +62,11 @@ export default (
       top: spacing.multipleXS,
       fontFamily: typography.semiBold,
       color: whites.white200,
+    },
+    icon: {
+      alignSelf: "center",
+      width: moderateScale(spacing.multipleReg * 4, 0.75),
+      height: moderateScale(spacing.multipleReg * 4, 0.75),
     },
   });
 };
