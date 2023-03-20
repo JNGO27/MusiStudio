@@ -5,3 +5,4 @@ export { default as Account } from "./Account/Account";
 export { default as AuthOption } from "./AuthOption/AuthOption";
 export { default as OAuthOption } from "./OAuthOption/OAuthOption";
 export { default as LinkGeneral } from "./LinkGeneral/LinkGeneral";
+export { default as Modal } from "./Modal/Modal";
