@@ -7,11 +7,12 @@ import createStyleSheet from "./styles";
 
 const ModalComponent = () => {
   const { modalVisible, setModalVisible, message } = useModalContext();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
-    horizontalScale,
-    verticalScale,
-    moderateScale,
+    // horizontalScale,
+    // verticalScale,
+    // moderateScale,
     modalVisible,
   );
 

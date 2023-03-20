@@ -5,7 +5,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { blacks, whites, grays, purples, lightPurples },
+  colors: { blacks, whites, purples, lightPurples },
   typography,
 } = globalStyles;
 
@@ -38,6 +38,7 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       flex: 1,
+      gap: spacing.multipleReg * 2,
     },
     text: {
       textAlign: "center",
@@ -51,8 +52,6 @@ export default (
       alignItems: "center",
       width: "65%",
       height: spacing.multipleReg * 4.5,
-      position: "relative",
-      top: spacing.multipleReg * 3.5,
       borderRadius: spacing.multipleReg * 4.5,
       backgroundColor: lightPurples.lightPurple100,
       opacity: 0.75,
