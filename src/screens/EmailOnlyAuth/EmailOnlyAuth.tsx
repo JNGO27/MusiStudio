@@ -43,8 +43,16 @@ const EmailOnlyAuth = () => {
       },
     });
 
+    if (error && error.message.includes("security")) {
+      setMessage(`${error.message}.`);
+      setModalVisible(true);
+      return;
+    }
+
     if (error) {
-      setMessage(error.message);
+      setMessage(
+        "uh oh... Something went wrong. Please check any formatting issues or typos with the email you typed.",
+      );
       setModalVisible(true);
     } else {
       setMessage("Success!");
@@ -99,6 +107,7 @@ const EmailOnlyAuth = () => {
                     end={pinkGradient.end}
                   >
                     <TouchableOpacity
+                      style={styles.magicLinkTouchable}
                       onPress={handleSubmit as FormikSubmit}
                       disabled={isDisabled}
                     >

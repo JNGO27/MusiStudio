@@ -86,6 +86,13 @@ export default (
       top: spacing.multipleReg * 3.5,
       borderRadius: spacing.multipleReg * 4.5,
     },
+    magicLinkTouchable: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+    },
     disabledButton: {
       display: "flex",
       justifyContent: "center",

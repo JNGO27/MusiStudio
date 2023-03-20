@@ -41,7 +41,6 @@ export default (
       gap: spacing.multipleReg * 2,
     },
     text: {
-      textAlign: "center",
       color: whites.white100,
       fontFamily: typography.medium,
       fontSize: 12,
