@@ -100,9 +100,9 @@ export default (
     },
     text: {
       position: "relative",
+      top: spacing.multipleXS,
       color: purples.purple100,
       opacity: 0.75,
-      top: spacing.multipleXS,
       fontFamily: typography.bold,
       fontSize: moderateScale(10),
     },

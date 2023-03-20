@@ -1,8 +1,8 @@
 import { createContext, useContext, useState, useMemo } from "react";
 
 type ModalProps = {
-  modalVisable: boolean;
-  setModalVisable: React.Dispatch<React.SetStateAction<boolean>>;
+  modalVisible: boolean;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   message: string;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -14,17 +14,17 @@ type Props = {
 const Context = createContext<ModalProps>({} as ModalProps);
 
 export const ModalContext = ({ children }: Props) => {
-  const [modalVisable, setModalVisable] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const [message, setMessage] = useState("");
 
   const conextValue = useMemo(
     () => ({
-      modalVisable,
-      setModalVisable,
+      modalVisible,
+      setModalVisible,
       message,
       setMessage,
     }),
-    [modalVisable, message],
+    [modalVisible, message],
   );
 
   return <Context.Provider value={conextValue}>{children}</Context.Provider>;

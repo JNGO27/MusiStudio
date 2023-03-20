@@ -17,6 +17,9 @@ const COLORS = {
     white200: "hsl(44, 48%, 95%)",
     white300: "hsl(44, 20%, 90%)",
   },
+  blacks: {
+    blackTransparent: "hsla(0, 0%, 0%, 0.75)",
+  },
   grays: {
     gray300: "hsl(24, 6%, 80%)",
     gray400: "hsl(24, 4%, 40%)",

@@ -1,10 +1,12 @@
-import { Alert, View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Formik } from "formik";
 
 import { FormikSubmit } from "@src/types";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { useSetSession, useResponsiveness } from "@src/hooks";
+import { Modal } from "@src/components";
+import { useModalContext } from "@src/Contexts/ModalContext";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 import EmailSVGGray from "./EmailSvgGray";
@@ -23,6 +25,7 @@ type MyFormValues = {
 
 const EmailOnlyAuth = () => {
   const [redirectUri] = useSetSession();
+  const { setModalVisible, setMessage } = useModalContext();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -40,7 +43,13 @@ const EmailOnlyAuth = () => {
       },
     });
 
-    if (error) Alert.alert(error.message);
+    if (error) {
+      setMessage(error.message);
+      setModalVisible(true);
+    } else {
+      setMessage("Success!");
+      setModalVisible(true);
+    }
   };
 
   return (
@@ -100,6 +109,7 @@ const EmailOnlyAuth = () => {
                 {isDisabled ? null : <ArrowSVG style={styles.arrow} />}
               </View>
               <View style={styles.backgroundDecoration} />
+              <Modal />
             </View>
           );
         }}

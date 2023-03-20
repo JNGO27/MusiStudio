@@ -1,46 +1,40 @@
-import { useState } from "react";
-import { Modal, Button, Platform, View, Text } from "react-native";
+import { Modal, TouchableOpacity, View, Text } from "react-native";
+
+import useResponsiveness from "@src/hooks/useResponsiveness";
+
+import { useModalContext } from "@src/Contexts/ModalContext";
+import createStyleSheet from "./styles";
 
 const ModalComponent = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const isTransparent = Platform.OS === "ios";
+  const { modalVisible, setModalVisible, message } = useModalContext();
+  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const styles = createStyleSheet(
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+    modalVisible,
+  );
 
   const closeModal = () => {
     setModalVisible(false);
   };
 
   return (
-    <View
-      style={
-        modalVisible
-          ? { flex: 1, justifyContent: "center", alignItems: "center" }
-          : {}
-      }
-    >
+    <View style={styles.modalContainer}>
       <Modal
         visible={modalVisible}
         onRequestClose={closeModal}
         animationType="slide"
-        transparent={isTransparent}
+        transparent
       >
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor:
-              Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent",
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "white",
-              borderRadius: 10,
-              padding: 20,
-            }}
-          >
-            <Text>This is a modal!</Text>
-            <Button title="Close" onPress={closeModal} />
+        <View style={styles.modalBackground}>
+          <View style={styles.modalCard}>
+            <View style={styles.innerContainer}>
+              <Text style={styles.text}>{message}</Text>
+              <TouchableOpacity style={styles.button} onPress={closeModal}>
+                <Text style={styles.buttonText}>Ok</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
