@@ -7,7 +7,7 @@ import globalStyles from "@src/globalStyles";
 const dimensionsHeight = Dimensions.get("window").height;
 
 const {
-  colors: { whites, grays, lightPurples, purples },
+  colors: { whites, grays, lightPurples, purples, pinks },
   spacing,
   typography,
 } = globalStyles;
@@ -85,7 +85,18 @@ export default (
       position: "relative",
       top: spacing.multipleReg * 3.5,
       borderRadius: spacing.multipleReg * 4.5,
-      backgroundColor: "pink",
+    },
+    disabledButton: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "70%",
+      height: verticalScale(spacing.multipleReg * 4.5),
+      position: "relative",
+      top: spacing.multipleReg * 3.5,
+      borderRadius: spacing.multipleReg * 4.5,
+      backgroundColor: pinks.pink300,
+      opacity: 0.25,
     },
     text: {
       position: "relative",

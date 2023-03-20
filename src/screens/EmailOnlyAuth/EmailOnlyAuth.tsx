@@ -1,14 +1,10 @@
-import { useEffect } from "react";
 import { Alert, View, Text, TextInput, TouchableOpacity } from "react-native";
-import { makeRedirectUri } from "expo-auth-session";
-import * as Linking from "expo-linking";
-import { Formik } from "formik";
 import { LinearGradient } from "expo-linear-gradient";
+import { Formik } from "formik";
 
-import { getTokens } from "@src/utils/linkHelpers";
 import { FormikSubmit } from "@src/types";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
-import useResponsiveness from "@src/hooks/useResponsiveness";
+import { useSetSession, useResponsiveness } from "@src/hooks";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 import EmailSVGGray from "./EmailSvgGray";
@@ -26,19 +22,13 @@ type MyFormValues = {
 };
 
 const EmailOnlyAuth = () => {
+  const [redirectUri] = useSetSession();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
   );
-
-  const mostRecentURL = Linking.useURL();
-  const desiredScreenUrl = "/auth/home";
-  const resetPasswordFormURLScreen = Linking.createURL(desiredScreenUrl);
-  const redirectUri = makeRedirectUri({
-    path: resetPasswordFormURLScreen,
-  });
 
   const formValues: MyFormValues = { email: "" };
 
@@ -53,22 +43,6 @@ const EmailOnlyAuth = () => {
     if (error) Alert.alert(error.message);
   };
 
-  useEffect(() => {
-    let accessToken: string;
-    let refreshToken: string;
-    let haveTokens = false;
-
-    if (mostRecentURL !== null && !haveTokens) {
-      [accessToken, refreshToken] = getTokens(mostRecentURL);
-      haveTokens = true;
-
-      supabaseConfig.auth.setSession({
-        access_token: accessToken,
-        refresh_token: refreshToken,
-      });
-    }
-  }, [mostRecentURL]);
-
   return (
     <LinearGradient
       colors={purpleGradient.colors}
@@ -77,42 +51,58 @@ const EmailOnlyAuth = () => {
       end={purpleGradient.end}
     >
       <Formik initialValues={formValues} onSubmit={continueWithEmailOnly}>
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
-          <View style={styles.container}>
-            <View style={styles.textContainer}>
-              <Text style={styles.headlineText}>Sign Up / Log In</Text>
-              <Text style={styles.headlineSubText}>
-                Enter your email to get your magic link to sign you up or log
-                you in. Just click the link we&apos;ll send you. That&apos;s it!
-              </Text>
+        {({ handleChange, handleBlur, handleSubmit, values }) => {
+          const isDisabled = !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+            values.email,
+          );
+
+          return (
+            <View style={styles.container}>
+              <View style={styles.textContainer}>
+                <Text style={styles.headlineText}>Sign Up / Log In</Text>
+                <Text style={styles.headlineSubText}>
+                  Enter your email to get your magic link to sign you up or log
+                  you in. Just click the link we&apos;ll send you. That&apos;s
+                  it!
+                </Text>
+              </View>
+              <View style={styles.card}>
+                <EmailSVGGray style={styles.emailImage} />
+                <TextInput
+                  style={[styles.emailInput]}
+                  selectionColor={purples.purple100}
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  value={values.email}
+                  autoComplete="email"
+                  placeholder="Email address"
+                />
+                {isDisabled ? (
+                  <View style={styles.disabledButton}>
+                    <Text style={styles.text}>Email Magic Link</Text>
+                  </View>
+                ) : (
+                  <LinearGradient
+                    colors={pinkGradient.colors}
+                    locations={pinkGradient.locations}
+                    style={styles.magicLinkButton}
+                    start={pinkGradient.start}
+                    end={pinkGradient.end}
+                  >
+                    <TouchableOpacity
+                      onPress={handleSubmit as FormikSubmit}
+                      disabled={isDisabled}
+                    >
+                      <Text style={styles.text}>Email Magic Link</Text>
+                    </TouchableOpacity>
+                  </LinearGradient>
+                )}
+                {isDisabled ? null : <ArrowSVG style={styles.arrow} />}
+              </View>
+              <View style={styles.backgroundDecoration} />
             </View>
-            <View style={styles.card}>
-              <EmailSVGGray style={styles.emailImage} />
-              <TextInput
-                style={[styles.emailInput]}
-                selectionColor={purples.purple100}
-                onChangeText={handleChange("email")}
-                onBlur={handleBlur("email")}
-                value={values.email}
-                autoComplete="email"
-                placeholder="Email address"
-              />
-              <LinearGradient
-                colors={pinkGradient.colors}
-                locations={pinkGradient.locations}
-                style={styles.magicLinkButton}
-                start={{ x: -0.2, y: 0.3 }}
-                end={{ x: 2, y: 0 }}
-              >
-                <TouchableOpacity onPress={handleSubmit as FormikSubmit}>
-                  <Text style={styles.text}>Email Magic Link</Text>
-                </TouchableOpacity>
-              </LinearGradient>
-              <ArrowSVG style={styles.arrow} />
-            </View>
-            <View style={styles.backgroundDecoration} />
-          </View>
-        )}
+          );
+        }}
       </Formik>
     </LinearGradient>
   );
