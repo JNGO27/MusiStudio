@@ -9,7 +9,7 @@ import type { AuthStackParamList } from "@src/types";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
-const noHeader = { headerShown: false };
+const noHeader = { headerShown: false, animationEnabled: false };
 
 const prefix = Linking.createURL("/auth");
 
@@ -27,7 +27,12 @@ const AuthNav = () => {
   return (
     <ModalContext>
       <NavigationContainer linking={linking}>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            animation: "slide_from_right",
+            animationDuration: 200,
+          }}
+        >
           <Stack.Screen options={noHeader} name="AuthHome" component={Auth} />
           <Stack.Screen
             options={noHeader}
