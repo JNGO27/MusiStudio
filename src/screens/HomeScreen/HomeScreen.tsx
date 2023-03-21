@@ -5,7 +5,15 @@ import { HomeOptionsArr } from "@src/utils/constants";
 
 const HomeScreen = () => {
   return (
-    <View>
+    <View
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 1,
+        gap: 20,
+      }}
+    >
       {HomeOptionsArr.map(({ title }) => (
         <HomeOption key={title} title={title} />
       ))}
