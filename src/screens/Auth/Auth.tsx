@@ -6,7 +6,7 @@ import { AuthOption, OAuthOption } from "@src/components";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
-import People from "./people.png";
+import PeopleMusic from "./people-music.png";
 import AccountPerson from "./AccountPerson";
 
 const {
@@ -16,7 +16,7 @@ const {
 } = globalStyles;
 
 const freePikURL =
-  "https://www.freepik.com/free-vector/hand-drawn-young-people-using-smartphones_12276394.htm#query=people%20phone&position=0&from_view=keyword&track=ais";
+  "https://www.freepik.com/free-vector/hand-drawn-indie-music-illustration_29822684.htm#query=people%20playing%20music&position=7&from_view=search&track=ais";
 
 const Auth = () => {
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
@@ -42,7 +42,7 @@ const Auth = () => {
             to get started.
           </Text>
         </View>
-        <Image source={People} contentFit="contain" style={styles.image} />
+        <Image source={PeopleMusic} contentFit="cover" style={styles.image} />
         <View style={styles.card}>
           <View style={styles.decorationsContainer}>
             <View style={styles.decorationsContainerInner}>
