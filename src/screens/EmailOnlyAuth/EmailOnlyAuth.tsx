@@ -6,7 +6,7 @@ import { FormikSubmit } from "@src/types";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { useSetSession, useResponsiveness } from "@src/hooks";
 import { Modal } from "@src/components";
-import { useModalContext } from "@src/Contexts/ModalContext";
+import { useModalContext } from "@src/contexts/ModalContext";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 import EmailSVGGray from "./EmailSvgGray";

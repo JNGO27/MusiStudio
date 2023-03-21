@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import type { LinkingOptions } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 
-import { ModalContext } from "@src/Contexts/ModalContext";
+import { ModalContext } from "@src/contexts/ModalContext";
 import { Auth, EmailOnlyAuth } from "@src/screens";
 import type { AuthStackParamList } from "@src/types";
 

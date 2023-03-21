@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import type { FormikSubmit, AuthStackParamList } from "@src/types";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
-import { useCheckboxContext } from "@src/Contexts/CheckboxContext";
+import { useCheckboxContext } from "@src/contexts/CheckboxContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 

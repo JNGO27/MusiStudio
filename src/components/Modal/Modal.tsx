@@ -1,7 +1,7 @@
 import { Modal, TouchableOpacity, View, Text } from "react-native";
 import { Image } from "expo-image";
 
-import { useModalContext } from "@src/Contexts/ModalContext";
+import { useModalContext } from "@src/contexts/ModalContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 import ErrorIcon from "./error.png";

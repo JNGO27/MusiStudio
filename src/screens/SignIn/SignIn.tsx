@@ -10,7 +10,7 @@ import { Formik } from "formik";
 import Checkbox from "expo-checkbox";
 
 import type { FormikSubmit } from "@src/types";
-import { useCheckboxContext } from "@src/Contexts/CheckboxContext";
+import { useCheckboxContext } from "@src/contexts/CheckboxContext";
 import { LinkGeneral } from "@src/components";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import useResponsiveness from "@src/hooks/useResponsiveness";
