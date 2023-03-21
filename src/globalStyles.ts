@@ -128,8 +128,15 @@ const ComponentStyles = {
       },
       icon: {
         width: moderateScale(SPACING.multipleReg * 3, 2),
-        maxWidth: SPACING.multipleReg * 4,
+        maxWidth: moderateScale(SPACING.multipleReg * 4.5, 0.1),
         height: moderateScale(SPACING.multipleReg * 3, 2),
+        maxHeight: moderateScale(SPACING.multipleReg * 2.75),
+      },
+      emailIcon: {
+        width: moderateScale(SPACING.multipleReg * 3, 2),
+        maxWidth: moderateScale(SPACING.multipleReg * 4, 0.25),
+        height: moderateScale(SPACING.multipleReg * 3, 2),
+        maxHeight: moderateScale(SPACING.multipleReg * 3),
       },
       optionText: {
         fontFamily: TYPOGRAPHY.semiBold,

@@ -52,8 +52,8 @@ const Auth = () => {
             </View>
             <AccountPerson style={styles.accountPerson} />
           </View>
-          <OAuthOption provider="google" />
           <AuthOption authOption="Email" />
+          <OAuthOption provider="google" />
         </View>
         <View style={styles.footer}>
           <Text style={styles.footerText}>

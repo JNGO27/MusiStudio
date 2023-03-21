@@ -1,10 +1,11 @@
 import { TouchableOpacity, View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Image } from "expo-image";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import type { AuthStackParamList, AuthNavOptions } from "@src/types";
-import EmailSVG from "./EmailSVG";
+import EmailImage from "./EmailImage.png";
 import createStyleSheet from "./styles";
 
 type AuthNavigationProps = NativeStackNavigationProp<
@@ -31,7 +32,7 @@ const AuthOption = ({ authOption }: Props) => {
       onPress={() => navigator.navigate(authOption)}
     >
       <View style={styles.optionContainer}>
-        <EmailSVG style={styles.icon} />
+        <Image source={EmailImage} contentFit="fill" style={styles.emailIcon} />
         <Text style={styles.optionText}>Continue With {authOption}</Text>
       </View>
     </TouchableOpacity>
