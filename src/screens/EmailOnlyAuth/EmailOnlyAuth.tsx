@@ -44,7 +44,7 @@ const EmailOnlyAuth = () => {
     });
 
     if (error && error.message.includes("security")) {
-      setMessage(`${error.message}.`);
+      setMessage(error.message);
       setModalVisible(true);
       return;
     }
@@ -55,7 +55,9 @@ const EmailOnlyAuth = () => {
       );
       setModalVisible(true);
     } else {
-      setMessage("Success!");
+      setMessage(
+        "We've emailed your magic link. Check your email and just click on the link so you get can started!",
+      );
       setModalVisible(true);
     }
   };
