@@ -29,8 +29,7 @@ const AuthNav = () => {
       <NavigationContainer linking={linking}>
         <Stack.Navigator
           screenOptions={{
-            animation: "slide_from_right",
-            animationDuration: 200,
+            animation: "none",
           }}
         >
           <Stack.Screen options={noHeader} name="AuthHome" component={Auth} />
