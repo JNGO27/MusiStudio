@@ -145,6 +145,19 @@ const ComponentStyles = {
       },
     });
   },
+  studentCard: (
+    horizontalScale: DirectionalScale,
+    verticalScale: DirectionalScale,
+  ) => {
+    return StyleSheet.create({
+      cardContainer: {
+        width: horizontalScale(SPACING.multipleXL * 25),
+        height: verticalScale(SPACING.multipleReg * 20),
+        borderRadius: SPACING.multipleReg * 2,
+        backgroundColor: COLORS.whites.white200,
+      },
+    });
+  },
 };
 
 export default {
