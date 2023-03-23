@@ -71,12 +71,19 @@ export default (
     },
     contactInformationContainer: {
       display: "flex",
+      gap: spacing.multipleXL,
     },
-    icon: {
+    phoneIcon: {
       marginTop: verticalScale(spacing.multipleS),
       paddingLeft: horizontalScale(spacing.multipleXL * 4.5),
       width: horizontalScale(spacing.multipleReg * 3.5),
       height: verticalScale(spacing.multipleReg * 3.5),
+    },
+    emailIcon: {
+      marginTop: verticalScale(spacing.multipleS),
+      paddingLeft: horizontalScale(spacing.multipleXL * 4.5),
+      width: horizontalScale(spacing.multipleReg * 3),
+      height: verticalScale(spacing.multipleReg * 3),
     },
   });
 };

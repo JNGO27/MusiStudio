@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { SafeAreaView, View, Text } from "react-native";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
-import { PhoneIcon } from "@src/assets/icons";
+import { PhoneIcon, EmailSvg } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
@@ -43,7 +43,8 @@ const Students = () => {
               </Text>
             </View>
             <View style={styles.contactInformationContainer}>
-              <PhoneIcon style={styles.icon} />
+              <PhoneIcon style={styles.phoneIcon} />
+              <EmailSvg style={styles.emailIcon} color="black" />
             </View>
           </View>
         ))}
