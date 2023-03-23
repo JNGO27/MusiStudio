@@ -62,19 +62,21 @@ export default (
     },
     profileName: {
       position: "relative",
-      top: verticalScale(spacing.multipleM),
+      top: verticalScale(spacing.multipleS),
       display: "flex",
       flex: 1,
       paddingLeft: horizontalScale(spacing.multipleXL),
       fontFamily: typography.bold,
-      fontSize: moderateScale(20),
+      fontSize: moderateScale(18),
     },
     contactInformationContainer: {
       display: "flex",
     },
     icon: {
-      width: horizontalScale(spacing.multipleReg * 4),
-      height: verticalScale(spacing.multipleReg * 4),
+      marginTop: verticalScale(spacing.multipleS),
+      paddingLeft: horizontalScale(spacing.multipleXL * 4.5),
+      width: horizontalScale(spacing.multipleReg * 3.5),
+      height: verticalScale(spacing.multipleReg * 3.5),
     },
   });
 };

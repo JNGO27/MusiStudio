@@ -6,8 +6,8 @@ import * as Linking from "expo-linking";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { SUPABASE_URL } from "@env";
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { GoogleSvg } from "@src/assets/icons";
 import { capitalize, getTokens } from "./helpers";
-import GoogleSVG from "./GoogleSVG";
 import createStyleSheet from "./styles";
 
 type Props = {
@@ -57,7 +57,7 @@ const OAuthOption = ({ provider }: Props) => {
   return (
     <TouchableOpacity onPress={signInWithProvider} style={styles.container}>
       <View style={styles.optionContainer}>
-        <GoogleSVG style={styles.icon} />
+        <GoogleSvg style={styles.icon} />
         <Text style={styles.optionText}>
           Continue with {providerCapitalized}
         </Text>
