@@ -1,234 +1,52 @@
-// import "react-native-url-polyfill/auto";
-import { useEffect } from "react";
-import { SafeAreaView, View, Text, FlatList } from "react-native";
-import { SUPABASE_URL, SUPABASE_KEY } from "@env";
-import { createClient } from "@supabase/supabase-js";
+/* eslint-disable */
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-
-const idGenerator = (() => {
-  let id = 0;
-
-  // eslint-disable-next-line func-names
-  return function () {
-    id += 1;
-    return id;
-  };
-})();
-
-type Obj = {
-  id: number;
-  name: string;
-};
-
-const dummyData: Obj[] = [
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-  {
-    id: idGenerator(),
-    name: `Person`,
-  },
-];
-
-const Item = ({ id, name }: Obj) => {
-  return (
-    <View>
-      <Text>{id}</Text>
-      <Text>{name}</Text>
-    </View>
-  );
-};
+import * as React from "react";
+import { View, Text } from "react-native";
+import { supabaseConfig } from "@src/lib/supabaseConfig";
+import { DataTable } from "react-native-paper";
 
 const Table = () => {
-  useEffect(() => {
-    async function getData() {
-      const { data: Students } = await supabase.from("Students").select("*");
+  const [students, setStudents] = React.useState([]);
+  const [page, setPage] = React.useState<number>(0);
 
-      // eslint-disable-next-line no-console
+  React.useEffect(() => {
+    async function getData() {
+      const { data: Students, error } = await supabaseConfig
+        .from("Students")
+        .select("*");
+
       console.log(Students);
+      setStudents(Students);
     }
 
     getData();
   }, []);
 
   return (
-    <SafeAreaView>
-      <FlatList
-        data={dummyData}
-        renderItem={({ item }) => <Item id={item.id} name={item.name} />}
-        keyExtractor={(item) => item.id.toString()}
-      />
-    </SafeAreaView>
+    <DataTable style={{ height: "100%", paddingTop: 20 }}>
+      <DataTable.Header>
+        <DataTable.Title>Student</DataTable.Title>
+        <DataTable.Title>Student Info</DataTable.Title>
+      </DataTable.Header>
+
+      {students.map((student) => (
+        <DataTable.Row key={student.id}>
+          <View
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flex: 1,
+            }}
+          >
+            <Text>
+              {student.last_name}, {student.first_name}
+            </Text>
+            <Text>555-555-5555</Text>
+          </View>
+          <DataTable.Cell>555-555-5555</DataTable.Cell>
+        </DataTable.Row>
+      ))}
+    </DataTable>
   );
 };
 
