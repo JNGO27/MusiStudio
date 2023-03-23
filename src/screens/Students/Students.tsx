@@ -7,11 +7,11 @@ import createStyleSheet from "./styles";
 
 const Students = () => {
   const [students, setStudents] = useState([]);
-  const [horizontalScale, verticalScale] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
-    // moderateScale,
+    moderateScale,
   );
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const Students = () => {
         .from("Students")
         .select("*");
 
+      console.log(studentsData);
       setStudents(studentsData);
     }
 
@@ -31,7 +32,16 @@ const Students = () => {
       <View style={styles.cardsContainer}>
         {students.map((student) => (
           <View style={styles.studentCard} key={student.id}>
-            <Text>students</Text>
+            <View style={styles.studentProfileContainer}>
+              <View style={styles.profileCircle}>
+                <Text style={styles.initials}>
+                  {student.last_name[0]}.{student.first_name[0]}
+                </Text>
+              </View>
+              <Text style={styles.profileName}>
+                {student.last_name}, {student.first_name}
+              </Text>
+            </View>
           </View>
         ))}
       </View>
