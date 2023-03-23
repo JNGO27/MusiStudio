@@ -20,7 +20,6 @@ const Students = () => {
         .from("Students")
         .select("*");
 
-      console.log(studentsData);
       setStudents(studentsData);
     }
 
