@@ -72,9 +72,8 @@ export default (
     contactInformationContainer: {
       display: "flex",
       flex: 1,
-      justifyContent: "flex-end",
-      gap: spacing.multipleXL,
-      marginBottom: spacing.multipleReg,
+      justifyContent: "center",
+      gap: spacing.multipleS,
     },
     iconContainer: {
       display: "flex",
@@ -92,6 +91,12 @@ export default (
       paddingLeft: horizontalScale(spacing.multipleXL * 4.5),
       width: horizontalScale(spacing.multipleReg * 3),
       height: verticalScale(spacing.multipleReg * 3),
+    },
+    contactInfoText: {
+      position: "relative",
+      top: verticalScale(spacing.multipleXS),
+      fontSize: moderateScale(12),
+      fontFamily: typography.semiBold,
     },
   });
 };

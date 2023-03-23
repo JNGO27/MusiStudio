@@ -46,11 +46,11 @@ const Students = () => {
             <View style={styles.contactInformationContainer}>
               <View style={styles.iconContainer}>
                 <PhoneIcon style={styles.phoneIcon} />
-                <Text>555-555-5555</Text>
+                <Text style={styles.contactInfoText}>555-555-5555</Text>
               </View>
               <View style={styles.iconContainer}>
                 <EmailSvg style={styles.emailIcon} color="black" />
-                <Text>fake@example.com</Text>
+                <Text style={styles.contactInfoText}>fake@example.com</Text>
               </View>
             </View>
           </View>
