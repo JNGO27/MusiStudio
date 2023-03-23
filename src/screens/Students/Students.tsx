@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { SafeAreaView, View, Text } from "react-native";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
+import type { Student } from "@src/types";
 import { PhoneIcon, EmailSvg } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
 const Students = () => {
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState<Student[]>([]);
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -30,21 +31,27 @@ const Students = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardsContainer}>
-        {students.map((student) => (
-          <View style={styles.studentCard} key={student.id}>
+        {students.map(({ id, last_name, first_name }: Student) => (
+          <View style={styles.studentCard} key={id}>
             <View style={styles.studentProfileContainer}>
               <View style={styles.profileCircle}>
                 <Text style={styles.initials}>
-                  {student.last_name[0]}.{student.first_name[0]}
+                  {last_name[0]}.{first_name[0]}
                 </Text>
               </View>
               <Text style={styles.profileName}>
-                {student.last_name}, {student.first_name}
+                {last_name}, {first_name}
               </Text>
             </View>
             <View style={styles.contactInformationContainer}>
-              <PhoneIcon style={styles.phoneIcon} />
-              <EmailSvg style={styles.emailIcon} color="black" />
+              <View style={styles.iconContainer}>
+                <PhoneIcon style={styles.phoneIcon} />
+                <Text>555-555-5555</Text>
+              </View>
+              <View style={styles.iconContainer}>
+                <EmailSvg style={styles.emailIcon} color="black" />
+                <Text>fake@example.com</Text>
+              </View>
             </View>
           </View>
         ))}

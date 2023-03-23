@@ -71,7 +71,15 @@ export default (
     },
     contactInformationContainer: {
       display: "flex",
+      flex: 1,
+      justifyContent: "flex-end",
       gap: spacing.multipleXL,
+      marginBottom: spacing.multipleReg,
+    },
+    iconContainer: {
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
     },
     phoneIcon: {
       marginTop: verticalScale(spacing.multipleS),
