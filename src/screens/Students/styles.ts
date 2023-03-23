@@ -15,6 +15,11 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
 ) => {
+  const studentCardStyles = studentCard(
+    horizontalScale,
+    verticalScale,
+  ).cardContainer;
+
   return StyleSheet.create({
     container: {
       width: "100%",
@@ -30,7 +35,10 @@ export default (
       gap: spacing.multipleReg * 2,
       paddingHorizontal: horizontalScale(spacing.multipleReg * 2),
     },
-    studentCard: studentCard(horizontalScale, verticalScale).cardContainer,
+    studentCard: {
+      ...studentCardStyles,
+      padding: spacing.multipleReg,
+    },
     studentProfileContainer: {
       display: "flex",
       flexDirection: "row",
@@ -42,8 +50,6 @@ export default (
       alignItems: "center",
       width: spacing.multipleReg * 8,
       height: spacing.multipleReg * 8,
-      marginTop: spacing.multipleReg,
-      marginLeft: spacing.multipleReg,
       borderRadius: spacing.multipleReg * 4,
       borderColor: grays.gray300,
       borderWidth: spacing.multipleXS,
@@ -62,6 +68,13 @@ export default (
       paddingLeft: horizontalScale(spacing.multipleXL),
       fontFamily: typography.bold,
       fontSize: moderateScale(20),
+    },
+    contactInformationContainer: {
+      display: "flex",
+    },
+    icon: {
+      width: horizontalScale(spacing.multipleReg * 4),
+      height: verticalScale(spacing.multipleReg * 4),
     },
   });
 };

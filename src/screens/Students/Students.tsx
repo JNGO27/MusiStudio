@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { SafeAreaView, View, Text } from "react-native";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
+import { PhoneIcon } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
@@ -40,6 +41,9 @@ const Students = () => {
               <Text style={styles.profileName}>
                 {student.last_name}, {student.first_name}
               </Text>
+            </View>
+            <View style={styles.contactInformationContainer}>
+              <PhoneIcon style={styles.icon} />
             </View>
           </View>
         ))}
