@@ -7,14 +7,14 @@ import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { useSetSession, useResponsiveness } from "@src/hooks";
 import { Modal } from "@src/components";
 import { useModalContext } from "@src/contexts/ModalContext";
+import { EmailSvg, ArrowSvg } from "@src/assets/icons";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
-import EmailSVGGray from "./EmailSvgGray";
-import ArrowSVG from "./ArrowSvg";
 
 const {
   colors: {
     gradients: { purpleGradient, pinkGradient },
+    grays,
     purples,
   },
 } = globalStyles;
@@ -86,7 +86,7 @@ const EmailOnlyAuth = () => {
                 </Text>
               </View>
               <View style={styles.card}>
-                <EmailSVGGray style={styles.emailImage} />
+                <EmailSvg style={styles.emailImage} color={grays.gray300} />
                 <TextInput
                   style={[styles.emailInput]}
                   selectionColor={purples.purple100}
@@ -117,7 +117,7 @@ const EmailOnlyAuth = () => {
                     </TouchableOpacity>
                   </LinearGradient>
                 )}
-                {isDisabled ? null : <ArrowSVG style={styles.arrow} />}
+                {isDisabled ? null : <ArrowSvg style={styles.arrow} />}
               </View>
               <View style={styles.backgroundDecoration} />
               <Modal />

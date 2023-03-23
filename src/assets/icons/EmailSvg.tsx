@@ -1,18 +1,18 @@
 import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
-import globalStyles from "@src/globalStyles";
 
-const {
-  colors: { grays },
-} = globalStyles;
+interface EmailProps extends SvgProps {
+  color: string;
+}
 
-const SvgComponent = (props: SvgProps) => (
+const SvgComponent = (props: EmailProps) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
-    stroke={grays.gray300}
+    // eslint-disable-next-line react/destructuring-assignment
+    stroke={props.color}
     className="w-6 h-6"
     {...props}
   >
