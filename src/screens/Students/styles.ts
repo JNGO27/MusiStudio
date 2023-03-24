@@ -27,13 +27,15 @@ export default (
       backgroundColor: lightPurples.lightPurple100,
     },
     cardsContainer: {
+      width: "100%",
+      height: "100%",
+      paddingHorizontal: horizontalScale(spacing.multipleReg * 2),
+    },
+    cardsContainerFlex: {
       display: "flex",
       justifyContent: "center",
       alignContent: "center",
-      width: "100%",
-      height: "100%",
       gap: spacing.multipleReg * 2,
-      paddingHorizontal: horizontalScale(spacing.multipleReg * 2),
     },
     studentCard: {
       ...studentCardStyles,
@@ -82,13 +84,13 @@ export default (
     },
     phoneIcon: {
       marginTop: verticalScale(spacing.multipleS),
-      paddingLeft: horizontalScale(spacing.multipleXL * 4.5),
+      paddingLeft: spacing.multipleXL * 5,
       width: horizontalScale(spacing.multipleReg * 3.5),
       height: verticalScale(spacing.multipleReg * 3.5),
     },
     emailIcon: {
       marginTop: verticalScale(spacing.multipleS),
-      paddingLeft: horizontalScale(spacing.multipleXL * 4.5),
+      paddingLeft: spacing.multipleXL * 5,
       width: horizontalScale(spacing.multipleReg * 3),
       height: verticalScale(spacing.multipleReg * 3),
     },

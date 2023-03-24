@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { SafeAreaView, View, Text } from "react-native";
+import { SafeAreaView, ScrollView, View, Text } from "react-native";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
 import type { Student } from "@src/types";
@@ -20,7 +20,7 @@ const Students = () => {
     async function getData() {
       const { data: studentsData } = await supabaseConfig
         .from("Students")
-        .select("*");
+        .select("id, first_name, last_name, phone_number, email_address");
 
       setStudents(studentsData);
     }
@@ -30,32 +30,43 @@ const Students = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.cardsContainer}>
-        {students.map(({ id, last_name, first_name }: Student) => (
-          <View style={styles.studentCard} key={id}>
-            <View style={styles.studentProfileContainer}>
-              <View style={styles.profileCircle}>
-                <Text style={styles.initials}>
-                  {last_name[0]}.{first_name[0]}
+      <ScrollView
+        style={styles.cardsContainer}
+        contentContainerStyle={styles.cardsContainerFlex}
+      >
+        {students.map(
+          ({
+            id,
+            last_name,
+            first_name,
+            email_address,
+            phone_number,
+          }: Student) => (
+            <View style={styles.studentCard} key={id}>
+              <View style={styles.studentProfileContainer}>
+                <View style={styles.profileCircle}>
+                  <Text style={styles.initials}>
+                    {last_name[0]}.{first_name[0]}
+                  </Text>
+                </View>
+                <Text style={styles.profileName}>
+                  {last_name}, {first_name}
                 </Text>
               </View>
-              <Text style={styles.profileName}>
-                {last_name}, {first_name}
-              </Text>
-            </View>
-            <View style={styles.contactInformationContainer}>
-              <View style={styles.iconContainer}>
-                <PhoneIcon style={styles.phoneIcon} />
-                <Text style={styles.contactInfoText}>555-555-5555</Text>
-              </View>
-              <View style={styles.iconContainer}>
-                <EmailSvg style={styles.emailIcon} color="black" />
-                <Text style={styles.contactInfoText}>fake@example.com</Text>
+              <View style={styles.contactInformationContainer}>
+                <View style={styles.iconContainer}>
+                  <PhoneIcon style={styles.phoneIcon} />
+                  <Text style={styles.contactInfoText}>{phone_number}</Text>
+                </View>
+                <View style={styles.iconContainer}>
+                  <EmailSvg style={styles.emailIcon} color="black" />
+                  <Text style={styles.contactInfoText}>{email_address}</Text>
+                </View>
               </View>
             </View>
-          </View>
-        ))}
-      </View>
+          ),
+        )}
+      </ScrollView>
     </SafeAreaView>
   );
 };
