@@ -6,3 +6,11 @@ export type Student = {
   email_address: string;
   phone_number: string;
 };
+
+export type StudentCardType = {
+  id?: Student["id"];
+  first_name: Student["first_name"];
+  last_name: Student["last_name"];
+  phone_number: Student["phone_number"];
+  email_address: Student["email_address"];
+};

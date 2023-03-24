@@ -1,20 +1,16 @@
 import { useState, useEffect } from "react";
-import { SafeAreaView, ScrollView, View, Text } from "react-native";
+import { SafeAreaView, FlatList } from "react-native";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
-import type { Student } from "@src/types";
-import { PhoneIcon, EmailSvg } from "@src/assets/icons";
+import type { StudentCardType } from "@src/types";
+import { StudentCard } from "@src/components";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
 const Students = () => {
-  const [students, setStudents] = useState<Student[]>([]);
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
-  const styles = createStyleSheet(
-    horizontalScale,
-    verticalScale,
-    moderateScale,
-  );
+  const [students, setStudents] = useState<StudentCardType[]>([]);
+  const [horizontalScale] = useResponsiveness();
+  const styles = createStyleSheet(horizontalScale);
 
   useEffect(() => {
     async function getData() {
@@ -30,43 +26,20 @@ const Students = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
+      <FlatList
         style={styles.cardsContainer}
         contentContainerStyle={styles.cardsContainerFlex}
-      >
-        {students.map(
-          ({
-            id,
-            last_name,
-            first_name,
-            email_address,
-            phone_number,
-          }: Student) => (
-            <View style={styles.studentCard} key={id}>
-              <View style={styles.studentProfileContainer}>
-                <View style={styles.profileCircle}>
-                  <Text style={styles.initials}>
-                    {last_name[0]}.{first_name[0]}
-                  </Text>
-                </View>
-                <Text style={styles.profileName}>
-                  {last_name}, {first_name}
-                </Text>
-              </View>
-              <View style={styles.contactInformationContainer}>
-                <View style={styles.iconContainer}>
-                  <PhoneIcon style={styles.phoneIcon} />
-                  <Text style={styles.contactInfoText}>{phone_number}</Text>
-                </View>
-                <View style={styles.iconContainer}>
-                  <EmailSvg style={styles.emailIcon} color="black" />
-                  <Text style={styles.contactInfoText}>{email_address}</Text>
-                </View>
-              </View>
-            </View>
-          ),
+        data={students}
+        renderItem={({ item }) => (
+          <StudentCard
+            first_name={item.first_name}
+            last_name={item.last_name}
+            phone_number={item.phone_number}
+            email_address={item.email_address}
+          />
         )}
-      </ScrollView>
+        keyExtractor={(item) => item.id?.toString() as string}
+      />
     </SafeAreaView>
   );
 };
