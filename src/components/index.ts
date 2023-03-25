@@ -7,3 +7,4 @@ export { default as OAuthOption } from "./OAuthOption/OAuthOption";
 export { default as LinkGeneral } from "./LinkGeneral/LinkGeneral";
 export { default as Modal } from "./Modal/Modal";
 export { default as StudentCard } from "./StudentCard/StudentCard";
+export { default as DataCardsContainer } from "./DataCardsContainer/DataCardsContainer";

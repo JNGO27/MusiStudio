@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { SafeAreaView, FlatList } from "react-native";
-import { supabaseConfig } from "@src/lib/supabaseConfig";
+import uuid from "react-native-uuid";
 
+import { supabaseConfig } from "@src/lib/supabaseConfig";
 import type { StudentCardType } from "@src/types";
-import { StudentCard } from "@src/components";
+import { StudentCard, DataCardsContainer } from "@src/components";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
@@ -31,14 +32,33 @@ const Students = () => {
         contentContainerStyle={styles.cardsContainerFlex}
         data={students}
         renderItem={({ item }) => (
-          <StudentCard
-            first_name={item.first_name}
-            last_name={item.last_name}
-            phone_number={item.phone_number}
-            email_address={item.email_address}
+          <DataCardsContainer
+            allStudentData={[
+              <StudentCard
+                key={item.id}
+                first_name={item.first_name}
+                last_name={item.last_name}
+                phone_number={item.phone_number}
+                email_address={item.email_address}
+              />,
+              <StudentCard
+                key={item.id}
+                first_name={item.first_name}
+                last_name={item.last_name}
+                phone_number={item.phone_number}
+                email_address={item.email_address}
+              />,
+              <StudentCard
+                key={item.id}
+                first_name={item.first_name}
+                last_name={item.last_name}
+                phone_number={item.phone_number}
+                email_address={item.email_address}
+              />,
+            ]}
           />
         )}
-        keyExtractor={(item) => item.id?.toString() as string}
+        keyExtractor={() => uuid.v4().toString()}
       />
     </SafeAreaView>
   );

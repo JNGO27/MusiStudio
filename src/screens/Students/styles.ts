@@ -17,12 +17,10 @@ export default (horizontalScale: DirectionalScale) => {
     },
     scrollContainer: {
       display: "flex",
-      width: "100%",
       flex: 1,
     },
     cardsContainer: {
       width: "100%",
-      height: "100%",
       paddingHorizontal: horizontalScale(spacing.multipleReg * 2),
     },
     cardsContainerFlex: {
