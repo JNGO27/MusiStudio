@@ -7,7 +7,7 @@ const {
   spacing,
   typography,
   colors: { grays },
-  componentStyles: { studentCard },
+  componentStyles: { infoCard },
 } = globalStyles;
 
 export default (
@@ -15,7 +15,7 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
 ) => {
-  const studentCardStyles = studentCard(
+  const studentCardStyles = infoCard(
     horizontalScale,
     verticalScale,
   ).cardContainer;

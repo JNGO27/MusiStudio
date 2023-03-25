@@ -145,7 +145,7 @@ const ComponentStyles = {
       },
     });
   },
-  studentCard: (
+  infoCard: (
     horizontalScale: DirectionalScale,
     verticalScale: DirectionalScale,
   ) => {
