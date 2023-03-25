@@ -6,6 +6,6 @@ export * from "./navigationTypes";
 
 export * from "./responsiveTypes";
 
-export * from "./studentsTypes";
+export * from "./cardTypes";
 
 export * from "./other";
