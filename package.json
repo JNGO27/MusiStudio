@@ -43,6 +43,7 @@
     "react-native-uuid": "^2.0.1",
     "react-native-web": "~0.18.9",
     "react-redux": "^8.0.5",
+    "victory-native": "^36.6.8",
     "yup": "^1.0.2"
   },
   "devDependencies": {
