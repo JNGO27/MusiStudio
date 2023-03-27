@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 
 import type { FamilyCardType } from "@src/types";
-import { PhoneIcon, EmailSvg } from "@src/assets/icons";
+import { PhoneSvg, EmailSvg } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
@@ -39,7 +39,7 @@ const FamilyCard = ({
       </View>
       <View style={styles.contactInformationContainer}>
         <View style={styles.iconContainer}>
-          <PhoneIcon style={styles.phoneIcon} />
+          <PhoneSvg style={styles.phoneIcon} />
           <Text style={styles.contactInfoText}>{phone_number}</Text>
         </View>
         <View style={styles.iconContainer}>
