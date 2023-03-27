@@ -4,7 +4,6 @@ import { DirectionalScale } from "@src/types";
 import globalStyles from "@src/globalStyles";
 
 const {
-  spacing,
   componentStyles: { infoCard },
 } = globalStyles;
 
@@ -20,12 +19,6 @@ export default (
   return StyleSheet.create({
     practiceCard: {
       ...practiceCardStyles,
-      padding: spacing.multipleReg,
-    },
-    practiceProfileContainer: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
     },
   });
 };

@@ -10,4 +10,4 @@ export { default as StudentCard } from "./StudentCard/StudentCard";
 export { default as FamilyCard } from "./FamilyCard/FamilyCard";
 export { default as PracticeCard } from "./PracticeCard/PracticeCard";
 export { default as DataCardsContainer } from "./DataCardsContainer/DataCardsContainer";
-export { default as VictoryChart } from "./VictoryChart/VictoryChart";
+export { default as VictoryChartComponent } from "./VictoryChartComponent/VictoryChartComponent";
