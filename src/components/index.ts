@@ -8,4 +8,6 @@ export { default as LinkGeneral } from "./LinkGeneral/LinkGeneral";
 export { default as Modal } from "./Modal/Modal";
 export { default as StudentCard } from "./StudentCard/StudentCard";
 export { default as FamilyCard } from "./FamilyCard/FamilyCard";
+export { default as PracticeCard } from "./PracticeCard/PracticeCard";
 export { default as DataCardsContainer } from "./DataCardsContainer/DataCardsContainer";
+export { default as VictoryChart } from "./VictoryChart/VictoryChart";

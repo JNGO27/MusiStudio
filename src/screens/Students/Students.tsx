@@ -3,7 +3,12 @@ import uuid from "react-native-uuid";
 
 import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
 import type { StudentAndFamily } from "@src/types";
-import { StudentCard, FamilyCard, DataCardsContainer } from "@src/components";
+import {
+  DataCardsContainer,
+  StudentCard,
+  FamilyCard,
+  PracticeCard,
+} from "@src/components";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
@@ -35,6 +40,7 @@ const Students = () => {
                 phone_number={item.associated_family.phone_number}
                 email_address={item.associated_family.email_address}
               />,
+              <PracticeCard key={item.id} />,
             ]}
           />
         )}
