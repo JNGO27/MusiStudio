@@ -4,7 +4,12 @@ import { ClockSvg, CalendarEmptySvg, ChartSvg } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
-const PracticeCard = () => {
+type Props = {
+  minutes_practiced: number | undefined;
+  days_practiced: number | undefined;
+};
+
+const PracticeCard = ({ minutes_practiced, days_practiced }: Props) => {
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -12,22 +17,52 @@ const PracticeCard = () => {
     moderateScale,
   );
 
+  const noData = !!minutes_practiced;
+  const hours = minutes_practiced ? minutes_practiced / 60 : null;
+  const average =
+    hours && days_practiced ? (hours / days_practiced).toFixed(2) : null;
+
   return (
     <View style={styles.practiceCard}>
-      <View style={styles.practiceProfileContainer}>
-        <ClockSvg style={styles.clockIcon} />
-        <Text style={styles.hoursPracticed}>12 hours Practiced</Text>
-      </View>
-      <View style={styles.contactInformationContainer}>
-        <View style={styles.iconContainer}>
-          <CalendarEmptySvg style={styles.calenderIcon} />
-          <Text style={styles.practiceInfoText}>2 days practiced</Text>
-        </View>
-        <View style={styles.iconContainer}>
-          <ChartSvg style={styles.chartIcon} color="black" />
-          <Text style={styles.practiceInfoText}>1.5 hours Average</Text>
-        </View>
-      </View>
+      {noData ? (
+        <>
+          <View style={styles.practiceProfileContainer}>
+            <ClockSvg style={styles.clockIcon} />
+            <Text style={styles.hoursPracticed}>{hours} hours Practiced</Text>
+          </View>
+          <View style={styles.contactInformationContainer}>
+            <View style={styles.iconContainer}>
+              <CalendarEmptySvg style={styles.calenderIcon} />
+              <Text style={styles.practiceInfoText}>
+                {days_practiced} days practiced
+              </Text>
+            </View>
+            <View style={styles.iconContainer}>
+              <ChartSvg style={styles.chartIcon} />
+              <Text style={styles.practiceInfoText}>
+                {average} hours average
+              </Text>
+            </View>
+          </View>
+        </>
+      ) : (
+        <>
+          <View style={styles.practiceProfileContainer}>
+            <ClockSvg style={styles.clockIcon} />
+            <Text style={styles.hoursPracticed}>No Logged Data</Text>
+          </View>
+          <View style={styles.contactInformationContainer}>
+            <View style={styles.iconContainer}>
+              <CalendarEmptySvg style={styles.calenderIcon} />
+              <Text style={styles.practiceInfoText}>N / A</Text>
+            </View>
+            <View style={styles.iconContainer}>
+              <ChartSvg style={styles.chartIcon} />
+              <Text style={styles.practiceInfoText}>N / A</Text>
+            </View>
+          </View>
+        </>
+      )}
     </View>
   );
 };
