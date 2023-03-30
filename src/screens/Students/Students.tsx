@@ -2,7 +2,7 @@ import { SafeAreaView, FlatList } from "react-native";
 import uuid from "react-native-uuid";
 
 import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
-import type { StudentAndFamily } from "@src/types";
+import type { AllStudentFamilyDataCard } from "@src/types";
 import {
   DataCardsContainer,
   StudentCard,
@@ -22,7 +22,7 @@ const Students = () => {
       <FlatList
         style={styles.cardsContainer}
         contentContainerStyle={styles.cardsContainerFlex}
-        data={allStudentRelatedData as StudentAndFamily[]}
+        data={allStudentRelatedData as AllStudentFamilyDataCard[]}
         renderItem={({ item }) => (
           <DataCardsContainer
             allStudentData={[
@@ -40,7 +40,11 @@ const Students = () => {
                 phone_number={item.associated_family.phone_number}
                 email_address={item.associated_family.email_address}
               />,
-              <PracticeCard key={item.id} />,
+              <PracticeCard
+                key={item.id}
+                minutes_practiced={item.minutes_practiced}
+                days_practiced={item.days_practiced}
+              />,
             ]}
           />
         )}

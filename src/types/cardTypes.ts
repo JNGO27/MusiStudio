@@ -7,10 +7,12 @@ export type Student = {
   phone_number: string;
 };
 
-type StudentOmit = "id" | "associated_family";
-
-export type StudentCardType = Omit<Student, StudentOmit> & {
+export type StudentCardType = {
   id?: number;
+  first_name: string;
+  last_name: string;
+  email_address: string;
+  phone_number: string;
 };
 
 export type Family = {
@@ -23,13 +25,20 @@ export type Family = {
   phone_number: string;
 };
 
-type FamilyOmit =
-  | "id"
-  | "parent_guardian_first_name_2"
-  | "parent_guardian_last_name_2";
-
-export type FamilyCardType = Omit<Family, FamilyOmit>;
+export type FamilyCardType = {
+  parent_guardian_first_name_1: string;
+  parent_guardian_last_name_1: string;
+  email_address: string;
+  phone_number: string;
+};
 
 export type StudentAndFamily = StudentCardType & {
   associated_family: FamilyCardType;
 };
+
+type PracticeLogData = {
+  minutes_practiced: number;
+  days_practiced: number;
+};
+
+export type AllStudentFamilyDataCard = StudentAndFamily & PracticeLogData;
