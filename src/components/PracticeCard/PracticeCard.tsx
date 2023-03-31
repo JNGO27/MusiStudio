@@ -28,7 +28,7 @@ const PracticeCard = ({ minutes_practiced, days_practiced }: Props) => {
         <>
           <View style={styles.practiceProfileContainer}>
             <ClockSvg style={styles.clockIcon} />
-            <Text style={styles.hoursPracticed}>{hours} hours Practiced</Text>
+            <Text style={styles.hoursPracticed}>{hours} hours practiced</Text>
           </View>
           <View style={styles.contactInformationContainer}>
             <View style={styles.iconContainer}>
@@ -49,7 +49,7 @@ const PracticeCard = ({ minutes_practiced, days_practiced }: Props) => {
         <>
           <View style={styles.practiceProfileContainer}>
             <ClockSvg style={styles.clockIcon} />
-            <Text style={styles.hoursPracticed}>No Logged Data</Text>
+            <Text style={styles.hoursPracticed}>no logged hours practiced</Text>
           </View>
           <View style={styles.contactInformationContainer}>
             <View style={styles.iconContainer}>

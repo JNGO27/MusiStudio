@@ -50,6 +50,7 @@ export default (
       paddingLeft: horizontalScale(spacing.multipleXL),
       fontFamily: typography.bold,
       fontSize: moderateScale(16),
+      textTransform: "capitalize",
     },
     contactInformationContainer: {
       display: "flex",
