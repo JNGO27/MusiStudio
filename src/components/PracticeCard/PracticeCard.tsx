@@ -2,6 +2,7 @@ import { View, Text } from "react-native";
 
 import { ClockSvg, CalendarEmptySvg, ChartSvg } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { areBothIntegers, calculateHours, calculateAverage } from "./helpers";
 import createStyleSheet from "./styles";
 
 type Props = {
@@ -18,9 +19,11 @@ const PracticeCard = ({ minutes_practiced, days_practiced }: Props) => {
   );
 
   const noData = !!minutes_practiced;
-  const hours = minutes_practiced ? minutes_practiced / 60 : null;
-  const average =
-    hours && days_practiced ? (hours / days_practiced).toFixed(2) : null;
+  const hours = minutes_practiced ? calculateHours(minutes_practiced) : null;
+  const bothAreNumbers = areBothIntegers(hours, days_practiced);
+  const average = bothAreNumbers
+    ? calculateAverage(hours as number, days_practiced as number)
+    : null;
 
   return (
     <View style={styles.practiceCard}>
