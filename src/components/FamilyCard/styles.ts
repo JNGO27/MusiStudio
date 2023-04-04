@@ -23,6 +23,16 @@ export default (
   return StyleSheet.create({
     familyCard: {
       ...familyCardStyles,
+    },
+    parentContainer: {
+      display: "flex",
+      flexDirection: "row",
+      width: "100%",
+      minHeight: "100%",
+    },
+    familyDetailsContainer: {
+      display: "flex",
+      flex: 1,
       padding: spacing.multipleReg,
     },
     familyProfileContainer: {
@@ -83,6 +93,7 @@ export default (
       top: verticalScale(spacing.multipleXS),
       fontSize: moderateScale(12),
       fontFamily: typography.semiBold,
+      paddingRight: spacing.multipleL * 4,
     },
   });
 };
