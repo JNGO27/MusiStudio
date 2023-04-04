@@ -91,22 +91,5 @@ export default (
       fontSize: moderateScale(12),
       fontFamily: typography.semiBold,
     },
-    moreDetailsContainer: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      flex: 0.04,
-      padding: spacing.multipleReg,
-      borderRadius: spacing.multipleReg * 2,
-      backgroundColor: "lightgray",
-    },
-    moreDetailsIcon: {
-      position: "relative",
-      bottom: spacing.multipleReg,
-      alignSelf: "center",
-      width: horizontalScale(spacing.multipleReg * 5),
-      height: verticalScale(spacing.multipleReg * 5),
-      opacity: 0.75,
-    },
   });
 };

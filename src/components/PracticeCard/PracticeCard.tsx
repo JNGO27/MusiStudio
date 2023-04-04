@@ -1,12 +1,8 @@
 import { View, Text } from "react-native";
 
-import {
-  ClockSvg,
-  CalendarEmptySvg,
-  ChartSvg,
-  ChevronRight,
-} from "@src/assets/icons";
+import { ClockSvg, CalendarEmptySvg, ChartSvg } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { CardNavOption } from "@src/components";
 import { areBothIntegers, calculateHours, calculateAverage } from "./helpers";
 import createStyleSheet from "./styles";
 
@@ -68,9 +64,7 @@ const PracticeCard = ({ minutes_practiced, days_practiced }: Props) => {
             </View>
           </View>
         </View>
-        <View style={styles.moreDetailsContainer}>
-          <ChevronRight style={styles.moreDetailsIcon} />
-        </View>
+        <CardNavOption cardOption="PracticeCardDetails" />
       </View>
     </View>
   );

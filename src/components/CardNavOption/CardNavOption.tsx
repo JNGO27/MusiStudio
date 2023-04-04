@@ -1,8 +1,11 @@
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { CardsNavParamList, CardsNavOptions } from "@src/types";
+import useResponsiveness from "@src/hooks/useResponsiveness";
+import { ChevronRight } from "@src/assets/icons";
+import createStyleSheet from "./styles";
 
 type Props = {
   cardOption: CardsNavOptions;
@@ -10,15 +13,19 @@ type Props = {
 
 type CardNavigationProps = NativeStackNavigationProp<
   CardsNavParamList,
-  "Students"
+  "StudentsHome"
 >;
 
 const CardNavOption = ({ cardOption }: Props) => {
   const navigator = useNavigation<CardNavigationProps>();
+  const [horizontalScale, verticalScale] = useResponsiveness();
+  const styles = createStyleSheet(horizontalScale, verticalScale);
 
   return (
     <TouchableOpacity onPress={() => navigator.navigate(cardOption)}>
-      <Text>Example</Text>
+      <View style={styles.moreDetailsContainer}>
+        <ChevronRight style={styles.moreDetailsIcon} />
+      </View>
     </TouchableOpacity>
   );
 };
