@@ -93,6 +93,7 @@ export default (
       top: verticalScale(spacing.multipleXS),
       fontSize: moderateScale(12),
       fontFamily: typography.semiBold,
+      paddingRight: spacing.multipleL * 4,
     },
   });
 };
