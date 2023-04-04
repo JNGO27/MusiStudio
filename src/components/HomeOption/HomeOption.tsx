@@ -2,10 +2,10 @@ import { TouchableOpacity, SafeAreaView, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-import type { RootStackParamList, Options } from "@src/types";
+import type { RootStackParamList, HomeNavOptions } from "@src/types";
 
 type Props = {
-  title: Options;
+  title: HomeNavOptions;
 };
 
 export type NavigationProps = NativeStackNavigationProp<

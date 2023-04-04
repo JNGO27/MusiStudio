@@ -1,7 +1,7 @@
 import { View } from "react-native";
 
-import { HomeOption, Account } from "@src/components";
 import { HomeOptionsArr } from "@src/utils/constants";
+import { HomeOption, Account } from "@src/components";
 
 const HomeScreen = () => {
   return (

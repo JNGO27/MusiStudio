@@ -1,7 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { HomeScreen, Students } from "@src/screens";
+import { HomeScreen } from "@src/screens";
+import { StudentsNav } from "@src/navigation";
 import type { RootStackParamList } from "@src/types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -18,7 +19,7 @@ const HomeNav = () => {
         <Stack.Screen
           options={{ headerShown: false }}
           name="Students"
-          component={Students}
+          component={StudentsNav}
         />
       </Stack.Navigator>
     </NavigationContainer>
