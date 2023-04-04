@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import type { AllStudentFamilyDataCard } from "@src/types";
+
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
 export async function formatStudentData(data: AllStudentFamilyDataCard[]) {

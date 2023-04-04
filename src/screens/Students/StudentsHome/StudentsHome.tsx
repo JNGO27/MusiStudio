@@ -1,14 +1,17 @@
 import { SafeAreaView, FlatList } from "react-native";
 import uuid from "react-native-uuid";
 
-import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
-import type { AllStudentFamilyDataCard } from "@src/types";
 import {
   DataCardsContainer,
   StudentCard,
   FamilyCard,
   PracticeCard,
 } from "@src/components";
+
+import type { AllStudentFamilyDataCard } from "@src/types";
+
+import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
+
 import createStyleSheet from "./styles";
 
 const StudentsHome = () => {

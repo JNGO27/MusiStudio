@@ -1,8 +1,9 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { AllStudentFamilyDataCard } from "@src/types";
+import type { AllStudentFamilyDataCard } from "@src/types";
 
 import { supabaseConfig } from "@src/lib/supabaseConfig";
+
 import { formatStudentData } from "@src/redux/helpers";
 
 export const supabaseApi = createApi({

@@ -1,6 +1,6 @@
-import { registerRootComponent } from "expo";
 import { useState, useEffect } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
+import { registerRootComponent } from "expo";
 import { Provider } from "react-redux";
 import {
   useFonts,
@@ -24,9 +24,11 @@ import {
   Poppins_900Black_Italic,
 } from "@expo-google-fonts/poppins";
 
-import type { Session } from "@supabase/supabase-js";
-import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { HomeNav, AuthNav } from "@src/navigation";
+
+import type { Session } from "@supabase/supabase-js";
+
+import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { store } from "@src/redux/app/store";
 
 const styles = StyleSheet.create({

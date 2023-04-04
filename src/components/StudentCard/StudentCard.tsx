@@ -1,8 +1,11 @@
 import { View, Text } from "react-native";
 
-import type { StudentCardType } from "@src/types";
-import { PhoneSvg, EmailSvg } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
+
+import type { StudentCardType } from "@src/types";
+
+import { PhoneSvg, EmailSvg } from "@src/assets/icons";
+
 import createStyleSheet from "./styles";
 
 const StudentCard = ({

@@ -1,12 +1,13 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import type { CardsNavParamList } from "@src/types";
 import { StudentsHome } from "@src/screens";
 import {
   StudentCardDetails,
   FamilyCardDetails,
   PracticeCardDetails,
 } from "@src/screens/Students";
+
+import type { CardsNavParamList } from "@src/types";
 
 const Stack = createNativeStackNavigator<CardsNavParamList>();
 

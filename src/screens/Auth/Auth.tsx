@@ -2,8 +2,9 @@ import { ScrollView, View, Text, Linking } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
 
-import { AuthOption, OAuthOption } from "@src/components";
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { AuthOption, OAuthOption } from "@src/components";
+
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 import PeopleMusic from "./people-music.png";

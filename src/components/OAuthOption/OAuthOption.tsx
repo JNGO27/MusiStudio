@@ -1,14 +1,18 @@
 import { Text, View, TouchableOpacity } from "react-native";
-import type { Provider } from "@supabase/supabase-js";
 import { makeRedirectUri } from "expo-auth-session";
 import * as Linking from "expo-linking";
 
+import type { Provider } from "@supabase/supabase-js";
+
+import useResponsiveness from "@src/hooks/useResponsiveness";
+
+import { GoogleSvg } from "@src/assets/icons";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 import { SUPABASE_URL } from "@env";
-import useResponsiveness from "@src/hooks/useResponsiveness";
-import { GoogleSvg } from "@src/assets/icons";
-import { capitalize, getTokens } from "./helpers";
+
 import createStyleSheet from "./styles";
+
+import { capitalize, getTokens } from "./helpers";
 
 type Props = {
   provider: Provider;

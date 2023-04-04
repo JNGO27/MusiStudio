@@ -2,9 +2,13 @@ import { TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { CardsNavParamList, CardsNavOptions } from "@src/types";
+
 import useResponsiveness from "@src/hooks/useResponsiveness";
+
+import type { CardsNavParamList, CardsNavOptions } from "@src/types";
+
 import { ChevronRight } from "@src/assets/icons";
+
 import createStyleSheet from "./styles";
 
 type Props = {

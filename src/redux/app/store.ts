@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
-import { supabaseApi } from "../services/supabaseAPI";
+import { supabaseApi } from "@src/redux/services/supabaseAPI";
 
 export const store = configureStore({
   reducer: {

@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { HomeScreen } from "@src/screens";
 import { StudentsNav } from "@src/navigation";
+
 import type { RootStackParamList } from "@src/types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

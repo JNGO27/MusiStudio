@@ -2,12 +2,16 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Formik } from "formik";
 
-import { FormikSubmit } from "@src/types";
-import { supabaseConfig } from "@src/lib/supabaseConfig";
+import { useModalContext } from "@src/contexts/ModalContext";
 import { useSetSession, useResponsiveness } from "@src/hooks";
 import { Modal } from "@src/components";
-import { useModalContext } from "@src/contexts/ModalContext";
+
+import type { FormikSubmit } from "@src/types";
+
+import { supabaseConfig } from "@src/lib/supabaseConfig";
+
 import { EmailSvg, ArrowSvg } from "@src/assets/icons";
+
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 

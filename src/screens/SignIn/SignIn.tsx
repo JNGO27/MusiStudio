@@ -6,14 +6,17 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { Formik } from "formik";
 import Checkbox from "expo-checkbox";
+import { Formik } from "formik";
+
+import { useCheckboxContext } from "@src/contexts/CheckboxContext";
+import useResponsiveness from "@src/hooks/useResponsiveness";
+import { LinkGeneral } from "@src/components";
 
 import type { FormikSubmit } from "@src/types";
-import { useCheckboxContext } from "@src/contexts/CheckboxContext";
-import { LinkGeneral } from "@src/components";
+
 import { supabaseConfig } from "@src/lib/supabaseConfig";
-import useResponsiveness from "@src/hooks/useResponsiveness";
+
 import createStyleSheet from "./styles";
 
 type MyFormValues = {

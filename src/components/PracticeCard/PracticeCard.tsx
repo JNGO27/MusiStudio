@@ -1,10 +1,13 @@
 import { View, Text } from "react-native";
 
-import { ClockSvg, CalendarEmptySvg, ChartSvg } from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { CardNavOption } from "@src/components";
-import { areBothIntegers, calculateHours, calculateAverage } from "./helpers";
+
+import { ClockSvg, CalendarEmptySvg, ChartSvg } from "@src/assets/icons";
+
 import createStyleSheet from "./styles";
+
+import { areBothIntegers, calculateHours, calculateAverage } from "./helpers";
 
 type Props = {
   minutes_practiced: number | undefined;
