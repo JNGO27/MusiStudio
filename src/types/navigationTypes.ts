@@ -21,3 +21,9 @@ export type AuthStackParamList = {
 };
 
 export type AuthNavOptions = (typeof AuthOptionsOnlyArr)[number];
+
+export type CardsNavTypes = {
+  StudentCardDetails: undefined;
+  FamilyCardDetails: undefined;
+  PracticeCardDetails: undefined;
+};
