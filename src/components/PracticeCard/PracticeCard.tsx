@@ -1,6 +1,11 @@
 import { View, Text } from "react-native";
 
-import { ClockSvg, CalendarEmptySvg, ChartSvg } from "@src/assets/icons";
+import {
+  ClockSvg,
+  CalendarEmptySvg,
+  ChartSvg,
+  ChevronRight,
+} from "@src/assets/icons";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { areBothIntegers, calculateHours, calculateAverage } from "./helpers";
 import createStyleSheet from "./styles";
@@ -18,7 +23,7 @@ const PracticeCard = ({ minutes_practiced, days_practiced }: Props) => {
     moderateScale,
   );
 
-  const noData = !!minutes_practiced;
+  const thereIsData = !!minutes_practiced;
   const hours = minutes_practiced ? calculateHours(minutes_practiced) : null;
   const bothAreNumbers = areBothIntegers(hours, days_practiced);
   const average = bothAreNumbers
@@ -27,45 +32,46 @@ const PracticeCard = ({ minutes_practiced, days_practiced }: Props) => {
 
   return (
     <View style={styles.practiceCard}>
-      {noData ? (
-        <>
+      <View style={styles.parentContainer}>
+        <View style={styles.practiceDetailsContainer}>
           <View style={styles.practiceProfileContainer}>
             <ClockSvg style={styles.clockIcon} />
-            <Text style={styles.hoursPracticed}>{hours} hours practiced</Text>
+            {thereIsData ? (
+              <Text style={styles.hoursPracticed}>{hours} hours practiced</Text>
+            ) : (
+              <Text style={styles.hoursPracticed}>
+                no logged hours practiced
+              </Text>
+            )}
           </View>
           <View style={styles.contactInformationContainer}>
             <View style={styles.iconContainer}>
               <CalendarEmptySvg style={styles.calenderIcon} />
-              <Text style={styles.practiceInfoText}>
-                {days_practiced} days practiced
-              </Text>
+              {thereIsData ? (
+                <Text style={styles.practiceInfoText}>
+                  {days_practiced} days practiced
+                </Text>
+              ) : (
+                <Text style={styles.practiceInfoText}>N / A</Text>
+              )}
             </View>
             <View style={styles.iconContainer}>
               <ChartSvg style={styles.chartIcon} />
-              <Text style={styles.practiceInfoText}>
-                {average} hours average
-              </Text>
+
+              {thereIsData ? (
+                <Text style={styles.practiceInfoText}>
+                  {average} hours average
+                </Text>
+              ) : (
+                <Text style={styles.practiceInfoText}>N / A</Text>
+              )}
             </View>
           </View>
-        </>
-      ) : (
-        <>
-          <View style={styles.practiceProfileContainer}>
-            <ClockSvg style={styles.clockIcon} />
-            <Text style={styles.hoursPracticed}>no logged hours practiced</Text>
-          </View>
-          <View style={styles.contactInformationContainer}>
-            <View style={styles.iconContainer}>
-              <CalendarEmptySvg style={styles.calenderIcon} />
-              <Text style={styles.practiceInfoText}>N / A</Text>
-            </View>
-            <View style={styles.iconContainer}>
-              <ChartSvg style={styles.chartIcon} />
-              <Text style={styles.practiceInfoText}>N / A</Text>
-            </View>
-          </View>
-        </>
-      )}
+        </View>
+        <View style={styles.moreDetailsContainer}>
+          <ChevronRight style={styles.moreDetailsIcon} />
+        </View>
+      </View>
     </View>
   );
 };
