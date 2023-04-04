@@ -32,7 +32,7 @@ export const AuthOptionsOnlyArr = [
 ] as const;
 
 export const CardNavOptionsOnlyArr = [
-  "Students",
+  "StudentsHome",
   "StudentCardDetails",
   "FamilyCardDetails",
   "PracticeCardDetails",
