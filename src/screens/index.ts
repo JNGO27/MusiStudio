@@ -1,5 +1,7 @@
 export { default as HomeScreen } from "./HomeScreen/HomeScreen";
-export { default as Students } from "./Students/Students";
+
+export * from "./Students";
+
 export { default as Auth } from "./Auth/Auth";
 export { default as SignUp } from "./SignUp/SignUp";
 export { default as SignIn } from "./SignIn/SignIn";
