@@ -151,12 +151,13 @@ const ComponentStyles = {
   ) => {
     return StyleSheet.create({
       cardContainer: {
-        width: horizontalScale(SPACING.multipleXL * 25),
+        width: horizontalScale(SPACING.multipleXL * 26),
         height: verticalScale(SPACING.multipleReg * 20),
         maxWidth: SPACING.multipleXL * 40,
         maxHeight: SPACING.multipleXL * 22,
         borderRadius: SPACING.multipleReg * 2,
         backgroundColor: COLORS.whites.white200,
+        marginLeft: SPACING.multipleM * 1,
       },
     });
   },

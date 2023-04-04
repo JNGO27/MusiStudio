@@ -21,7 +21,7 @@ export default (horizontalScale: DirectionalScale) => {
     },
     cardsContainer: {
       width: "100%",
-      paddingHorizontal: horizontalScale(spacing.multipleReg * 2),
+      paddingLeft: spacing.multipleL * 1,
     },
     cardsContainerFlex: {
       display: "flex",
