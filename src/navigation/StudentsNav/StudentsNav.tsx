@@ -12,6 +12,10 @@ import type { CardsNavParamList } from "@src/types";
 const Stack = createNativeStackNavigator<CardsNavParamList>();
 
 const noHeaderOption = { headerShown: false };
+const noHeaderWithAnimation = {
+  headerShown: false,
+  animation: "slide_from_right",
+} as const;
 
 const StudentsNav = () => {
   return (
@@ -22,17 +26,17 @@ const StudentsNav = () => {
         component={StudentsHome}
       />
       <Stack.Screen
-        options={noHeaderOption}
+        options={noHeaderWithAnimation}
         name="StudentCardDetails"
         component={StudentCardDetails}
       />
       <Stack.Screen
-        options={noHeaderOption}
+        options={noHeaderWithAnimation}
         name="FamilyCardDetails"
         component={FamilyCardDetails}
       />
       <Stack.Screen
-        options={noHeaderOption}
+        options={noHeaderWithAnimation}
         name="PracticeCardDetails"
         component={PracticeCardDetails}
       />
