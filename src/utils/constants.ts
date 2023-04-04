@@ -30,3 +30,10 @@ export const AuthOptionsOnlyArr = [
   "SignUp",
   "SignIn",
 ] as const;
+
+export const CardNavOptionsOnlyArr = [
+  "Students",
+  "StudentCardDetails",
+  "FamilyCardDetails",
+  "PracticeCardDetails",
+] as const;

@@ -1,4 +1,8 @@
-import { HomeOptionsOnlyArr, AuthOptionsOnlyArr } from "@src/utils/constants";
+import {
+  HomeOptionsOnlyArr,
+  AuthOptionsOnlyArr,
+  CardNavOptionsOnlyArr,
+} from "@src/utils/constants";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -22,8 +26,11 @@ export type AuthStackParamList = {
 
 export type AuthNavOptions = (typeof AuthOptionsOnlyArr)[number];
 
-export type CardsNavTypes = {
+export type CardsNavParamList = {
+  Students: undefined;
   StudentCardDetails: undefined;
   FamilyCardDetails: undefined;
   PracticeCardDetails: undefined;
 };
+
+export type CardsNavOptions = (typeof CardNavOptionsOnlyArr)[number];
