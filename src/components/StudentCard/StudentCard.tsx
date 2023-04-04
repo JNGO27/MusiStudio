@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { CardNavOption } from "@src/components";
 
 import type { StudentCardType } from "@src/types";
 
@@ -23,25 +24,30 @@ const StudentCard = ({
 
   return (
     <View style={styles.studentCard}>
-      <View style={styles.studentProfileContainer}>
-        <View style={styles.profileCircle}>
-          <Text style={styles.initials}>
-            {last_name[0]}.{first_name[0]}
-          </Text>
+      <View style={styles.parentContainer}>
+        <View style={styles.studentDetailsContainer}>
+          <View style={styles.studentProfileContainer}>
+            <View style={styles.profileCircle}>
+              <Text style={styles.initials}>
+                {last_name[0]}.{first_name[0]}
+              </Text>
+            </View>
+            <Text style={styles.profileName}>
+              {last_name}, {first_name}
+            </Text>
+          </View>
+          <View style={styles.contactInformationContainer}>
+            <View style={styles.iconContainer}>
+              <PhoneSvg style={styles.phoneIcon} />
+              <Text style={styles.contactInfoText}>{phone_number}</Text>
+            </View>
+            <View style={styles.iconContainer}>
+              <EmailSvg style={styles.emailIcon} color="black" />
+              <Text style={styles.contactInfoText}>{email_address}</Text>
+            </View>
+          </View>
         </View>
-        <Text style={styles.profileName}>
-          {last_name}, {first_name}
-        </Text>
-      </View>
-      <View style={styles.contactInformationContainer}>
-        <View style={styles.iconContainer}>
-          <PhoneSvg style={styles.phoneIcon} />
-          <Text style={styles.contactInfoText}>{phone_number}</Text>
-        </View>
-        <View style={styles.iconContainer}>
-          <EmailSvg style={styles.emailIcon} color="black" />
-          <Text style={styles.contactInfoText}>{email_address}</Text>
-        </View>
+        <CardNavOption cardOption="StudentCardDetails" />
       </View>
     </View>
   );

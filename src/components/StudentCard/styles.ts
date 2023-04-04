@@ -23,6 +23,16 @@ export default (
   return StyleSheet.create({
     studentCard: {
       ...studentCardStyles,
+    },
+    parentContainer: {
+      display: "flex",
+      flexDirection: "row",
+      width: "100%",
+      minHeight: "100%",
+    },
+    studentDetailsContainer: {
+      display: "flex",
+      flex: 1,
       padding: spacing.multipleReg,
     },
     studentProfileContainer: {
