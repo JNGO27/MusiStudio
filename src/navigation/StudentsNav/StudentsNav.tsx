@@ -1,17 +1,16 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Text } from "react-native";
 
 import type { CardsNavParamList } from "@src/types";
-import { Students } from "@src/screens";
-import PracticeCardDetails from "@src/screens/Students/PracticeCardDetails/PracticeCardDetails";
+import { StudentsHome } from "@src/screens";
+import {
+  StudentCardDetails,
+  FamilyCardDetails,
+  PracticeCardDetails,
+} from "@src/screens/Students";
 
 const Stack = createNativeStackNavigator<CardsNavParamList>();
 
 const noHeaderOption = { headerShown: false };
-
-const TemporaryExample = () => {
-  return <Text>Example</Text>;
-};
 
 const StudentsNav = () => {
   return (
@@ -19,17 +18,17 @@ const StudentsNav = () => {
       <Stack.Screen
         options={noHeaderOption}
         name="StudentsHome"
-        component={Students}
+        component={StudentsHome}
       />
       <Stack.Screen
         options={noHeaderOption}
         name="StudentCardDetails"
-        component={TemporaryExample}
+        component={StudentCardDetails}
       />
       <Stack.Screen
         options={noHeaderOption}
         name="FamilyCardDetails"
-        component={TemporaryExample}
+        component={FamilyCardDetails}
       />
       <Stack.Screen
         options={noHeaderOption}
