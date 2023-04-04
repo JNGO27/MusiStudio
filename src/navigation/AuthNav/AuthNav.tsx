@@ -9,7 +9,7 @@ import type { AuthStackParamList } from "@src/types";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
-const noHeader = { headerShown: false, animationEnabled: false };
+const noHeaderAndAnimation = { headerShown: false, animationEnabled: false };
 
 const prefix = Linking.createURL("/auth");
 
@@ -32,9 +32,13 @@ const AuthNav = () => {
             animation: "none",
           }}
         >
-          <Stack.Screen options={noHeader} name="AuthHome" component={Auth} />
           <Stack.Screen
-            options={noHeader}
+            options={noHeaderAndAnimation}
+            name="AuthHome"
+            component={Auth}
+          />
+          <Stack.Screen
+            options={noHeaderAndAnimation}
             name="Email"
             component={EmailOnlyAuth}
           />
