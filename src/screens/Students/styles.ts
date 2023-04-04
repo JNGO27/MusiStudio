@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-import { DirectionalScale } from "@src/types";
 import globalStyles from "@src/globalStyles";
 
 const {
@@ -8,7 +7,7 @@ const {
   colors: { lightPurples },
 } = globalStyles;
 
-export default (horizontalScale: DirectionalScale) => {
+export default () => {
   return StyleSheet.create({
     container: {
       width: "100%",

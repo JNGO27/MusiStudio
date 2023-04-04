@@ -9,13 +9,11 @@ import {
   FamilyCard,
   PracticeCard,
 } from "@src/components";
-import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
 const Students = () => {
   const { data: allStudentRelatedData } = useGetAllStudentsDataQuery({});
-  const [horizontalScale] = useResponsiveness();
-  const styles = createStyleSheet(horizontalScale);
+  const styles = createStyleSheet();
 
   return (
     <SafeAreaView style={styles.container}>
