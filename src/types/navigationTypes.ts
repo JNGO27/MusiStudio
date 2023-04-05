@@ -5,12 +5,7 @@ import {
 } from "@src/utils/constants";
 
 export type RootStackParamList = {
-  Home: undefined;
-  Students: undefined;
-  Calender: undefined;
-  Repertoire: undefined;
-  Milage: undefined;
-  Billing: undefined;
+  TabNavigator: undefined;
 };
 
 export type HomeNavOptions = (typeof HomeOptionsOnlyArr)[number];
@@ -34,3 +29,8 @@ export type CardsNavParamList = {
 };
 
 export type CardsNavOptions = (typeof CardNavOptionsOnlyArr)[number];
+
+export type TabNavigator = {
+  HomeNav: undefined;
+  StudentsNav: undefined;
+};

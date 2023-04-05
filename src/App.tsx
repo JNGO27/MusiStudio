@@ -24,7 +24,7 @@ import {
   Poppins_900Black_Italic,
 } from "@expo-google-fonts/poppins";
 
-import { HomeNav, AuthNav } from "@src/navigation";
+import { RootNav, AuthNav } from "@src/navigation";
 
 import type { Session } from "@supabase/supabase-js";
 
@@ -78,7 +78,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.container}>
-        {userSession && userSession?.user ? <HomeNav /> : <AuthNav />}
+        {userSession && userSession?.user ? <RootNav /> : <AuthNav />}
       </SafeAreaView>
     </Provider>
   );

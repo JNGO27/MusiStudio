@@ -1,14 +1,20 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text } from "react-native";
+
+import { HomeNav, StudentsNav } from "@src/navigation";
 
 const Tab = createBottomTabNavigator();
 
-const ExampleComponent = () => <Text>Example</Text>;
-
 const TabNavigator = () => {
+  const noHeaderOption = { headerShown: false };
+
   return (
     <Tab.Navigator>
-      <Tab.Screen name="ExampleComponent" component={ExampleComponent} />
+      <Tab.Screen options={noHeaderOption} name="HomeNav" component={HomeNav} />
+      <Tab.Screen
+        options={noHeaderOption}
+        name="StudentsNav"
+        component={StudentsNav}
+      />
     </Tab.Navigator>
   );
 };
