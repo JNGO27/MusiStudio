@@ -1,5 +1,6 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Platform } from "react-native";
 import { makeRedirectUri } from "expo-auth-session";
+import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
 
 import type { Provider } from "@supabase/supabase-js";
@@ -17,6 +18,8 @@ import { capitalize, getTokens } from "./helpers";
 type Props = {
   provider: Provider;
 };
+
+WebBrowser.maybeCompleteAuthSession();
 
 const OAuthOption = ({ provider }: Props) => {
   const deepLinkSupaBaseUrl = Linking.createURL(SUPABASE_URL);
@@ -45,16 +48,23 @@ const OAuthOption = ({ provider }: Props) => {
       },
     });
 
-    Linking.openURL(data.url as string);
+    const result = await WebBrowser.openBrowserAsync(data.url as string);
 
     Linking.addEventListener("url", (event) => {
       const { url } = event;
-      const [accessToken, refreshToken] = getTokens(url);
 
-      supabaseConfig.auth.setSession({
-        access_token: accessToken,
-        refresh_token: refreshToken,
-      });
+      if (result.type === "opened") {
+        const [accessToken, refreshToken] = getTokens(url);
+
+        supabaseConfig.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        });
+
+        if (Platform.OS === "ios") {
+          WebBrowser.dismissBrowser();
+        }
+      }
     });
   };
 
