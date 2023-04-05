@@ -7,8 +7,12 @@ export function capitalize(provider: string) {
 }
 
 export function getTokens(url: string) {
-  const hashFragment = url.split("#")[1];
-  const andFragment = url.split("&")[4];
+  const hashFragment = url
+    .split("#")
+    .find((urlPart) => urlPart.includes("access_token"));
+  const andFragment = url
+    .split("&")
+    .find((urlPart) => urlPart.startsWith("refresh_token"));
 
   const accessToken = new URLSearchParams(hashFragment).get(
     "access_token",
