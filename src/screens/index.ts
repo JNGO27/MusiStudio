@@ -1,5 +1,3 @@
-export { default as HomeScreen } from "./HomeScreen/HomeScreen";
-
 export * from "./Students";
 
 export { default as Auth } from "./Auth/Auth";
