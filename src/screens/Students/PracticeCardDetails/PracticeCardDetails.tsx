@@ -1,7 +1,10 @@
 import { View, Text } from "react-native";
-import React from "react";
+
+import { useUnFocusedScreenToParent } from "@src/hooks";
 
 const PracticeCardDetails = () => {
+  useUnFocusedScreenToParent();
+
   return (
     <View>
       <Text>PracticeCardDetails</Text>
