@@ -5,7 +5,7 @@ import * as Linking from "expo-linking";
 import type { LinkingOptions } from "@react-navigation/native";
 
 import { ModalContext } from "@src/contexts/ModalContext";
-import { Auth, EmailOnlyAuth } from "@src/screens";
+import { AuthHome, EmailOnlyAuth } from "@src/screens";
 
 import type { AuthStackParamList } from "@src/types";
 
@@ -37,7 +37,7 @@ const AuthNav = () => {
           <Stack.Screen
             options={noHeaderAndAnimation}
             name="AuthHome"
-            component={Auth}
+            component={AuthHome}
           />
           <Stack.Screen
             options={noHeaderAndAnimation}

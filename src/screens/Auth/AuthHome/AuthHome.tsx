@@ -8,7 +8,7 @@ import { AuthOption, OAuthOption } from "@src/components";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 import PeopleMusic from "./people-music.png";
-import AccountPerson from "./AccountPerson";
+import AccountPerson from "../AccountPerson";
 
 const {
   colors: {
@@ -19,7 +19,7 @@ const {
 const freePikURL =
   "https://www.freepik.com/free-vector/hand-drawn-indie-music-illustration_29822684.htm#query=people%20playing%20music&position=7&from_view=search&track=ais";
 
-const Auth = () => {
+const AuthHome = () => {
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -76,4 +76,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default AuthHome;
