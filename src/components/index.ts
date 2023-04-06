@@ -14,4 +14,4 @@ export { default as DataCardsContainer } from "./DataCardsContainer/DataCardsCon
 export { default as VictoryChartComponent } from "./VictoryChartComponent/VictoryChartComponent";
 export { default as Header } from "./Header/Header";
 export { default as AddButtonTab } from "./AddButtonTab/AddButtonTab";
-export { default as DashBoardCard } from "./DashBoardCard/DashBoardCard";
+export { default as DashboardCard } from "./DashboardCard/DashboardCard";
