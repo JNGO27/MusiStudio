@@ -63,9 +63,9 @@
         "peerDependencies": false
       }
     ],
+    "import/no-cycle": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
     "react/prop-types": "off",
-    "import/no-cycle": "off",
     "react/jsx-props-no-spreading": "off"
   }
 }
