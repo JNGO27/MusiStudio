@@ -4,9 +4,7 @@ import { Image } from "expo-image";
 import { useModalContext } from "@src/contexts/ModalContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 
-import ErrorIcon from "./error.png";
-import SuccessIcon from "./success.png";
-import SecurityIcon from "./security.png";
+import { ErrorIcon, SuccessIcon, SecurityIcon } from "@src/assets/icons";
 
 import createStyleSheet from "./styles";
 

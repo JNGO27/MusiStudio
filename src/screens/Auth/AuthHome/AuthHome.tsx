@@ -5,10 +5,11 @@ import { Image } from "expo-image";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { AuthOption, OAuthOption } from "@src/components";
 
+import { PeopleMusic } from "@src/assets/illustrations";
+import { AccountPerson } from "@src/assets/icons";
+
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
-import PeopleMusic from "./people-music.png";
-import AccountPerson from "../AccountPerson";
 
 const {
   colors: {

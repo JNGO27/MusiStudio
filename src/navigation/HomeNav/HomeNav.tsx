@@ -1,9 +1,18 @@
 import { View, Text } from "react-native";
 
+import { Account } from "@src/components";
+
 const HomeNav = () => {
   return (
-    <View>
-      <Text>HomeNav</Text>
+    <View
+      style={{
+        display: "flex",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Account />
     </View>
   );
 };
