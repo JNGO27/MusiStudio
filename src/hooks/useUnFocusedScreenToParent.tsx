@@ -1,14 +1,24 @@
 import { useCallback } from "react";
-import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import {
+  StackActions,
+  useNavigation,
+  useFocusEffect,
+} from "@react-navigation/native";
 
 const useUnFocusedScreenToParent = () => {
   const navigator = useNavigation();
 
   useFocusEffect(
     useCallback(() => {
-      const outOfFocusNavigation = () => navigator.goBack();
+      function helper() {
+        navigator.addListener("focus", (e) => {
+          if (e.target) {
+            navigator.dispatch(StackActions.popToTop());
+          }
+        });
+      }
 
-      return () => outOfFocusNavigation();
+      return () => helper();
     }, [navigator]),
   );
 };
