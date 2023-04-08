@@ -1,9 +1,13 @@
-import { Alert, TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { useAddButtonModalContext } from "@src/contexts/AddButtonModalContext";
+import { AddButtonModal } from "@src/components";
+
 import createStyleSheet from "./styles";
 
 const AddButtonTab = () => {
+  const { setModalVisible } = useAddButtonModalContext();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const styles = createStyleSheet(
@@ -11,6 +15,10 @@ const AddButtonTab = () => {
     verticalScale,
     moderateScale,
   );
+
+  const openOrClose = () => {
+    setModalVisible((prevVal) => !prevVal);
+  };
 
   return (
     <TouchableOpacity
@@ -23,9 +31,10 @@ const AddButtonTab = () => {
         alignItems: "center",
         justifyContent: "center",
       }}
-      onPress={() => Alert.alert("Working!")}
+      onPress={openOrClose}
     >
       <Text style={{ color: "white" }}>+</Text>
+      <AddButtonModal />
     </TouchableOpacity>
   );
 };
