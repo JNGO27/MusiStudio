@@ -8,7 +8,7 @@ import useResponsiveness from "@src/hooks/useResponsiveness";
 
 import type { AuthStackParamList, AuthNavOptions } from "@src/types";
 
-import EmailImage from "./EmailImage.png";
+import { EmailImage } from "@src/assets/icons";
 
 import createStyleSheet from "./styles";
 
