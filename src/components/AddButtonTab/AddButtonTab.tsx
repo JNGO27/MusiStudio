@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { Alert, TouchableOpacity, Text } from "react-native";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
@@ -13,9 +13,20 @@ const AddButtonTab = () => {
   );
 
   return (
-    <View>
-      <Text>AddButtonTab</Text>
-    </View>
+    <TouchableOpacity
+      style={{
+        width: 30,
+        height: 30,
+        borderRadius: 30 / 2,
+        backgroundColor: "purple",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      onPress={() => Alert.alert("Working!")}
+    >
+      <Text style={{ color: "white" }}>+</Text>
+    </TouchableOpacity>
   );
 };
 
