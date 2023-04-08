@@ -1,15 +1,15 @@
 import { Modal, TouchableOpacity, View, Text } from "react-native";
 import { Image } from "expo-image";
 
-import { useModalContext } from "@src/contexts/ModalContext";
+import { useAuthModalContext } from "@src/contexts/AuthModalContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 
 import { ErrorIcon, SuccessIcon, SecurityIcon } from "@src/assets/icons";
 
 import createStyleSheet from "./styles";
 
-const ModalComponent = () => {
-  const { modalVisible, setModalVisible, message } = useModalContext();
+const AuthModal = () => {
+  const { modalVisible, setModalVisible, message } = useAuthModalContext();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -56,4 +56,4 @@ const ModalComponent = () => {
   );
 };
 
-export default ModalComponent;
+export default AuthModal;

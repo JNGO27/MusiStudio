@@ -4,7 +4,7 @@ import * as Linking from "expo-linking";
 
 import type { LinkingOptions } from "@react-navigation/native";
 
-import { ModalContext } from "@src/contexts/ModalContext";
+import { AuthModalContext } from "@src/contexts/AuthModalContext";
 import { AuthHome, EmailOnlyAuth } from "@src/screens";
 
 import type { AuthStackParamList } from "@src/types";
@@ -27,7 +27,7 @@ const linking: LinkingOptions<AuthStackParamList> = {
 
 const AuthNav = () => {
   return (
-    <ModalContext>
+    <AuthModalContext>
       <NavigationContainer linking={linking}>
         <Stack.Navigator
           screenOptions={{
@@ -46,7 +46,7 @@ const AuthNav = () => {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </ModalContext>
+    </AuthModalContext>
   );
 };
 

@@ -6,7 +6,7 @@ export { default as AuthOption } from "./AuthOption/AuthOption";
 export { default as OAuthOption } from "./OAuthOption/OAuthOption";
 export { default as CardNavOption } from "./CardNavOption/CardNavOption";
 export { default as LinkGeneral } from "./LinkGeneral/LinkGeneral";
-export { default as Modal } from "./Modal/Modal";
+export { default as AuthModal } from "./AuthModal/AuthModal";
 export { default as StudentCard } from "./StudentCard/StudentCard";
 export { default as FamilyCard } from "./FamilyCard/FamilyCard";
 export { default as PracticeCard } from "./PracticeCard/PracticeCard";

@@ -11,3 +11,4 @@ export { default as AccountPerson } from "./AccountPerson";
 export { default as ErrorIcon } from "./error.png";
 export { default as SuccessIcon } from "./success.png";
 export { default as SecurityIcon } from "./security.png";
+export { default as EmailImage } from "./EmailImage.png";

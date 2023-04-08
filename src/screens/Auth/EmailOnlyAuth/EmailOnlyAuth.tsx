@@ -2,9 +2,9 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Formik } from "formik";
 
-import { useModalContext } from "@src/contexts/ModalContext";
+import { useAuthModalContext } from "@src/contexts/AuthModalContext";
 import { useSetSession, useResponsiveness } from "@src/hooks";
-import { Modal } from "@src/components";
+import { AuthModal } from "@src/components";
 
 import type { FormikSubmit } from "@src/types";
 
@@ -29,7 +29,7 @@ type MyFormValues = {
 
 const EmailOnlyAuth = () => {
   const [redirectUri] = useSetSession();
-  const { setModalVisible, setMessage } = useModalContext();
+  const { setModalVisible, setMessage } = useAuthModalContext();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -124,7 +124,7 @@ const EmailOnlyAuth = () => {
                 {isDisabled ? null : <ArrowSvg style={styles.arrow} />}
               </View>
               <View style={styles.backgroundDecoration} />
-              <Modal />
+              <AuthModal />
             </View>
           );
         }}

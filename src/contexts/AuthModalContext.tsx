@@ -13,7 +13,7 @@ type Props = {
 
 const Context = createContext<ModalProps>({} as ModalProps);
 
-export const ModalContext = ({ children }: Props) => {
+export const AuthModalContext = ({ children }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -30,4 +30,4 @@ export const ModalContext = ({ children }: Props) => {
   return <Context.Provider value={conextValue}>{children}</Context.Provider>;
 };
 
-export const useModalContext = () => useContext(Context);
+export const useAuthModalContext = () => useContext(Context);
