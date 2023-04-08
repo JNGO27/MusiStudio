@@ -1,5 +1,9 @@
+import { useRef } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 import uuid from "react-native-uuid";
+import { useScrollToTop } from "@react-navigation/native";
+
+import type { RefObject } from "react";
 
 import {
   DataCardsContainer,
@@ -14,13 +18,20 @@ import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
 
 import createStyleSheet from "./styles";
 
+type MyRef = RefObject<FlatList>;
+
 const StudentsHome = () => {
+  const ref: MyRef = useRef<FlatList>(null);
+
   const { data: allStudentRelatedData } = useGetAllStudentsDataQuery({});
   const styles = createStyleSheet();
+
+  useScrollToTop(ref);
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
+        ref={ref}
         style={styles.cardsContainer}
         contentContainerStyle={styles.cardsContainerFlex}
         data={allStudentRelatedData as AllStudentFamilyDataCard[]}
