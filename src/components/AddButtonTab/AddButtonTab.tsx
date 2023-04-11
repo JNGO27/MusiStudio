@@ -7,7 +7,7 @@ import { AddButtonModal } from "@src/components";
 import createStyleSheet from "./styles";
 
 const AddButtonTab = () => {
-  const { setModalVisible } = useAddButtonModalContext();
+  const { modalVisible, setModalVisible } = useAddButtonModalContext();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const styles = createStyleSheet(
@@ -21,21 +21,23 @@ const AddButtonTab = () => {
   };
 
   return (
-    <TouchableOpacity
-      style={{
-        width: 30,
-        height: 30,
-        borderRadius: 30 / 2,
-        backgroundColor: "purple",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      onPress={openOrClose}
-    >
-      <Text style={{ color: "white" }}>+</Text>
+    <>
+      <TouchableOpacity
+        style={{
+          width: 30,
+          height: 30,
+          borderRadius: 30 / 2,
+          backgroundColor: "purple",
+          display: modalVisible ? "none" : "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        onPress={openOrClose}
+      >
+        <Text style={{ color: "white" }}>+</Text>
+      </TouchableOpacity>
       <AddButtonModal />
-    </TouchableOpacity>
+    </>
   );
 };
 
