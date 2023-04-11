@@ -1,4 +1,12 @@
-import { Modal, TouchableOpacity, View, Text } from "react-native";
+import {
+  Modal,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+  Text,
+} from "react-native";
+
+import type { GestureResponderEvent } from "react-native";
 
 import { useAddButtonModalContext } from "@src/contexts/AddButtonModalContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
@@ -21,22 +29,27 @@ const AddButtonModal = () => {
   };
 
   return (
-    <View style={styles.modalContainer}>
-      <Modal
-        visible={modalVisible}
-        onRequestClose={closeModal}
-        animationType="slide"
-        transparent
-      >
+    <Modal
+      style={styles.modalContainer}
+      visible={modalVisible}
+      onRequestClose={closeModal}
+      animationType="slide"
+      transparent
+    >
+      <TouchableWithoutFeedback onPress={closeModal}>
         <View style={styles.modalBackground}>
-          <View style={styles.modalCard}>
+          <View
+            style={styles.modalCard}
+            onStartShouldSetResponder={() => true}
+            onTouchEnd={(e: GestureResponderEvent) => e.stopPropagation()}
+          >
             <TouchableOpacity style={styles.button} onPress={closeModal}>
               <Text style={styles.buttonText}>Ok</Text>
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
-    </View>
+      </TouchableWithoutFeedback>
+    </Modal>
   );
 };
 
