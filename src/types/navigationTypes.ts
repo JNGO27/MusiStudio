@@ -30,7 +30,14 @@ export type CardsNavParamList = {
 
 export type CardsNavOptions = (typeof CardNavOptionsOnlyArr)[number];
 
-export type TabNavigator = {
+export type TabNavigatorParamList = {
   HomeNav: undefined;
+  AddTab: undefined;
   StudentsNav: undefined;
+};
+
+export type AddTabParamList = {
+  AddTab: undefined;
+  AddButtonModalScreen: undefined;
+  Test: undefined;
 };
