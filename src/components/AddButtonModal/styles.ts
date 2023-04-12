@@ -5,7 +5,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { blacks, whites, purples, lightPurples },
+  colors: { blacks, whites, purples },
   typography,
 } = globalStyles;
 
@@ -17,39 +17,70 @@ export default (
 ) => {
   return StyleSheet.create({
     modalContainer: modalVisible
-      ? { flex: 1, justifyContent: "center", alignItems: "center" }
+      ? {
+          minHeight: "100%",
+          display: "flex",
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }
       : {},
     modalBackground: {
-      flex: 1,
+      width: "100%",
+      height: "100%",
+      display: "flex",
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: blacks.blackTransparent,
     },
     modalCard: {
       display: "flex",
+      position: "absolute",
+      bottom: 0,
       backgroundColor: purples.purple100,
       borderRadius: spacing.multipleReg * 4,
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
       paddingVertical: verticalScale(spacing.multipleReg * 2),
       paddingHorizontal: horizontalScale(spacing.multipleReg),
-      height: "30%",
-      width: "75%",
+      height: "80%",
+      width: "100%",
     },
-    button: {
-      alignSelf: "center",
+    exitButton: {
+      position: "relative",
+      right: spacing.multipleL,
+      alignSelf: "flex-end",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      width: "65%",
-      height: spacing.multipleReg * 4.5,
-      borderRadius: spacing.multipleReg * 4.5,
-      backgroundColor: lightPurples.lightPurple100,
+      width: spacing.multipleReg * 7,
+      height: spacing.multipleReg * 7,
+      borderRadius: spacing.multipleReg * 5,
       opacity: 0.75,
     },
-    buttonText: {
-      position: "relative",
-      top: spacing.multipleXS,
-      fontFamily: typography.semiBold,
+    exitButtonIcon: {
+      fontFamily: typography.light,
+      fontSize: moderateScale(16),
       color: whites.white200,
+    },
+    addStudentContainer: {
+      position: "relative",
+      width: verticalScale(spacing.multipleReg * 8),
+      height: verticalScale(spacing.multipleReg * 8),
+      borderRadius: verticalScale(spacing.multipleReg * 8),
+      backgroundColor: "white",
+    },
+    addStudentText: {
+      position: "absolute",
+      fontFamily: typography.bold,
+      color: "purple",
+      bottom: -verticalScale(spacing.multipleReg * 6),
+      fontSize: moderateScale(12),
+      textAlign: "center",
+    },
+    studentIcon: {
+      width: 40,
+      height: 40,
     },
   });
 };
