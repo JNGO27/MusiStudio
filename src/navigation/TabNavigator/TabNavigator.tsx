@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import type { TabNavigatorParamList } from "@src/types";
+
 import { AddButtonModalContext } from "@src/contexts/AddButtonModalContext";
-import { HomeNav, StudentsNav } from "@src/navigation";
+import { HomeNav, AddButtonNav, StudentsNav } from "@src/navigation";
 import { AddButtonTab } from "@src/components";
 
-const Tab = createBottomTabNavigator();
-
-const PlaceHolderComponent = () => null;
+const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
 const TabNavigator = () => {
   const noHeaderOption = { headerShown: false };
@@ -21,10 +21,11 @@ const TabNavigator = () => {
         />
         <Tab.Screen
           options={{
+            headerShown: false,
             tabBarButton: AddButtonTab,
           }}
-          name="Add"
-          component={PlaceHolderComponent}
+          name="AddTab"
+          component={AddButtonNav}
         />
         <Tab.Screen
           options={noHeaderOption}
