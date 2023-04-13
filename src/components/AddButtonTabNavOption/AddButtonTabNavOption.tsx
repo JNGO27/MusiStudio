@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { useAddButtonModalContext } from "@src/contexts/AddButtonModalContext";
 
 import type { AddTabParamList, AddTabOptions } from "@src/types";
 
@@ -13,10 +14,13 @@ type ModalOptions = NativeStackNavigationProp<AddTabParamList, "AddTab">;
 
 type Props = {
   screenOption: AddTabOptions;
+  text: string;
 };
 
-const AddButtonTabNavOption = ({ screenOption }: Props) => {
+const AddButtonTabNavOption = ({ screenOption, text }: Props) => {
   const navigator = useNavigation<ModalOptions>();
+
+  const { setModalVisible } = useAddButtonModalContext();
 
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -25,17 +29,25 @@ const AddButtonTabNavOption = ({ screenOption }: Props) => {
     moderateScale,
   );
 
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleNavigation = () => {
+    navigator.navigate("AddTab", {
+      screen: screenOption,
+    });
+  };
+
+  const hanldeOnPress = () => {
+    handleCloseModal();
+    handleNavigation();
+  };
+
   return (
-    <TouchableOpacity
-      onPress={() =>
-        navigator.navigate("AddTab", {
-          screen: screenOption,
-        })
-      }
-    >
-      <View style={styles.addStudentContainer}>
-        <Text style={styles.addStudentText}>Add Student</Text>
-      </View>
+    <TouchableOpacity style={styles.container} onPress={hanldeOnPress}>
+      <View style={styles.addStudentContainer} />
+      <Text style={styles.addStudentText}>{text}</Text>
     </TouchableOpacity>
   );
 };

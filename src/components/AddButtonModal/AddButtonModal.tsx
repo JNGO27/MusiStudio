@@ -46,8 +46,11 @@ const AddButtonModal = () => {
             <TouchableOpacity style={styles.exitButton} onPress={openOrClose}>
               <Text style={styles.exitButtonIcon}>✖</Text>
             </TouchableOpacity>
+            <AddButtonTabNavOption
+              screenOption="AddStudent"
+              text="Add Student"
+            />
           </View>
-          <AddButtonTabNavOption screenOption="Test" />
         </View>
       </TouchableWithoutFeedback>
     </Modal>
