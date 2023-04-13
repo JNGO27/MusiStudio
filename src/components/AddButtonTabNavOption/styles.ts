@@ -11,6 +11,14 @@ export default (
   moderateScale: CalculatedScale,
 ) => {
   return StyleSheet.create({
+    container: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: spacing.multipleReg,
+      width: verticalScale(spacing.multipleReg * 10),
+      height: verticalScale(spacing.multipleReg * 14),
+    },
     addStudentContainer: {
       position: "relative",
       width: verticalScale(spacing.multipleReg * 8),
@@ -19,10 +27,8 @@ export default (
       backgroundColor: "white",
     },
     addStudentText: {
-      position: "absolute",
       fontFamily: typography.bold,
       color: "purple",
-      bottom: -verticalScale(spacing.multipleReg * 6),
       fontSize: moderateScale(12),
       textAlign: "center",
     },
