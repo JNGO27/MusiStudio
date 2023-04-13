@@ -39,7 +39,7 @@ export type TabNavigatorParamList = {
 export type AddTabParamList = {
   AddTab: { screen: AddTabOptions };
   AddButtonModalScreen: undefined;
-  Test: undefined;
+  AddStudent: undefined;
 };
 
 export type AddTabOptions = keyof AddTabParamList;
