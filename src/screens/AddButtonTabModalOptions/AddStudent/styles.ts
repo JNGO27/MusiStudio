@@ -28,5 +28,17 @@ export default (
       borderWidth: 2,
       borderColor: "black",
     },
+    button: {
+      marginTop: 20,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "20%",
+      height: 40,
+      backgroundColor: "blue",
+    },
+    text: {
+      color: "white",
+    },
   });
 };

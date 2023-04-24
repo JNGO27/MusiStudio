@@ -1,24 +1,15 @@
-import { View, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { Formik } from "formik";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
-import type { FormikSubmit } from "@src/types";
+import { useInsertStudentDataMutation } from "@src/redux/services/supabaseAPI";
+
+import type { StudentFormValues, FormikSubmit } from "@src/types";
 
 import createStyleSheet from "./styles";
 
-type StudentFormValues = {
-  first_name: string;
-  last_name: string;
-  phone_number: string;
-  email: string;
-  family_first_name: string;
-  family_last_name: string;
-  family_phone_number: string;
-  family_email: string;
-  rate: string;
-};
-
 const AddStudent = () => {
+  const [insertStudentData] = useInsertStudentDataMutation();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -38,7 +29,9 @@ const AddStudent = () => {
     rate: "",
   };
 
-  const handleStudentSubmit = () => {};
+  const handleStudentSubmit = async (values: StudentFormValues) => {
+    await insertStudentData(values);
+  };
 
   return (
     <View style={styles.container}>
@@ -76,28 +69,28 @@ const AddStudent = () => {
               />
               <TextInput
                 style={styles.input}
-                value={values.first_name}
+                value={values.family_first_name}
                 onChangeText={handleChange("family_first_name")}
                 onBlur={handleBlur("family_first_name")}
                 placeholder="family_first_name"
               />
               <TextInput
                 style={styles.input}
-                value={values.last_name}
+                value={values.family_last_name}
                 onChangeText={handleChange("family_last_name")}
                 onBlur={handleBlur("family_last_name")}
                 placeholder="family_last_name"
               />
               <TextInput
                 style={styles.input}
-                value={values.phone_number}
+                value={values.family_phone_number}
                 onChangeText={handleChange("family_phone_number")}
                 onBlur={handleBlur("family_phone_number")}
                 placeholder="family_phone_number"
               />
               <TextInput
                 style={styles.input}
-                value={values.email}
+                value={values.family_email}
                 onChangeText={handleChange("family_email")}
                 onBlur={handleBlur("family_email")}
                 placeholder="family_email"
@@ -110,7 +103,12 @@ const AddStudent = () => {
                 keyboardType="numeric"
                 placeholder="rate"
               />
-              <TouchableOpacity onPress={handleSubmit as FormikSubmit} />
+              <TouchableOpacity
+                style={styles.button}
+                onPress={handleSubmit as FormikSubmit}
+              >
+                <Text style={styles.text}>Submit</Text>
+              </TouchableOpacity>
             </View>
           );
         }}

@@ -34,11 +34,11 @@ const StudentsHome = () => {
           <DataCardsContainer
             allStudentData={[
               <StudentCard
-                key={item.id}
-                first_name={item.first_name}
-                last_name={item.last_name}
-                phone_number={item.phone_number}
-                email_address={item.email_address}
+                key={item.student_data.id}
+                first_name={item.student_data.first_name}
+                last_name={item.student_data.last_name}
+                phone_number={item.student_data.phone_number}
+                email_address={item.student_data.email_address}
               />,
               <FamilyCard
                 key={item.id}
