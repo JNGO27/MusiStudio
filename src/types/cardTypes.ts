@@ -32,7 +32,8 @@ export type FamilyCardType = {
   phone_number: string;
 };
 
-export type StudentAndFamily = StudentCardType & {
+export type StudentAndFamily = {
+  student_data: StudentCardType;
   associated_family: FamilyCardType;
 };
 
