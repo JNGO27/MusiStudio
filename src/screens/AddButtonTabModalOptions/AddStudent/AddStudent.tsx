@@ -15,6 +15,7 @@ type StudentFormValues = {
   family_last_name: string;
   family_phone_number: string;
   family_email: string;
+  rate: string;
 };
 
 const AddStudent = () => {
@@ -34,6 +35,7 @@ const AddStudent = () => {
     family_last_name: "",
     family_phone_number: "",
     family_email: "",
+    rate: "",
   };
 
   const handleStudentSubmit = () => {};
@@ -99,6 +101,14 @@ const AddStudent = () => {
                 onChangeText={handleChange("family_email")}
                 onBlur={handleBlur("family_email")}
                 placeholder="family_email"
+              />
+              <TextInput
+                style={styles.input}
+                value={values.rate}
+                onChangeText={handleChange("rate")}
+                onBlur={handleBlur("rate")}
+                keyboardType="numeric"
+                placeholder="rate"
               />
               <TouchableOpacity onPress={handleSubmit as FormikSubmit} />
             </View>
