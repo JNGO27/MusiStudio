@@ -5,12 +5,7 @@ import { useScrollToTop } from "@react-navigation/native";
 
 import type { RefObject } from "react";
 
-import {
-  DataCardsContainer,
-  StudentCard,
-  FamilyCard,
-  PracticeCard,
-} from "@src/components";
+import { DataCardsContainer, StudentCard, FamilyCard } from "@src/components";
 
 import type { AllStudentFamilyDataCard } from "@src/types";
 
@@ -51,11 +46,6 @@ const StudentsHome = () => {
                 last_name={item.associated_family.parent_guardian_last_name_1}
                 phone_number={item.associated_family.phone_number}
                 email_address={item.associated_family.email_address}
-              />,
-              <PracticeCard
-                key={item.id}
-                minutes_practiced={item.minutes_practiced}
-                days_practiced={item.days_practiced}
               />,
             ]}
           />

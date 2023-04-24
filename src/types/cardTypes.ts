@@ -36,9 +36,9 @@ export type StudentAndFamily = StudentCardType & {
   associated_family: FamilyCardType;
 };
 
-type PracticeLogData = {
-  minutes_practiced: number;
-  days_practiced: number;
-};
+// type PracticeLogData = {
+//   minutes_practiced: number;
+//   days_practiced: number;
+// };
 
-export type AllStudentFamilyDataCard = StudentAndFamily & PracticeLogData;
+export type AllStudentFamilyDataCard = StudentAndFamily;
