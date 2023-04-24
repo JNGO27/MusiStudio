@@ -8,6 +8,7 @@ import type { AddTabParamList } from "@src/types";
 const Stack = createNativeStackNavigator<AddTabParamList>();
 
 const modalScreenPresentationOption = {
+  headerShown: false,
   presentation: "containedTransparentModal",
 } as const;
 

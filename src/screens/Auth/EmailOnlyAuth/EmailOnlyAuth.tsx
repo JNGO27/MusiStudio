@@ -1,4 +1,11 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
+import * as WebBrowser from "expo-web-browser";
 import { LinearGradient } from "expo-linear-gradient";
 import { Formik } from "formik";
 
@@ -27,6 +34,8 @@ type MyFormValues = {
   email: string;
 };
 
+WebBrowser.maybeCompleteAuthSession();
+
 const EmailOnlyAuth = () => {
   const [redirectUri] = useSetSession();
   const { setModalVisible, setMessage } = useAuthModalContext();
@@ -40,6 +49,10 @@ const EmailOnlyAuth = () => {
   const formValues: MyFormValues = { email: "" };
 
   const continueWithEmailOnly = async ({ email }: MyFormValues) => {
+    if (Platform.OS === "ios") {
+      WebBrowser.dismissBrowser();
+    }
+
     const { error } = await supabaseConfig.auth.signInWithOtp({
       email,
       options: {
