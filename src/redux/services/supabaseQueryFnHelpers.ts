@@ -20,6 +20,7 @@ export const getAllStudentsDataQueryFn = {
 
     return { data };
   },
+  providesTags: [{ type: "Students" } as const],
 };
 
 export const insertStudentDataQueryFn = {
@@ -74,4 +75,5 @@ export const insertStudentDataQueryFn = {
 
     return { data };
   },
+  invalidatesTags: [{ type: "Students" } as const],
 };

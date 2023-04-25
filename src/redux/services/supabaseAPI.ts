@@ -11,6 +11,7 @@ export const supabaseApi = createApi({
     getAllStudentsData: builder.query(getAllStudentsDataQueryFn),
     insertStudentData: builder.mutation(insertStudentDataQueryFn),
   }),
+  tagTypes: ["Students"],
 });
 
 export const { useGetAllStudentsDataQuery, useInsertStudentDataMutation } =
