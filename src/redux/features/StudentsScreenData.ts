@@ -10,6 +10,15 @@ export const currentStudentsAllData = createSlice({
   name: "currentStudentsAllData",
   initialState,
   reducers: {
+    setInitialStudentsAllData: (
+      state,
+      { payload }: PayloadAction<StudentAndFamily[]>,
+    ) => {
+      return {
+        ...state,
+        studentsAllData: payload,
+      };
+    },
     addStudentRowData: (
       state: StudentsAllDataType,
       { payload }: PayloadAction<StudentAndFamily>,
@@ -22,6 +31,7 @@ export const currentStudentsAllData = createSlice({
   },
 });
 
-export const { addStudentRowData } = currentStudentsAllData.actions;
+export const { addStudentRowData, setInitialStudentsAllData } =
+  currentStudentsAllData.actions;
 
 export default currentStudentsAllData.reducer;
