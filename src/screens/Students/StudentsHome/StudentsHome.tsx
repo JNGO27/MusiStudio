@@ -16,9 +16,9 @@ import createStyleSheet from "./styles";
 type MyRef = RefObject<FlatList>;
 
 const StudentsHome = () => {
+  const { data: allStudentRelatedData } = useGetAllStudentsDataQuery({});
   const ref: MyRef = useRef<FlatList>(null);
 
-  const { data: allStudentRelatedData } = useGetAllStudentsDataQuery({});
   const styles = createStyleSheet();
 
   useScrollToTop(ref);
