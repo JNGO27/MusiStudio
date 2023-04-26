@@ -1,3 +1,5 @@
+export type RateOptions = "per_hour" | "per_lesson" | "per_month";
+
 export type StudentFormValues = {
   first_name: string;
   last_name: string;
@@ -8,5 +10,6 @@ export type StudentFormValues = {
   family_phone_number: string;
   family_email: string;
   lesson_length: string;
+  rate_per_time: RateOptions;
   rate: string;
 };

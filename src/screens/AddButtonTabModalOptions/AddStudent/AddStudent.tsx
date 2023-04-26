@@ -40,28 +40,38 @@ const AddStudent = () => {
     family_email: "",
     lesson_length: "",
     rate: "",
+    rate_per_time: "per_hour",
   };
 
   const handleStudentSubmit = async (values: StudentFormValues) => {
     await insertStudentData(values);
   };
 
-  const handlePerHour = () => {
-    dispatch({ type: "PER_HOUR" });
-  };
-
-  const handlePerLesson = () => {
-    dispatch({ type: "PER_LESSON" });
-  };
-
-  const handlePerMonth = () => {
-    dispatch({ type: "PER_MONTH" });
-  };
-
   return (
     <ScrollView style={styles.container}>
       <Formik initialValues={formValues} onSubmit={handleStudentSubmit}>
-        {({ handleChange, handleBlur, handleSubmit, values }) => {
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          setFieldValue,
+          values,
+        }) => {
+          const handlePerHour = () => {
+            dispatch({ type: "PER_HOUR" });
+            setFieldValue("rate_per_time", "per_hour");
+          };
+
+          const handlePerLesson = () => {
+            dispatch({ type: "PER_LESSON" });
+            setFieldValue("rate_per_time", "per_lesson");
+          };
+
+          const handlePerMonth = () => {
+            dispatch({ type: "PER_MONTH" });
+            setFieldValue("rate_per_time", "per_month");
+          };
+
           return (
             <View style={styles.innerContainer}>
               <Text>Student</Text>
@@ -146,7 +156,6 @@ const AddStudent = () => {
                 <Text>Yes it does</Text>
               )}
               <Text>Lesson Length</Text>
-
               <TextInput
                 style={styles.input}
                 value={values.rate}
@@ -172,19 +181,28 @@ const AddStudent = () => {
                   keyboardType="numeric"
                   placeholder="rate"
                 />
-                <View style={{ display: "flex", gap: 20 }}>
-                  <Checkbox
-                    value={state.PER_HOUR}
-                    onValueChange={handlePerHour}
-                  />
-                  <Checkbox
-                    value={state.PER_LESSON}
-                    onValueChange={handlePerLesson}
-                  />
-                  <Checkbox
-                    value={state.PER_MONTH}
-                    onValueChange={handlePerMonth}
-                  />
+                <View style={{ display: "flex", gap: 10 }}>
+                  <View>
+                    <Text>Per Hour</Text>
+                    <Checkbox
+                      value={state.PER_HOUR}
+                      onValueChange={handlePerHour}
+                    />
+                  </View>
+                  <View>
+                    <Text>Per Lesson</Text>
+                    <Checkbox
+                      value={state.PER_LESSON}
+                      onValueChange={handlePerLesson}
+                    />
+                  </View>
+                  <View>
+                    <Text>Per Month</Text>
+                    <Checkbox
+                      value={state.PER_MONTH}
+                      onValueChange={handlePerMonth}
+                    />
+                  </View>
                 </View>
               </View>
               <TouchableOpacity

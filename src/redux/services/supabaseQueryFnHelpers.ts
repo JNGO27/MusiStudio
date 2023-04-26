@@ -32,6 +32,7 @@ export const insertStudentDataQueryFn = {
         phone_number: formValues.phone_number,
         email_address: formValues.email,
         rate: formValues.rate,
+        rate_per_time: formValues.rate_per_time,
       },
     ];
 
