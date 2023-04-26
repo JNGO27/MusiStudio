@@ -70,6 +70,7 @@ const AddStudent = () => {
                 onChangeText={handleChange("phone_number")}
                 onBlur={handleBlur("phone_number")}
                 placeholder="phone_number"
+                keyboardType="numeric"
               />
               <TextInput
                 style={styles.input}
@@ -116,6 +117,7 @@ const AddStudent = () => {
                     onChangeText={handleChange("family_phone_number")}
                     onBlur={handleBlur("family_phone_number")}
                     placeholder="family_phone_number"
+                    keyboardType="numeric"
                   />
                   <TextInput
                     style={styles.input}
