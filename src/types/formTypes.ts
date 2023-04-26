@@ -7,5 +7,6 @@ export type StudentFormValues = {
   family_last_name: string;
   family_phone_number: string;
   family_email: string;
+  lesson_length: string;
   rate: string;
 };

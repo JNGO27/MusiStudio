@@ -1,4 +1,12 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { useState } from "react";
+import {
+  ScrollView,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import Checkbox from "expo-checkbox";
 import { Formik } from "formik";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
@@ -9,6 +17,7 @@ import type { StudentFormValues, FormikSubmit } from "@src/types";
 import createStyleSheet from "./styles";
 
 const AddStudent = () => {
+  const [doesFamilyExist, setDoesFamilyExist] = useState(false);
   const [insertStudentData] = useInsertStudentDataMutation();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -26,6 +35,7 @@ const AddStudent = () => {
     family_last_name: "",
     family_phone_number: "",
     family_email: "",
+    lesson_length: "",
     rate: "",
   };
 
@@ -34,11 +44,12 @@ const AddStudent = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Formik initialValues={formValues} onSubmit={handleStudentSubmit}>
         {({ handleChange, handleBlur, handleSubmit, values }) => {
           return (
             <View style={styles.innerContainer}>
+              <Text>Student</Text>
               <TextInput
                 style={styles.input}
                 value={values.first_name}
@@ -67,34 +78,57 @@ const AddStudent = () => {
                 onBlur={handleBlur("email")}
                 placeholder="email"
               />
-              <TextInput
-                style={styles.input}
-                value={values.family_first_name}
-                onChangeText={handleChange("family_first_name")}
-                onBlur={handleBlur("family_first_name")}
-                placeholder="family_first_name"
-              />
-              <TextInput
-                style={styles.input}
-                value={values.family_last_name}
-                onChangeText={handleChange("family_last_name")}
-                onBlur={handleBlur("family_last_name")}
-                placeholder="family_last_name"
-              />
-              <TextInput
-                style={styles.input}
-                value={values.family_phone_number}
-                onChangeText={handleChange("family_phone_number")}
-                onBlur={handleBlur("family_phone_number")}
-                placeholder="family_phone_number"
-              />
-              <TextInput
-                style={styles.input}
-                value={values.family_email}
-                onChangeText={handleChange("family_email")}
-                onBlur={handleBlur("family_email")}
-                placeholder="family_email"
-              />
+              <Text>Family</Text>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 4,
+                }}
+              >
+                <Text>Family Already Exists?</Text>
+                <Checkbox
+                  value={doesFamilyExist}
+                  onValueChange={setDoesFamilyExist}
+                />
+              </View>
+              {!doesFamilyExist ? (
+                <View>
+                  <TextInput
+                    style={styles.input}
+                    value={values.family_first_name}
+                    onChangeText={handleChange("family_first_name")}
+                    onBlur={handleBlur("family_first_name")}
+                    placeholder="family_first_name"
+                  />
+                  <TextInput
+                    style={styles.input}
+                    value={values.family_last_name}
+                    onChangeText={handleChange("family_last_name")}
+                    onBlur={handleBlur("family_last_name")}
+                    placeholder="family_last_name"
+                  />
+                  <TextInput
+                    style={styles.input}
+                    value={values.family_phone_number}
+                    onChangeText={handleChange("family_phone_number")}
+                    onBlur={handleBlur("family_phone_number")}
+                    placeholder="family_phone_number"
+                  />
+                  <TextInput
+                    style={styles.input}
+                    value={values.family_email}
+                    onChangeText={handleChange("family_email")}
+                    onBlur={handleBlur("family_email")}
+                    placeholder="family_email"
+                  />
+                </View>
+              ) : (
+                <Text>Yes it does</Text>
+              )}
+              <Text>Rate</Text>
               <TextInput
                 style={styles.input}
                 value={values.rate}
@@ -113,7 +147,7 @@ const AddStudent = () => {
           );
         }}
       </Formik>
-    </View>
+    </ScrollView>
   );
 };
 
