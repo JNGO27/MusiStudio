@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import {
   ScrollView,
   View,
@@ -16,7 +16,10 @@ import type { StudentFormValues, FormikSubmit } from "@src/types";
 
 import createStyleSheet from "./styles";
 
+import { initialState, reducer } from "./reducerHelper";
+
 const AddStudent = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [doesFamilyExist, setDoesFamilyExist] = useState(false);
   const [insertStudentData] = useInsertStudentDataMutation();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
@@ -41,6 +44,18 @@ const AddStudent = () => {
 
   const handleStudentSubmit = async (values: StudentFormValues) => {
     await insertStudentData(values);
+  };
+
+  const handlePerHour = () => {
+    dispatch({ type: "PER_HOUR" });
+  };
+
+  const handlePerLesson = () => {
+    dispatch({ type: "PER_LESSON" });
+  };
+
+  const handlePerMonth = () => {
+    dispatch({ type: "PER_MONTH" });
   };
 
   return (
@@ -130,15 +145,48 @@ const AddStudent = () => {
               ) : (
                 <Text>Yes it does</Text>
               )}
-              <Text>Rate</Text>
+              <Text>Lesson Length</Text>
+
               <TextInput
                 style={styles.input}
                 value={values.rate}
-                onChangeText={handleChange("rate")}
-                onBlur={handleBlur("rate")}
+                onChangeText={handleChange("lesson_length")}
+                onBlur={handleBlur("lesson_length")}
                 keyboardType="numeric"
-                placeholder="rate"
+                placeholder="lesson_length"
               />
+              <Text>Rate</Text>
+              <View
+                style={{
+                  display: "flex",
+                  width: "80%",
+                  flexDirection: "row",
+                  gap: 40,
+                }}
+              >
+                <TextInput
+                  style={styles.input}
+                  value={values.rate}
+                  onChangeText={handleChange("rate")}
+                  onBlur={handleBlur("rate")}
+                  keyboardType="numeric"
+                  placeholder="rate"
+                />
+                <View style={{ display: "flex", gap: 20 }}>
+                  <Checkbox
+                    value={state.PER_HOUR}
+                    onValueChange={handlePerHour}
+                  />
+                  <Checkbox
+                    value={state.PER_LESSON}
+                    onValueChange={handlePerLesson}
+                  />
+                  <Checkbox
+                    value={state.PER_MONTH}
+                    onValueChange={handlePerMonth}
+                  />
+                </View>
+              </View>
               <TouchableOpacity
                 style={styles.button}
                 onPress={handleSubmit as FormikSubmit}
