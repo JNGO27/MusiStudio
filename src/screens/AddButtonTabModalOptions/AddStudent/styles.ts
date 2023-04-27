@@ -9,7 +9,7 @@ import globalStyles from "@src/globalStyles";
 const {
   typography,
   spacing,
-  colors: { lightPurples },
+  colors: { lightPurples, whites, grays },
 } = globalStyles;
 
 export default (
@@ -47,21 +47,33 @@ export default (
     },
     formContainer: {
       position: "relative",
-      top: -spacing.multipleXL * 6,
-      backgroundColor: "white",
+      top: -spacing.multipleXL * 14,
+      backgroundColor: whites.white300,
       borderTopRightRadius: spacing.multipleReg * 7,
       borderTopLeftRadius: spacing.multipleReg * 7,
+      paddingTop: spacing.multipleL * 3,
+      gap: spacing.multipleReg * 4,
+    },
+    formSection: {
       display: "flex",
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
       gap: 8,
     },
+    formSectionHeaderText: {
+      fontFamily: typography.semiBold,
+      alignSelf: "flex-start",
+      paddingLeft: spacing.multipleL * 3,
+      fontSize: moderateScale(14),
+      color: grays.gray800,
+    },
     input: {
-      width: "50%",
-      height: 40,
-      borderWidth: 2,
-      borderColor: "black",
+      width: "80%",
+      height: verticalScale(35),
+      backgroundColor: "white",
+      borderRadius: spacing.multipleReg * 2,
+      paddingLeft: 10,
     },
     button: {
       marginTop: 20,
@@ -74,6 +86,12 @@ export default (
     },
     text: {
       color: "white",
+    },
+    divider: {
+      width: "100%",
+      marginTop: spacing.multipleS,
+      borderBottomColor: grays.gray300,
+      borderBottomWidth: 2,
     },
   });
 };

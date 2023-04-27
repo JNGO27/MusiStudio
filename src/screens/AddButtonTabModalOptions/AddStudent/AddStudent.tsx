@@ -25,6 +25,7 @@ import { initialState, reducer } from "./reducerHelper";
 
 const {
   colors: {
+    purples,
     gradients: { purpleGradient },
   },
 } = globalStyles;
@@ -99,46 +100,47 @@ const AddStudent = () => {
 
           return (
             <View style={styles.formContainer}>
-              <Text>Student</Text>
-              <TextInput
-                style={styles.input}
-                value={values.first_name}
-                onChangeText={handleChange("first_name")}
-                onBlur={handleBlur("first_name")}
-                placeholder="first_name"
-              />
-              <TextInput
-                style={styles.input}
-                value={values.last_name}
-                onChangeText={handleChange("last_name")}
-                onBlur={handleBlur("last_name")}
-                placeholder="last_name"
-              />
-              <TextInput
-                style={styles.input}
-                value={values.phone_number}
-                onChangeText={handleChange("phone_number")}
-                onBlur={handleBlur("phone_number")}
-                placeholder="phone_number"
-                keyboardType="numeric"
-              />
-              <TextInput
-                style={styles.input}
-                value={values.email}
-                onChangeText={handleChange("email")}
-                onBlur={handleBlur("email")}
-                placeholder="email"
-              />
-              <Text>Family</Text>
-              <View
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 4,
-                }}
-              >
+              <View style={styles.formSection}>
+                <Text style={styles.formSectionHeaderText}>
+                  Student Details
+                </Text>
+                <TextInput
+                  style={styles.input}
+                  value={values.first_name}
+                  onChangeText={handleChange("first_name")}
+                  onBlur={handleBlur("first_name")}
+                  placeholder="First Name *"
+                  selectionColor={purples.purple100}
+                />
+                <TextInput
+                  style={styles.input}
+                  value={values.last_name}
+                  onChangeText={handleChange("last_name")}
+                  onBlur={handleBlur("last_name")}
+                  placeholder="Last Name *"
+                  selectionColor={purples.purple100}
+                />
+                <TextInput
+                  style={styles.input}
+                  value={values.phone_number}
+                  onChangeText={handleChange("phone_number")}
+                  onBlur={handleBlur("phone_number")}
+                  placeholder="Phone Number"
+                  keyboardType="numeric"
+                  selectionColor={purples.purple100}
+                />
+                <TextInput
+                  style={styles.input}
+                  value={values.email}
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  placeholder="Email"
+                  selectionColor={purples.purple100}
+                />
+              </View>
+              <View style={styles.divider} />
+              <View style={styles.formSection}>
+                <Text style={styles.formSectionHeaderText}>Family</Text>
                 <Text>Family Already Exists?</Text>
                 <Checkbox
                   value={doesFamilyExist}
@@ -146,96 +148,106 @@ const AddStudent = () => {
                 />
               </View>
               {!doesFamilyExist ? (
-                <View>
+                <View style={styles.formSection}>
                   <TextInput
                     style={styles.input}
                     value={values.family_first_name}
                     onChangeText={handleChange("family_first_name")}
                     onBlur={handleBlur("family_first_name")}
-                    placeholder="family_first_name"
+                    placeholder="Parent First Name *"
+                    selectionColor={purples.purple100}
                   />
                   <TextInput
                     style={styles.input}
                     value={values.family_last_name}
                     onChangeText={handleChange("family_last_name")}
                     onBlur={handleBlur("family_last_name")}
-                    placeholder="family_last_name"
+                    placeholder="Parent Last Name *"
+                    selectionColor={purples.purple100}
                   />
                   <TextInput
                     style={styles.input}
                     value={values.family_phone_number}
                     onChangeText={handleChange("family_phone_number")}
                     onBlur={handleBlur("family_phone_number")}
-                    placeholder="family_phone_number"
+                    placeholder="Parent Phone Number"
                     keyboardType="numeric"
+                    selectionColor={purples.purple100}
                   />
                   <TextInput
                     style={styles.input}
                     value={values.family_email}
                     onChangeText={handleChange("family_email")}
                     onBlur={handleBlur("family_email")}
-                    placeholder="family_email"
+                    placeholder="Parent Email"
+                    selectionColor={purples.purple100}
                   />
                 </View>
               ) : (
                 <Text>Yes it does</Text>
               )}
-              <Text>Lesson Length</Text>
-              <TextInput
-                style={styles.input}
-                value={values.rate}
-                onChangeText={handleChange("lesson_length")}
-                onBlur={handleBlur("lesson_length")}
-                keyboardType="numeric"
-                placeholder="lesson_length"
-              />
-              <Text>Rate</Text>
-              <View
-                style={{
-                  display: "flex",
-                  width: "80%",
-                  flexDirection: "row",
-                  gap: 40,
-                }}
-              >
+              <View style={styles.formSection}>
+                <Text style={styles.formSectionHeaderText}>Lesson Length</Text>
                 <TextInput
                   style={styles.input}
                   value={values.rate}
-                  onChangeText={handleChange("rate")}
-                  onBlur={handleBlur("rate")}
+                  onChangeText={handleChange("lesson_length")}
+                  onBlur={handleBlur("lesson_length")}
                   keyboardType="numeric"
-                  placeholder="rate"
+                  placeholder="Lesson Length"
+                  selectionColor={purples.purple100}
                 />
-                <View style={{ display: "flex", gap: 10 }}>
-                  <View>
-                    <Text>Per Hour</Text>
-                    <Checkbox
-                      value={state.PER_HOUR}
-                      onValueChange={handlePerHour}
-                    />
-                  </View>
-                  <View>
-                    <Text>Per Lesson</Text>
-                    <Checkbox
-                      value={state.PER_LESSON}
-                      onValueChange={handlePerLesson}
-                    />
-                  </View>
-                  <View>
-                    <Text>Per Month</Text>
-                    <Checkbox
-                      value={state.PER_MONTH}
-                      onValueChange={handlePerMonth}
-                    />
+              </View>
+              <View style={styles.formSection}>
+                <Text style={styles.formSectionHeaderText}>Rate</Text>
+                <View
+                  style={{
+                    display: "flex",
+                    width: "80%",
+                    flexDirection: "row",
+                    gap: 40,
+                  }}
+                >
+                  <TextInput
+                    style={styles.input}
+                    value={values.rate}
+                    onChangeText={handleChange("rate")}
+                    onBlur={handleBlur("rate")}
+                    keyboardType="numeric"
+                    placeholder="$ USD Amount *"
+                    selectionColor={purples.purple100}
+                  />
+                  <View style={{ display: "flex", gap: 10 }}>
+                    <View>
+                      <Text>Per Hour</Text>
+                      <Checkbox
+                        value={state.PER_HOUR}
+                        onValueChange={handlePerHour}
+                      />
+                    </View>
+                    <View>
+                      <Text>Per Lesson</Text>
+                      <Checkbox
+                        value={state.PER_LESSON}
+                        onValueChange={handlePerLesson}
+                      />
+                    </View>
+                    <View>
+                      <Text>Per Month</Text>
+                      <Checkbox
+                        value={state.PER_MONTH}
+                        onValueChange={handlePerMonth}
+                      />
+                    </View>
                   </View>
                 </View>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={handleSubmit as FormikSubmit}
+                >
+                  <Text style={styles.text}>Submit</Text>
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={handleSubmit as FormikSubmit}
-              >
-                <Text style={styles.text}>Submit</Text>
-              </TouchableOpacity>
             </View>
           );
         }}

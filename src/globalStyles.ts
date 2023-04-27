@@ -24,6 +24,8 @@ const COLORS = {
     gray300: "hsl(24, 6%, 80%)",
     gray400: "hsl(24, 4%, 40%)",
     gray600: "hsl(24, 4%, 35%)",
+    gray700: "hsl(24, 4%, 28%)",
+    gray800: "hsl(22, 3.8%, 22.5%)",
   },
   lightPurples: {
     lightPurple100: "hsl(252.5, 94.7%, 85.1%)",
