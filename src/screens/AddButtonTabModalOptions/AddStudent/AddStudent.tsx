@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Checkbox from "expo-checkbox";
+import { Image } from "expo-image";
+import { LinearGradient } from "expo-linear-gradient";
 import { Formik } from "formik";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
@@ -14,9 +16,18 @@ import { useInsertStudentDataMutation } from "@src/redux/services/supabaseAPI";
 
 import type { StudentFormValues, FormikSubmit } from "@src/types";
 
+import { StudentIllustration } from "@src/assets/illustrations";
+
+import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 
 import { initialState, reducer } from "./reducerHelper";
+
+const {
+  colors: {
+    gradients: { purpleGradient },
+  },
+} = globalStyles;
 
 const AddStudent = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -49,6 +60,20 @@ const AddStudent = () => {
 
   return (
     <ScrollView style={styles.container}>
+      <LinearGradient
+        style={styles.imageContainer}
+        colors={purpleGradient.colors}
+        locations={purpleGradient.locations}
+        start={purpleGradient.start}
+        end={purpleGradient.end}
+      >
+        <Text style={styles.headerText}>Add New Student</Text>
+        <Image
+          source={StudentIllustration}
+          contentFit="contain"
+          style={styles.addStudentImage}
+        />
+      </LinearGradient>
       <Formik initialValues={formValues} onSubmit={handleStudentSubmit}>
         {({
           handleChange,
@@ -73,7 +98,7 @@ const AddStudent = () => {
           };
 
           return (
-            <View style={styles.innerContainer}>
+            <View style={styles.formContainer}>
               <Text>Student</Text>
               <TextInput
                 style={styles.input}
