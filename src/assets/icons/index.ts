@@ -7,6 +7,7 @@ export { default as ClockSvg } from "./ClockSvg";
 export { default as ChartSvg } from "./ChartSvg";
 export { default as ChevronRight } from "./ChevronRight";
 export { default as AccountPerson } from "./AccountPerson";
+export { default as MusicNote } from "./MusicNote";
 
 export { default as ErrorIcon } from "./error.png";
 export { default as SuccessIcon } from "./success.png";
