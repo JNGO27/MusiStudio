@@ -1,24 +1,56 @@
-type CheckboxesState = {
+type FamilyTypeCheckboxesState = {
+  NEW_FAMILY: boolean;
+  EXISTS: boolean;
+};
+
+type FamilyTypeCheckboxesActions = { type: "NEW_FAMILY" } | { type: "EXISTS" };
+
+type RateCheckboxesState = {
   PER_HOUR: boolean;
   PER_LESSON: boolean;
   PER_MONTH: boolean;
 };
 
-type CheckboxesActions =
+type RateCheckboxesActions =
   | { type: "PER_HOUR" }
   | { type: "PER_LESSON" }
   | { type: "PER_MONTH" };
 
-export const rateInitialState: CheckboxesState = {
+export const familyTypeInitialState: FamilyTypeCheckboxesState = {
+  NEW_FAMILY: true,
+  EXISTS: false,
+};
+
+export const rateInitialState: RateCheckboxesState = {
   PER_HOUR: true,
   PER_LESSON: false,
   PER_MONTH: false,
 };
 
+export function familyTypeReducer(
+  checkboxActions: FamilyTypeCheckboxesState,
+  action: FamilyTypeCheckboxesActions,
+): FamilyTypeCheckboxesState {
+  switch (action.type) {
+    case "NEW_FAMILY":
+      return {
+        NEW_FAMILY: true,
+        EXISTS: false,
+      };
+    case "EXISTS":
+      return {
+        NEW_FAMILY: false,
+        EXISTS: true,
+      };
+    default:
+      throw new Error("Must return a valid checkbox state object");
+  }
+}
+
 export function rateReducer(
-  checkboxActions: CheckboxesState,
-  action: CheckboxesActions,
-): CheckboxesState {
+  checkboxActions: RateCheckboxesState,
+  action: RateCheckboxesActions,
+): RateCheckboxesState {
   switch (action.type) {
     case "PER_HOUR":
       return {

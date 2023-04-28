@@ -21,7 +21,12 @@ import { StudentIllustration } from "@src/assets/illustrations";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 
-import { rateInitialState, rateReducer } from "./reducerHelper";
+import {
+  familyTypeInitialState,
+  familyTypeReducer,
+  rateInitialState,
+  rateReducer,
+} from "./reducerHelper";
 
 const {
   colors: {
@@ -31,8 +36,12 @@ const {
 } = globalStyles;
 
 const AddStudent = () => {
+  const [familyTypeState, familyTypeDispatch] = useReducer(
+    familyTypeReducer,
+    familyTypeInitialState,
+  );
   const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
-  const [doesFamilyExist, setDoesFamilyExist] = useState(false);
+  const [doesFamilyExist, setDoesFamilyExist] = useState(true);
   const [insertStudentData] = useInsertStudentDataMutation();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -83,6 +92,14 @@ const AddStudent = () => {
           setFieldValue,
           values,
         }) => {
+          const handleNewFamily = () => {
+            familyTypeDispatch({ type: "NEW_FAMILY" });
+          };
+
+          const handleExistingFamily = () => {
+            familyTypeDispatch({ type: "EXISTS" });
+          };
+
           const handlePerHour = () => {
             rateDispatch({ type: "PER_HOUR" });
             setFieldValue("rate_per_time", "per_hour");
@@ -144,15 +161,15 @@ const AddStudent = () => {
                 <View>
                   <Text>New Family</Text>
                   <Checkbox
-                    value={doesFamilyExist}
-                    onValueChange={setDoesFamilyExist}
+                    value={familyTypeState.NEW_FAMILY}
+                    onValueChange={handleNewFamily}
                   />
                 </View>
                 <View>
                   <Text>Family Already Exists?</Text>
                   <Checkbox
-                    value={doesFamilyExist}
-                    onValueChange={setDoesFamilyExist}
+                    value={familyTypeState.EXISTS}
+                    onValueChange={handleExistingFamily}
                   />
                 </View>
               </View>
