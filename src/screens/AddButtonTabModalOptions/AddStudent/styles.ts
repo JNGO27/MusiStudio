@@ -13,13 +13,14 @@ import globalStyles from "@src/globalStyles";
 const {
   typography,
   spacing,
-  colors: { lightPurples, whites, grays },
+  colors: { lightPurples, whites, grays, blacks, greens },
 } = globalStyles;
 
 export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  faimlyTypeState: FamilyTypeCheckboxesState,
 ) => {
   return StyleSheet.create({
     container: {
@@ -68,6 +69,7 @@ export default (
     familyTypeContainer: {
       display: "flex",
       flexDirection: "row",
+      gap: spacing.multipleL * 2,
     },
     familyTypeText: {
       position: "absolute",
@@ -90,6 +92,29 @@ export default (
       backgroundColor: "white",
       borderRadius: spacing.multipleReg * 2,
       paddingLeft: 10,
+    },
+    checkboxCardInner: {
+      width: "100%",
+      height: "100%",
+      padding: spacing.multipleReg,
+    },
+    checkboxCardTextNewFamily: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(14),
+      color: faimlyTypeState.NEW_FAMILY ? greens.green800 : blacks.blackAlpha50,
+      textAlign: "center",
+    },
+    checkboxCardTextExistingFamily: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(14),
+      color: faimlyTypeState.EXISTS ? greens.green800 : blacks.blackAlpha50,
+      textAlign: "center",
+    },
+    checkIcon: {
+      alignSelf: "center",
+      marginTop: spacing.multipleXL,
+      width: spacing.multipleReg * 5,
+      height: spacing.multipleReg * 5,
     },
     button: {
       marginTop: 20,

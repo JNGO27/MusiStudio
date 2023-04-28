@@ -17,6 +17,7 @@ import { CheckboxCard } from "@src/components";
 
 import type { StudentFormValues, FormikSubmit } from "@src/types";
 
+import { SuccessIcon } from "@src/assets/icons";
 import { StudentIllustration } from "@src/assets/illustrations";
 
 import globalStyles from "@src/globalStyles";
@@ -48,6 +49,7 @@ const AddStudent = () => {
     horizontalScale,
     verticalScale,
     moderateScale,
+    familyTypeState,
   );
 
   const formValues: StudentFormValues = {
@@ -165,13 +167,35 @@ const AddStudent = () => {
                     onPress={handleNewFamily}
                     isChosen={familyTypeState.NEW_FAMILY}
                   >
-                    <Text>Create New Family</Text>
+                    <View style={styles.checkboxCardInner}>
+                      <Text style={styles.checkboxCardTextNewFamily}>
+                        Create New Family
+                      </Text>
+                      {familyTypeState.NEW_FAMILY ? (
+                        <Image
+                          style={styles.checkIcon}
+                          source={SuccessIcon}
+                          contentFit="contain"
+                        />
+                      ) : null}
+                    </View>
                   </CheckboxCard>
                   <CheckboxCard
                     onPress={handleExistingFamily}
                     isChosen={familyTypeState.EXISTS}
                   >
-                    <Text>Choose From Existing Family</Text>
+                    <View style={styles.checkboxCardInner}>
+                      <Text style={styles.checkboxCardTextExistingFamily}>
+                        Choose From Existing Family
+                      </Text>
+                      {familyTypeState.EXISTS ? (
+                        <Image
+                          style={styles.checkIcon}
+                          source={SuccessIcon}
+                          contentFit="contain"
+                        />
+                      ) : null}
+                    </View>
                   </CheckboxCard>
                 </View>
               </View>
