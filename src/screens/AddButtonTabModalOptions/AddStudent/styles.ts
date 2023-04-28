@@ -190,9 +190,10 @@ export default (
     perRateText: {
       fontFamily: typography.semiBold,
       fontSize: moderateScale(10),
-      color: blacks.blackAlpha90,
+      color: blacks.blackAlpha70,
       marginTop: spacing.multipleReg * 3,
       letterSpacing: spacing.multipleXS,
+      lineHeight: 12,
       textAlign: "center",
     },
     button: {
