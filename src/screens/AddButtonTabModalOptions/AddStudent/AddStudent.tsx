@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import {
   ScrollView,
   View,
@@ -41,7 +41,6 @@ const AddStudent = () => {
     familyTypeInitialState,
   );
   const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
-  const [doesFamilyExist, setDoesFamilyExist] = useState(true);
   const [insertStudentData] = useInsertStudentDataMutation();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -173,7 +172,7 @@ const AddStudent = () => {
                   />
                 </View>
               </View>
-              {!doesFamilyExist ? (
+              {!familyTypeState.EXISTS ? (
                 <View style={styles.formSection}>
                   <TextInput
                     style={styles.input}
