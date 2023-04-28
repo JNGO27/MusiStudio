@@ -21,7 +21,7 @@ import { StudentIllustration } from "@src/assets/illustrations";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 
-import { initialState, reducer } from "./reducerHelper";
+import { rateInitialState, rateReducer } from "./reducerHelper";
 
 const {
   colors: {
@@ -31,7 +31,7 @@ const {
 } = globalStyles;
 
 const AddStudent = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
   const [doesFamilyExist, setDoesFamilyExist] = useState(false);
   const [insertStudentData] = useInsertStudentDataMutation();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
@@ -84,17 +84,17 @@ const AddStudent = () => {
           values,
         }) => {
           const handlePerHour = () => {
-            dispatch({ type: "PER_HOUR" });
+            rateDispatch({ type: "PER_HOUR" });
             setFieldValue("rate_per_time", "per_hour");
           };
 
           const handlePerLesson = () => {
-            dispatch({ type: "PER_LESSON" });
+            rateDispatch({ type: "PER_LESSON" });
             setFieldValue("rate_per_time", "per_lesson");
           };
 
           const handlePerMonth = () => {
-            dispatch({ type: "PER_MONTH" });
+            rateDispatch({ type: "PER_MONTH" });
             setFieldValue("rate_per_time", "per_month");
           };
 
@@ -141,11 +141,20 @@ const AddStudent = () => {
               <View style={styles.divider} />
               <View style={styles.formSection}>
                 <Text style={styles.formSectionHeaderText}>Family</Text>
-                <Text>Family Already Exists?</Text>
-                <Checkbox
-                  value={doesFamilyExist}
-                  onValueChange={setDoesFamilyExist}
-                />
+                <View>
+                  <Text>New Family</Text>
+                  <Checkbox
+                    value={doesFamilyExist}
+                    onValueChange={setDoesFamilyExist}
+                  />
+                </View>
+                <View>
+                  <Text>Family Already Exists?</Text>
+                  <Checkbox
+                    value={doesFamilyExist}
+                    onValueChange={setDoesFamilyExist}
+                  />
+                </View>
               </View>
               {!doesFamilyExist ? (
                 <View style={styles.formSection}>
@@ -221,21 +230,21 @@ const AddStudent = () => {
                     <View>
                       <Text>Per Hour</Text>
                       <Checkbox
-                        value={state.PER_HOUR}
+                        value={rateState.PER_HOUR}
                         onValueChange={handlePerHour}
                       />
                     </View>
                     <View>
                       <Text>Per Lesson</Text>
                       <Checkbox
-                        value={state.PER_LESSON}
+                        value={rateState.PER_LESSON}
                         onValueChange={handlePerLesson}
                       />
                     </View>
                     <View>
                       <Text>Per Month</Text>
                       <Checkbox
-                        value={state.PER_MONTH}
+                        value={rateState.PER_MONTH}
                         onValueChange={handlePerMonth}
                       />
                     </View>

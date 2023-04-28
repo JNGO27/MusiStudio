@@ -9,13 +9,13 @@ type CheckboxesActions =
   | { type: "PER_LESSON" }
   | { type: "PER_MONTH" };
 
-export const initialState: CheckboxesState = {
+export const rateInitialState: CheckboxesState = {
   PER_HOUR: true,
   PER_LESSON: false,
   PER_MONTH: false,
 };
 
-export function reducer(
+export function rateReducer(
   checkboxActions: CheckboxesState,
   action: CheckboxesActions,
 ): CheckboxesState {
