@@ -2,7 +2,11 @@
 
 import { StyleSheet } from "react-native";
 
-import { DirectionalScale, CalculatedScale } from "@src/types";
+import {
+  DirectionalScale,
+  CalculatedScale,
+  FamilyTypeCheckboxesState,
+} from "@src/types";
 
 import globalStyles from "@src/globalStyles";
 
@@ -16,6 +20,7 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  familyTypeState: FamilyTypeCheckboxesState,
 ) => {
   return StyleSheet.create({
     container: {
@@ -60,6 +65,30 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       gap: 8,
+    },
+    familyTypeContainer: {
+      display: "flex",
+      flexDirection: "row",
+    },
+    newFamilyChoice: {
+      width: "40%",
+      height: 150,
+      borderWidth: 2,
+      borderColor: familyTypeState.NEW_FAMILY ? "green" : "black",
+    },
+    existingFamilyChoice: {
+      width: "40%",
+      height: 150,
+      borderWidth: 2,
+      borderColor: familyTypeState.EXISTS ? "green" : "black",
+    },
+    familyTypeText: {
+      position: "absolute",
+      top: 20,
+    },
+    familyTypeCheckbox: {
+      width: "100%",
+      height: "100%",
     },
     formSectionHeaderText: {
       fontFamily: typography.semiBold,

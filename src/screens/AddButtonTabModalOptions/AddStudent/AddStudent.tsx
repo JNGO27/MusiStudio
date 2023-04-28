@@ -47,6 +47,7 @@ const AddStudent = () => {
     horizontalScale,
     verticalScale,
     moderateScale,
+    familyTypeState,
   );
 
   const formValues: StudentFormValues = {
@@ -156,20 +157,24 @@ const AddStudent = () => {
               </View>
               <View style={styles.divider} />
               <View style={styles.formSection}>
-                <Text style={styles.formSectionHeaderText}>Family</Text>
-                <View>
-                  <Text>New Family</Text>
-                  <Checkbox
-                    value={familyTypeState.NEW_FAMILY}
-                    onValueChange={handleNewFamily}
-                  />
-                </View>
-                <View>
-                  <Text>Family Already Exists?</Text>
-                  <Checkbox
-                    value={familyTypeState.EXISTS}
-                    onValueChange={handleExistingFamily}
-                  />
+                <Text style={styles.formSectionHeaderText}>
+                  Student&apos;s Family
+                </Text>
+                <View style={styles.familyTypeContainer}>
+                  <TouchableOpacity
+                    style={styles.newFamilyChoice}
+                    onPress={handleNewFamily}
+                  >
+                    <Text style={styles.familyTypeText}>Create New Family</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.existingFamilyChoice}
+                    onPress={handleExistingFamily}
+                  >
+                    <Text style={styles.familyTypeText}>
+                      Choose From Existing Family
+                    </Text>
+                  </TouchableOpacity>
                 </View>
               </View>
               {!familyTypeState.EXISTS ? (

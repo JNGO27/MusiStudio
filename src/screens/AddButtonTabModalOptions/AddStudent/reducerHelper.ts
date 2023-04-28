@@ -1,20 +1,9 @@
-type FamilyTypeCheckboxesState = {
-  NEW_FAMILY: boolean;
-  EXISTS: boolean;
-};
-
-type FamilyTypeCheckboxesActions = { type: "NEW_FAMILY" } | { type: "EXISTS" };
-
-type RateCheckboxesState = {
-  PER_HOUR: boolean;
-  PER_LESSON: boolean;
-  PER_MONTH: boolean;
-};
-
-type RateCheckboxesActions =
-  | { type: "PER_HOUR" }
-  | { type: "PER_LESSON" }
-  | { type: "PER_MONTH" };
+import {
+  FamilyTypeCheckboxesState,
+  FamilyTypeCheckboxesActions,
+  RateCheckboxesState,
+  RateCheckboxesActions,
+} from "@src/types";
 
 export const familyTypeInitialState: FamilyTypeCheckboxesState = {
   NEW_FAMILY: true,
