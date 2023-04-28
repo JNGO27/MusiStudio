@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 
 import { DirectionalScale, CalculatedScale } from "@src/types";
 
+import globalStyles from "@src/globalStyles";
+
+const { spacing } = globalStyles;
+
 export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
@@ -10,10 +14,12 @@ export default (
 ) => {
   return StyleSheet.create({
     checkboxCard: {
-      width: horizontalScale(150),
-      height: verticalScale(150),
-      borderWidth: 2,
-      borderColor: isChosen ? "green" : "black",
+      display: "flex",
+      width: horizontalScale(spacing.multipleXL * 12),
+      height: verticalScale(spacing.multipleXL * 10),
+      borderRadius: spacing.multipleReg * 4,
+      opacity: 1,
+      backgroundColor: isChosen ? "lightgreen" : "white",
     },
   });
 };

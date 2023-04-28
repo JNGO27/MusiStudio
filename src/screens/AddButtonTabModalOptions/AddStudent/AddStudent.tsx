@@ -162,15 +162,17 @@ const AddStudent = () => {
                 </Text>
                 <View style={styles.familyTypeContainer}>
                   <CheckboxCard
-                    text="Create New Family"
                     onPress={handleNewFamily}
                     isChosen={familyTypeState.NEW_FAMILY}
-                  />
+                  >
+                    <Text>Create New Family</Text>
+                  </CheckboxCard>
                   <CheckboxCard
-                    text="Choose From Existing Family"
                     onPress={handleExistingFamily}
                     isChosen={familyTypeState.EXISTS}
-                  />
+                  >
+                    <Text>Choose From Existing Family</Text>
+                  </CheckboxCard>
                 </View>
               </View>
               {!familyTypeState.EXISTS ? (
