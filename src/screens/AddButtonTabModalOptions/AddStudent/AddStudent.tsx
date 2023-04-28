@@ -242,7 +242,7 @@ const AddStudent = () => {
                 <Text style={styles.formSectionHeaderText}>Lesson Length</Text>
                 <TextInput
                   style={styles.input}
-                  value={values.rate}
+                  value={values.lesson_length}
                   onChangeText={handleChange("lesson_length")}
                   onBlur={handleBlur("lesson_length")}
                   keyboardType="numeric"

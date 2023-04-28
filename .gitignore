@@ -1,6 +1,7 @@
 node_modules/
 legacy/
 src/utils/styleSheetBoilerPlate.ts
+.VSCodeCounter
 .expo/
 dist/
 npm-debug.*
