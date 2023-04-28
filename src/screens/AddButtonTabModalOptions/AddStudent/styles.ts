@@ -136,6 +136,15 @@ export default (
       alignItems: "center",
       gap: spacing.multipleReg * 2,
     },
+    rateOptionsBottomContainer: {
+      marginTop: spacing.multipleReg * 2,
+      marginBottom: spacing.multipleReg * 2,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: spacing.multipleReg * 2,
+    },
     checkboxCardPerHour: {
       fontFamily: typography.semiBold,
       fontSize: moderateScale(14),

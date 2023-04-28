@@ -240,6 +240,7 @@ const AddStudent = () => {
               ) : (
                 <Text>Yes it does</Text>
               )}
+              <View style={styles.divider} />
               <View style={styles.formSection}>
                 <Text style={styles.formSectionHeaderText}>Lesson Length</Text>
                 <TextInput
@@ -252,6 +253,7 @@ const AddStudent = () => {
                   selectionColor={purples.purple100}
                 />
               </View>
+              <View style={styles.divider} />
               <View style={styles.formSection}>
                 <Text style={styles.formSectionHeaderText}>Rate</Text>
                 <TextInput
@@ -323,33 +325,38 @@ const AddStudent = () => {
                     ) : null}
                   </CheckboxCard>
                 </View>
-                <CheckboxCard
-                  isChosen={rateState.PER_MONTH}
-                  onPress={handlePerMonth}
-                >
-                  <Text style={styles.checkboxCardPerMonth}>Per Month</Text>
-                  {rateState.PER_MONTH ? (
-                    <View style={styles.perRateContainer}>
-                      <Image
-                        style={styles.checkIconRate}
-                        source={SuccessIcon}
-                        contentFit="contain"
-                      />
-                      <Text
-                        style={
-                          isRateEmpty
-                            ? styles.rateBoxAmountEmpty
-                            : styles.rateBoxAmount
-                        }
-                      >
-                        {!isRateEmpty ? `$${values.rate}` : "Enter Rate Amount"}
-                      </Text>
-                      {!isRateEmpty && (
-                        <Text style={styles.perRateText}>p/m</Text>
-                      )}
-                    </View>
-                  ) : null}
-                </CheckboxCard>
+                <View style={styles.rateOptionsBottomContainer}>
+                  <CheckboxCard
+                    isChosen={rateState.PER_MONTH}
+                    onPress={handlePerMonth}
+                  >
+                    <Text style={styles.checkboxCardPerMonth}>Per Month</Text>
+                    {rateState.PER_MONTH ? (
+                      <View style={styles.perRateContainer}>
+                        <Image
+                          style={styles.checkIconRate}
+                          source={SuccessIcon}
+                          contentFit="contain"
+                        />
+                        <Text
+                          style={
+                            isRateEmpty
+                              ? styles.rateBoxAmountEmpty
+                              : styles.rateBoxAmount
+                          }
+                        >
+                          {!isRateEmpty
+                            ? `$${values.rate}`
+                            : "Enter Rate Amount"}
+                        </Text>
+                        {!isRateEmpty && (
+                          <Text style={styles.perRateText}>p/m</Text>
+                        )}
+                      </View>
+                    ) : null}
+                  </CheckboxCard>
+                </View>
+                <View style={styles.divider} />
                 <TouchableOpacity
                   style={styles.button}
                   onPress={handleSubmit as FormikSubmit}
