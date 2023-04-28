@@ -6,7 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import Checkbox from "expo-checkbox";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { Formik } from "formik";
@@ -50,6 +49,7 @@ const AddStudent = () => {
     verticalScale,
     moderateScale,
     familyTypeState,
+    rateState,
   );
 
   const formValues: StudentFormValues = {
@@ -94,6 +94,8 @@ const AddStudent = () => {
           setFieldValue,
           values,
         }) => {
+          const isRateEmpty = values.rate.length === 0;
+
           const handleNewFamily = () => {
             familyTypeDispatch({ type: "NEW_FAMILY" });
           };
@@ -252,47 +254,102 @@ const AddStudent = () => {
               </View>
               <View style={styles.formSection}>
                 <Text style={styles.formSectionHeaderText}>Rate</Text>
-                <View
-                  style={{
-                    display: "flex",
-                    width: "80%",
-                    flexDirection: "row",
-                    gap: 40,
-                  }}
-                >
-                  <TextInput
-                    style={styles.input}
-                    value={values.rate}
-                    onChangeText={handleChange("rate")}
-                    onBlur={handleBlur("rate")}
-                    keyboardType="numeric"
-                    placeholder="$ USD Amount *"
-                    selectionColor={purples.purple100}
-                  />
-                  <View style={{ display: "flex", gap: 10 }}>
-                    <View>
-                      <Text>Per Hour</Text>
-                      <Checkbox
-                        value={rateState.PER_HOUR}
-                        onValueChange={handlePerHour}
-                      />
-                    </View>
-                    <View>
-                      <Text>Per Lesson</Text>
-                      <Checkbox
-                        value={rateState.PER_LESSON}
-                        onValueChange={handlePerLesson}
-                      />
-                    </View>
-                    <View>
-                      <Text>Per Month</Text>
-                      <Checkbox
-                        value={rateState.PER_MONTH}
-                        onValueChange={handlePerMonth}
-                      />
-                    </View>
-                  </View>
+                <TextInput
+                  style={styles.input}
+                  value={values.rate}
+                  onChangeText={handleChange("rate")}
+                  onBlur={handleBlur("rate")}
+                  keyboardType="numeric"
+                  placeholder="$ USD Amount *"
+                  selectionColor={purples.purple100}
+                />
+                <View style={styles.rateOptionsTop2Container}>
+                  <CheckboxCard
+                    isChosen={rateState.PER_HOUR}
+                    onPress={handlePerHour}
+                  >
+                    <Text style={styles.checkboxCardPerHour}>Per Hour</Text>
+                    {rateState.PER_HOUR ? (
+                      <View style={styles.perRateContainer}>
+                        <Image
+                          style={styles.checkIconRate}
+                          source={SuccessIcon}
+                          contentFit="contain"
+                        />
+                        <Text
+                          style={
+                            isRateEmpty
+                              ? styles.rateBoxAmountEmpty
+                              : styles.rateBoxAmount
+                          }
+                        >
+                          {!isRateEmpty
+                            ? `$${values.rate}`
+                            : "Enter Rate Amount"}
+                        </Text>
+                        {!isRateEmpty && (
+                          <Text style={styles.perRateText}>p/h</Text>
+                        )}
+                      </View>
+                    ) : null}
+                  </CheckboxCard>
+                  <CheckboxCard
+                    isChosen={rateState.PER_LESSON}
+                    onPress={handlePerLesson}
+                  >
+                    <Text style={styles.checkboxCardPerLesson}>Per Lesson</Text>
+                    {rateState.PER_LESSON ? (
+                      <View style={styles.perRateContainer}>
+                        <Image
+                          style={styles.checkIconRate}
+                          source={SuccessIcon}
+                          contentFit="contain"
+                        />
+                        <Text
+                          style={
+                            isRateEmpty
+                              ? styles.rateBoxAmountEmpty
+                              : styles.rateBoxAmount
+                          }
+                        >
+                          {!isRateEmpty
+                            ? `$${values.rate}`
+                            : "Enter Rate Amount"}
+                        </Text>
+                        {!isRateEmpty && (
+                          <Text style={styles.perRateText}>p/l</Text>
+                        )}
+                      </View>
+                    ) : null}
+                  </CheckboxCard>
                 </View>
+                <CheckboxCard
+                  isChosen={rateState.PER_MONTH}
+                  onPress={handlePerMonth}
+                >
+                  <Text style={styles.checkboxCardPerMonth}>Per Month</Text>
+                  {rateState.PER_MONTH ? (
+                    <View style={styles.perRateContainer}>
+                      <Image
+                        style={styles.checkIconRate}
+                        source={SuccessIcon}
+                        contentFit="contain"
+                      />
+                      <Text
+                        style={
+                          isRateEmpty
+                            ? styles.rateBoxAmountEmpty
+                            : styles.rateBoxAmount
+                        }
+                      >
+                        {!isRateEmpty ? `$${values.rate}` : "Enter Rate Amount"}
+                      </Text>
+                      {!isRateEmpty && (
+                        <Text style={styles.perRateText}>p/m</Text>
+                      )}
+                    </View>
+                  ) : null}
+                </CheckboxCard>
                 <TouchableOpacity
                   style={styles.button}
                   onPress={handleSubmit as FormikSubmit}

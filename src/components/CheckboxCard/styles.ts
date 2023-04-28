@@ -17,6 +17,7 @@ export default (
 ) => {
   return StyleSheet.create({
     checkboxCard: {
+      position: "relative",
       display: "flex",
       width: horizontalScale(spacing.multipleXL * 13),
       height: verticalScale(spacing.multipleXL * 10),

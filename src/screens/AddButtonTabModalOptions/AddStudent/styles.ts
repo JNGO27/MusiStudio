@@ -6,6 +6,7 @@ import {
   DirectionalScale,
   CalculatedScale,
   FamilyTypeCheckboxesState,
+  RateCheckboxesState,
 } from "@src/types";
 
 import globalStyles from "@src/globalStyles";
@@ -21,7 +22,10 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
   faimlyTypeState: FamilyTypeCheckboxesState,
+  rateState: RateCheckboxesState,
 ) => {
+  const formContainerSpacing = spacing.multipleXL * 27;
+
   return StyleSheet.create({
     container: {
       width: "100%",
@@ -52,11 +56,12 @@ export default (
     },
     formContainer: {
       position: "relative",
-      top: -spacing.multipleXL * 14,
+      top: -formContainerSpacing,
       backgroundColor: whites.white300,
       borderTopRightRadius: spacing.multipleReg * 7,
       borderTopLeftRadius: spacing.multipleReg * 7,
       paddingTop: spacing.multipleL * 3,
+      paddingBottom: spacing.multipleXL * 18,
       gap: spacing.multipleReg * 4,
     },
     formSection: {
@@ -115,6 +120,71 @@ export default (
       marginTop: spacing.multipleXL,
       width: spacing.multipleReg * 5,
       height: spacing.multipleReg * 5,
+    },
+    checkIconRate: {
+      position: "absolute",
+      top: -spacing.multipleReg * 3.6,
+      right: spacing.multipleReg * 2,
+      width: spacing.multipleReg * 2.5,
+      height: spacing.multipleReg * 2.5,
+    },
+    rateOptionsTop2Container: {
+      marginTop: spacing.multipleReg * 4,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: spacing.multipleReg * 2,
+    },
+    checkboxCardPerHour: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(14),
+      color: rateState.PER_HOUR ? greens.green800 : blacks.blackAlpha50,
+      textAlign: "left",
+      paddingLeft: spacing.multipleL * 2,
+    },
+    checkboxCardPerLesson: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(14),
+      color: rateState.PER_LESSON ? greens.green800 : blacks.blackAlpha50,
+      textAlign: "left",
+      paddingLeft: spacing.multipleL * 2,
+    },
+    checkboxCardPerMonth: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(14),
+      color: rateState.PER_MONTH ? greens.green800 : blacks.blackAlpha50,
+      textAlign: "left",
+      paddingLeft: spacing.multipleL * 2,
+    },
+    rateBoxAmountEmpty: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(14),
+      color: blacks.blackAlpha90,
+      textAlign: "center",
+      marginTop: spacing.multipleReg * 2,
+    },
+    rateBoxAmount: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(20),
+      color: blacks.blackAlpha90,
+      textAlign: "left",
+      marginTop: spacing.multipleReg * 3,
+    },
+    perRateContainer: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: spacing.multipleS,
+    },
+    perRateText: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(10),
+      color: blacks.blackAlpha90,
+      marginTop: spacing.multipleReg * 3,
+      letterSpacing: spacing.multipleXS,
+      textAlign: "center",
     },
     button: {
       marginTop: 20,
