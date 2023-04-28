@@ -13,6 +13,7 @@ import { Formik } from "formik";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { useInsertStudentDataMutation } from "@src/redux/services/supabaseAPI";
+import { CheckboxCard } from "@src/components";
 
 import type { StudentFormValues, FormikSubmit } from "@src/types";
 
@@ -47,7 +48,6 @@ const AddStudent = () => {
     horizontalScale,
     verticalScale,
     moderateScale,
-    familyTypeState,
   );
 
   const formValues: StudentFormValues = {
@@ -161,20 +161,16 @@ const AddStudent = () => {
                   Student&apos;s Family
                 </Text>
                 <View style={styles.familyTypeContainer}>
-                  <TouchableOpacity
-                    style={styles.newFamilyChoice}
+                  <CheckboxCard
+                    text="Create New Family"
                     onPress={handleNewFamily}
-                  >
-                    <Text style={styles.familyTypeText}>Create New Family</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.existingFamilyChoice}
+                    isChosen={familyTypeState.NEW_FAMILY}
+                  />
+                  <CheckboxCard
+                    text="Choose From Existing Family"
                     onPress={handleExistingFamily}
-                  >
-                    <Text style={styles.familyTypeText}>
-                      Choose From Existing Family
-                    </Text>
-                  </TouchableOpacity>
+                    isChosen={familyTypeState.EXISTS}
+                  />
                 </View>
               </View>
               {!familyTypeState.EXISTS ? (

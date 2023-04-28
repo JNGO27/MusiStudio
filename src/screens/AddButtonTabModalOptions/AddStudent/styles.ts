@@ -20,7 +20,6 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
-  familyTypeState: FamilyTypeCheckboxesState,
 ) => {
   return StyleSheet.create({
     container: {
@@ -69,18 +68,6 @@ export default (
     familyTypeContainer: {
       display: "flex",
       flexDirection: "row",
-    },
-    newFamilyChoice: {
-      width: "40%",
-      height: 150,
-      borderWidth: 2,
-      borderColor: familyTypeState.NEW_FAMILY ? "green" : "black",
-    },
-    existingFamilyChoice: {
-      width: "40%",
-      height: 150,
-      borderWidth: 2,
-      borderColor: familyTypeState.EXISTS ? "green" : "black",
     },
     familyTypeText: {
       position: "absolute",
