@@ -96,6 +96,8 @@ const AddStudent = () => {
         }) => {
           const isRateEmpty = values.rate.length === 0;
 
+          const rateToFixed = Number(values.rate).toFixed(2);
+
           const handleNewFamily = () => {
             familyTypeDispatch({ type: "NEW_FAMILY" });
           };
@@ -249,7 +251,7 @@ const AddStudent = () => {
                   onChangeText={handleChange("lesson_length")}
                   onBlur={handleBlur("lesson_length")}
                   keyboardType="numeric"
-                  placeholder="Lesson Length"
+                  placeholder="Minutes"
                   selectionColor={purples.purple100}
                 />
               </View>
@@ -286,7 +288,7 @@ const AddStudent = () => {
                           }
                         >
                           {!isRateEmpty
-                            ? `$${values.rate}`
+                            ? `$${rateToFixed}`
                             : "Enter Rate Amount"}
                         </Text>
                         {!isRateEmpty && (
@@ -315,7 +317,7 @@ const AddStudent = () => {
                           }
                         >
                           {!isRateEmpty
-                            ? `$${values.rate}`
+                            ? `$${rateToFixed}`
                             : "Enter Rate Amount"}
                         </Text>
                         {!isRateEmpty && (
@@ -346,7 +348,7 @@ const AddStudent = () => {
                           }
                         >
                           {!isRateEmpty
-                            ? `$${values.rate}`
+                            ? `$${rateToFixed}`
                             : "Enter Rate Amount"}
                         </Text>
                         {!isRateEmpty && (
@@ -357,12 +359,22 @@ const AddStudent = () => {
                   </CheckboxCard>
                 </View>
                 <View style={styles.divider} />
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={handleSubmit as FormikSubmit}
-                >
-                  <Text style={styles.text}>Submit</Text>
-                </TouchableOpacity>
+                <View style={styles.saveButtonContainer}>
+                  <LinearGradient
+                    style={styles.saveButtonContainer}
+                    colors={purpleGradient.colors}
+                    locations={purpleGradient.locations}
+                    start={purpleGradient.start}
+                    end={purpleGradient.end}
+                  >
+                    <TouchableOpacity
+                      style={styles.saveButton}
+                      onPress={handleSubmit as FormikSubmit}
+                    >
+                      <Text style={styles.saveButtonText}>Save</Text>
+                    </TouchableOpacity>
+                  </LinearGradient>
+                </View>
               </View>
             </View>
           );

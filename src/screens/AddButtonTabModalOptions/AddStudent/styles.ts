@@ -24,7 +24,7 @@ export default (
   faimlyTypeState: FamilyTypeCheckboxesState,
   rateState: RateCheckboxesState,
 ) => {
-  const formContainerSpacing = spacing.multipleXL * 27;
+  const formContainerSpacing = spacing.multipleXL * 37;
 
   return StyleSheet.create({
     container: {
@@ -196,17 +196,34 @@ export default (
       lineHeight: 12,
       textAlign: "center",
     },
-    button: {
-      marginTop: 20,
+    saveButtonContainer: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      width: "20%",
-      height: 40,
-      backgroundColor: "blue",
+      width: horizontalScale(spacing.multipleXL * 13),
+      height: verticalScale(spacing.multipleReg * 4.5),
+      position: "relative",
+      top: spacing.multipleReg * 3.5,
+      borderRadius: spacing.multipleReg * 4.5,
     },
-    text: {
+    saveButton: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+    },
+    saveButtonText: {
+      position: "relative",
+      top: spacing.multipleXS,
       color: "white",
+      opacity: 0.75,
+      fontFamily: typography.bold,
+      fontSize: moderateScale(14),
+    },
+    saveOrCancelContainer: {
+      width: "100%",
+      height: "100%",
     },
     divider: {
       width: "100%",
