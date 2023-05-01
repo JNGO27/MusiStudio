@@ -1,6 +1,5 @@
 /* eslint-disable import/order */
-import { useReducer } from "react";
-import { ScrollView, View, Text } from "react-native";
+import { ScrollView, View } from "react-native";
 import { Formik } from "formik";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
@@ -18,17 +17,13 @@ import type { StudentFormValues } from "@src/types";
 
 import createStyleSheet from "./styles";
 
-import { rateInitialState, rateReducer } from "./reducerHelper";
-
 const AddStudent = () => {
-  const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
   const [insertStudentData] = useInsertStudentDataMutation();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
-    rateState,
   );
 
   const formValues: StudentFormValues = {
@@ -87,9 +82,7 @@ const AddStudent = () => {
                 values={values}
                 handleChange={handleChange}
                 handleBlur={handleBlur}
-                rateDispatch={rateDispatch}
                 setFieldValue={setFieldValue}
-                rateState={rateState}
                 styles={styles}
               />
               <View style={styles.divider} />

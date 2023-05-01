@@ -1,30 +1,27 @@
+import { useReducer } from "react";
 import { View, Text, TextInput } from "react-native";
 import { Image } from "expo-image";
 
-import type { Dispatch } from "react";
 import type { FormikHandlers, FormikHelpers } from "formik";
 import type { ImageStyle } from "expo-image";
 
-import type {
-  StudentFormValues,
-  StyleSheetProps,
-  RateCheckboxesState,
-  RateCheckboxesActions,
-} from "@src/types";
+import type { StudentFormValues, StyleSheetProps } from "@src/types";
 
+import { useResponsiveness } from "@src/hooks";
 import { CheckboxCard } from "@src/components";
 
 import { SuccessIcon } from "@src/assets/icons";
 
 import globalStyles from "@src/globalStyles";
+import changingStyles from "./rateDynamicStyles";
+
+import { rateInitialState, rateReducer } from "../reducerHelper";
 
 type Props = {
   values: StudentFormValues;
   handleChange: FormikHandlers["handleChange"];
   handleBlur: FormikHandlers["handleBlur"];
   setFieldValue: FormikHelpers<StudentFormValues>["setFieldValue"];
-  rateDispatch: Dispatch<RateCheckboxesActions>;
-  rateState: RateCheckboxesState;
   styles: StyleSheetProps;
 };
 
@@ -36,11 +33,13 @@ const RateDetails = ({
   values,
   handleChange,
   handleBlur,
-  rateDispatch,
   setFieldValue,
-  rateState,
   styles,
 }: Props) => {
+  const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
+  const [, , moderateScale] = useResponsiveness();
+  const dynamicStyles = changingStyles(moderateScale, rateState);
+
   const isRateEmpty = values.rate.length === 0;
 
   const rateToFixed = Number(values.rate).toFixed(2);
@@ -74,7 +73,7 @@ const RateDetails = ({
       />
       <View style={styles.rateOptionsTop2Container}>
         <CheckboxCard isChosen={rateState.PER_HOUR} onPress={handlePerHour}>
-          <Text style={styles.checkboxCardPerHour}>Per Hour</Text>
+          <Text style={dynamicStyles.checkboxCardPerHour}>Per Hour</Text>
           {rateState.PER_HOUR ? (
             <View style={styles.perRateContainer}>
               <Image
@@ -94,7 +93,7 @@ const RateDetails = ({
           ) : null}
         </CheckboxCard>
         <CheckboxCard isChosen={rateState.PER_LESSON} onPress={handlePerLesson}>
-          <Text style={styles.checkboxCardPerLesson}>Per Lesson</Text>
+          <Text style={dynamicStyles.checkboxCardPerLesson}>Per Lesson</Text>
           {rateState.PER_LESSON ? (
             <View style={styles.perRateContainer}>
               <Image
@@ -116,7 +115,7 @@ const RateDetails = ({
       </View>
       <View style={styles.rateOptionsBottomContainer}>
         <CheckboxCard isChosen={rateState.PER_MONTH} onPress={handlePerMonth}>
-          <Text style={styles.checkboxCardPerMonth}>Per Month</Text>
+          <Text style={dynamicStyles.checkboxCardPerMonth}>Per Month</Text>
           {rateState.PER_MONTH ? (
             <View style={styles.perRateContainer}>
               <Image

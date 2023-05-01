@@ -2,12 +2,7 @@
 
 import { StyleSheet } from "react-native";
 
-import {
-  DirectionalScale,
-  CalculatedScale,
-  FamilyTypeCheckboxesState,
-  RateCheckboxesState,
-} from "@src/types";
+import { DirectionalScale, CalculatedScale } from "@src/types";
 
 import globalStyles from "@src/globalStyles";
 
@@ -21,7 +16,6 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
-  rateState: RateCheckboxesState,
 ) => {
   const formContainerSpacing = spacing.multipleXL * 37;
 
@@ -131,27 +125,6 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       gap: spacing.multipleReg * 2,
-    },
-    checkboxCardPerHour: {
-      fontFamily: typography.semiBold,
-      fontSize: moderateScale(14),
-      color: rateState.PER_HOUR ? greens.green800 : blacks.blackAlpha50,
-      textAlign: "left",
-      paddingLeft: spacing.multipleL * 2,
-    },
-    checkboxCardPerLesson: {
-      fontFamily: typography.semiBold,
-      fontSize: moderateScale(14),
-      color: rateState.PER_LESSON ? greens.green800 : blacks.blackAlpha50,
-      textAlign: "left",
-      paddingLeft: spacing.multipleL * 2,
-    },
-    checkboxCardPerMonth: {
-      fontFamily: typography.semiBold,
-      fontSize: moderateScale(14),
-      color: rateState.PER_MONTH ? greens.green800 : blacks.blackAlpha50,
-      textAlign: "left",
-      paddingLeft: spacing.multipleL * 2,
     },
     rateBoxAmountEmpty: {
       fontFamily: typography.semiBold,
