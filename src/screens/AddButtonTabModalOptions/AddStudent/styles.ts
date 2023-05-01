@@ -17,7 +17,7 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
 ) => {
-  const formContainerSpacing = spacing.multipleXL * 37;
+  const formContainerSpacing = spacing.multipleXL * 34;
 
   return StyleSheet.create({
     container: {
@@ -156,12 +156,31 @@ export default (
       lineHeight: 12,
       textAlign: "center",
     },
+    saveOrCancelContainer: {
+      display: "flex",
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    },
     saveButtonContainer: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      width: horizontalScale(spacing.multipleXL * 13),
-      height: verticalScale(spacing.multipleReg * 4.5),
+      width: horizontalScale(spacing.multipleXL * 15),
+      height: verticalScale(spacing.multipleReg * 5),
+      position: "relative",
+      top: spacing.multipleReg * 3.5,
+      borderRadius: spacing.multipleReg * 4.5,
+    },
+    cancelButtonContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: horizontalScale(spacing.multipleXL * 10),
+      height: verticalScale(spacing.multipleReg * 4),
+      borderBottomColor: grays.gray700,
+      borderBottomWidth: spacing.multipleXS,
+      marginTop: spacing.multipleReg * 3,
       position: "relative",
       top: spacing.multipleReg * 3.5,
       borderRadius: spacing.multipleReg * 4.5,
@@ -179,11 +198,22 @@ export default (
       color: "white",
       opacity: 0.75,
       fontFamily: typography.bold,
-      fontSize: moderateScale(14),
+      fontSize: moderateScale(16),
     },
-    saveOrCancelContainer: {
+    cancelButton: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       width: "100%",
       height: "100%",
+    },
+    cancelButtonText: {
+      position: "relative",
+      top: spacing.multipleXS,
+      color: grays.gray600,
+      opacity: 0.75,
+      fontFamily: typography.bold,
+      fontSize: moderateScale(12),
     },
     divider: {
       width: "100%",

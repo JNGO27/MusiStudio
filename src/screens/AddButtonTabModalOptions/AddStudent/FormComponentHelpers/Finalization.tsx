@@ -20,7 +20,7 @@ type Props = {
 
 const Finalization = ({ handleSubmit, styles }: Props) => {
   return (
-    <View style={styles.saveButtonContainer}>
+    <View style={styles.saveOrCancelContainer}>
       <LinearGradient
         style={styles.saveButtonContainer}
         colors={purpleGradient.colors}
@@ -35,6 +35,11 @@ const Finalization = ({ handleSubmit, styles }: Props) => {
           <Text style={styles.saveButtonText}>Save</Text>
         </TouchableOpacity>
       </LinearGradient>
+      <View style={styles.cancelButtonContainer}>
+        <TouchableOpacity style={styles.saveButton} onPress={() => {}}>
+          <Text style={styles.cancelButtonText}>Cancel</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
