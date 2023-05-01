@@ -9,7 +9,6 @@ import {
   HeroSection,
   StudentDetails,
   StudentFamilyChoice,
-  FamilyDetails,
   LessonDetails,
   RateDetails,
   Finalization,
@@ -19,18 +18,9 @@ import type { StudentFormValues } from "@src/types";
 
 import createStyleSheet from "./styles";
 
-import {
-  familyTypeInitialState,
-  familyTypeReducer,
-  rateInitialState,
-  rateReducer,
-} from "./reducerHelper";
+import { rateInitialState, rateReducer } from "./reducerHelper";
 
 const AddStudent = () => {
-  const [familyTypeState, familyTypeDispatch] = useReducer(
-    familyTypeReducer,
-    familyTypeInitialState,
-  );
   const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
   const [insertStudentData] = useInsertStudentDataMutation();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
@@ -38,7 +28,6 @@ const AddStudent = () => {
     horizontalScale,
     verticalScale,
     moderateScale,
-    familyTypeState,
     rateState,
   );
 
@@ -81,20 +70,11 @@ const AddStudent = () => {
               />
               <View style={styles.divider} />
               <StudentFamilyChoice
-                familyTypeState={familyTypeState}
-                familyTypeDispatch={familyTypeDispatch}
+                values={values}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
                 styles={styles}
               />
-              {!familyTypeState.EXISTS ? (
-                <FamilyDetails
-                  values={values}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  styles={styles}
-                />
-              ) : (
-                <Text>Yes it does</Text>
-              )}
               <View style={styles.divider} />
               <LessonDetails
                 values={values}

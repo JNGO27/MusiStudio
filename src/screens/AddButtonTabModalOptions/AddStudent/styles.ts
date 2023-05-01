@@ -21,7 +21,6 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
-  faimlyTypeState: FamilyTypeCheckboxesState,
   rateState: RateCheckboxesState,
 ) => {
   const formContainerSpacing = spacing.multipleXL * 37;
@@ -102,18 +101,6 @@ export default (
       width: "100%",
       height: "100%",
       padding: spacing.multipleReg,
-    },
-    checkboxCardTextNewFamily: {
-      fontFamily: typography.semiBold,
-      fontSize: moderateScale(14),
-      color: faimlyTypeState.NEW_FAMILY ? greens.green800 : blacks.blackAlpha50,
-      textAlign: "center",
-    },
-    checkboxCardTextExistingFamily: {
-      fontFamily: typography.semiBold,
-      fontSize: moderateScale(14),
-      color: faimlyTypeState.EXISTS ? greens.green800 : blacks.blackAlpha50,
-      textAlign: "center",
     },
     checkIcon: {
       alignSelf: "center",
