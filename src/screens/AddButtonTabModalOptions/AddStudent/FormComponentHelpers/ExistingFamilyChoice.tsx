@@ -11,7 +11,7 @@ type Props = {
 
 const {
   colors: {
-    gradients: { pinkGradient },
+    gradients: { purpleGradient },
   },
 } = globalStyles;
 
@@ -19,11 +19,11 @@ const ExistingFamilyChoice = ({ styles }: Props) => {
   return (
     <View style={styles.existingFamilyContainer}>
       <LinearGradient
-        colors={pinkGradient.colors}
-        locations={pinkGradient.locations}
+        colors={purpleGradient.colors}
+        locations={purpleGradient.locations}
         style={styles.chooseFamilyButton}
-        start={pinkGradient.start}
-        end={pinkGradient.end}
+        start={purpleGradient.start}
+        end={purpleGradient.end}
       >
         <TouchableOpacity style={styles.magicLinkTouchable}>
           <Text style={styles.chooseFamilyButtonText}>ChooseFamily</Text>

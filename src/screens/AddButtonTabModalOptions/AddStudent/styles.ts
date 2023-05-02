@@ -103,7 +103,7 @@ export default (
     chooseFamilyButtonText: {
       position: "relative",
       top: spacing.multipleXS,
-      color: purples.purple100,
+      color: "white",
       opacity: 0.75,
       fontFamily: typography.bold,
       fontSize: moderateScale(14),
