@@ -10,7 +10,7 @@ import type { StudentFormValues, StyleSheetProps } from "@src/types";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { CheckboxCard } from "@src/components";
-import FamilyDetails from "./FamilyDetails";
+import { FamilyDetails, ExistingFamilyChoice } from ".";
 
 import { SuccessIcon } from "@src/assets/icons";
 import changingStyles from "./dynamicStyles";
@@ -94,7 +94,7 @@ const StudentFamilyChoice = ({
           styles={styles}
         />
       ) : (
-        <Text>Family Does Exist</Text>
+        <ExistingFamilyChoice />
       )}
     </>
   );
