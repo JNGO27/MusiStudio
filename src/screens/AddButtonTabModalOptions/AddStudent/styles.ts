@@ -9,7 +9,7 @@ import globalStyles from "@src/globalStyles";
 const {
   typography,
   spacing,
-  colors: { lightPurples, whites, grays, blacks, greens },
+  colors: { purples, lightPurples, whites, grays, blacks },
 } = globalStyles;
 
 export default (
@@ -76,6 +76,37 @@ export default (
     familyTypeCheckbox: {
       width: "100%",
       height: "100%",
+    },
+    existingFamilyContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: verticalScale(spacing.multipleXL * 13.2),
+    },
+    chooseFamilyButton: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "70%",
+      height: verticalScale(spacing.multipleReg * 4.5),
+      position: "relative",
+      borderRadius: spacing.multipleReg * 4.5,
+    },
+    chooseFamilyButtonTouchable: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+    },
+    chooseFamilyButtonText: {
+      position: "relative",
+      top: spacing.multipleXS,
+      color: purples.purple100,
+      opacity: 0.75,
+      fontFamily: typography.bold,
+      fontSize: moderateScale(14),
     },
     formSectionHeaderText: {
       fontFamily: typography.semiBold,

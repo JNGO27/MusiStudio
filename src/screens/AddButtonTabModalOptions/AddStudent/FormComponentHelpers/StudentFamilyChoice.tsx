@@ -94,7 +94,7 @@ const StudentFamilyChoice = ({
           styles={styles}
         />
       ) : (
-        <ExistingFamilyChoice />
+        <ExistingFamilyChoice styles={styles} />
       )}
     </>
   );
