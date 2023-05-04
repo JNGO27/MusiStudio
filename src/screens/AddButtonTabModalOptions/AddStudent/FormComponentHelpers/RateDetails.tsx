@@ -92,28 +92,6 @@ const RateDetails = ({
             </View>
           ) : null}
         </CheckboxCard>
-        <CheckboxCard isChosen={rateState.PER_LESSON} onPress={handlePerLesson}>
-          <Text style={dynamicStyles.checkboxCardPerLesson}>Per Lesson</Text>
-          {rateState.PER_LESSON ? (
-            <View style={styles.perRateContainer}>
-              <Image
-                style={styles.checkIconRate as ImageStyle}
-                source={SuccessIcon}
-                contentFit="contain"
-              />
-              <Text
-                style={
-                  isRateEmpty ? styles.rateBoxAmountEmpty : styles.rateBoxAmount
-                }
-              >
-                {!isRateEmpty ? `$${rateToFixed}` : "Enter Rate Amount"}
-              </Text>
-              {!isRateEmpty && <Text style={styles.perRateText}>p/l</Text>}
-            </View>
-          ) : null}
-        </CheckboxCard>
-      </View>
-      <View style={styles.rateOptionsBottomContainer}>
         <CheckboxCard isChosen={rateState.PER_MONTH} onPress={handlePerMonth}>
           <Text style={dynamicStyles.checkboxCardPerMonth}>Per Month</Text>
           {rateState.PER_MONTH ? (
@@ -131,6 +109,38 @@ const RateDetails = ({
                 {!isRateEmpty ? `$${rateToFixed}` : "Enter Rate Amount"}
               </Text>
               {!isRateEmpty && <Text style={styles.perRateText}>p/m</Text>}
+            </View>
+          ) : null}
+        </CheckboxCard>
+      </View>
+      <View style={styles.rateOptionsBottomContainer}>
+        <CheckboxCard isChosen={rateState.PER_LESSON} onPress={handlePerLesson}>
+          <Text style={dynamicStyles.checkboxCardPerLesson}>
+            Per Lesson Length
+          </Text>
+          {rateState.PER_LESSON ? (
+            <View style={styles.perRateContainerLessonLength}>
+              <Image
+                style={styles.checkIconRateLessonLength as ImageStyle}
+                source={SuccessIcon}
+                contentFit="contain"
+              />
+              <View style={styles.perRateInnerContainerLessonLength}>
+                <Text
+                  style={
+                    isRateEmpty
+                      ? styles.rateBoxAmountEmpty
+                      : styles.rateBoxAmount
+                  }
+                >
+                  {!isRateEmpty ? `$${rateToFixed}` : "Enter Rate Amount"}
+                </Text>
+                {!isRateEmpty && (
+                  <Text style={styles.perRateTextLessonLength}>
+                    p/{values.lesson_length} min
+                  </Text>
+                )}
+              </View>
             </View>
           ) : null}
         </CheckboxCard>

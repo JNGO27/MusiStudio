@@ -140,6 +140,13 @@ export default (
       width: spacing.multipleReg * 2.5,
       height: spacing.multipleReg * 2.5,
     },
+    checkIconRateLessonLength: {
+      position: "absolute",
+      top: -spacing.multipleReg * 6.6,
+      right: spacing.multipleReg * 2,
+      width: spacing.multipleReg * 2.5,
+      height: spacing.multipleReg * 2.5,
+    },
     rateOptionsTop2Container: {
       marginTop: spacing.multipleReg * 4,
       display: "flex",
@@ -154,7 +161,6 @@ export default (
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
-      alignItems: "center",
       gap: spacing.multipleReg * 2,
     },
     rateBoxAmountEmpty: {
@@ -178,11 +184,29 @@ export default (
       alignItems: "center",
       gap: spacing.multipleS,
     },
+    perRateContainerLessonLength: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "flex-start",
+      gap: spacing.multipleS,
+    },
+    perRateInnerContainerLessonLength: {
+      marginTop: -spacing.multipleReg * 2,
+    },
     perRateText: {
       fontFamily: typography.semiBold,
       fontSize: moderateScale(10),
       color: blacks.blackAlpha70,
       marginTop: spacing.multipleReg * 3,
+      letterSpacing: spacing.multipleXS,
+      lineHeight: 12,
+      textAlign: "center",
+    },
+    perRateTextLessonLength: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(10),
+      color: blacks.blackAlpha70,
       letterSpacing: spacing.multipleXS,
       lineHeight: 12,
       textAlign: "center",
