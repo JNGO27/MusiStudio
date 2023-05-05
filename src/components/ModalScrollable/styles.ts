@@ -35,11 +35,10 @@ export default (
     },
     scrollableModalContainer: {
       display: "flex",
-      width: "90%",
-      height: spacing.multipleXL * 10,
-      maxHeight: spacing.multipleReg * 80,
-      backgroundColor: "aqua",
+      width: "100%",
+      minHeight: "100%",
       borderRadius: spacing.multipleReg * 4.5,
+      paddingTop: spacing.multipleXL * 10,
     },
     scrollableModalContainerContentContainer: {
       display: "flex",

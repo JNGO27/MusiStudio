@@ -5,7 +5,9 @@ import { StyleSheetProps } from "@src/types";
 
 import { useNewModalState } from "@src/hooks";
 import { ModalScrollable } from "@src/components";
+import ExistingFamilyOptions from "./ExistingFamilyOptions";
 
+// eslint-disable-next-line import/order
 import globalStyles from "@src/globalStyles";
 
 type Props = {
@@ -31,17 +33,17 @@ const ExistingFamilyChoice = ({ styles }: Props) => {
         end={purpleGradient.end}
       >
         <TouchableOpacity
-          style={styles.magicLinkTouchable}
+          style={styles.chooseFamilyButtonTouchable}
           onPress={openOrCloseModal}
         >
-          <Text style={styles.chooseFamilyButtonText}>ChooseFamily</Text>
+          <Text style={styles.chooseFamilyButtonText}>Choose Family</Text>
         </TouchableOpacity>
       </LinearGradient>
       <ModalScrollable
         modalVisible={modalVisiable}
         openOrCloseModal={openOrCloseModal}
       >
-        <Text>Some Text</Text>
+        <ExistingFamilyOptions styles={styles} />
       </ModalScrollable>
     </View>
   );

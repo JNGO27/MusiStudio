@@ -16,6 +16,7 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  dimensionHeight: number,
 ) => {
   const formContainerSpacing = spacing.multipleXL * 34;
 
@@ -84,6 +85,13 @@ export default (
       width: "100%",
       height: verticalScale(spacing.multipleXL * 13.2),
     },
+    existingFamilyOptionsContainer: {
+      alignItems: "center",
+      width: "100%",
+      minHeight: dimensionHeight * 2,
+      borderRadius: spacing.multipleXL * 4,
+      backgroundColor: whites.white300,
+    },
     chooseFamilyButton: {
       display: "flex",
       justifyContent: "center",
@@ -91,7 +99,7 @@ export default (
       width: "70%",
       height: verticalScale(spacing.multipleReg * 4.5),
       position: "relative",
-      borderRadius: spacing.multipleReg * 4.5,
+      borderRadius: spacing.multipleReg * 2.5,
     },
     chooseFamilyButtonTouchable: {
       display: "flex",

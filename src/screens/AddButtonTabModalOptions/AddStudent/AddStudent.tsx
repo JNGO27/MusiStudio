@@ -19,11 +19,13 @@ import createStyleSheet from "./styles";
 
 const AddStudent = () => {
   const [insertStudentData] = useInsertStudentDataMutation();
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale, dimensionHeight] =
+    useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
+    dimensionHeight,
   );
 
   const formValues: StudentFormValues = {
