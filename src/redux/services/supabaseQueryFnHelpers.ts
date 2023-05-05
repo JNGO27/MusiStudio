@@ -23,6 +23,23 @@ export const getAllStudentsDataQueryFn = {
   providesTags: [{ type: "Students" } as const],
 };
 
+export const getAllFamiliesDataQueryFn = {
+  queryFn: async () => {
+    const { data: studentData, error } = await supabaseConfig
+      .from("Families")
+      .select("*");
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    const data = studentData;
+
+    return { data };
+  },
+  providesTags: [{ type: "Students" } as const],
+};
+
 export const insertStudentDataQueryFn = {
   queryFn: async (formValues: StudentFormValues) => {
     const studentData = [
