@@ -6,7 +6,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { blacks, whites },
+  colors: { blacks },
 } = globalStyles;
 
 export default (

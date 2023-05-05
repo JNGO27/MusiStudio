@@ -3,6 +3,9 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { StyleSheetProps } from "@src/types";
 
+import { useNewModalState } from "@src/hooks";
+import { ModalScrollable } from "@src/components";
+
 import globalStyles from "@src/globalStyles";
 
 type Props = {
@@ -16,6 +19,8 @@ const {
 } = globalStyles;
 
 const ExistingFamilyChoice = ({ styles }: Props) => {
+  const [modalVisiable, openOrCloseModal] = useNewModalState();
+
   return (
     <View style={styles.existingFamilyContainer}>
       <LinearGradient
@@ -25,10 +30,19 @@ const ExistingFamilyChoice = ({ styles }: Props) => {
         start={purpleGradient.start}
         end={purpleGradient.end}
       >
-        <TouchableOpacity style={styles.magicLinkTouchable}>
+        <TouchableOpacity
+          style={styles.magicLinkTouchable}
+          onPress={openOrCloseModal}
+        >
           <Text style={styles.chooseFamilyButtonText}>ChooseFamily</Text>
         </TouchableOpacity>
       </LinearGradient>
+      <ModalScrollable
+        modalVisible={modalVisiable}
+        openOrCloseModal={openOrCloseModal}
+      >
+        <Text>Some Text</Text>
+      </ModalScrollable>
     </View>
   );
 };
