@@ -18,3 +18,4 @@ export { default as AddButtonModal } from "./AddButtonModal/AddButtonModal";
 export { default as AddButtonTabNavOption } from "./AddButtonTabNavOption/AddButtonTabNavOption";
 export { default as DashboardCard } from "./DashboardCard/DashboardCard";
 export { default as CheckboxCard } from "./CheckboxCard/CheckboxCard";
+export { default as ModalScrollable } from "./ModalScrollable/ModalScrollable";
