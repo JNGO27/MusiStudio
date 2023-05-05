@@ -5,6 +5,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
+import type { GestureResponderEvent } from "react-native";
+
 import type { ReactNode } from "react";
 
 import { useResponsiveness } from "@src/hooks";
@@ -46,6 +48,8 @@ const ModalScrollable = ({
               contentContainerStyle={
                 styles.scrollableModalContainerContentContainer
               }
+              onStartShouldSetResponder={() => true}
+              onTouchEnd={(e: GestureResponderEvent) => e.stopPropagation()}
             >
               {children}
             </ScrollView>
