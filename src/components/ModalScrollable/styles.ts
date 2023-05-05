@@ -22,6 +22,10 @@ export default (
           flex: 1,
         }
       : {},
+    modalTouchableBackground: {
+      display: "flex",
+      flex: 1,
+    },
     modalContainer: {
       display: "flex",
       justifyContent: "center",

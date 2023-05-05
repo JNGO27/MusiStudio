@@ -1,4 +1,9 @@
-import { ScrollView, View, Modal } from "react-native";
+import {
+  ScrollView,
+  View,
+  Modal,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import type { ReactNode } from "react";
 
@@ -31,16 +36,21 @@ const ModalScrollable = ({
         onRequestClose={openOrCloseModal}
         animationType="slide"
       >
-        <View style={styles.modalContainer}>
-          <ScrollView
-            style={styles.scrollableModalContainer}
-            contentContainerStyle={
-              styles.scrollableModalContainerContentContainer
-            }
-          >
-            {children}
-          </ScrollView>
-        </View>
+        <TouchableWithoutFeedback
+          style={styles.modalTouchableBackground}
+          onPress={openOrCloseModal}
+        >
+          <View style={styles.modalContainer}>
+            <ScrollView
+              style={styles.scrollableModalContainer}
+              contentContainerStyle={
+                styles.scrollableModalContainerContentContainer
+              }
+            >
+              {children}
+            </ScrollView>
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
     </View>
   );
