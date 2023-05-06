@@ -2,9 +2,8 @@ import { useState } from "react";
 import { View, Text } from "react-native";
 
 import type { GestureResponderEvent } from "react-native";
-import type { FormikHandlers, FormikHelpers } from "formik";
 
-import type { StyleSheetProps, StudentFormValues } from "@src/types";
+import type { StyleSheetProps } from "@src/types";
 
 import { CheckboxFamilyCard } from "@src/components";
 

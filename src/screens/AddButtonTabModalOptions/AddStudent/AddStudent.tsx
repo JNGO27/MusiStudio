@@ -3,6 +3,7 @@ import { ScrollView, View } from "react-native";
 import { Formik } from "formik";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { useInsertStudentDataMutation } from "@src/redux/services/supabaseAPI";
 import {
   HeroSection,
@@ -58,38 +59,46 @@ const AddStudent = () => {
           values,
         }) => {
           return (
-            <View style={styles.formContainer}>
-              <StudentDetails
-                values={values}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                styles={styles}
-              />
-              <View style={styles.divider} />
-              <StudentFamilyChoice
-                values={values}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                styles={styles}
-              />
-              <View style={styles.divider} />
-              <LessonDetails
-                values={values}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                styles={styles}
-              />
-              <View style={styles.divider} />
-              <RateDetails
-                values={values}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                setFieldValue={setFieldValue}
-                styles={styles}
-              />
-              <View style={styles.divider} />
-              <Finalization handleSubmit={handleSubmit} styles={styles} />
-            </View>
+            <AddStudentFormContext
+              values={values}
+              styles={styles}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              setFieldValue={setFieldValue}
+            >
+              <View style={styles.formContainer}>
+                <StudentDetails
+                  values={values}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  styles={styles}
+                />
+                <View style={styles.divider} />
+                <StudentFamilyChoice
+                  values={values}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  styles={styles}
+                />
+                <View style={styles.divider} />
+                <LessonDetails
+                  values={values}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  styles={styles}
+                />
+                <View style={styles.divider} />
+                <RateDetails
+                  values={values}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  setFieldValue={setFieldValue}
+                  styles={styles}
+                />
+                <View style={styles.divider} />
+                <Finalization handleSubmit={handleSubmit} styles={styles} />
+              </View>
+            </AddStudentFormContext>
           );
         }}
       </Formik>
