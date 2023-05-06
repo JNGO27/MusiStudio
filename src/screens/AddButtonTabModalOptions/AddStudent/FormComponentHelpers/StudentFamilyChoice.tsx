@@ -16,7 +16,7 @@ import changingStyles from "./dynamicStyles";
 import { familyTypeInitialState, familyTypeReducer } from "../reducerHelper";
 
 const StudentFamilyChoice = () => {
-  const { styles } = useAddStudentFormContext();
+  const { setFieldValue, styles } = useAddStudentFormContext();
 
   const [familyTypeState, familyTypeDispatch] = useReducer(
     familyTypeReducer,
@@ -26,6 +26,7 @@ const StudentFamilyChoice = () => {
   const dynamicStyles = changingStyles(moderateScale, familyTypeState);
 
   const handleNewFamily = () => {
+    setFieldValue("existing_family_id", "");
     familyTypeDispatch({ type: "NEW_FAMILY" });
   };
 

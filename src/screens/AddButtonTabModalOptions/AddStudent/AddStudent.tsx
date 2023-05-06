@@ -4,7 +4,10 @@ import { Formik } from "formik";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
-import { useInsertStudentDataMutation } from "@src/redux/services/supabaseAPI";
+import {
+  useInsertStudentDataMutation,
+  useInsertStudentExistingFamilyDataMutation,
+} from "@src/redux/services/supabaseAPI";
 import {
   HeroSection,
   StudentDetails,
@@ -20,6 +23,8 @@ import createStyleSheet from "./styles";
 
 const AddStudent = () => {
   const [insertStudentData] = useInsertStudentDataMutation();
+  const [insertStudentExistingFamilyData] =
+    useInsertStudentExistingFamilyDataMutation();
   const [horizontalScale, verticalScale, moderateScale, dimensionHeight] =
     useResponsiveness();
   const styles = createStyleSheet(
@@ -45,7 +50,11 @@ const AddStudent = () => {
   };
 
   const handleStudentSubmit = async (values: StudentFormValues) => {
-    await insertStudentData(values);
+    if (values.existing_family_id.length === 0) {
+      await insertStudentData(values);
+    } else {
+      await insertStudentExistingFamilyData(values);
+    }
   };
 
   return (

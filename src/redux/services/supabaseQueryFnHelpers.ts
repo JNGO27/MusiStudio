@@ -70,16 +70,6 @@ export const insertStudentDataQueryFn = {
       throw new Error(studentsTableError.message);
     }
 
-    const idExists = formValues.existing_family_id.length >= 1;
-    const noFamilyName =
-      formValues.family_first_name.length === 0 &&
-      formValues.family_last_name.length === 0;
-    let existingFamilyData: number | null = null;
-
-    if (idExists && noFamilyName) {
-      existingFamilyData = convertToInt8(formValues.existing_family_id);
-    }
-
     const { data: newFamilyId, error: familiesTableError } =
       await supabaseConfig.from("Families").insert(familyData).select("id");
 
@@ -90,8 +80,58 @@ export const insertStudentDataQueryFn = {
     const newStudentAllData = [
       {
         student_data: convertToInt8(newStudentId[0].id),
-        associated_family:
-          existingFamilyData || convertToInt8(newFamilyId[0].id),
+        associated_family: convertToInt8(newFamilyId[0].id),
+      },
+    ];
+
+    const { data, error } = await supabaseConfig
+      .from("Students_All_Data")
+      .insert(newStudentAllData);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return { data };
+  },
+  invalidatesTags: [{ type: "Students" } as const],
+};
+
+export const insertStudentDataExistingFamilyQueryFn = {
+  queryFn: async (formValues: StudentFormValues) => {
+    const studentData = [
+      {
+        first_name: formValues.first_name,
+        last_name: formValues.last_name,
+        phone_number: formValues.phone_number,
+        email_address: formValues.email,
+        rate: formValues.rate,
+        lesson_length: formValues.lesson_length,
+        rate_per_time: formValues.rate_per_time,
+      },
+    ];
+
+    const { data: newStudentId, error: studentsTableError } =
+      await supabaseConfig.from("Students").insert(studentData).select("id");
+
+    if (studentsTableError) {
+      throw new Error(studentsTableError.message);
+    }
+
+    const idExists = formValues.existing_family_id.length >= 1;
+    const noFamilyName =
+      formValues.family_first_name.length === 0 &&
+      formValues.family_last_name.length === 0;
+    let existingFamilyData: number | null = null;
+
+    if (idExists && noFamilyName) {
+      existingFamilyData = convertToInt8(formValues.existing_family_id);
+    }
+
+    const newStudentAllData = [
+      {
+        student_data: convertToInt8(newStudentId[0].id),
+        associated_family: existingFamilyData,
       },
     ];
 
