@@ -92,6 +92,16 @@ export default (
       borderRadius: spacing.multipleXL * 4,
       backgroundColor: whites.white300,
     },
+    existingFamilyCardsContainer: {
+      display: "flex",
+      flex: 1,
+      marginVertical: spacing.multipleReg,
+    },
+    existingFamilyParentOne: {
+      fontFamily: typography.bold,
+      fontSize: moderateScale(18),
+      paddingHorizontal: horizontalScale(spacing.multipleXL),
+    },
     chooseFamilyButton: {
       display: "flex",
       justifyContent: "center",

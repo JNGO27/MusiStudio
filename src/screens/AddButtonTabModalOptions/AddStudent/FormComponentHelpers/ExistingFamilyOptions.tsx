@@ -2,8 +2,9 @@ import { useState } from "react";
 import { View, Text } from "react-native";
 
 import type { GestureResponderEvent } from "react-native";
+import type { FormikHandlers, FormikHelpers } from "formik";
 
-import type { StyleSheetProps } from "@src/types";
+import type { StyleSheetProps, StudentFormValues } from "@src/types";
 
 import { CheckboxFamilyCard } from "@src/components";
 
@@ -22,9 +23,10 @@ const ExistingFamilyOptions = ({ openOrCloseModal, styles }: Props) => {
   const handleCardPress = (id: number) => {
     setSelectedCard(id);
     setIsChosen({ [id]: true });
+
     setTimeout(() => {
       openOrCloseModal();
-    }, 200);
+    }, 150);
   };
   return (
     <View
@@ -34,12 +36,15 @@ const ExistingFamilyOptions = ({ openOrCloseModal, styles }: Props) => {
     >
       {data &&
         data.map((parent) => (
-          <View key={parent.id}>
+          <View key={parent.id} style={styles.existingFamilyCardsContainer}>
             <CheckboxFamilyCard
               isChosen={isChosen[parent.id]}
               onPress={() => handleCardPress(parent.id)}
             >
-              <Text>{parent.parent_guardian_first_name_1}</Text>
+              <Text style={styles.existingFamilyParentOne}>
+                {parent.parent_guardian_last_name_1},{" "}
+                {parent.parent_guardian_first_name_1}
+              </Text>
             </CheckboxFamilyCard>
           </View>
         ))}
