@@ -43,7 +43,10 @@ const ExistingFamilyChoice = ({ styles }: Props) => {
         modalVisible={modalVisiable}
         openOrCloseModal={openOrCloseModal}
       >
-        <ExistingFamilyOptions styles={styles} />
+        <ExistingFamilyOptions
+          openOrCloseModal={openOrCloseModal}
+          styles={styles}
+        />
       </ModalScrollable>
     </View>
   );

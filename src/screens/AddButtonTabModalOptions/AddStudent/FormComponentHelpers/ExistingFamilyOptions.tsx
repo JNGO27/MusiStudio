@@ -10,10 +10,11 @@ import { CheckboxCard } from "@src/components";
 import { useGetAllFamilyDataQuery } from "@src/redux/services/supabaseAPI";
 
 type Props = {
+  openOrCloseModal: () => void;
   styles: StyleSheetProps;
 };
 
-const ExistingFamilyOptions = ({ styles }: Props) => {
+const ExistingFamilyOptions = ({ openOrCloseModal, styles }: Props) => {
   const [, setSelectedCard] = useState<number | null>(null);
   const [isChosen, setIsChosen] = useState<{ [key: number]: boolean }>({});
   const { data } = useGetAllFamilyDataQuery({});
@@ -21,6 +22,9 @@ const ExistingFamilyOptions = ({ styles }: Props) => {
   const handleCardPress = (id: number) => {
     setSelectedCard(id);
     setIsChosen({ [id]: true });
+    setTimeout(() => {
+      openOrCloseModal();
+    }, 200);
   };
   return (
     <View
