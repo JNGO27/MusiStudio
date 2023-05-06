@@ -13,13 +13,14 @@ type Props = {
 };
 
 const ExistingFamilyOptions = ({ openOrCloseModal }: Props) => {
-  const { styles } = useAddStudentFormContext();
+  const { setFieldValue, styles } = useAddStudentFormContext();
   const [, setSelectedCard] = useState<number | null>(null);
   const [isChosen, setIsChosen] = useState<{ [key: number]: boolean }>({});
   const { data } = useGetAllFamilyDataQuery({});
 
   const handleCardPress = (id: number) => {
     setSelectedCard(id);
+    setFieldValue("existing_family_id", String(id));
     setIsChosen({ [id]: true });
 
     setTimeout(() => {

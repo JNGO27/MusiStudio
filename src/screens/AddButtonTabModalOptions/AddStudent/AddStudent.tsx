@@ -38,6 +38,7 @@ const AddStudent = () => {
     family_last_name: "",
     family_phone_number: "",
     family_email: "",
+    existing_family_id: "",
     lesson_length: "",
     rate: "",
     rate_per_time: "per_hour",

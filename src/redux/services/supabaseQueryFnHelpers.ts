@@ -70,6 +70,16 @@ export const insertStudentDataQueryFn = {
       throw new Error(studentsTableError.message);
     }
 
+    const idExists = formValues.existing_family_id.length >= 1;
+    const noFamilyName =
+      formValues.family_first_name.length === 0 &&
+      formValues.family_last_name.length === 0;
+    let existingFamilyData: number | null = null;
+
+    if (idExists && noFamilyName) {
+      existingFamilyData = convertToInt8(formValues.existing_family_id);
+    }
+
     const { data: newFamilyId, error: familiesTableError } =
       await supabaseConfig.from("Families").insert(familyData).select("id");
 
@@ -80,7 +90,8 @@ export const insertStudentDataQueryFn = {
     const newStudentAllData = [
       {
         student_data: convertToInt8(newStudentId[0].id),
-        associated_family: convertToInt8(newFamilyId[0].id),
+        associated_family:
+          existingFamilyData || convertToInt8(newFamilyId[0].id),
       },
     ];
 

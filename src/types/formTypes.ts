@@ -9,6 +9,7 @@ export type StudentFormValues = {
   family_last_name: string;
   family_phone_number: string;
   family_email: string;
+  existing_family_id: string;
   lesson_length: string;
   rate_per_time: RateOptions;
   rate: string;
