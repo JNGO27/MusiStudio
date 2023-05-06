@@ -5,7 +5,7 @@ import type { GestureResponderEvent } from "react-native";
 
 import type { StyleSheetProps } from "@src/types";
 
-import { CheckboxCard } from "@src/components";
+import { CheckboxFamilyCard } from "@src/components";
 
 import { useGetAllFamilyDataQuery } from "@src/redux/services/supabaseAPI";
 
@@ -35,12 +35,12 @@ const ExistingFamilyOptions = ({ openOrCloseModal, styles }: Props) => {
       {data &&
         data.map((parent) => (
           <View key={parent.id}>
-            <CheckboxCard
+            <CheckboxFamilyCard
               isChosen={isChosen[parent.id]}
               onPress={() => handleCardPress(parent.id)}
             >
               <Text>{parent.parent_guardian_first_name_1}</Text>
-            </CheckboxCard>
+            </CheckboxFamilyCard>
           </View>
         ))}
     </View>
