@@ -16,8 +16,7 @@ import changingStyles from "./dynamicStyles";
 import { familyTypeInitialState, familyTypeReducer } from "../reducerHelper";
 
 const StudentFamilyChoice = () => {
-  const { values, handleChange, handleBlur, styles } =
-    useAddStudentFormContext();
+  const { styles } = useAddStudentFormContext();
 
   const [familyTypeState, familyTypeDispatch] = useReducer(
     familyTypeReducer,
