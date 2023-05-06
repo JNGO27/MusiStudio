@@ -67,35 +67,22 @@ const AddStudent = () => {
               setFieldValue={setFieldValue}
             >
               <View style={styles.formContainer}>
-                <StudentDetails
-                  values={values}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  styles={styles}
-                />
+                <StudentDetails />
+
                 <View style={styles.divider} />
-                <StudentFamilyChoice
-                  values={values}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  styles={styles}
-                />
+
+                <StudentFamilyChoice />
+
                 <View style={styles.divider} />
-                <LessonDetails
-                  values={values}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  styles={styles}
-                />
+
+                <LessonDetails />
+
                 <View style={styles.divider} />
-                <RateDetails
-                  values={values}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  setFieldValue={setFieldValue}
-                  styles={styles}
-                />
+
+                <RateDetails />
+
                 <View style={styles.divider} />
+
                 <Finalization handleSubmit={handleSubmit} styles={styles} />
               </View>
             </AddStudentFormContext>

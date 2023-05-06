@@ -1,23 +1,17 @@
 import { View, Text, TextInput } from "react-native";
 
-import type { FormikHandlers } from "formik";
-
-import type { StudentFormValues, StyleSheetProps } from "@src/types";
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 
 import globalStyles from "@src/globalStyles";
-
-type Props = {
-  values: StudentFormValues;
-  handleChange: FormikHandlers["handleChange"];
-  handleBlur: FormikHandlers["handleBlur"];
-  styles: StyleSheetProps;
-};
 
 const {
   colors: { purples },
 } = globalStyles;
 
-const LessonDetails = ({ values, handleChange, handleBlur, styles }: Props) => {
+const LessonDetails = () => {
+  const { values, handleChange, handleBlur, styles } =
+    useAddStudentFormContext();
+
   return (
     <View style={styles.formSection}>
       <Text style={styles.formSectionHeaderText}>Lesson Length</Text>

@@ -5,9 +5,7 @@ import { Image } from "expo-image";
 
 import type { ImageStyle } from "expo-image";
 
-import type { FormikHandlers } from "formik";
-import type { StudentFormValues, StyleSheetProps } from "@src/types";
-
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { CheckboxCard } from "@src/components";
 import { FamilyDetails, ExistingFamilyChoice } from ".";
@@ -17,19 +15,10 @@ import changingStyles from "./dynamicStyles";
 
 import { familyTypeInitialState, familyTypeReducer } from "../reducerHelper";
 
-type Props = {
-  values: StudentFormValues;
-  handleChange: FormikHandlers["handleChange"];
-  handleBlur: FormikHandlers["handleBlur"];
-  styles: StyleSheetProps;
-};
+const StudentFamilyChoice = () => {
+  const { values, handleChange, handleBlur, styles } =
+    useAddStudentFormContext();
 
-const StudentFamilyChoice = ({
-  values,
-  handleChange,
-  handleBlur,
-  styles,
-}: Props) => {
   const [familyTypeState, familyTypeDispatch] = useReducer(
     familyTypeReducer,
     familyTypeInitialState,

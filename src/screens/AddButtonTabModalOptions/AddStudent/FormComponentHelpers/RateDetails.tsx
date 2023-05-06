@@ -2,11 +2,9 @@ import { useReducer } from "react";
 import { View, Text, TextInput } from "react-native";
 import { Image } from "expo-image";
 
-import type { FormikHandlers, FormikHelpers } from "formik";
 import type { ImageStyle } from "expo-image";
 
-import type { StudentFormValues, StyleSheetProps } from "@src/types";
-
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { useResponsiveness } from "@src/hooks";
 import { CheckboxCard } from "@src/components";
 
@@ -17,25 +15,14 @@ import changingStyles from "./rateDynamicStyles";
 
 import { rateInitialState, rateReducer } from "../reducerHelper";
 
-type Props = {
-  values: StudentFormValues;
-  handleChange: FormikHandlers["handleChange"];
-  handleBlur: FormikHandlers["handleBlur"];
-  setFieldValue: FormikHelpers<StudentFormValues>["setFieldValue"];
-  styles: StyleSheetProps;
-};
-
 const {
   colors: { purples },
 } = globalStyles;
 
-const RateDetails = ({
-  values,
-  handleChange,
-  handleBlur,
-  setFieldValue,
-  styles,
-}: Props) => {
+const RateDetails = () => {
+  const { values, handleChange, handleBlur, setFieldValue, styles } =
+    useAddStudentFormContext();
+
   const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
   const [, , moderateScale] = useResponsiveness();
   const dynamicStyles = changingStyles(moderateScale, rateState);
