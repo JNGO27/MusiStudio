@@ -75,16 +75,7 @@ const StudentFamilyChoice = () => {
           </CheckboxCard>
         </View>
       </View>
-      {!familyTypeState.EXISTS ? (
-        <FamilyDetails
-          values={values}
-          handleChange={handleChange}
-          handleBlur={handleBlur}
-          styles={styles}
-        />
-      ) : (
-        <ExistingFamilyChoice styles={styles} />
-      )}
+      {!familyTypeState.EXISTS ? <FamilyDetails /> : <ExistingFamilyChoice />}
     </>
   );
 };

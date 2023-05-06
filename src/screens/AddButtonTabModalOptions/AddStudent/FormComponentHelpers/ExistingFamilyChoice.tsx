@@ -1,8 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { StyleSheetProps } from "@src/types";
-
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { useNewModalState } from "@src/hooks";
 import { ModalScrollable } from "@src/components";
 import ExistingFamilyOptions from "./ExistingFamilyOptions";
@@ -10,17 +9,14 @@ import ExistingFamilyOptions from "./ExistingFamilyOptions";
 // eslint-disable-next-line import/order
 import globalStyles from "@src/globalStyles";
 
-type Props = {
-  styles: StyleSheetProps;
-};
-
 const {
   colors: {
     gradients: { purpleGradient },
   },
 } = globalStyles;
 
-const ExistingFamilyChoice = ({ styles }: Props) => {
+const ExistingFamilyChoice = () => {
+  const { styles } = useAddStudentFormContext();
   const [modalVisiable, openOrCloseModal] = useNewModalState();
 
   return (
@@ -43,10 +39,7 @@ const ExistingFamilyChoice = ({ styles }: Props) => {
         modalVisible={modalVisiable}
         openOrCloseModal={openOrCloseModal}
       >
-        <ExistingFamilyOptions
-          openOrCloseModal={openOrCloseModal}
-          styles={styles}
-        />
+        <ExistingFamilyOptions openOrCloseModal={openOrCloseModal} />
       </ModalScrollable>
     </View>
   );

@@ -3,18 +3,17 @@ import { View, Text } from "react-native";
 
 import type { GestureResponderEvent } from "react-native";
 
-import type { StyleSheetProps } from "@src/types";
-
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { CheckboxFamilyCard } from "@src/components";
 
 import { useGetAllFamilyDataQuery } from "@src/redux/services/supabaseAPI";
 
 type Props = {
   openOrCloseModal: () => void;
-  styles: StyleSheetProps;
 };
 
-const ExistingFamilyOptions = ({ openOrCloseModal, styles }: Props) => {
+const ExistingFamilyOptions = ({ openOrCloseModal }: Props) => {
+  const { styles } = useAddStudentFormContext();
   const [, setSelectedCard] = useState<number | null>(null);
   const [isChosen, setIsChosen] = useState<{ [key: number]: boolean }>({});
   const { data } = useGetAllFamilyDataQuery({});
