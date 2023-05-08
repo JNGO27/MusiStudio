@@ -9,7 +9,7 @@ import globalStyles from "@src/globalStyles";
 const {
   typography,
   spacing,
-  colors: { purples, lightPurples, whites, grays, blacks },
+  colors: { lightPurples, whites, grays, blacks, greens },
 } = globalStyles;
 
 export default (
@@ -85,6 +85,14 @@ export default (
       width: "100%",
       height: verticalScale(spacing.multipleXL * 13.2),
     },
+    existingFamilyContainerWithChosen: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: verticalScale(spacing.multipleXL * 13.2),
+      gap: spacing.multipleXL * 2,
+    },
     existingFamilyOptionsContainer: {
       alignItems: "center",
       width: "100%",
@@ -96,6 +104,21 @@ export default (
       display: "flex",
       flex: 1,
       marginVertical: spacing.multipleReg,
+    },
+    existingFamilyCheckboxCard: {
+      position: "relative",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: horizontalScale(spacing.multipleXL * 24),
+      height: verticalScale(spacing.multipleReg * 10),
+      maxWidth: spacing.multipleXL * 30,
+      maxHeight: spacing.multipleXL * 16,
+      marginLeft: spacing.multipleM * 1,
+      borderRadius: spacing.multipleReg * 2,
+      backgroundColor: greens.green50,
+      borderWidth: spacing.multipleXS,
+      borderColor: greens.green500,
     },
     existingFamilyParentOne: {
       fontFamily: typography.bold,
@@ -150,6 +173,13 @@ export default (
       marginTop: spacing.multipleXL,
       width: spacing.multipleReg * 5,
       height: spacing.multipleReg * 5,
+    },
+    checkIconChosenFamily: {
+      position: "absolute",
+      top: spacing.multipleReg * 1.2,
+      right: spacing.multipleReg * 2,
+      width: spacing.multipleReg * 2.5,
+      height: spacing.multipleReg * 2.5,
     },
     checkIconRate: {
       position: "absolute",

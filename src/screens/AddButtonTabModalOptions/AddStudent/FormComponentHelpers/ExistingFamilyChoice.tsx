@@ -1,12 +1,16 @@
+/* eslint-disable import/order */
 import { View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Image } from "expo-image";
+
+import type { ImageStyle } from "expo-image";
 
 import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { useNewModalState } from "@src/hooks";
 import { ModalScrollable } from "@src/components";
 import ExistingFamilyOptions from "./ExistingFamilyOptions";
 
-// eslint-disable-next-line import/order
+import { SuccessIcon } from "@src/assets/icons";
 import globalStyles from "@src/globalStyles";
 
 const {
@@ -16,11 +20,31 @@ const {
 } = globalStyles;
 
 const ExistingFamilyChoice = () => {
-  const { styles } = useAddStudentFormContext();
+  const { styles, chosenExistingFamily } = useAddStudentFormContext();
   const [modalVisiable, openOrCloseModal] = useNewModalState();
 
+  const hasChosenFamily = chosenExistingFamily.length >= 1;
+
   return (
-    <View style={styles.existingFamilyContainer}>
+    <View
+      style={
+        hasChosenFamily
+          ? styles.existingFamilyContainerWithChosen
+          : styles.existingFamilyContainer
+      }
+    >
+      {hasChosenFamily && (
+        <View style={styles.existingFamilyCheckboxCard}>
+          <Image
+            style={styles.checkIconChosenFamily as ImageStyle}
+            source={SuccessIcon}
+            contentFit="contain"
+          />
+          <Text style={styles.existingFamilyParentOne}>
+            {chosenExistingFamily}
+          </Text>
+        </View>
+      )}
       <LinearGradient
         colors={purpleGradient.colors}
         locations={purpleGradient.locations}
@@ -32,7 +56,9 @@ const ExistingFamilyChoice = () => {
           style={styles.chooseFamilyButtonTouchable}
           onPress={openOrCloseModal}
         >
-          <Text style={styles.chooseFamilyButtonText}>Choose Family</Text>
+          <Text style={styles.chooseFamilyButtonText}>
+            {hasChosenFamily ? "Change Family" : "Choose Family"}
+          </Text>
         </TouchableOpacity>
       </LinearGradient>
       <ModalScrollable
