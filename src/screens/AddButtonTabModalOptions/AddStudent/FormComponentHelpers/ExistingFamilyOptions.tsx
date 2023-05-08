@@ -13,40 +13,63 @@ type Props = {
 };
 
 const ExistingFamilyOptions = ({ openOrCloseModal }: Props) => {
-  const { setFieldValue, styles } = useAddStudentFormContext();
+  const { data, isLoading } = useGetAllFamilyDataQuery({});
+  const { setFieldValue, setChosenExistingFamily, styles } =
+    useAddStudentFormContext();
   const [, setSelectedCard] = useState<number | null>(null);
   const [isChosen, setIsChosen] = useState<{ [key: number]: boolean }>({});
-  const { data } = useGetAllFamilyDataQuery({});
 
-  const handleCardPress = (id: number) => {
+  const handleCardPress = (id: number, lastName: string, firstName: string) => {
     setSelectedCard(id);
     setFieldValue("existing_family_id", String(id));
+    setChosenExistingFamily(`${lastName}, ${firstName}`);
     setIsChosen({ [id]: true });
 
     setTimeout(() => {
       openOrCloseModal();
     }, 150);
   };
+
+  if (isLoading) {
+    return (
+      <View style={styles.existingFamilyOptionsContainer}>
+        <View style={styles.existingFamilyCardsContainer}>
+          <Text>...Loading</Text>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View
       style={styles.existingFamilyOptionsContainer}
       onStartShouldSetResponder={() => true}
       onTouchEnd={(e: GestureResponderEvent) => e.stopPropagation()}
     >
-      {data &&
+      {data ? (
         data.map((parent) => (
           <View key={parent.id} style={styles.existingFamilyCardsContainer}>
             <CheckboxFamilyCard
               isChosen={isChosen[parent.id]}
-              onPress={() => handleCardPress(parent.id)}
+              onPress={() =>
+                handleCardPress(
+                  parent.id,
+                  parent.parent_guardian_last_name_1,
+                  parent.parent_guardian_first_name_1,
+                )
+              }
             >
               <Text style={styles.existingFamilyParentOne}>
-                {parent.parent_guardian_last_name_1},{" "}
+                {parent.parent_guardian_last_name_1}
+                {", "}
                 {parent.parent_guardian_first_name_1}
               </Text>
             </CheckboxFamilyCard>
           </View>
-        ))}
+        ))
+      ) : (
+        <Text>No Available Families</Text>
+      )}
     </View>
   );
 };
