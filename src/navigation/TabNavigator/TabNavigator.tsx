@@ -3,17 +3,23 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import type { TabNavigatorParamList } from "@src/types";
 
 import { AddButtonModalContext } from "@src/contexts/AddButtonModalContext";
+import { useBottomTabGoneOnKeyboardFocus } from "@src/hooks";
 import { HomeNav, AddButtonNav, StudentsNav } from "@src/navigation";
 import { AddButtonTab } from "@src/components";
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
 const TabNavigator = () => {
+  const isKeyboardFocused = useBottomTabGoneOnKeyboardFocus();
   const noHeaderOption = { headerShown: false };
 
   return (
     <AddButtonModalContext>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarStyle: { display: isKeyboardFocused ? "none" : "flex" },
+        }}
+      >
         <Tab.Screen
           options={noHeaderOption}
           name="HomeNav"
