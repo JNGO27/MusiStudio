@@ -1,5 +1,6 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
+import type { ReactNode, Dispatch, SetStateAction } from "react";
 import type { FormikHandlers, FormikHelpers } from "formik";
 
 import type { StudentFormValues, StyleSheetProps } from "@src/types";
@@ -12,11 +13,16 @@ interface FormProps {
   setFieldValue: FormikHelpers<StudentFormValues>["setFieldValue"];
 }
 
-interface ContextProps extends FormProps {
-  children: React.ReactNode;
+interface CompleteFormProps extends FormProps {
+  chosenExistingFamily: string;
+  setChosenExistingFamily: Dispatch<SetStateAction<string>>;
 }
 
-const Context = createContext<FormProps>({} as FormProps);
+interface ContextProps extends FormProps {
+  children: ReactNode;
+}
+
+const Context = createContext<CompleteFormProps>({} as CompleteFormProps);
 
 export const AddStudentFormContext = ({
   values,
@@ -26,6 +32,8 @@ export const AddStudentFormContext = ({
   setFieldValue,
   children,
 }: ContextProps) => {
+  const [chosenExistingFamily, setChosenExistingFamily] = useState("");
+
   const conextValue = useMemo(
     () => ({
       values,
@@ -33,8 +41,17 @@ export const AddStudentFormContext = ({
       handleChange,
       handleBlur,
       setFieldValue,
+      chosenExistingFamily,
+      setChosenExistingFamily,
     }),
-    [handleBlur, handleChange, setFieldValue, styles, values],
+    [
+      chosenExistingFamily,
+      handleBlur,
+      handleChange,
+      setFieldValue,
+      styles,
+      values,
+    ],
   );
 
   return <Context.Provider value={conextValue}>{children}</Context.Provider>;
