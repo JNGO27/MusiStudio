@@ -43,7 +43,17 @@ const COLORS = {
   },
   purples: {
     purple100: "hsl(243 85% 18%)",
+    purple100Tw: "hsl(277, 100%, 99%)",
+    purple200: "hsl(276, 100%, 98%)",
+    purple300: "hsl(274, 96%, 95%)",
+    purple400: "hsl(271, 64%, 84%)",
+    purple500: "hsl(270, 54%, 66%)",
+    purple600: "hsl(269, 48%, 54%)",
+    purple700: "hsl(267, 50%, 45%)",
+    purple800: "hsl(266, 54%, 38%)",
+    purple900: "hsl(265, 62%, 28%)",
   },
+
   pinks: {
     pink100: "hsl(360, 100%, 87%)",
     pink300: "hsl(360, 85%, 78%)",
