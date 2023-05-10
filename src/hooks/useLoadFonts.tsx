@@ -1,44 +1,48 @@
 import {
   useFonts,
-  Figtree_300Light,
-  Figtree_300Light_Italic,
-  Figtree_400Regular,
-  Figtree_400Regular_Italic,
-  Figtree_500Medium_Italic,
-  Figtree_500Medium,
-  Figtree_600SemiBold,
-  Figtree_600SemiBold_Italic,
-  Figtree_700Bold,
-  Figtree_700Bold_Italic,
-  Figtree_800ExtraBold,
-  Figtree_800ExtraBold_Italic,
-  Figtree_900Black,
-  Figtree_900Black_Italic,
-} from "@expo-google-fonts/figtree";
+  Poppins_100Thin,
+  Poppins_100Thin_Italic,
+  Poppins_200ExtraLight,
+  Poppins_200ExtraLight_Italic,
+  Poppins_300Light,
+  Poppins_300Light_Italic,
+  Poppins_400Regular,
+  Poppins_400Regular_Italic,
+  Poppins_500Medium_Italic,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_600SemiBold_Italic,
+  Poppins_700Bold,
+  Poppins_700Bold_Italic,
+  Poppins_800ExtraBold,
+  Poppins_800ExtraBold_Italic,
+  Poppins_900Black,
+  Poppins_900Black_Italic,
+} from "@expo-google-fonts/poppins";
 
 const useLoadFonts = () => {
   const [fontsLoaded] = useFonts({
-    Figtree_300Light,
-    Figtree_300Light_Italic,
-    Figtree_400Regular,
-    Figtree_400Regular_Italic,
-    Figtree_500Medium_Italic,
-    Figtree_500Medium,
-    Figtree_600SemiBold,
-    Figtree_600SemiBold_Italic,
-    Figtree_700Bold,
-    Figtree_700Bold_Italic,
-    Figtree_800ExtraBold,
-    Figtree_800ExtraBold_Italic,
-    Figtree_900Black,
-    Figtree_900Black_Italic,
+    Poppins_100Thin,
+    Poppins_100Thin_Italic,
+    Poppins_200ExtraLight,
+    Poppins_200ExtraLight_Italic,
+    Poppins_300Light,
+    Poppins_300Light_Italic,
+    Poppins_400Regular,
+    Poppins_400Regular_Italic,
+    Poppins_500Medium_Italic,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+    Poppins_600SemiBold_Italic,
+    Poppins_700Bold,
+    Poppins_700Bold_Italic,
+    Poppins_800ExtraBold,
+    Poppins_800ExtraBold_Italic,
+    Poppins_900Black,
+    Poppins_900Black_Italic,
   });
 
-  if (!fontsLoaded) {
-    return null;
-  }
-
-  return null;
+  return fontsLoaded;
 };
 
 export default useLoadFonts;

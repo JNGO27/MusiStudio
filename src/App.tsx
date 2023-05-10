@@ -2,29 +2,9 @@ import { useState, useEffect } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { registerRootComponent } from "expo";
 import { Provider } from "react-redux";
-import {
-  useFonts,
-  Poppins_100Thin,
-  Poppins_100Thin_Italic,
-  Poppins_200ExtraLight,
-  Poppins_200ExtraLight_Italic,
-  Poppins_300Light,
-  Poppins_300Light_Italic,
-  Poppins_400Regular,
-  Poppins_400Regular_Italic,
-  Poppins_500Medium_Italic,
-  Poppins_500Medium,
-  Poppins_600SemiBold,
-  Poppins_600SemiBold_Italic,
-  Poppins_700Bold,
-  Poppins_700Bold_Italic,
-  Poppins_800ExtraBold,
-  Poppins_800ExtraBold_Italic,
-  Poppins_900Black,
-  Poppins_900Black_Italic,
-} from "@expo-google-fonts/poppins";
 
 import { RootNav, AuthNav } from "@src/navigation";
+import { useLoadFonts } from "@src/hooks";
 
 import type { Session } from "@supabase/supabase-js";
 
@@ -40,6 +20,8 @@ const styles = StyleSheet.create({
 
 const App = () => {
   const [userSession, setUserSession] = useState<Session | null>(null);
+  const fontsLoaded = useLoadFonts();
+
   useEffect(() => {
     supabaseConfig.auth.getSession().then(({ data: { session } }) => {
       setUserSession(session);
@@ -49,27 +31,6 @@ const App = () => {
       setUserSession(session);
     });
   }, []);
-
-  const [fontsLoaded] = useFonts({
-    Poppins_100Thin,
-    Poppins_100Thin_Italic,
-    Poppins_200ExtraLight,
-    Poppins_200ExtraLight_Italic,
-    Poppins_300Light,
-    Poppins_300Light_Italic,
-    Poppins_400Regular,
-    Poppins_400Regular_Italic,
-    Poppins_500Medium_Italic,
-    Poppins_500Medium,
-    Poppins_600SemiBold,
-    Poppins_600SemiBold_Italic,
-    Poppins_700Bold,
-    Poppins_700Bold_Italic,
-    Poppins_800ExtraBold,
-    Poppins_800ExtraBold_Italic,
-    Poppins_900Black,
-    Poppins_900Black_Italic,
-  });
 
   if (!fontsLoaded) {
     return null;
