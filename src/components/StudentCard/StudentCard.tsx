@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { View, Text } from "react-native";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
@@ -53,4 +54,4 @@ const StudentCard = ({
   );
 };
 
-export default StudentCard;
+export default memo(StudentCard);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { View, Text } from "react-native";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
@@ -60,4 +61,4 @@ const FamilyCard = ({
   );
 };
 
-export default FamilyCard;
+export default memo(FamilyCard);
