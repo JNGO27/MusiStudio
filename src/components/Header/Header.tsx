@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { StatusBar, View, Text } from "react-native";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
@@ -13,9 +13,12 @@ const Header = () => {
   );
 
   return (
-    <View>
-      <Text>Header</Text>
-    </View>
+    <>
+      <StatusBar />
+      <View>
+        <Text>Header</Text>
+      </View>
+    </>
   );
 };
 
