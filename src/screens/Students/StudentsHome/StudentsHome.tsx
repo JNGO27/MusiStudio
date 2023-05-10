@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import { SafeAreaView, FlatList } from "react-native";
+import { FlatList } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import uuid from "react-native-uuid";
 import { useScrollToTop } from "@react-navigation/native";
 
@@ -11,7 +12,14 @@ import type { AllStudentFamilyDataCard } from "@src/types";
 
 import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
 
+import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
+
+const {
+  colors: {
+    gradients: { purpleGradient },
+  },
+} = globalStyles;
 
 type MyRef = RefObject<FlatList>;
 
@@ -24,7 +32,13 @@ const StudentsHome = () => {
   useScrollToTop(ref);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <LinearGradient
+      style={styles.container}
+      colors={purpleGradient.colors}
+      locations={purpleGradient.locations}
+      start={purpleGradient.start}
+      end={purpleGradient.end}
+    >
       <FlatList
         ref={ref}
         style={styles.cardsContainer}
@@ -52,7 +66,7 @@ const StudentsHome = () => {
         )}
         keyExtractor={() => uuid.v4().toString()}
       />
-    </SafeAreaView>
+    </LinearGradient>
   );
 };
 

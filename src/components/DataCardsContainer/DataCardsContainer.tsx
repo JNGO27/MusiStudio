@@ -15,14 +15,12 @@ const Item = ({ item }: ItemProps) => (
 
 const DataCardsContainer = ({ allStudentData }: Props) => {
   return (
-    <View>
-      <FlatList
-        horizontal
-        data={allStudentData}
-        renderItem={({ item }) => <Item item={item} />}
-        keyExtractor={() => uuid.v4().toString()}
-      />
-    </View>
+    <FlatList
+      horizontal
+      data={allStudentData}
+      renderItem={({ item }) => <Item item={item} />}
+      keyExtractor={() => uuid.v4().toString()}
+    />
   );
 };
 
