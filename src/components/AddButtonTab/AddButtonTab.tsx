@@ -1,10 +1,18 @@
 import { TouchableOpacity, Text } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { useAddButtonModalContext } from "@src/contexts/AddButtonModalContext";
 import { AddButtonModal } from "@src/components";
 
+import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
+
+const {
+  colors: {
+    gradients: { purpleGradient },
+  },
+} = globalStyles;
 
 const AddButtonTab = () => {
   const { setModalVisible } = useAddButtonModalContext();
@@ -20,12 +28,18 @@ const AddButtonTab = () => {
   };
 
   return (
-    <>
-      <TouchableOpacity style={styles.addButton} onPress={openOrClose}>
+    <LinearGradient
+      style={styles.addButton}
+      colors={purpleGradient.colors}
+      locations={purpleGradient.locations}
+      start={purpleGradient.start}
+      end={purpleGradient.end}
+    >
+      <TouchableOpacity onPress={openOrClose} style={styles.addButtonTouchable}>
         <Text style={styles.addButtonIcon}>+</Text>
       </TouchableOpacity>
       <AddButtonModal />
-    </>
+    </LinearGradient>
   );
 };
 

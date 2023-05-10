@@ -3,6 +3,14 @@ import { StyleSheet } from "react-native";
 
 import { DirectionalScale, CalculatedScale } from "@src/types";
 
+import globalStyles from "@src/globalStyles";
+
+const {
+  spacing,
+  typography,
+  colors: { whites },
+} = globalStyles;
+
 export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
@@ -10,14 +18,28 @@ export default (
 ) => {
   return StyleSheet.create({
     addButton: {
-      width: 30,
-      height: 30,
-      borderRadius: 30 / 2,
-      backgroundColor: "purple",
+      width: spacing.multipleXL * 3.5,
+      height: spacing.multipleXL * 3.5,
+      borderRadius: (spacing.multipleXL * 3.5) / 2,
+      padding: spacing.multipleS,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      marginTop: -spacing.multipleL,
     },
-    addButtonIcon: { color: "white" },
+    addButtonTouchable: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      height: "100%",
+    },
+    addButtonIcon: {
+      position: "relative",
+      bottom: spacing.multipleXS * 2.75,
+      color: whites.white200,
+      fontFamily: typography.semiBold,
+      fontSize: spacing.multipleReg * 3,
+    },
   });
 };
