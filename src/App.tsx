@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { registerRootComponent } from "expo";
 import { Provider } from "react-redux";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { RootNav, AuthNav } from "@src/navigation";
 import { useLoadFonts } from "@src/hooks";
@@ -38,9 +39,9 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <SafeAreaView style={styles.container}>
+      <GestureHandlerRootView style={styles.container}>
         {userSession && userSession?.user ? <RootNav /> : <AuthNav />}
-      </SafeAreaView>
+      </GestureHandlerRootView>
     </Provider>
   );
 };

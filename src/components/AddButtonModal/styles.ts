@@ -33,6 +33,11 @@ export default (
       alignItems: "center",
       backgroundColor: blacks.blackTransparent,
     },
+    modalBackgroundTouchable: {
+      width: "100%",
+      height: "100%",
+      position: "absolute",
+    },
     modalCard: {
       display: "flex",
       position: "absolute",
