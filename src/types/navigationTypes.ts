@@ -6,9 +6,17 @@ import {
 
 export type RootStackParamList = {
   TabNavigator: undefined;
+  HeaderNav: undefined;
 };
 
 export type HomeNavOptions = (typeof HomeOptionsOnlyArr)[number];
+
+export type HeaderStackParamList = {
+  HeaderNav: { screen: AccountScreenOptions };
+  Account: undefined;
+};
+
+export type AccountScreenOptions = keyof HeaderStackParamList;
 
 export type AuthStackParamList = {
   AuthHome: undefined;
