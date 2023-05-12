@@ -23,10 +23,20 @@ const TabNavigator = () => {
     verticalScale,
     moderateScale,
   );
+
   const screenOptions = useInitScreenOptions();
-  const tabScreenOption = {
+
+  const tabScreenOption1 = {
     headerShown: false,
     title: "Home",
+    tabBarActiveTintColor: purples.purple100,
+    tabBarHideOnKeyboard: true,
+    tabBarItemStyle: styles.tabBarItemStyleSheet,
+  };
+
+  const tabScreenOption2 = {
+    headerShown: false,
+    title: "Students",
     tabBarActiveTintColor: purples.purple100,
     tabBarHideOnKeyboard: true,
     tabBarItemStyle: styles.tabBarItemStyleSheet,
@@ -36,7 +46,7 @@ const TabNavigator = () => {
     <AddButtonModalContext>
       <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen
-          options={tabScreenOption}
+          options={tabScreenOption1}
           name="HomeNav"
           component={HomeNav}
         />
@@ -49,7 +59,7 @@ const TabNavigator = () => {
           component={AddButtonNav}
         />
         <Tab.Screen
-          options={tabScreenOption}
+          options={tabScreenOption2}
           name="StudentsNav"
           component={StudentsNav}
         />

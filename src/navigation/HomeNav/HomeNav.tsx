@@ -1,6 +1,4 @@
-import { View } from "react-native";
-
-import { Account } from "@src/components";
+import { View, Text } from "react-native";
 
 const HomeNav = () => {
   return (
@@ -12,7 +10,7 @@ const HomeNav = () => {
         justifyContent: "center",
       }}
     >
-      <Account />
+      <Text>Home</Text>
     </View>
   );
 };
