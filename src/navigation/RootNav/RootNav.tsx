@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { TabNavigator, HeaderNav } from "@src/navigation";
-import { AccountNavOption, Header } from "@src/components";
+import { Header } from "@src/components";
 
 import type { RootStackParamList } from "@src/types";
 
