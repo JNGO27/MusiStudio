@@ -1,6 +1,6 @@
 export { default as HomeOption } from "./HomeOption/HomeOption";
 export { default as NavigationMenu } from "./NavigationMenu/NavigationMenu";
-export { default as Account } from "./Account/Account";
+export { default as AccountNavOption } from "./AccountNavOption/AccountNavOption";
 export { default as AuthOption } from "./AuthOption/AuthOption";
 export { default as OAuthOption } from "./OAuthOption/OAuthOption";
 export { default as CardNavOption } from "./CardNavOption/CardNavOption";
