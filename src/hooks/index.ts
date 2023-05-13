@@ -5,6 +5,7 @@ import useUnFocusedScreenToParent from "./useUnFocusedScreenToParent";
 import useNewModalState from "./useNewModalState";
 import useBottomTabGoneOnKeyboardFocus from "./useBottomTabGoneOnKeyboardFocus";
 import useInitScreenOptions from "./useInitScreenOptions";
+import useIsNestedScreen from "./useIsNestedScreen";
 
 export {
   useLoadFonts,
@@ -14,4 +15,5 @@ export {
   useNewModalState,
   useBottomTabGoneOnKeyboardFocus,
   useInitScreenOptions,
+  useIsNestedScreen,
 };
