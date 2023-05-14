@@ -2,7 +2,7 @@
 import { ScrollView, View } from "react-native";
 import { Formik } from "formik";
 
-import useResponsiveness from "@src/hooks/useResponsiveness";
+import { useResponsiveness } from "@src/hooks";
 import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import {
   useInsertStudentDataMutation,
@@ -23,10 +23,13 @@ import createStyleSheet from "./styles";
 
 const AddStudent = () => {
   const [insertStudentData] = useInsertStudentDataMutation();
+
   const [insertStudentExistingFamilyData] =
     useInsertStudentExistingFamilyDataMutation();
+
   const [horizontalScale, verticalScale, moderateScale, dimensionHeight] =
     useResponsiveness();
+
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,

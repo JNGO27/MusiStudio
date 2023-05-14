@@ -9,7 +9,14 @@ const Stack = createNativeStackNavigator<HeaderStackParamList>();
 const HeaderNav = () => {
   return (
     <Stack.Navigator initialRouteName="Account">
-      <Stack.Screen name="Account" component={AccountHome} />
+      <Stack.Screen
+        name="Account"
+        options={{
+          headerTransparent: true,
+          headerTitle: "",
+        }}
+        component={AccountHome}
+      />
     </Stack.Navigator>
   );
 };

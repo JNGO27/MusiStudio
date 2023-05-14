@@ -20,7 +20,11 @@ const AddButtonNav = () => {
         name="AddButtonModalScreen"
         component={AddButtonModal}
       />
-      <Stack.Screen name="AddStudent" component={AddStudent} />
+      <Stack.Screen
+        name="AddStudent"
+        options={{ headerShown: false }}
+        component={AddStudent}
+      />
     </Stack.Navigator>
   );
 };
