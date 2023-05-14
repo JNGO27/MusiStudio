@@ -1,17 +1,17 @@
-import { useNavigationState } from "@react-navigation/native";
+import { useAppSelector } from "@src/redux";
+import { getGeneralGlobalData } from "@src/redux/selectors";
 
-import type { NavigationState } from "@react-navigation/native";
-
-import { noHeader } from "@src/utils/constants";
-
-const isNestedScreen = (state: NavigationState) => {
-  const filteredScreens = state.routes.filter(({ name }) => noHeader.has(name));
-  return filteredScreens.length >= 1;
-};
+import { noHeaderOptions } from "@src/utils/constants";
 
 const useIsNestedScreen = () => {
-  const isNested = isNestedScreen(useNavigationState((state) => state));
-  return isNested;
+  const currentAppRoute = useAppSelector(getGeneralGlobalData).currentRoute;
+
+  const isNestedScreen = () => {
+    const filteredScreens = noHeaderOptions.has(currentAppRoute);
+    return filteredScreens;
+  };
+
+  return isNestedScreen();
 };
 
 export default useIsNestedScreen;
