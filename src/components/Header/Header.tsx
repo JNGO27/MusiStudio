@@ -1,17 +1,20 @@
 import { StatusBar, View, Text } from "react-native";
 
-import useResponsiveness from "@src/hooks/useResponsiveness";
+import { useResponsiveness, useIsNestedScreen } from "@src/hooks";
 import { AccountNavOption } from "@src/components";
 
 import createStyleSheet from "./styles";
 
 const Header = () => {
+  const isNestedScreen = useIsNestedScreen();
+
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
+    isNestedScreen,
   );
 
   return (

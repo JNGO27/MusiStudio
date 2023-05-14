@@ -15,6 +15,7 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  isNestedScreen: boolean,
 ) => {
   return StyleSheet.create({
     headerContainer: {
@@ -26,7 +27,7 @@ export default (
       paddingHorizontal: spacing.multipleXL * 2,
       borderBottomLeftRadius: spacing.multipleXL * 4,
       borderBottomRightRadius: spacing.multipleXL * 4,
-      display: "flex",
+      display: isNestedScreen ? "none" : "flex",
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
