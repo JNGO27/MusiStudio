@@ -38,8 +38,8 @@ export const CardNavOptionsOnlyArr = [
   "PracticeCardDetails",
 ] as const;
 
-export const noHeader = new Set([
+export const noHeaderOptions = new Set([
   "AddStudent",
-  "StudentDetails",
-  "FamilyDetails",
+  "StudentCardDetails",
+  "FamilyCardDetails",
 ]);

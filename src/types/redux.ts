@@ -1,10 +1,9 @@
 import { store } from "@src/redux/app/store";
 
-import type { StudentAndFamily } from "@src/types";
+export type GeneralGlobal = {
+  isNestedScreen: boolean;
+  currentRoute: string;
+};
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-export type StudentsAllDataType = {
-  studentsAllData: StudentAndFamily[] | [];
-};
