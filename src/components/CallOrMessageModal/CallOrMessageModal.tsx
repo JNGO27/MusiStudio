@@ -1,11 +1,22 @@
-import { Modal, TouchableOpacity, View, Text } from "react-native";
+import {
+  Modal,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+  Text,
+  Linking,
+} from "react-native";
 
-import { useResponsiveness, useNewModalState } from "@src/hooks";
+import { useCallOrMessageContext } from "@src/contexts/CallOrMessageContext";
+import { useResponsiveness } from "@src/hooks";
+import { CheckboxCard } from "@src/components";
 
 import createStyleSheet from "./styles";
 
 const CallOrMessageModal = () => {
-  const [modalVisible, openOrCloseModal] = useNewModalState();
+  const { modalVisible, openOrCloseModal, setOptionType, phoneNumber } =
+    useCallOrMessageContext();
+
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -14,26 +25,47 @@ const CallOrMessageModal = () => {
     modalVisible,
   );
 
+  const handleCall = () => {
+    setOptionType("Call");
+    openOrCloseModal();
+    Linking.openURL(`tel:${phoneNumber}`);
+  };
+
+  const handleMessage = () => {
+    setOptionType("Message");
+    openOrCloseModal();
+    Linking.openURL(`sms:${phoneNumber}`);
+  };
+
   return (
-    <View style={styles.modalContainer}>
-      <Modal
-        visible={modalVisible}
-        onRequestClose={openOrCloseModal}
-        animationType="slide"
-        transparent
-      >
+    <Modal
+      style={styles.modalContainer}
+      visible={modalVisible}
+      onRequestClose={openOrCloseModal}
+      animationType="slide"
+      transparent
+    >
+      <TouchableWithoutFeedback onPress={openOrCloseModal}>
         <View style={styles.modalBackground}>
           <View style={styles.modalCard}>
             <View style={styles.innerContainer}>
-              <Text>Example</Text>
+              <Text style={styles.text}>Select an option</Text>
+              <View style={styles.optionsContainer}>
+                <CheckboxCard isChosen={false} onPress={handleCall}>
+                  <Text>Call</Text>
+                </CheckboxCard>
+                <CheckboxCard isChosen={false} onPress={handleMessage}>
+                  <Text>Message</Text>
+                </CheckboxCard>
+              </View>
             </View>
             <TouchableOpacity style={styles.button} onPress={openOrCloseModal}>
-              <Text style={styles.buttonText}>Ok</Text>
+              <Text style={styles.buttonText}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
-    </View>
+      </TouchableWithoutFeedback>
+    </Modal>
   );
 };
 

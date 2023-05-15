@@ -1,7 +1,9 @@
-import { Text, TouchableOpacity, Linking, Alert } from "react-native";
+import { Text, TouchableOpacity, Linking } from "react-native";
 import * as Clipboard from "expo-clipboard";
 
 import type { StyleSheetProps } from "@src/types";
+
+import { useCallOrMessageContext } from "@src/contexts/CallOrMessageContext";
 
 type SelectableTextProps = {
   content: string;
@@ -9,27 +11,11 @@ type SelectableTextProps = {
 };
 
 const SelectableText = ({ content, styles }: SelectableTextProps) => {
-  const onPhoneNumberSelected = (phoneNumber: string) => {
-    const sanitizedPhoneNumber = phoneNumber.replace(/\D/g, "");
+  const { openOrCloseModal, setPhoneNumber } = useCallOrMessageContext();
 
-    Alert.alert(
-      "Select an Action",
-      "Would you like to call or send a message?",
-      [
-        {
-          text: "Call",
-          onPress: () => Linking.openURL(`tel:${sanitizedPhoneNumber}`),
-        },
-        {
-          text: "Message",
-          onPress: () => Linking.openURL(`sms:${sanitizedPhoneNumber}`),
-        },
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-      ],
-    );
+  const onPhoneNumberSelected = async (phoneNumber: string) => {
+    const sanitizedPhoneNumber = phoneNumber.replace(/\D/g, "");
+    setPhoneNumber(sanitizedPhoneNumber);
   };
 
   const onEmailSelected = (email: string) => {
@@ -37,6 +23,7 @@ const SelectableText = ({ content, styles }: SelectableTextProps) => {
   };
 
   const handleTextSelection = async () => {
+    openOrCloseModal();
     await Clipboard.setStringAsync(content);
     const clipboardText = await Clipboard.getStringAsync();
 
