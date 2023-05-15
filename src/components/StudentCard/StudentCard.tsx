@@ -2,7 +2,7 @@ import { memo } from "react";
 import { View, Text } from "react-native";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
-import { CardNavOption } from "@src/components";
+import { CardNavOption, SelectableText } from "@src/components";
 
 import type { StudentCardType } from "@src/types";
 
@@ -40,11 +40,11 @@ const StudentCard = ({
           <View style={styles.contactInformationContainer}>
             <View style={styles.iconContainer}>
               <PhoneSvg style={styles.phoneIcon} />
-              <Text style={styles.contactInfoText}>{phone_number}</Text>
+              <SelectableText content={phone_number} styles={styles} />
             </View>
             <View style={styles.iconContainer}>
               <EmailSvg style={styles.emailIcon} color="black" />
-              <Text style={styles.contactInfoText}>{email_address}</Text>
+              <SelectableText content={email_address} styles={styles} />
             </View>
           </View>
         </View>
