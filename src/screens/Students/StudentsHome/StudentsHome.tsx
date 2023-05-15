@@ -6,6 +6,7 @@ import { useScrollToTop } from "@react-navigation/native";
 
 import type { RefObject } from "react";
 
+import { CallOrMessageContext } from "@src/contexts/CallOrMessageContext";
 import { DataCardsContainer, StudentCard, FamilyCard } from "@src/components";
 
 import type { AllStudentFamilyDataCard } from "@src/types";
@@ -45,24 +46,28 @@ const StudentsHome = () => {
         contentContainerStyle={styles.cardsContainerFlex}
         data={allStudentRelatedData as AllStudentFamilyDataCard[]}
         renderItem={({ item }) => (
-          <DataCardsContainer
-            allStudentData={[
-              <StudentCard
-                key={item.student_data.id}
-                first_name={item.student_data.first_name}
-                last_name={item.student_data.last_name}
-                phone_number={item.student_data.phone_number}
-                email_address={item.student_data.email_address}
-              />,
-              <FamilyCard
-                key={item.id}
-                first_name={item.associated_family.parent_guardian_first_name_1}
-                last_name={item.associated_family.parent_guardian_last_name_1}
-                phone_number={item.associated_family.phone_number}
-                email_address={item.associated_family.email_address}
-              />,
-            ]}
-          />
+          <CallOrMessageContext>
+            <DataCardsContainer
+              allStudentData={[
+                <StudentCard
+                  key={item.student_data.id}
+                  first_name={item.student_data.first_name}
+                  last_name={item.student_data.last_name}
+                  phone_number={item.student_data.phone_number}
+                  email_address={item.student_data.email_address}
+                />,
+                <FamilyCard
+                  key={item.id}
+                  first_name={
+                    item.associated_family.parent_guardian_first_name_1
+                  }
+                  last_name={item.associated_family.parent_guardian_last_name_1}
+                  phone_number={item.associated_family.phone_number}
+                  email_address={item.associated_family.email_address}
+                />,
+              ]}
+            />
+          </CallOrMessageContext>
         )}
         keyExtractor={() => uuid.v4().toString()}
       />
