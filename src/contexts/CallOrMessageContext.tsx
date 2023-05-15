@@ -1,16 +1,12 @@
 import { createContext, useContext, useMemo } from "react";
 
-import type { Dispatch, SetStateAction, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { useNewModalState } from "@src/hooks";
 
-type UseStateSetter<T> = Dispatch<SetStateAction<T>>;
-
 type ModalContextProps = {
-  studentModalVisible: boolean;
-  openOrCloseStudentModal: UseStateSetter<boolean>;
-  familyModalVisible: boolean;
-  openOrCloseFamilyModal: UseStateSetter<boolean>;
+  modalVisible: boolean;
+  openOrCloseModal: () => void;
 };
 
 type Props = {
@@ -20,22 +16,14 @@ type Props = {
 const Context = createContext<ModalContextProps>({} as ModalContextProps);
 
 export const CallOrMessageContext = ({ children }: Props) => {
-  const [studentModalVisible, openOrCloseStudentModal] = useNewModalState();
-  const [familyModalVisible, openOrCloseFamilyModal] = useNewModalState();
+  const [modalVisible, openOrCloseModal] = useNewModalState();
 
   const contextValue = useMemo(
     () => ({
-      studentModalVisible,
-      openOrCloseStudentModal,
-      familyModalVisible,
-      openOrCloseFamilyModal,
+      modalVisible,
+      openOrCloseModal,
     }),
-    [
-      familyModalVisible,
-      openOrCloseFamilyModal,
-      openOrCloseStudentModal,
-      studentModalVisible,
-    ],
+    [openOrCloseModal, modalVisible],
   );
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;
