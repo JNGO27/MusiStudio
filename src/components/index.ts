@@ -19,3 +19,4 @@ export { default as DashboardCard } from "./DashboardCard/DashboardCard";
 export { default as CheckboxCard } from "./CheckboxCard/CheckboxCard";
 export { default as CheckboxFamilyCard } from "./CheckboxFamilyCard/CheckboxFamilyCard";
 export { default as ModalScrollable } from "./ModalScrollable/ModalScrollable";
+export { default as SelectableText } from "./SelectableText/SelectableText";
