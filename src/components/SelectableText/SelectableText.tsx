@@ -23,7 +23,6 @@ const SelectableText = ({ content, styles }: SelectableTextProps) => {
   };
 
   const handleTextSelection = async () => {
-    openOrCloseModal();
     await Clipboard.setStringAsync(content);
     const clipboardText = await Clipboard.getStringAsync();
 
@@ -31,6 +30,7 @@ const SelectableText = ({ content, styles }: SelectableTextProps) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (phoneNumberRegex.test(clipboardText) && onPhoneNumberSelected) {
+      openOrCloseModal();
       onPhoneNumberSelected(clipboardText);
     } else if (emailRegex.test(clipboardText) && onEmailSelected) {
       onEmailSelected(clipboardText);
