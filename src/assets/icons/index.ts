@@ -11,6 +11,8 @@ export { default as MusicNote } from "./MusicNote";
 export { default as HomeIcon } from "./HomeIcon";
 export { default as UserStudent } from "./UserStudent";
 export { default as UserAccountIcon } from "./UserAccountIcon";
+export { default as PhoneOption } from "./PhoneOption";
+export { default as MessageOption } from "./MessageOption";
 
 export { default as ErrorIcon } from "./error.png";
 export { default as SuccessIcon } from "./success.png";
