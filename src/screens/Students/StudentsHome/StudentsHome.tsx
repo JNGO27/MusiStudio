@@ -7,7 +7,12 @@ import { useScrollToTop } from "@react-navigation/native";
 import type { RefObject } from "react";
 
 import { CallOrMessageContext } from "@src/contexts/CallOrMessageContext";
-import { DataCardsContainer, StudentCard, FamilyCard } from "@src/components";
+import {
+  DataCardsContainer,
+  StudentCard,
+  FamilyCard,
+  CallOrMessageModal,
+} from "@src/components";
 
 import type { AllStudentFamilyDataCard } from "@src/types";
 
@@ -33,20 +38,20 @@ const StudentsHome = () => {
   useScrollToTop(ref);
 
   return (
-    <LinearGradient
-      style={styles.container}
-      colors={purpleGradient.colors}
-      locations={purpleGradient.locations}
-      start={purpleGradient.start}
-      end={purpleGradient.end}
-    >
-      <FlatList
-        ref={ref}
-        style={styles.cardsContainer}
-        contentContainerStyle={styles.cardsContainerFlex}
-        data={allStudentRelatedData as AllStudentFamilyDataCard[]}
-        renderItem={({ item }) => (
-          <CallOrMessageContext>
+    <CallOrMessageContext>
+      <LinearGradient
+        style={styles.container}
+        colors={purpleGradient.colors}
+        locations={purpleGradient.locations}
+        start={purpleGradient.start}
+        end={purpleGradient.end}
+      >
+        <FlatList
+          ref={ref}
+          style={styles.cardsContainer}
+          contentContainerStyle={styles.cardsContainerFlex}
+          data={allStudentRelatedData as AllStudentFamilyDataCard[]}
+          renderItem={({ item }) => (
             <DataCardsContainer
               allStudentData={[
                 <StudentCard
@@ -67,11 +72,12 @@ const StudentsHome = () => {
                 />,
               ]}
             />
-          </CallOrMessageContext>
-        )}
-        keyExtractor={() => uuid.v4().toString()}
-      />
-    </LinearGradient>
+          )}
+          keyExtractor={() => uuid.v4().toString()}
+        />
+        <CallOrMessageModal />
+      </LinearGradient>
+    </CallOrMessageContext>
   );
 };
 
