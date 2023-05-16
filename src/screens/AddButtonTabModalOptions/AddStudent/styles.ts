@@ -9,7 +9,7 @@ import globalStyles from "@src/globalStyles";
 const {
   typography,
   spacing,
-  colors: { lightPurples, whites, grays, blacks, greens },
+  colors: { lightPurples, whites, grays, blacks, greens, reds },
 } = globalStyles;
 
 export default (
@@ -161,16 +161,16 @@ export default (
       height: verticalScale(35),
       backgroundColor: "white",
       borderRadius: spacing.multipleReg * 2,
-      paddingLeft: 10,
+      paddingLeft: spacing.multipleL,
     },
     errorInput: {
       width: "80%",
       height: verticalScale(35),
       backgroundColor: "white",
       borderRadius: spacing.multipleReg * 2,
-      borderWidth: spacing.multipleS,
-      borderColor: "red",
-      paddingLeft: 10,
+      borderWidth: spacing.multipleXS,
+      borderColor: reds.red700,
+      paddingLeft: spacing.multipleL,
     },
     checkboxCardInner: {
       width: "100%",
