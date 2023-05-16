@@ -15,6 +15,14 @@ export type StudentFormValues = {
   rate: string;
 };
 
+export type RequiredStudentFormValues = {
+  first_name_empty: boolean;
+  last_name_empty: boolean;
+  family_first_name_empty: boolean;
+  family_last_name_empty: boolean;
+  rate_empty: boolean;
+};
+
 export type FamilyTypeCheckboxesState = {
   NEW_FAMILY: boolean;
   EXISTS: boolean;
@@ -34,3 +42,10 @@ export type RateCheckboxesActions =
   | { type: "PER_HOUR" }
   | { type: "PER_LESSON" }
   | { type: "PER_MONTH" };
+
+export type RequiredStudentFormValuesActions =
+  | { type: "Student First Name Required" }
+  | { type: "Student Last Name Required" }
+  | { type: "Parent First Name Required" }
+  | { type: "Parent Last Name Required" }
+  | { type: "Rate Required" };
