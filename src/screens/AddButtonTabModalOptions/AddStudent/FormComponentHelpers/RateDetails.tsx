@@ -20,8 +20,15 @@ const {
 } = globalStyles;
 
 const RateDetails = () => {
-  const { values, handleChange, handleBlur, setFieldValue, styles } =
-    useAddStudentFormContext();
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    setFieldValue,
+    styles,
+  } = useAddStudentFormContext();
 
   const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
   const [, , moderateScale] = useResponsiveness();
@@ -30,6 +37,10 @@ const RateDetails = () => {
   const isRateEmpty = values.rate.length === 0;
 
   const rateToFixed = Number(values.rate).toFixed(2);
+
+  const validationStyles = {
+    rate: errors.rate && touched.rate ? styles.errorInput : styles.input,
+  };
 
   const handlePerHour = () => {
     rateDispatch({ type: "PER_HOUR" });
@@ -50,7 +61,7 @@ const RateDetails = () => {
     <View style={styles.formSection}>
       <Text style={styles.formSectionHeaderText}>Rate</Text>
       <TextInput
-        style={styles.input}
+        style={validationStyles.rate}
         value={values.rate}
         onChangeText={handleChange("rate")}
         onBlur={handleBlur("rate")}

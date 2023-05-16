@@ -9,13 +9,24 @@ const {
 } = globalStyles;
 
 const FamilyDetails = () => {
-  const { values, handleChange, handleBlur, styles } =
+  const { values, errors, touched, handleChange, handleBlur, styles } =
     useAddStudentFormContext();
+
+  const validationStyles = {
+    parentFirstName:
+      errors.family_first_name && touched.family_first_name
+        ? styles.errorInput
+        : styles.input,
+    parentLastName:
+      errors.family_last_name && touched.family_last_name
+        ? styles.errorInput
+        : styles.input,
+  };
 
   return (
     <View style={styles.formSection}>
       <TextInput
-        style={styles.input}
+        style={validationStyles.parentFirstName}
         value={values.family_first_name}
         onChangeText={handleChange("family_first_name")}
         onBlur={handleBlur("family_first_name")}
@@ -23,7 +34,7 @@ const FamilyDetails = () => {
         selectionColor={purples.purple100}
       />
       <TextInput
-        style={styles.input}
+        style={validationStyles.parentLastName}
         value={values.family_last_name}
         onChangeText={handleChange("family_last_name")}
         onBlur={handleBlur("family_last_name")}
