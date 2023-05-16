@@ -163,6 +163,15 @@ export default (
       borderRadius: spacing.multipleReg * 2,
       paddingLeft: 10,
     },
+    errorInput: {
+      width: "80%",
+      height: verticalScale(35),
+      backgroundColor: "white",
+      borderRadius: spacing.multipleReg * 2,
+      borderWidth: spacing.multipleS,
+      borderColor: "red",
+      paddingLeft: 10,
+    },
     checkboxCardInner: {
       width: "100%",
       height: "100%",
