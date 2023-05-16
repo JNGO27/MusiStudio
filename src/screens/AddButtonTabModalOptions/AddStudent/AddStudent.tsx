@@ -54,10 +54,11 @@ const AddStudent = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    first_name: Yup.string().required("This is required"),
-    last_name: Yup.string().required("This is required"),
-    family_first_name: Yup.string().required("This is required"),
-    family_last_name: Yup.string().required("This is required"),
+    first_name: Yup.string().required("Student First Name Required"),
+    last_name: Yup.string().required("Student Last Name Required"),
+    family_first_name: Yup.string().required("Parent First Name Required"),
+    family_last_name: Yup.string().required("Parent Last Name Required"),
+    rate: Yup.string().required("Rate Required"),
   });
 
   const handleStudentSubmit = async (values: StudentFormValues) => {
@@ -75,7 +76,7 @@ const AddStudent = () => {
         initialValues={formValues}
         onSubmit={handleStudentSubmit}
         validationSchema={validationSchema}
-        validateOnChange
+        validateOnBlur
       >
         {({
           handleChange,
@@ -83,6 +84,8 @@ const AddStudent = () => {
           handleSubmit,
           setFieldValue,
           values,
+          errors,
+          touched,
         }) => {
           return (
             <AddStudentFormContext
@@ -91,6 +94,8 @@ const AddStudent = () => {
               handleChange={handleChange}
               handleBlur={handleBlur}
               setFieldValue={setFieldValue}
+              errors={errors}
+              touched={touched}
             >
               <View style={styles.formContainer}>
                 <StudentDetails />
