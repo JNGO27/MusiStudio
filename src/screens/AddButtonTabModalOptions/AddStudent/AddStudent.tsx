@@ -1,6 +1,7 @@
 /* eslint-disable import/order */
 import { ScrollView, View } from "react-native";
 import { Formik } from "formik";
+import * as Yup from "yup";
 
 import { useResponsiveness } from "@src/hooks";
 import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
@@ -52,6 +53,13 @@ const AddStudent = () => {
     rate_per_time: "per_hour",
   };
 
+  const validationSchema = Yup.object().shape({
+    first_name: Yup.string().required("This is required"),
+    last_name: Yup.string().required("This is required"),
+    family_first_name: Yup.string().required("This is required"),
+    family_last_name: Yup.string().required("This is required"),
+  });
+
   const handleStudentSubmit = async (values: StudentFormValues) => {
     if (values.existing_family_id.length === 0) {
       await insertStudentData(values);
@@ -63,7 +71,12 @@ const AddStudent = () => {
   return (
     <ScrollView style={styles.container}>
       <HeroSection styles={styles} />
-      <Formik initialValues={formValues} onSubmit={handleStudentSubmit}>
+      <Formik
+        initialValues={formValues}
+        onSubmit={handleStudentSubmit}
+        validationSchema={validationSchema}
+        validateOnChange
+      >
         {({
           handleChange,
           handleBlur,
