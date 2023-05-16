@@ -9,14 +9,23 @@ const {
 } = globalStyles;
 
 const StudentDetails = () => {
-  const { values, handleChange, handleBlur, styles } =
+  const { values, errors, touched, handleChange, handleBlur, styles } =
     useAddStudentFormContext();
+
+  const validationStyles = {
+    firstName:
+      errors.first_name && touched.first_name
+        ? styles.errorInput
+        : styles.input,
+    lastName:
+      errors.last_name && touched.last_name ? styles.errorInput : styles.input,
+  };
 
   return (
     <View style={styles.formSection}>
       <Text style={styles.formSectionHeaderText}>Student Details</Text>
       <TextInput
-        style={styles.input}
+        style={validationStyles.firstName}
         value={values.first_name}
         onChangeText={handleChange("first_name")}
         onBlur={handleBlur("first_name")}
@@ -24,7 +33,7 @@ const StudentDetails = () => {
         selectionColor={purples.purple100}
       />
       <TextInput
-        style={styles.input}
+        style={validationStyles.lastName}
         value={values.last_name}
         onChangeText={handleChange("last_name")}
         onBlur={handleBlur("last_name")}
