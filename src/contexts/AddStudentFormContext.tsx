@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
 import type { ReactNode, Dispatch, SetStateAction } from "react";
-import type { FormikHandlers, FormikHelpers } from "formik";
+import type { FormikHandlers, FormikHelpers, FormikErrors } from "formik";
 
 import type { StudentFormValues, StyleSheetProps } from "@src/types";
 
@@ -11,6 +11,7 @@ interface FormProps {
   handleChange: FormikHandlers["handleChange"];
   handleBlur: FormikHandlers["handleBlur"];
   setFieldValue: FormikHelpers<StudentFormValues>["setFieldValue"];
+  errors: FormikErrors<StudentFormValues>;
 }
 
 interface CompleteFormProps extends FormProps {
@@ -27,6 +28,7 @@ const Context = createContext<CompleteFormProps>({} as CompleteFormProps);
 export const AddStudentFormContext = ({
   values,
   styles,
+  errors,
   handleChange,
   handleBlur,
   setFieldValue,
@@ -38,6 +40,7 @@ export const AddStudentFormContext = ({
     () => ({
       values,
       styles,
+      errors,
       handleChange,
       handleBlur,
       setFieldValue,
@@ -46,6 +49,7 @@ export const AddStudentFormContext = ({
     }),
     [
       chosenExistingFamily,
+      errors,
       handleBlur,
       handleChange,
       setFieldValue,
