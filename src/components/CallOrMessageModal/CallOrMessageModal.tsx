@@ -11,6 +11,8 @@ import { useCallOrMessageContext } from "@src/contexts/CallOrMessageContext";
 import { useResponsiveness } from "@src/hooks";
 import { CheckboxCard } from "@src/components";
 
+import { PhoneOption, MessageOption } from "@src/assets/icons";
+
 import createStyleSheet from "./styles";
 
 const CallOrMessageModal = () => {
@@ -52,10 +54,16 @@ const CallOrMessageModal = () => {
               <Text style={styles.text}>Select an option</Text>
               <View style={styles.optionsContainer}>
                 <CheckboxCard isChosen={false} onPress={handleCall}>
-                  <Text>Call</Text>
+                  <Text style={styles.singleOptionHeader}>Call</Text>
+                  <View style={styles.singleOptionContainer}>
+                    <PhoneOption style={styles.phoneIcon} />
+                  </View>
                 </CheckboxCard>
                 <CheckboxCard isChosen={false} onPress={handleMessage}>
-                  <Text>Message</Text>
+                  <Text style={styles.singleOptionHeader}>Message</Text>
+                  <View style={styles.singleOptionContainer}>
+                    <MessageOption style={styles.phoneIcon} />
+                  </View>
                 </CheckboxCard>
               </View>
             </View>

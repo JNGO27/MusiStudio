@@ -5,7 +5,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { blacks, whites, purples, lightPurples },
+  colors: { blacks, whites, grays, purples, lightPurples },
   typography,
 } = globalStyles;
 
@@ -54,6 +54,18 @@ export default (
       fontFamily: typography.medium,
       fontSize: moderateScale(16),
     },
+    singleOptionContainer: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    singleOptionHeader: {
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(20),
+      color: blacks.blackAlpha90,
+      textAlign: "center",
+    },
     button: {
       alignSelf: "center",
       display: "flex",
@@ -72,10 +84,12 @@ export default (
       fontFamily: typography.semiBold,
       color: whites.white200,
     },
-    icon: {
-      alignSelf: "center",
-      width: moderateScale(spacing.multipleReg * 4, 0.75),
-      height: moderateScale(spacing.multipleReg * 4, 0.75),
+    phoneIcon: {
+      position: "relative",
+      top: spacing.multipleXL,
+      color: grays.gray800,
+      width: horizontalScale(spacing.multipleReg * 6),
+      height: verticalScale(spacing.multipleReg * 6),
     },
   });
 };
