@@ -21,3 +21,4 @@ export { default as CheckboxFamilyCard } from "./CheckboxFamilyCard/CheckboxFami
 export { default as ModalScrollable } from "./ModalScrollable/ModalScrollable";
 export { default as SelectableText } from "./SelectableText/SelectableText";
 export { default as CallOrMessageModal } from "./CallOrMessageModal/CallOrMessageModal";
+export { default as TimedStatusMessage } from "./TimedStatusMessage/TimedStatusMessage";
