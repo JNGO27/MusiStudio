@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { PanGestureHandler } from "react-native-gesture-handler";
+import { Text } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -9,7 +9,11 @@ import Animated, {
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
-const TimedStatusMessage = () => {
+type Props = {
+  type: "Success" | "Error";
+};
+
+const TimedStatusMessage = ({ type }: Props) => {
   const [horizontalScale, verticalScale, moderateScale, dimensionHeight] =
     useResponsiveness();
 
@@ -28,14 +32,26 @@ const TimedStatusMessage = () => {
     };
   });
 
-  const twoSeconds = 2000;
+  const fiveSeconds = 5000;
+
+  const successOrErrorStyles = {
+    messageContainer:
+      type === "Success"
+        ? styles.messageSuccessContainer
+        : styles.messageErrorContainer,
+  };
+
+  const message =
+    type === "Success"
+      ? "Student has successfully been added."
+      : "Please fill out the empty form values highlighted in red.";
 
   useEffect(() => {
-    translateY.value = withTiming(dimensionHeight / 2, { duration: 500 });
+    translateY.value = withTiming(dimensionHeight / 30, { duration: 500 });
 
     const timer = setTimeout(() => {
       translateY.value = withTiming(dimensionHeight, { duration: 500 });
-    }, twoSeconds);
+    }, fiveSeconds);
 
     return () => {
       clearTimeout(timer);
@@ -43,20 +59,11 @@ const TimedStatusMessage = () => {
   }, [dimensionHeight, translateY]);
 
   return (
-    <PanGestureHandler>
-      <Animated.View
-        style={[
-          {
-            position: "absolute",
-            bottom: 0,
-            width: "100%",
-            height: "50%",
-            backgroundColor: "lightblue",
-          },
-          animatedStyle,
-        ]}
-      />
-    </PanGestureHandler>
+    <Animated.View
+      style={[successOrErrorStyles.messageContainer, animatedStyle]}
+    >
+      <Text style={styles.messageText}>{message}</Text>
+    </Animated.View>
   );
 };
 
