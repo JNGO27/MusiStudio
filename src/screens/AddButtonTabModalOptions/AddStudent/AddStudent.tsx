@@ -1,14 +1,20 @@
 /* eslint-disable import/order */
+/* eslint-disable @typescript-eslint/naming-convention */
+import { useState, useEffect } from "react";
 import { ScrollView, View } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import { useResponsiveness } from "@src/hooks";
-import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
+import type { StudentFormValues } from "@src/types";
+
 import {
   useInsertStudentDataMutation,
   useInsertStudentExistingFamilyDataMutation,
 } from "@src/redux/services/supabaseAPI";
+
+import { useResponsiveness } from "@src/hooks";
+import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
+import { TimedStatusMessage } from "@src/components";
 import {
   HeroSection,
   StudentDetails,
@@ -18,11 +24,10 @@ import {
   Finalization,
 } from "./FormComponentHelpers";
 
-import type { StudentFormValues } from "@src/types";
-
 import createStyleSheet from "./styles";
 
 const AddStudent = () => {
+  const [timedErrorOccurred, setTimedErrorOccurred] = useState(false);
   const [insertStudentData] = useInsertStudentDataMutation();
 
   const [insertStudentExistingFamilyData] =
@@ -62,12 +67,23 @@ const AddStudent = () => {
   });
 
   const handleStudentSubmit = async (values: StudentFormValues) => {
+    setTimedErrorOccurred(true);
     if (values.existing_family_id.length === 0) {
       await insertStudentData(values);
     } else {
       await insertStudentExistingFamilyData(values);
     }
   };
+
+  useEffect(() => {
+    if (timedErrorOccurred) {
+      const timer = setTimeout(() => setTimedErrorOccurred(false), 5500);
+
+      return () => clearTimeout(timer);
+    }
+
+    return () => {};
+  }, [timedErrorOccurred]);
 
   return (
     <ScrollView style={styles.container}>
@@ -83,6 +99,7 @@ const AddStudent = () => {
           handleBlur,
           handleSubmit,
           setFieldValue,
+          submitForm,
           values,
           errors,
           touched,
@@ -92,6 +109,8 @@ const AddStudent = () => {
               values={values}
               styles={styles}
               handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              submitForm={submitForm}
               handleBlur={handleBlur}
               setFieldValue={setFieldValue}
               errors={errors}
@@ -114,8 +133,10 @@ const AddStudent = () => {
 
                 <View style={styles.divider} />
 
-                <Finalization handleSubmit={handleSubmit} styles={styles} />
+                <Finalization setTimedErrorOccurred={setTimedErrorOccurred} />
               </View>
+
+              {timedErrorOccurred && <TimedStatusMessage type="Error" />}
             </AddStudentFormContext>
           );
         }}
