@@ -14,7 +14,9 @@ interface FormProps {
   values: StudentFormValues;
   styles: StyleSheetProps;
   handleChange: FormikHandlers["handleChange"];
+  handleSubmit: FormikHandlers["handleSubmit"];
   handleBlur: FormikHandlers["handleBlur"];
+  submitForm: FormikHelpers<StudentFormValues>["submitForm"];
   setFieldValue: FormikHelpers<StudentFormValues>["setFieldValue"];
   errors: FormikErrors<StudentFormValues>;
   touched: FormikTouched<StudentFormValues>;
@@ -37,6 +39,8 @@ export const AddStudentFormContext = ({
   errors,
   touched,
   handleChange,
+  handleSubmit,
+  submitForm,
   handleBlur,
   setFieldValue,
   children,
@@ -50,6 +54,8 @@ export const AddStudentFormContext = ({
       errors,
       touched,
       handleChange,
+      handleSubmit,
+      submitForm,
       handleBlur,
       setFieldValue,
       chosenExistingFamily,
@@ -60,6 +66,8 @@ export const AddStudentFormContext = ({
       errors,
       touched,
       handleBlur,
+      handleSubmit,
+      submitForm,
       handleChange,
       setFieldValue,
       styles,
