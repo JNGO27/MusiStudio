@@ -14,14 +14,19 @@ type Props = {
 };
 
 const TimedStatusMessage = ({ type }: Props) => {
-  const [horizontalScale, verticalScale, moderateScale, dimensionHeight] =
-    useResponsiveness();
+  const [
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+    dimensionWidth,
+    dimensionHeight,
+  ] = useResponsiveness();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
+    dimensionWidth,
   );
 
   const translateY = useSharedValue(dimensionHeight);
@@ -47,12 +52,11 @@ const TimedStatusMessage = ({ type }: Props) => {
       : "Please fill out the empty form values highlighted in red.";
 
   useEffect(() => {
-    translateY.value = withTiming(dimensionHeight / 30, { duration: 500 });
+    translateY.value = withTiming(-dimensionHeight / 17, { duration: 350 });
 
     const timer = setTimeout(() => {
       translateY.value = withTiming(dimensionHeight, { duration: 500 });
     }, fiveSeconds);
-
     return () => {
       clearTimeout(timer);
     };
