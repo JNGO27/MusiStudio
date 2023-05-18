@@ -39,7 +39,6 @@ export default (
       shadowOpacity: 2,
       shadowRadius: 2,
       elevation: 12,
-      transform: [{ translateX: -50 }],
     },
     messageErrorContainer: {
       display: "flex",
