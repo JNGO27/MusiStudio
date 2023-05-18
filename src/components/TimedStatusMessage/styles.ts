@@ -15,14 +15,18 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  dimensionWidth: number,
 ) => {
+  const centeredValue = dimensionWidth / 2 - (dimensionWidth * 0.91) / 2;
+
   return StyleSheet.create({
     messageSuccessContainer: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       position: "absolute",
-      bottom: 125,
+      left: horizontalScale(centeredValue),
+      bottom: verticalScale(spacing.multipleXL * 6.75),
       width: "80%",
       height: verticalScale(spacing.multipleXL * 4.5),
       paddingHorizontal: spacing.multipleXL,
@@ -35,13 +39,16 @@ export default (
       shadowOpacity: 2,
       shadowRadius: 2,
       elevation: 12,
+      transform: [{ translateX: -50 }],
     },
     messageErrorContainer: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      alignSelf: "center",
       position: "absolute",
-      bottom: 125,
+      left: horizontalScale(centeredValue),
+      bottom: verticalScale(spacing.multipleXL * 6.75),
       width: "90%",
       height: verticalScale(spacing.multipleXL * 5),
       paddingHorizontal: spacing.multipleXL,
