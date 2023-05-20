@@ -5,6 +5,7 @@ import type { GeneralGlobal } from "@src/types";
 const initialState: GeneralGlobal = {
   isNestedScreen: false,
   currentRoute: "",
+  timedStatusMessageOccurred: false,
 };
 
 export const generalGlobalData = createSlice({
@@ -23,9 +24,19 @@ export const generalGlobalData = createSlice({
         currentRoute: payload,
       };
     },
+    setTimedStatusMessageOccured: (
+      state,
+      { payload }: PayloadAction<boolean>,
+    ) => {
+      return {
+        ...state,
+        timedStatusMessageOccurred: payload,
+      };
+    },
   },
 });
 
-export const { setIsNestedScreen, setRoute } = generalGlobalData.actions;
+export const { setIsNestedScreen, setRoute, setTimedStatusMessageOccured } =
+  generalGlobalData.actions;
 
 export default generalGlobalData.reducer;
