@@ -14,19 +14,13 @@ type Props = {
 };
 
 const TimedStatusMessage = ({ type }: Props) => {
-  const [
-    horizontalScale,
-    verticalScale,
-    moderateScale,
-    dimensionWidth,
-    dimensionHeight,
-  ] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale, , dimensionHeight] =
+    useResponsiveness();
 
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
-    dimensionWidth,
   );
 
   const translateY = useSharedValue(dimensionHeight);
