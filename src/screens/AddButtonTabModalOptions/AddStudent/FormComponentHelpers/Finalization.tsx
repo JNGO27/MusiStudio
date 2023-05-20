@@ -3,8 +3,10 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useFormikContext } from "formik";
+import { useAppDispatch } from "@src/redux";
 
-import type { Dispatch, SetStateAction } from "react";
+import { setTimedStatusMessageOccured } from "@src/redux/features/generalGlobalData";
+
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 
 import type { StudentFormValues, AddStudentParamList } from "@src/types";
@@ -19,16 +21,13 @@ const {
   },
 } = globalStyles;
 
-type Props = {
-  setTimedErrorOccurred: Dispatch<SetStateAction<boolean>>;
-};
-
 type AddStudentNavigationProps = NativeStackNavigationProp<
   AddStudentParamList,
   "AddStudent"
 >;
 
-const Finalization = ({ setTimedErrorOccurred }: Props) => {
+const Finalization = () => {
+  const dispatch = useAppDispatch();
   const navigator = useNavigation<AddStudentNavigationProps>();
   const { validateForm, setTouched } = useFormikContext();
   const { handleSubmit, values, styles } = useAddStudentFormContext();
@@ -52,7 +51,7 @@ const Finalization = ({ setTimedErrorOccurred }: Props) => {
     const hasErrors = Object.keys(errors).length > 0;
 
     if (hasErrors) {
-      setTimedErrorOccurred(true);
+      dispatch(setTimedStatusMessageOccured(true));
     } else {
       handleSubmit();
       navigator.navigate("StudentsNav");

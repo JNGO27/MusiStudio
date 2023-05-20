@@ -1,9 +1,10 @@
 /* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { ScrollView, View } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useAppDispatch, useAppSelector } from "@src/redux";
 
 import type { StudentFormValues } from "@src/types";
 
@@ -11,6 +12,9 @@ import {
   useInsertStudentDataMutation,
   useInsertStudentExistingFamilyDataMutation,
 } from "@src/redux/services/supabaseAPI";
+
+import { setTimedStatusMessageOccured } from "@src/redux/features/generalGlobalData";
+import { getGeneralGlobalData } from "@src/redux/selectors";
 
 import { useResponsiveness } from "@src/hooks";
 import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
@@ -27,7 +31,9 @@ import {
 import createStyleSheet from "./styles";
 
 const AddStudent = () => {
-  const [timedErrorOccurred, setTimedErrorOccurred] = useState(false);
+  const dispatch = useAppDispatch();
+  const { timedStatusMessageOccurred } = useAppSelector(getGeneralGlobalData);
+
   const [insertStudentData] = useInsertStudentDataMutation();
 
   const [insertStudentExistingFamilyData] =
@@ -67,7 +73,6 @@ const AddStudent = () => {
   });
 
   const handleStudentSubmit = async (values: StudentFormValues) => {
-    setTimedErrorOccurred(true);
     if (values.existing_family_id.length === 0) {
       await insertStudentData(values);
     } else {
@@ -76,14 +81,17 @@ const AddStudent = () => {
   };
 
   useEffect(() => {
-    if (timedErrorOccurred) {
-      const timer = setTimeout(() => setTimedErrorOccurred(false), 5500);
+    if (timedStatusMessageOccurred) {
+      const timer = setTimeout(
+        () => dispatch(setTimedStatusMessageOccured(false)),
+        5500,
+      );
 
       return () => clearTimeout(timer);
     }
 
     return () => {};
-  }, [timedErrorOccurred]);
+  }, [dispatch, timedStatusMessageOccurred]);
 
   return (
     <ScrollView style={styles.container}>
@@ -133,10 +141,12 @@ const AddStudent = () => {
 
                 <View style={styles.divider} />
 
-                <Finalization setTimedErrorOccurred={setTimedErrorOccurred} />
+                <Finalization />
               </View>
 
-              {timedErrorOccurred && <TimedStatusMessage type="Error" />}
+              {timedStatusMessageOccurred && (
+                <TimedStatusMessage type="Error" />
+              )}
             </AddStudentFormContext>
           );
         }}
