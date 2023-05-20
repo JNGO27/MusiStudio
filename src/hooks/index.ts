@@ -6,6 +6,7 @@ import useNewModalState from "./useNewModalState";
 import useBottomTabGoneOnKeyboardFocus from "./useBottomTabGoneOnKeyboardFocus";
 import useInitScreenOptions from "./useInitScreenOptions";
 import useIsNestedScreen from "./useIsNestedScreen";
+import useResetTimedStatusMessage from "./useResetTimedStatusMessage";
 
 export {
   useLoadFonts,
@@ -16,4 +17,5 @@ export {
   useBottomTabGoneOnKeyboardFocus,
   useInitScreenOptions,
   useIsNestedScreen,
+  useResetTimedStatusMessage,
 };
