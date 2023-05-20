@@ -1,10 +1,9 @@
 /* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { useEffect } from "react";
 import { ScrollView, View } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useAppDispatch, useAppSelector } from "@src/redux";
+import { useAppSelector } from "@src/redux";
 
 import type { StudentFormValues } from "@src/types";
 
@@ -13,10 +12,9 @@ import {
   useInsertStudentExistingFamilyDataMutation,
 } from "@src/redux/services/supabaseAPI";
 
-import { setTimedStatusMessageOccured } from "@src/redux/features/generalGlobalData";
 import { getGeneralGlobalData } from "@src/redux/selectors";
 
-import { useResponsiveness } from "@src/hooks";
+import { useResponsiveness, useResetTimedStatusMessage } from "@src/hooks";
 import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { TimedStatusMessage } from "@src/components";
 import {
@@ -31,7 +29,7 @@ import {
 import createStyleSheet from "./styles";
 
 const AddStudent = () => {
-  const dispatch = useAppDispatch();
+  useResetTimedStatusMessage();
   const { timedStatusMessageOccurred } = useAppSelector(getGeneralGlobalData);
 
   const [insertStudentData] = useInsertStudentDataMutation();
@@ -79,19 +77,6 @@ const AddStudent = () => {
       await insertStudentExistingFamilyData(values);
     }
   };
-
-  useEffect(() => {
-    if (timedStatusMessageOccurred) {
-      const timer = setTimeout(
-        () => dispatch(setTimedStatusMessageOccured(false)),
-        5500,
-      );
-
-      return () => clearTimeout(timer);
-    }
-
-    return () => {};
-  }, [dispatch, timedStatusMessageOccurred]);
 
   return (
     <ScrollView style={styles.container}>
