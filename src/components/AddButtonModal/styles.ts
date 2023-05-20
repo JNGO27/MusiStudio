@@ -48,7 +48,8 @@ export default (
       borderBottomRightRadius: 0,
       paddingVertical: verticalScale(spacing.multipleReg * 2),
       paddingHorizontal: horizontalScale(spacing.multipleReg),
-      height: "80%",
+      marginBottom: -spacing.multipleXL * 10,
+      height: "70%",
       width: "100%",
     },
     exitButton: {
