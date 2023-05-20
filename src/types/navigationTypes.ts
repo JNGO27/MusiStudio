@@ -51,3 +51,8 @@ export type AddTabParamList = {
 };
 
 export type AddTabOptions = keyof AddTabParamList;
+
+export type AddStudentParamList = {
+  AddStudent: undefined;
+  StudentsNav: undefined;
+};

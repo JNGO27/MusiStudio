@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { View, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useFormikContext } from "formik";
 
 import type { Dispatch, SetStateAction } from "react";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 
-import type { StudentFormValues } from "@src/types";
+import type { StudentFormValues, AddStudentParamList } from "@src/types";
 
 import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 
@@ -21,7 +23,13 @@ type Props = {
   setTimedErrorOccurred: Dispatch<SetStateAction<boolean>>;
 };
 
+type AddStudentNavigationProps = NativeStackNavigationProp<
+  AddStudentParamList,
+  "AddStudent"
+>;
+
 const Finalization = ({ setTimedErrorOccurred }: Props) => {
+  const navigator = useNavigation<AddStudentNavigationProps>();
   const { validateForm, setTouched } = useFormikContext();
   const { handleSubmit, values, styles } = useAddStudentFormContext();
 
@@ -47,6 +55,7 @@ const Finalization = ({ setTimedErrorOccurred }: Props) => {
       setTimedErrorOccurred(true);
     } else {
       handleSubmit();
+      navigator.navigate("StudentsNav");
     }
   };
 
