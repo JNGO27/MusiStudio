@@ -6,7 +6,6 @@ import {
 } from "react-native";
 import {
   PanGestureHandler,
-  PanGestureHandlerGestureEvent,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
 import Animated, {
@@ -18,6 +17,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 import type { GestureResponderEvent } from "react-native";
+import type { PanGestureHandlerGestureEvent } from "react-native-gesture-handler";
 
 import { useAddButtonModalContext } from "@src/contexts/AddButtonModalContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
