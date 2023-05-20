@@ -7,16 +7,20 @@ import { useScrollToTop } from "@react-navigation/native";
 import type { RefObject } from "react";
 
 import { CallOrMessageContext } from "@src/contexts/CallOrMessageContext";
+import { useResetTimedStatusMessage } from "@src/hooks";
 import {
   DataCardsContainer,
   StudentCard,
   FamilyCard,
   CallOrMessageModal,
+  TimedStatusMessage,
 } from "@src/components";
 
 import type { AllStudentFamilyDataCard } from "@src/types";
 
+import { useAppSelector } from "@src/redux";
 import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
+import { getGeneralGlobalData } from "@src/redux/selectors";
 
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
@@ -30,6 +34,9 @@ const {
 type MyRef = RefObject<FlatList>;
 
 const StudentsHome = () => {
+  useResetTimedStatusMessage();
+
+  const { timedStatusMessageOccurred } = useAppSelector(getGeneralGlobalData);
   const { data: allStudentRelatedData } = useGetAllStudentsDataQuery({});
   const ref: MyRef = useRef<FlatList>(null);
 
@@ -76,6 +83,7 @@ const StudentsHome = () => {
           keyExtractor={() => uuid.v4().toString()}
         />
         <CallOrMessageModal />
+        {timedStatusMessageOccurred && <TimedStatusMessage type="Success" />}
       </LinearGradient>
     </CallOrMessageContext>
   );

@@ -55,6 +55,7 @@ const Finalization = () => {
     } else {
       handleSubmit();
       navigator.navigate("StudentsNav");
+      dispatch(setTimedStatusMessageOccured(true));
     }
   };
 
