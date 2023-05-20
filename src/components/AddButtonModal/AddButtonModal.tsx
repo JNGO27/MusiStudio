@@ -2,18 +2,19 @@ import {
   Modal,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  View,
   Text,
 } from "react-native";
 import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
+  GestureHandlerRootView,
 } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
+  runOnJS,
 } from "react-native-reanimated";
 
 import type { GestureResponderEvent } from "react-native";
@@ -30,7 +31,8 @@ type ContextType = {
 
 const AddButtonModal = () => {
   const { modalVisible, setModalVisible } = useAddButtonModalContext();
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale, , dimensionHeight] =
+    useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
@@ -41,7 +43,14 @@ const AddButtonModal = () => {
   const translateY = useSharedValue(0);
 
   const openOrClose = () => {
-    setModalVisible((prevVal) => !prevVal);
+    setModalVisible((prevVal) => {
+      if (prevVal === true) {
+        setTimeout(() => {
+          translateY.value = 0;
+        }, 500);
+      }
+      return !prevVal;
+    });
   };
 
   const panGestureHandler = useAnimatedGestureHandler<
@@ -52,11 +61,20 @@ const AddButtonModal = () => {
       ctx.startY = translateY.value;
     },
     onActive: (event, ctx) => {
-      translateY.value = ctx.startY + event.translationY;
+      const movedY = ctx.startY + event.translationY;
+
+      const upperLimit = -dimensionHeight / 10;
+      if (movedY < upperLimit) {
+        translateY.value = upperLimit;
+      } else {
+        translateY.value = movedY;
+      }
     },
+
     onEnd: (event) => {
-      if (event.velocityY > 0 && event.translationY > 50) {
-        openOrClose();
+      if (event.velocityY > 500 && event.translationY > 100) {
+        translateY.value = withSpring(1000, { velocity: event.velocityY });
+        runOnJS(openOrClose)();
       } else {
         translateY.value = withSpring(0);
       }
@@ -78,7 +96,7 @@ const AddButtonModal = () => {
       transparent
     >
       <TouchableWithoutFeedback onPress={openOrClose}>
-        <View style={styles.modalBackground}>
+        <GestureHandlerRootView style={styles.modalBackground}>
           <PanGestureHandler
             onGestureEvent={panGestureHandler}
             activeOffsetY={10}
@@ -97,7 +115,7 @@ const AddButtonModal = () => {
               />
             </Animated.View>
           </PanGestureHandler>
-        </View>
+        </GestureHandlerRootView>
       </TouchableWithoutFeedback>
     </Modal>
   );
