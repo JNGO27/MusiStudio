@@ -1,15 +1,19 @@
 import { Text, View, TouchableOpacity, Platform } from "react-native";
-import { makeRedirectUri } from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
 
 import type { Provider } from "@supabase/supabase-js";
+import type {
+  WebBrowserRedirectResult,
+  WebBrowserAuthSessionResult,
+} from "expo-web-browser";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 
 import { GoogleSvg } from "@src/assets/icons";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
-import { SUPABASE_URL } from "@env";
+
+import { useSetSession } from "@src/hooks";
 
 import createStyleSheet from "./styles";
 
@@ -19,10 +23,12 @@ type Props = {
   provider: Provider;
 };
 
+type WebResult = WebBrowserAuthSessionResult | WebBrowserRedirectResult;
+
 WebBrowser.maybeCompleteAuthSession();
 
 const OAuthOption = ({ provider }: Props) => {
-  const deepLinkSupaBaseUrl = Linking.createURL(SUPABASE_URL);
+  const [redirectUri] = useSetSession();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -31,10 +37,6 @@ const OAuthOption = ({ provider }: Props) => {
   );
 
   const providerCapitalized = capitalize(provider);
-
-  const redirectUri = makeRedirectUri({
-    path: deepLinkSupaBaseUrl,
-  });
 
   const signInWithProvider = async () => {
     const { data } = await supabaseConfig.auth.signInWithOAuth({
@@ -48,24 +50,39 @@ const OAuthOption = ({ provider }: Props) => {
       },
     });
 
-    const result = await WebBrowser.openBrowserAsync(data.url as string);
+    if (Platform.OS === "ios") {
+      const result: WebResult = await WebBrowser.openAuthSessionAsync(
+        data.url as string,
+      );
 
-    Linking.addEventListener("url", (event) => {
-      const { url } = event;
+      WebBrowser.dismissBrowser();
 
-      if (result.type === "opened") {
-        const [accessToken, refreshToken] = getTokens(url);
+      if (result.type === "success") {
+        const [accessToken, refreshToken] = getTokens(result.url);
 
         supabaseConfig.auth.setSession({
           access_token: accessToken,
           refresh_token: refreshToken,
         });
-
-        if (Platform.OS === "ios") {
-          WebBrowser.dismissBrowser();
-        }
       }
-    });
+    }
+
+    if (Platform.OS === "android") {
+      const result = await WebBrowser.openBrowserAsync(data.url as string);
+
+      Linking.addEventListener("url", (event) => {
+        const { url } = event;
+
+        if (result.type === "opened") {
+          const [accessToken, refreshToken] = getTokens(url);
+
+          supabaseConfig.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+          });
+        }
+      });
+    }
   };
 
   return (

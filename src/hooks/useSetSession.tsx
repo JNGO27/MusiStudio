@@ -7,7 +7,7 @@ import { getTokens } from "@src/utils/linkHelpers";
 
 const useSetSession = () => {
   const mostRecentURL = Linking.useURL();
-  const desiredScreenUrl = "/auth/home";
+  const desiredScreenUrl = "auth/home";
   const resetPasswordFormURLScreen = Linking.createURL(desiredScreenUrl);
   const redirectUri = makeRedirectUri({
     path: resetPasswordFormURLScreen,
