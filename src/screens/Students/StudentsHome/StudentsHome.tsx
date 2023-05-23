@@ -20,7 +20,7 @@ import type { AllStudentFamilyDataCard } from "@src/types";
 
 import { useAppSelector } from "@src/redux";
 import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
-import { getGeneralGlobalData } from "@src/redux/selectors";
+import { getTimedStatusMessageOccurred } from "@src/redux/selectors";
 
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
@@ -36,7 +36,10 @@ type MyRef = RefObject<FlatList>;
 const StudentsHome = () => {
   useResetTimedStatusMessage();
 
-  const { timedStatusMessageOccurred } = useAppSelector(getGeneralGlobalData);
+  const timedStatusMessageOccurred = useAppSelector(
+    getTimedStatusMessageOccurred,
+  );
+
   const { data: allStudentRelatedData } = useGetAllStudentsDataQuery({});
   const ref: MyRef = useRef<FlatList>(null);
 

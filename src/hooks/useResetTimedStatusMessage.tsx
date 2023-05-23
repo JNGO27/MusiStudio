@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "@src/redux";
-import { getGeneralGlobalData } from "@src/redux/selectors";
+import { getTimedStatusMessageOccurred } from "@src/redux/selectors";
 import { setTimedStatusMessageOccured } from "@src/redux/features/generalGlobalData";
 
 const useResetTimedStatusMessage = () => {
   const dispatch = useAppDispatch();
-  const { timedStatusMessageOccurred } = useAppSelector(getGeneralGlobalData);
+  const timedStatusMessageOccurred = useAppSelector(
+    getTimedStatusMessageOccurred,
+  );
 
   useEffect(() => {
     if (timedStatusMessageOccurred) {
