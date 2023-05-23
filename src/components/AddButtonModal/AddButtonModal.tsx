@@ -3,6 +3,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Text,
+  View,
 } from "react-native";
 import {
   PanGestureHandler,
@@ -106,6 +107,7 @@ const AddButtonModal = () => {
               onStartShouldSetResponder={() => true}
               onTouchEnd={(e: GestureResponderEvent) => e.stopPropagation()}
             >
+              <View style={styles.movableCardVisualizer} />
               <TouchableOpacity style={styles.exitButton} onPress={openOrClose}>
                 <Text style={styles.exitButtonIcon}>✖</Text>
               </TouchableOpacity>

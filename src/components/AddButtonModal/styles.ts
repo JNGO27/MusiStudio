@@ -49,8 +49,17 @@ export default (
       paddingVertical: verticalScale(spacing.multipleReg * 2),
       paddingHorizontal: horizontalScale(spacing.multipleReg),
       marginBottom: -spacing.multipleXL * 10,
-      height: "70%",
+      height: "55%",
       width: "100%",
+    },
+    movableCardVisualizer: {
+      position: "relative",
+      alignSelf: "center",
+      top: spacing.multipleXS,
+      width: horizontalScale(spacing.multipleXL * 4),
+      height: spacing.multipleS,
+      borderRadius: spacing.multipleXL * 2,
+      backgroundColor: whites.white200,
     },
     exitButton: {
       position: "relative",
