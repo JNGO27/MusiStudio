@@ -9,3 +9,8 @@ export const getTimedStatusMessageOccurred = createSelector(
   getGeneralGlobalData,
   (globalState) => globalState.timedStatusMessageOccurred,
 );
+
+export const getCurrentRoute = createSelector(
+  getGeneralGlobalData,
+  (globalState) => globalState.currentRoute,
+);

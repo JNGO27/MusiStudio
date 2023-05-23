@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { StatusBar, View, Text } from "react-native";
 
 import { useResponsiveness, useIsNestedScreen } from "@src/hooks";
@@ -28,4 +29,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
