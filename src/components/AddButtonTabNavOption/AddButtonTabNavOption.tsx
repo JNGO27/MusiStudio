@@ -1,4 +1,5 @@
 import { TouchableOpacity, View, Text } from "react-native";
+import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -9,6 +10,8 @@ import { useAddButtonModalContext } from "@src/contexts/AddButtonModalContext";
 import type { AddTabParamList, AddTabOptions } from "@src/types";
 
 import createStyleSheet from "./styles";
+
+import { imageChoiceHelper } from "./imageHelpers";
 
 type ModalOptions = NativeStackNavigationProp<AddTabParamList, "AddTab">;
 
@@ -29,6 +32,8 @@ const AddButtonTabNavOption = ({ screenOption, text }: Props) => {
     moderateScale,
   );
 
+  const imageChoice = imageChoiceHelper(screenOption);
+
   const handleCloseModal = () => {
     setModalVisible(false);
   };
@@ -46,8 +51,16 @@ const AddButtonTabNavOption = ({ screenOption, text }: Props) => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={hanldeOnPress}>
-      <View style={styles.addStudentContainer} />
-      <Text style={styles.addStudentText}>{text}</Text>
+      <View style={styles.optionContainer}>
+        <View style={styles.studentImagesContainer}>
+          <Image
+            source={imageChoice}
+            contentFit="cover"
+            style={styles.studentIcon}
+          />
+        </View>
+      </View>
+      <Text style={styles.optionText}>{text}</Text>
     </TouchableOpacity>
   );
 };
