@@ -12,7 +12,7 @@ import {
   useInsertStudentExistingFamilyDataMutation,
 } from "@src/redux/services/supabaseAPI";
 
-import { getGeneralGlobalData } from "@src/redux/selectors";
+import { getTimedStatusMessageOccurred } from "@src/redux/selectors";
 
 import { useResponsiveness, useResetTimedStatusMessage } from "@src/hooks";
 import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
@@ -30,7 +30,9 @@ import createStyleSheet from "./styles";
 
 const AddStudent = () => {
   useResetTimedStatusMessage();
-  const { timedStatusMessageOccurred } = useAppSelector(getGeneralGlobalData);
+  const timedStatusMessageOccurred = useAppSelector(
+    getTimedStatusMessageOccurred,
+  );
 
   const [insertStudentData] = useInsertStudentDataMutation();
 

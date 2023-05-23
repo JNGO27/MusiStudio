@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -43,4 +44,4 @@ const AddButtonTab = () => {
   );
 };
 
-export default AddButtonTab;
+export default memo(AddButtonTab);
