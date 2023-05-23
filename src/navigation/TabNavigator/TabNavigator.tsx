@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import type { TabNavigatorParamList } from "@src/types";
@@ -42,6 +43,8 @@ const TabNavigator = () => {
     tabBarItemStyle: styles.tabBarItemStyleSheet,
   };
 
+  const AddButtonRenderer = useCallback(() => <AddButtonTab />, []);
+
   return (
     <AddButtonModalContext>
       <Tab.Navigator screenOptions={screenOptions}>
@@ -53,7 +56,7 @@ const TabNavigator = () => {
         <Tab.Screen
           options={{
             headerShown: false,
-            tabBarButton: AddButtonTab,
+            tabBarButton: AddButtonRenderer,
           }}
           name="AddTab"
           component={AddButtonNav}

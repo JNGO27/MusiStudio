@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -6,6 +7,8 @@ import { setRoute } from "@src/redux/features/generalGlobalData";
 
 import { TabNavigator, HeaderNav } from "@src/navigation";
 import { Header } from "@src/components";
+
+import type { NavigationState } from "@react-navigation/native";
 
 import type { RootStackParamList } from "@src/types";
 
@@ -16,17 +19,22 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 const RootNav = () => {
   const dispatch = useAppDispatch();
 
+  const onStateChange = useCallback(
+    (state: NavigationState | undefined) => {
+      const currentRoute = getActiveRouteName(state);
+      dispatch(setRoute(currentRoute));
+    },
+    [dispatch],
+  );
+
+  const HeaderRenderer = useCallback(() => <Header />, []);
+
   return (
-    <NavigationContainer
-      onStateChange={(state) => {
-        const currentRoute = getActiveRouteName(state);
-        dispatch(setRoute(currentRoute));
-      }}
-    >
+    <NavigationContainer onStateChange={onStateChange}>
       <RootStack.Navigator
         initialRouteName="TabNavigator"
         screenOptions={{
-          header: Header,
+          header: HeaderRenderer,
         }}
       >
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
