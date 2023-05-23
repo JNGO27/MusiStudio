@@ -120,6 +120,21 @@ const COLORS = {
     red800: "hsl(360, 78%, 39%)",
     red900: "hsl(360, 85%, 29%)",
   },
+  blues: {
+    blue100: "hsl(207, 90%, 95%)",
+    blue200: "hsl(207, 89%, 90%)",
+    blue300: "hsl(207, 85%, 82%)",
+    blue400: "hsl(207, 80%, 70%)",
+    blue500: "hsl(207, 77%, 58%)",
+    blue600: "hsl(207, 75%, 48%)",
+    blue700: "hsl(207, 78%, 38%)",
+    blue800: "hsl(207, 79%, 29%)",
+    blue900: "hsl(207, 82%, 22%)",
+    darkBlue800: "hsl(219, 38%, 21%)",
+    darkBlue900: "hsl(219, 39%, 14%)",
+    darkBlue1000: "hsl(219, 37%, 9%)",
+    darkBlue1100: "hsl(219, 36%, 6%)",
+  },
   gradients: {
     purpleGradient: {
       colors: [
