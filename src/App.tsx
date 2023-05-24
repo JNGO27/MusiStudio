@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { registerRootComponent } from "expo";
+import * as WebBrowser from "expo-web-browser";
 import { Provider } from "react-redux";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
@@ -22,6 +23,17 @@ const styles = StyleSheet.create({
 const App = () => {
   const [userSession, setUserSession] = useState<Session | null>(null);
   const fontsLoaded = useLoadFonts();
+
+  useEffect(() => {
+    if (Platform.OS === "android") {
+      WebBrowser.warmUpAsync();
+
+      return () => {
+        WebBrowser.coolDownAsync();
+      };
+    }
+    return () => {};
+  }, []);
 
   useEffect(() => {
     supabaseConfig.auth.getSession().then(({ data: { session } }) => {
