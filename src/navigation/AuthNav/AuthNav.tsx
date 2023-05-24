@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 const noHeaderAndAnimation = { headerShown: false, animationEnabled: false };
 
-const prefix = Linking.createURL("/auth");
+const prefix = Linking.createURL("auth");
 
 const linking: LinkingOptions<AuthStackParamList> = {
   prefixes: [prefix],

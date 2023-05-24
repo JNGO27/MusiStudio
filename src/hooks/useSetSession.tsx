@@ -7,10 +7,10 @@ import { getTokens } from "@src/utils/linkHelpers";
 
 const useSetSession = () => {
   const mostRecentURL = Linking.useURL();
-  const desiredScreenUrl = "auth/home";
-  const resetPasswordFormURLScreen = Linking.createURL(desiredScreenUrl);
+  const desiredScreenUrl = "auth";
   const redirectUri = makeRedirectUri({
-    path: resetPasswordFormURLScreen,
+    scheme: "pocket-music-teacher-helper",
+    path: desiredScreenUrl,
   });
 
   useEffect(() => {

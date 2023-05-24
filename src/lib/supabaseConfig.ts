@@ -8,8 +8,5 @@ import { SUPABASE_URL, SUPABASE_KEY } from "@env";
 export const supabaseConfig = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: {
     storage: AsyncStorage,
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: false,
   },
 });
