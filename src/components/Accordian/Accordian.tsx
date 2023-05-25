@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { useState } from "react";
 import { TouchableOpacity, Text } from "react-native";
 import Animated, {
@@ -16,8 +17,8 @@ type Props = {
   unOpenedText: string;
   openedText: string;
   openedAnimatedHeight: number;
-  // eslint-disable-next-line react/require-default-props
   styleSheet?: StyleSheetProps;
+  icon?: string;
   children: ReactNode;
 };
 
@@ -26,6 +27,7 @@ const Accordion = ({
   openedText,
   openedAnimatedHeight,
   styleSheet,
+  icon,
   children,
 }: Props) => {
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
@@ -51,17 +53,20 @@ const Accordion = ({
   };
 
   return (
-    <TouchableOpacity
-      onPress={handlePress}
-      style={[styles.container, styleSheet]}
-    >
-      <Text style={[styles.title, styleSheet]}>
-        {isOpen ? unOpenedText : openedText}
-      </Text>
+    <>
+      <TouchableOpacity
+        onPress={handlePress}
+        style={[styles.container, styleSheet?.container]}
+      >
+        <Text style={[styles.title, styleSheet?.title]}>
+          {isOpen ? unOpenedText : openedText}
+        </Text>
+        <Text style={[styles.icon, styleSheet?.icon]}>{icon}</Text>
+      </TouchableOpacity>
       <Animated.View style={[styles.content, animatedStyles]}>
         {children}
       </Animated.View>
-    </TouchableOpacity>
+    </>
   );
 };
 
