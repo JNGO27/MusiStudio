@@ -10,15 +10,12 @@ export default (
 ) => {
   return StyleSheet.create({
     container: {
-      margin: 10,
-      padding: 10,
-      borderWidth: 1,
-      borderRadius: 5,
-      borderColor: "#ddd",
+      width: "100%",
     },
     title: {
+      borderWidth: 1,
+      borderRadius: 5,
       fontSize: 18,
-      fontWeight: "bold",
     },
     content: {
       marginTop: 10,
