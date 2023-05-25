@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 
 import { DirectionalScale, CalculatedScale } from "@src/types";
 
+import globalStyles from "@src/globalStyles";
+
 export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
@@ -10,6 +12,9 @@ export default (
 ) => {
   return StyleSheet.create({
     container: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
       width: "100%",
     },
     title: {
@@ -17,8 +22,11 @@ export default (
       borderRadius: 5,
       fontSize: 18,
     },
+    icon: {
+      width: 14,
+      height: 14,
+    },
     content: {
-      marginTop: 10,
       overflow: "hidden",
     },
   });

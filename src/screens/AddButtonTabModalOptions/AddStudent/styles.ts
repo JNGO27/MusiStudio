@@ -49,7 +49,6 @@ export default (
       color: lightPurples.lightPurple100,
     },
     formContainer: {
-      position: "relative",
       top: -formContainerSpacing,
       backgroundColor: whites.white300,
       borderTopRightRadius: spacing.multipleReg * 7,
@@ -332,6 +331,10 @@ export default (
       marginTop: spacing.multipleS,
       borderBottomColor: grays.gray300,
       borderBottomWidth: 2,
+    },
+    additionDetailsIcon: {
+      position: "absolute",
+      top: 20,
     },
   });
 };
