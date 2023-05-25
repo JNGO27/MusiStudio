@@ -24,6 +24,7 @@ import {
   LessonDetails,
   RateDetails,
   Finalization,
+  AdditionalStudentDetails,
 } from "./FormComponentHelpers";
 
 import createStyleSheet from "./styles";
@@ -113,6 +114,10 @@ const AddStudent = () => {
             >
               <View style={styles.formContainer}>
                 <StudentDetails />
+
+                <View style={styles.divider} />
+
+                <AdditionalStudentDetails />
 
                 <View style={styles.divider} />
 
