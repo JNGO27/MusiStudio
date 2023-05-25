@@ -36,7 +36,8 @@ export default (
     },
     addButtonIcon: {
       position: "relative",
-      bottom: spacing.multipleXS * 2.75,
+      alignSelf: "center",
+      bottom: verticalScale(spacing.multipleXS * 2.75),
       color: whites.white200,
       fontFamily: typography.semiBold,
       fontSize: spacing.multipleReg * 3,
