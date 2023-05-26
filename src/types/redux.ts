@@ -4,6 +4,7 @@ export type GeneralGlobal = {
   isNestedScreen: boolean;
   currentRoute: string;
   timedStatusMessageOccurred: boolean;
+  timedStatusMessageType: string;
 };
 
 export type RootState = ReturnType<typeof store.getState>;

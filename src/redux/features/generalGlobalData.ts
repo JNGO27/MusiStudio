@@ -6,6 +6,7 @@ const initialState: GeneralGlobal = {
   isNestedScreen: false,
   currentRoute: "",
   timedStatusMessageOccurred: false,
+  timedStatusMessageType: "",
 };
 
 export const generalGlobalData = createSlice({
@@ -33,10 +34,20 @@ export const generalGlobalData = createSlice({
         timedStatusMessageOccurred: payload,
       };
     },
+    setTimedStatusMessageType: (state, { payload }: PayloadAction<string>) => {
+      return {
+        ...state,
+        timedStatusMessageType: payload,
+      };
+    },
   },
 });
 
-export const { setIsNestedScreen, setRoute, setTimedStatusMessageOccured } =
-  generalGlobalData.actions;
+export const {
+  setIsNestedScreen,
+  setRoute,
+  setTimedStatusMessageOccured,
+  setTimedStatusMessageType,
+} = generalGlobalData.actions;
 
 export default generalGlobalData.reducer;
