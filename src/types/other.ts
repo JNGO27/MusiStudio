@@ -7,3 +7,5 @@ export type FormikSubmit = (
 export type StyleSheetProps = {
   [key: string]: ViewStyle | TextStyle;
 };
+
+export type TimedStatusMessageTypes = "Success" | "Error" | "Warning" | "";

@@ -6,11 +6,13 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
+import type { TimedStatusMessageTypes } from "@src/types";
+
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
 type Props = {
-  type: "Success" | "Error";
+  type: TimedStatusMessageTypes;
 };
 
 const TimedStatusMessage = ({ type }: Props) => {

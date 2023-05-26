@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import type { GeneralGlobal } from "@src/types";
+import type { GeneralGlobal, TimedStatusMessageTypes } from "@src/types";
 
 const initialState: GeneralGlobal = {
   isNestedScreen: false,
@@ -34,7 +34,10 @@ export const generalGlobalData = createSlice({
         timedStatusMessageOccurred: payload,
       };
     },
-    setTimedStatusMessageType: (state, { payload }: PayloadAction<string>) => {
+    setTimedStatusMessageType: (
+      state,
+      { payload }: PayloadAction<TimedStatusMessageTypes>,
+    ) => {
       return {
         ...state,
         timedStatusMessageType: payload,
