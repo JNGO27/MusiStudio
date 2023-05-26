@@ -135,6 +135,20 @@ const COLORS = {
     darkBlue1000: "hsl(219, 37%, 9%)",
     darkBlue1100: "hsl(219, 36%, 6%)",
   },
+  yellows: {
+    yellow50: "hsl(52, 100%, 98%)",
+    yellow100: "hsl(50, 100%, 95%)",
+    yellow200: "hsl(48, 100%, 90%)",
+    yellow300: "hsl(46, 100%, 83%)",
+    yellow400: "hsl(44, 98%, 74%)",
+    yellow500: "hsl(42, 94%, 65%)",
+    yellow600: "hsl(40, 90%, 55%)",
+    yellow700: "hsl(38, 94%, 45%)",
+    yellow800: "hsl(36, 96%, 37%)",
+    yellow900: "hsl(34, 96%, 27%)",
+    yellow1000: "hsl(32, 96%, 18%)",
+    yellow1100: "hsl(30, 96%, 12%)",
+  },
   gradients: {
     purpleGradient: {
       colors: [
