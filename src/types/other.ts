@@ -8,4 +8,4 @@ export type StyleSheetProps = {
   [key: string]: ViewStyle | TextStyle;
 };
 
-export type TimedStatusMessageTypes = "Success" | "Error" | "Warning" | "";
+export type TimedStatusMessageTypes = "Success" | "Error" | "Canceled" | "";

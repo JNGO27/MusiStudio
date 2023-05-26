@@ -7,7 +7,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { reds, greens, blacks },
+  colors: { reds, greens, blacks, yellows },
   typography,
 } = globalStyles;
 
@@ -52,6 +52,26 @@ export default (
       borderWidth: spacing.multipleXS,
       backgroundColor: reds.red50,
       shadowColor: reds.red700,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 2,
+      shadowRadius: 2,
+      elevation: 12,
+    },
+    messageCancelContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      alignSelf: "center",
+      position: "absolute",
+      bottom: verticalScale(spacing.multipleXL * 6.75),
+      width: "90%",
+      height: verticalScale(spacing.multipleXL * 5),
+      paddingHorizontal: spacing.multipleXL,
+      borderRadius: spacing.multipleXL * 4,
+      borderColor: yellows.yellow700,
+      borderWidth: spacing.multipleXS,
+      backgroundColor: yellows.yellow50,
+      shadowColor: yellows.yellow700,
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 2,
       shadowRadius: 2,

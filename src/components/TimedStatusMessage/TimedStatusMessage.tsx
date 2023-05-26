@@ -35,17 +35,28 @@ const TimedStatusMessage = ({ type }: Props) => {
 
   const fiveSeconds = 5000;
 
-  const successOrErrorStyles = {
-    messageContainer:
-      type === "Success"
-        ? styles.messageSuccessContainer
-        : styles.messageErrorContainer,
-  };
+  let typeResults;
+  let typeMessage;
 
-  const message =
-    type === "Success"
-      ? "Student has successfully been added."
-      : "Please fill out the empty form values highlighted in red.";
+  if (type === "Success") {
+    typeResults = styles.messageSuccessContainer;
+  } else if (type === "Error") {
+    typeResults = styles.messageErrorContainer;
+  } else {
+    typeResults = styles.messageCancelContainer;
+  }
+
+  if (type === "Success") {
+    typeMessage = "Student has successfully been added.";
+  } else if (type === "Error") {
+    typeMessage = "Please fill out the empty form values highlighted in red.";
+  } else {
+    typeMessage = "Student form submission has been canceled.";
+  }
+
+  const successOrErrorStyles = {
+    messageContainer: typeResults,
+  };
 
   useEffect(() => {
     translateY.value = withTiming(-dimensionHeight / 17, { duration: 350 });
@@ -62,7 +73,7 @@ const TimedStatusMessage = ({ type }: Props) => {
     <Animated.View
       style={[successOrErrorStyles.messageContainer, animatedStyle]}
     >
-      <Text style={styles.messageText}>{message}</Text>
+      <Text style={styles.messageText}>{typeMessage}</Text>
     </Animated.View>
   );
 };
