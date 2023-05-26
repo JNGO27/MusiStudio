@@ -18,19 +18,19 @@ export default (
   moderateScale: CalculatedScale,
   dimensionHeight: number,
 ) => {
-  const formContainerSpacing = spacing.multipleXL * 34;
+  const formContainerSpacing = verticalScale(spacing.multipleXL * 3);
 
   return StyleSheet.create({
     container: {
-      width: "100%",
-      height: "100%",
+      display: "flex",
+      flex: 1,
     },
     imageContainer: {
       display: "flex",
       justifyContent: "flex-start",
       alignItems: "flex-end",
       width: "100%",
-      height: "40%",
+      height: "20%",
     },
     addStudentImage: {
       display: "flex",
@@ -49,12 +49,12 @@ export default (
       color: lightPurples.lightPurple100,
     },
     formContainer: {
-      top: -formContainerSpacing,
+      marginTop: -formContainerSpacing,
       backgroundColor: whites.white300,
       borderTopRightRadius: spacing.multipleReg * 7,
       borderTopLeftRadius: spacing.multipleReg * 7,
       paddingTop: spacing.multipleL * 3,
-      paddingBottom: spacing.multipleXL * 18,
+      paddingBottom: verticalScale(spacing.multipleXL * 20),
       gap: spacing.multipleReg * 4,
     },
     formSection: {
@@ -269,9 +269,9 @@ export default (
     },
     saveOrCancelContainer: {
       display: "flex",
-      flex: 1,
       justifyContent: "center",
       alignItems: "center",
+      height: "8%",
     },
     saveButtonContainer: {
       display: "flex",
@@ -279,8 +279,6 @@ export default (
       alignItems: "center",
       width: horizontalScale(spacing.multipleXL * 15),
       height: verticalScale(spacing.multipleReg * 5),
-      position: "relative",
-      top: spacing.multipleReg * 3.5,
       borderRadius: spacing.multipleReg * 4.5,
     },
     cancelButtonContainer: {
@@ -292,8 +290,6 @@ export default (
       borderBottomColor: grays.gray700,
       borderBottomWidth: spacing.multipleXS,
       marginTop: spacing.multipleReg * 3,
-      position: "relative",
-      top: spacing.multipleReg * 3.5,
       borderRadius: spacing.multipleReg * 4.5,
     },
     saveButton: {
