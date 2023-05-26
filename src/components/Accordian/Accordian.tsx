@@ -18,7 +18,8 @@ type Props = {
   openedText: string;
   openedAnimatedHeight: number;
   styleSheet?: StyleSheetProps;
-  icon?: string;
+  iconClosed?: string;
+  iconOpen?: string;
   children: ReactNode;
 };
 
@@ -27,7 +28,8 @@ const Accordion = ({
   openedText,
   openedAnimatedHeight,
   styleSheet,
-  icon,
+  iconClosed,
+  iconOpen,
   children,
 }: Props) => {
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
@@ -61,7 +63,9 @@ const Accordion = ({
         <Text style={[styles.title, styleSheet?.title]}>
           {isOpen ? unOpenedText : openedText}
         </Text>
-        <Text style={[styles.icon, styleSheet?.icon]}>{icon}</Text>
+        <Text style={[styles.icon, styleSheet?.icon]}>
+          {isOpen ? iconOpen : iconClosed}
+        </Text>
       </TouchableOpacity>
       <Animated.View style={[styles.content, animatedStyles]}>
         {children}

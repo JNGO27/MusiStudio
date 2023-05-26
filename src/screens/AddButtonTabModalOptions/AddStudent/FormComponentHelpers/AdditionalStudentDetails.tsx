@@ -32,7 +32,8 @@ const AdditionalStudentDetails = () => {
         openedText="Show additional details"
         openedAnimatedHeight={verticalScale(spacing.multipleXL * 16)}
         styleSheet={accordianStyles}
-        icon="+"
+        iconClosed="+"
+        iconOpen="-"
       >
         <View style={styles.accordianFormSection}>
           <TextInput
