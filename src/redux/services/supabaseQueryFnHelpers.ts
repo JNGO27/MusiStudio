@@ -51,6 +51,9 @@ export const insertStudentDataQueryFn = {
         rate: formValues.rate,
         lesson_length: formValues.lesson_length,
         rate_per_time: formValues.rate_per_time,
+        instrument: formValues.instrument,
+        skill_level: formValues.skill_level,
+        gender: formValues.gender,
       },
     ];
 
@@ -108,6 +111,9 @@ export const insertStudentDataExistingFamilyQueryFn = {
         rate: formValues.rate,
         lesson_length: formValues.lesson_length,
         rate_per_time: formValues.rate_per_time,
+        instrument: formValues.instrument,
+        skill_level: formValues.skill_level,
+        gender: formValues.gender,
       },
     ];
 
