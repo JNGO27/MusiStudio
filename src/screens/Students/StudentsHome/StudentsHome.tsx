@@ -20,7 +20,10 @@ import type { AllStudentFamilyDataCard } from "@src/types";
 
 import { useAppSelector } from "@src/redux";
 import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
-import { getTimedStatusMessageOccurred } from "@src/redux/selectors";
+import {
+  getTimedStatusMessageOccurred,
+  getTimedStatusMessageType,
+} from "@src/redux/selectors";
 
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
@@ -39,6 +42,8 @@ const StudentsHome = () => {
   const timedStatusMessageOccurred = useAppSelector(
     getTimedStatusMessageOccurred,
   );
+
+  const timedStatusMessageType = useAppSelector(getTimedStatusMessageType);
 
   const { data: allStudentRelatedData } = useGetAllStudentsDataQuery({});
   const ref: MyRef = useRef<FlatList>(null);
@@ -86,7 +91,9 @@ const StudentsHome = () => {
           keyExtractor={() => uuid.v4().toString()}
         />
         <CallOrMessageModal />
-        {timedStatusMessageOccurred && <TimedStatusMessage type="Success" />}
+        {timedStatusMessageOccurred && (
+          <TimedStatusMessage type={timedStatusMessageType} />
+        )}
       </LinearGradient>
     </CallOrMessageContext>
   );

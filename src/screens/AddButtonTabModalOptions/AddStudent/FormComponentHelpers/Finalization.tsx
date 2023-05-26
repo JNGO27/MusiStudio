@@ -5,7 +5,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useFormikContext } from "formik";
 import { useAppDispatch } from "@src/redux";
 
-import { setTimedStatusMessageOccured } from "@src/redux/features/generalGlobalData";
+import {
+  setTimedStatusMessageOccured,
+  setTimedStatusMessageType,
+} from "@src/redux/features/generalGlobalData";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 
@@ -51,10 +54,12 @@ const Finalization = () => {
     const hasErrors = Object.keys(errors).length > 0;
 
     if (hasErrors) {
+      dispatch(setTimedStatusMessageType("Error"));
       dispatch(setTimedStatusMessageOccured(true));
     } else {
       handleSubmit();
       navigator.navigate("StudentsNav");
+      dispatch(setTimedStatusMessageType("Success"));
       dispatch(setTimedStatusMessageOccured(true));
     }
   };
