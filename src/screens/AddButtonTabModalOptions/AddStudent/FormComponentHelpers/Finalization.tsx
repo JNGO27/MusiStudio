@@ -32,7 +32,7 @@ type AddStudentNavigationProps = NativeStackNavigationProp<
 const Finalization = () => {
   const dispatch = useAppDispatch();
   const navigator = useNavigation<AddStudentNavigationProps>();
-  const { validateForm, setTouched } = useFormikContext();
+  const { validateForm, setTouched, resetForm } = useFormikContext();
   const { handleSubmit, values, styles } = useAddStudentFormContext();
 
   const handleErrorStyles = (formValues: StudentFormValues) => {
@@ -64,6 +64,13 @@ const Finalization = () => {
     }
   };
 
+  const handleCancel = () => {
+    resetForm();
+    navigator.navigate("StudentsNav");
+    dispatch(setTimedStatusMessageType("Canceled"));
+    dispatch(setTimedStatusMessageOccured(true));
+  };
+
   return (
     <View style={styles.saveOrCancelContainer}>
       <LinearGradient
@@ -81,7 +88,7 @@ const Finalization = () => {
         </TouchableOpacity>
       </LinearGradient>
       <View style={styles.cancelButtonContainer}>
-        <TouchableOpacity style={styles.saveButton} onPress={() => {}}>
+        <TouchableOpacity style={styles.saveButton} onPress={handleCancel}>
           <Text style={styles.cancelButtonText}>Cancel</Text>
         </TouchableOpacity>
       </View>
