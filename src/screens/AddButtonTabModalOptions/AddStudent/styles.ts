@@ -336,5 +336,13 @@ export default (
       position: "absolute",
       top: 20,
     },
+    accordianFormSection: {
+      display: "flex",
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      gap: spacing.multipleReg,
+      paddingTop: spacing.multipleReg * 2,
+    },
   });
 };

@@ -1,16 +1,22 @@
 /* eslint-disable import/order */
-import { View } from "react-native";
+import { View, TextInput } from "react-native";
 
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { useResponsiveness } from "@src/hooks";
 import { Accordian } from "@src/components";
-import StudentDetails from "./StudentDetails";
 
 import createAccordianStyles from "./accordianStyles";
 import globalStyles from "@src/globalStyles";
 
-const { spacing } = globalStyles;
+const {
+  spacing,
+  colors: { purples },
+} = globalStyles;
 
 const AdditionalStudentDetails = () => {
+  const { values, handleChange, handleBlur, styles } =
+    useAddStudentFormContext();
+
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
 
   const accordianStyles = createAccordianStyles(
@@ -28,7 +34,33 @@ const AdditionalStudentDetails = () => {
         styleSheet={accordianStyles}
         icon="+"
       >
-        <StudentDetails />
+        <View style={styles.accordianFormSection}>
+          <TextInput
+            style={styles.input}
+            value={values.instrument}
+            onChangeText={handleChange("instrument")}
+            onBlur={handleBlur("instrument")}
+            placeholder="Instrument"
+            selectionColor={purples.purple100}
+          />
+          <TextInput
+            style={styles.input}
+            value={values.skill_level}
+            onChangeText={handleChange("skill_level")}
+            onBlur={handleBlur("skill_level")}
+            placeholder="Skill Level"
+            selectionColor={purples.purple100}
+          />
+          <TextInput
+            style={styles.input}
+            value={values.gender}
+            onChangeText={handleChange("gender")}
+            onBlur={handleBlur("gender")}
+            placeholder="Gender"
+            keyboardType="numeric"
+            selectionColor={purples.purple100}
+          />
+        </View>
       </Accordian>
     </View>
   );
