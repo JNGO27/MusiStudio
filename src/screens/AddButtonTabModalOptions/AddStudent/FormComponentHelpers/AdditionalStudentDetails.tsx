@@ -58,7 +58,6 @@ const AdditionalStudentDetails = () => {
             onChangeText={handleChange("gender")}
             onBlur={handleBlur("gender")}
             placeholder="Gender"
-            keyboardType="numeric"
             selectionColor={purples.purple100}
           />
         </View>
