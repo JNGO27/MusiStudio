@@ -18,14 +18,15 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  isNested: boolean,
 ) => {
   return StyleSheet.create({
     tabBarStyleSheet: {
       position: "absolute",
-      display: "flex",
+      bottom: 0,
+      display: isNested ? "none" : "flex",
       justifyContent: "center",
       alignItems: "center",
-      bottom: 0,
       borderTopLeftRadius: spacing.multipleReg * 6,
       borderTopRightRadius: spacing.multipleReg * 6,
       height: "7.25%",

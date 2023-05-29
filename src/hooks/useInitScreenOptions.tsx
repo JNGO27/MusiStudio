@@ -5,7 +5,7 @@ import type { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 
 import type { TabNavigatorParamList } from "@src/types";
 
-import useResponsiveness from "@src/hooks/useResponsiveness";
+import { useResponsiveness, useIsNestedScreen } from "@src/hooks";
 
 import createStyleSheet from "@src/navigation/TabNavigator/styles";
 
@@ -14,11 +14,13 @@ type ScreenOptionsProps = {
 };
 
 const useInitScreenOptions = () => {
+  const isNested = useIsNestedScreen();
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
+    isNested,
   );
 
   return ({ route }: ScreenOptionsProps): BottomTabNavigationOptions => ({
