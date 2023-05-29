@@ -10,10 +10,13 @@ import { CheckboxCard } from "@src/components";
 
 import { SuccessIcon } from "@src/assets/icons";
 
+import {
+  rateInitialState,
+  rateReducer,
+} from "@src/screens/AddButtonTabModalOptions/AddStudent/reducerHelper";
+
 import globalStyles from "@src/globalStyles";
 import changingStyles from "./rateDynamicStyles";
-
-import { rateInitialState, rateReducer } from "../reducerHelper";
 
 const {
   colors: { purples },

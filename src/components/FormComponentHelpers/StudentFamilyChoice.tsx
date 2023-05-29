@@ -13,7 +13,10 @@ import { FamilyDetails, ExistingFamilyChoice } from ".";
 import { SuccessIcon } from "@src/assets/icons";
 import changingStyles from "./dynamicStyles";
 
-import { familyTypeInitialState, familyTypeReducer } from "../reducerHelper";
+import {
+  familyTypeInitialState,
+  familyTypeReducer,
+} from "../../screens/AddButtonTabModalOptions/AddStudent/reducerHelper";
 
 const StudentFamilyChoice = () => {
   const { setFieldValue, setChosenExistingFamily, styles } =
