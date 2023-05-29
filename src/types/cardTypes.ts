@@ -1,10 +1,17 @@
+import type { RateOptions } from "./formTypes";
+
 export type Student = {
   id: number;
-  associated_family: number;
   first_name: string;
   last_name: string;
-  email_address: string;
   phone_number: string;
+  email: string;
+  instrument: string;
+  skill_level: string;
+  gender: string;
+  lesson_length: string;
+  rate_per_time: RateOptions;
+  rate: string;
 };
 
 export type StudentCardType = {
@@ -33,7 +40,7 @@ export type FamilyCardType = {
 };
 
 export type StudentAndFamily = {
-  student_data: StudentCardType;
+  student_data: Student;
   associated_family: FamilyCardType;
 };
 
