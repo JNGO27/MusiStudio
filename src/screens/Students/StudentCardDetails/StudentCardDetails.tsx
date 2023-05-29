@@ -5,6 +5,9 @@ import { useAppSelector } from "@src/redux";
 import { getGlobalStudentData } from "@src/redux/selectors";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
+
+import { EditIcon, DeleteIcon } from "@src/assets/icons";
+
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 
@@ -71,10 +74,12 @@ const StudentCardDetails = () => {
       </View>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity style={styles.button}>
+          <EditIcon style={styles.icon} />
           <Text style={styles.buttonText}>Edit</Text>
         </TouchableOpacity>
         <View style={styles.divider} />
         <TouchableOpacity style={styles.button}>
+          <DeleteIcon style={styles.icon} />
           <Text style={styles.buttonText}>Delete</Text>
         </TouchableOpacity>
       </View>

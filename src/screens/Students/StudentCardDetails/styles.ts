@@ -127,6 +127,7 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       flex: 1,
+      gap: spacing.multipleS,
     },
     buttonText: {
       fontSize: moderateScale(12),
@@ -137,6 +138,11 @@ export default (
       height: "100%",
       width: spacing.multipleXS,
       backgroundColor: grays.gray800,
+    },
+    icon: {
+      width: spacing.multipleReg * 3,
+      height: spacing.multipleReg * 3,
+      color: grays.gray800,
     },
   });
 };
