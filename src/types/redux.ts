@@ -12,7 +12,7 @@ export type GeneralGlobal = {
 };
 
 export type CardsData = {
-  studentData: Student | object;
+  studentData: Student | null;
 };
 
 export type RootState = ReturnType<typeof store.getState>;

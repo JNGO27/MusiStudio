@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { CardsData, Student } from "@src/types";
 
 const initialState: CardsData = {
-  studentData: {},
+  studentData: null,
 };
 
 export const globalCardsData = createSlice({
