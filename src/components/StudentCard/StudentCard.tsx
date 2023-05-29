@@ -15,6 +15,7 @@ const StudentCard = ({
   last_name,
   phone_number,
   email_address,
+  student_data,
 }: StudentCardType) => {
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -48,7 +49,10 @@ const StudentCard = ({
             </View>
           </View>
         </View>
-        <CardNavOption cardOption="StudentCardDetails" />
+        <CardNavOption
+          cardOption="StudentCardDetails"
+          student_data={student_data}
+        />
       </View>
     </View>
   );

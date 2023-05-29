@@ -20,6 +20,7 @@ export type StudentCardType = {
   last_name: string;
   email_address: string;
   phone_number: string;
+  student_data: Student;
 };
 
 export type Family = {

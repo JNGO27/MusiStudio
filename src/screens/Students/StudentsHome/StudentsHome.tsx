@@ -16,8 +16,6 @@ import {
   TimedStatusMessage,
 } from "@src/components";
 
-import type { AllStudentFamilyDataCard } from "@src/types";
-
 import { useAppSelector } from "@src/redux";
 import { useGetAllStudentsDataQuery } from "@src/redux/services/supabaseAPI";
 import {
@@ -75,6 +73,7 @@ const StudentsHome = () => {
                   last_name={item.student_data.last_name}
                   phone_number={item.student_data.phone_number}
                   email_address={item.student_data.email_address}
+                  student_data={item.student_data}
                 />,
                 <FamilyCard
                   key={item.id}
