@@ -13,6 +13,8 @@ export { default as UserStudent } from "./UserStudent";
 export { default as UserAccountIcon } from "./UserAccountIcon";
 export { default as PhoneOption } from "./PhoneOption";
 export { default as MessageOption } from "./MessageOption";
+export { default as EditIcon } from "./EditIcon";
+export { default as DeleteIcon } from "./DeleteIcon";
 
 export { default as ErrorIcon } from "./error.png";
 export { default as SuccessIcon } from "./success.png";
