@@ -19,3 +19,10 @@ export const getCurrentRoute = createSelector(
   getGeneralGlobalData,
   (globalState) => globalState.currentRoute,
 );
+
+export const getGlobalCardsData = (state: RootState) => state.globalCardsData;
+
+export const getGlobalStudentData = createSelector(
+  getGlobalCardsData,
+  (globalCardsState) => globalCardsState.studentData,
+);
