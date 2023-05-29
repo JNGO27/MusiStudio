@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useAppSelector } from "@src/redux";
 
@@ -68,6 +68,15 @@ const StudentCardDetails = () => {
           <Text style={styles.studentDetailHeadline}>Gender:</Text>
           <Text style={styles.studentDetailSubline}>{studentData?.gender}</Text>
         </View>
+      </View>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Edit</Text>
+        </TouchableOpacity>
+        <View style={styles.divider} />
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Delete</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

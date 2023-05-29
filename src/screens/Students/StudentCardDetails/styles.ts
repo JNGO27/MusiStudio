@@ -7,7 +7,7 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  colors: { lightPurples, whites, purples },
+  colors: { lightPurples, purples, whites, blacks, grays },
   typography,
 } = globalStyles;
 
@@ -108,6 +108,35 @@ export default (
       fontSize: moderateScale(14),
       fontFamily: typography.semiBold,
       color: whites.white200,
+    },
+    buttonsContainer: {
+      position: "absolute",
+      bottom: -spacing.multipleXS,
+      display: "flex",
+      flexDirection: "row",
+      width: "100%",
+      borderTopLeftRadius: spacing.multipleXL * 6,
+      borderTopRightRadius: spacing.multipleXL * 6,
+      borderColor: grays.gray800,
+      borderWidth: spacing.multipleXS,
+      height: verticalScale(spacing.multipleXL * 5),
+      backgroundColor: blacks.blackAlpha40,
+    },
+    button: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flex: 1,
+    },
+    buttonText: {
+      fontSize: moderateScale(12),
+      fontFamily: typography.semiBold,
+      color: grays.gray300,
+    },
+    divider: {
+      height: "100%",
+      width: spacing.multipleXS,
+      backgroundColor: grays.gray800,
     },
   });
 };
