@@ -16,6 +16,7 @@ const {
 
 const StudentCardDetails = () => {
   const studentData = useAppSelector(getGlobalStudentData);
+  let ratePerTime;
 
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -23,6 +24,14 @@ const StudentCardDetails = () => {
     verticalScale,
     moderateScale,
   );
+
+  if (studentData?.rate_per_time === "per_hour") {
+    ratePerTime = "Per Hour";
+  } else if (studentData?.rate_per_time === "per_month") {
+    ratePerTime = "Per Month";
+  } else if (studentData?.rate_per_time === "per_lesson") {
+    ratePerTime = `Per ${studentData?.lesson_length || ""} Minutes`;
+  }
 
   return (
     <View style={styles.detailsContainer}>
@@ -36,7 +45,29 @@ const StudentCardDetails = () => {
         <Text style={styles.headlineText}>Student Details</Text>
       </LinearGradient>
       <View style={styles.detailsContent}>
-        <Text style={styles.rateHeadline}>Rate {studentData?.rate}</Text>
+        <View style={styles.rateContainer}>
+          <Text style={styles.rateHeadline}>Rate:</Text>
+          <View style={styles.rateInnerContainer}>
+            <Text style={styles.rateAmount}>${studentData?.rate}</Text>
+            <Text style={styles.rateSubline}>{ratePerTime}</Text>
+          </View>
+        </View>
+        <View style={styles.studentDetailContainer}>
+          <Text style={styles.studentDetailHeadline}>Instrument:</Text>
+          <Text style={styles.studentDetailSubline}>
+            {studentData?.instrument}
+          </Text>
+        </View>
+        <View style={styles.studentDetailContainer}>
+          <Text style={styles.studentDetailHeadline}>Skill Level:</Text>
+          <Text style={styles.studentDetailSubline}>
+            {studentData?.skill_level}
+          </Text>
+        </View>
+        <View style={styles.studentDetailContainer}>
+          <Text style={styles.studentDetailHeadline}>Gender:</Text>
+          <Text style={styles.studentDetailSubline}>{studentData?.gender}</Text>
+        </View>
       </View>
     </View>
   );
