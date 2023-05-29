@@ -65,7 +65,7 @@ const StudentsHome = () => {
           ref={ref}
           style={styles.cardsContainer}
           contentContainerStyle={styles.cardsContainerFlex}
-          data={allStudentRelatedData as AllStudentFamilyDataCard[]}
+          data={allStudentRelatedData}
           renderItem={({ item }) => (
             <DataCardsContainer
               allStudentData={[
