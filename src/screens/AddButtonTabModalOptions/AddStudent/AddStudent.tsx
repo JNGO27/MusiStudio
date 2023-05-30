@@ -77,8 +77,22 @@ const AddStudent = () => {
   const validationSchema = Yup.object().shape({
     first_name: Yup.string().required("Student First Name Required"),
     last_name: Yup.string().required("Student Last Name Required"),
-    family_first_name: Yup.string().required("Parent First Name Required"),
-    family_last_name: Yup.string().required("Parent Last Name Required"),
+    family_first_name: Yup.string().when(
+      "existing_family_id",
+      (existing_family_id, schema) => {
+        return existing_family_id && existing_family_id[0] !== undefined
+          ? schema
+          : schema.required("Family first name is required");
+      },
+    ),
+    family_last_name: Yup.string().when(
+      "existing_family_id",
+      (existing_family_id, schema) => {
+        return existing_family_id && existing_family_id[0] !== undefined
+          ? schema
+          : schema.required("Family last name is required");
+      },
+    ),
     rate: Yup.string().required("Rate Required"),
   });
 
