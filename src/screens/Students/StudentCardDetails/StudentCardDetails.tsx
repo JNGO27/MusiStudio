@@ -68,6 +68,10 @@ const StudentCardDetails = () => {
           </Text>
         </View>
         <View style={styles.studentDetailContainer}>
+          <Text style={styles.studentDetailHeadline}>Age:</Text>
+          <Text style={styles.studentDetailSubline}>{studentData?.age}</Text>
+        </View>
+        <View style={styles.studentDetailContainer}>
           <Text style={styles.studentDetailHeadline}>Gender:</Text>
           <Text style={styles.studentDetailSubline}>{studentData?.gender}</Text>
         </View>

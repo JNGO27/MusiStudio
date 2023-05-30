@@ -9,6 +9,7 @@ export type Student = {
   instrument: string;
   skill_level: string;
   gender: string;
+  age: string;
   lesson_length: string;
   rate_per_time: RateOptions;
   rate: string;

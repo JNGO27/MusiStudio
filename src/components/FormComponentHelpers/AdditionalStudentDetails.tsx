@@ -54,6 +54,15 @@ const AdditionalStudentDetails = () => {
           />
           <TextInput
             style={styles.input}
+            value={values.age}
+            onChangeText={handleChange("age")}
+            onBlur={handleBlur("age")}
+            placeholder="Age"
+            keyboardType="numeric"
+            selectionColor={purples.purple100}
+          />
+          <TextInput
+            style={styles.input}
             value={values.gender}
             onChangeText={handleChange("gender")}
             onBlur={handleBlur("gender")}

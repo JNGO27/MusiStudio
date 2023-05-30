@@ -54,6 +54,7 @@ export const insertStudentDataQueryFn = {
         instrument: formValues.instrument,
         skill_level: formValues.skill_level,
         gender: formValues.gender,
+        age: formValues.age,
       },
     ];
 
@@ -114,6 +115,7 @@ export const insertStudentDataExistingFamilyQueryFn = {
         instrument: formValues.instrument,
         skill_level: formValues.skill_level,
         gender: formValues.gender,
+        age: formValues.age,
       },
     ];
 

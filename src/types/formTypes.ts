@@ -7,6 +7,7 @@ export type StudentFormValues = {
   email: string;
   instrument: string;
   skill_level: string;
+  age: string;
   gender: string;
   family_first_name: string;
   family_last_name: string;

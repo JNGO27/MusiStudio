@@ -64,6 +64,7 @@ const AddStudent = () => {
     instrument: "",
     skill_level: "",
     gender: "",
+    age: "",
     family_first_name: "",
     family_last_name: "",
     family_phone_number: "",
