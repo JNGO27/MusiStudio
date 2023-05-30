@@ -9,7 +9,7 @@ export const getAllStudentsDataQueryFn = {
     const { data: studentData, error } = await supabaseConfig
       .from("Students_All_Data")
       .select(
-        "student_data (id, first_name, last_name, phone_number, email_address, rate_per_time, rate, instrument, skill_level, gender), associated_family (parent_guardian_first_name_1, parent_guardian_last_name_1, phone_number, email_address)",
+        "student_data (id, first_name, last_name, phone_number, email_address, lesson_length, rate_per_time, rate, instrument, skill_level, gender, age), associated_family (parent_guardian_first_name_1, parent_guardian_last_name_1, phone_number, email_address)",
       );
 
     if (error) {
