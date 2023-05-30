@@ -40,6 +40,7 @@ export const CardNavOptionsOnlyArr = [
 
 export const noHeaderOptions = new Set([
   "AddStudent",
+  "EditStudent",
   "StudentCardDetails",
   "FamilyCardDetails",
 ]);
