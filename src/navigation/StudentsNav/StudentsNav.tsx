@@ -5,6 +5,7 @@ import {
   StudentCardDetails,
   FamilyCardDetails,
   PracticeCardDetails,
+  EditStudent,
 } from "@src/screens/Students";
 
 import type { CardsNavParamList } from "@src/types";
@@ -39,6 +40,11 @@ const StudentsNav = () => {
         options={noHeaderWithAnimation}
         name="PracticeCardDetails"
         component={PracticeCardDetails}
+      />
+      <Stack.Screen
+        options={noHeaderWithAnimation}
+        name="EditStudent"
+        component={EditStudent}
       />
     </Stack.Navigator>
   );

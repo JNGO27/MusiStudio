@@ -29,7 +29,7 @@ const HeroSection = ({ styles }: Props) => {
       start={purpleGradient.start}
       end={purpleGradient.end}
     >
-      <Text style={styles.headerText}>Add New Student</Text>
+      <Text style={styles.headerText}>Edit Student</Text>
       <Image
         source={StudentIllustration}
         contentFit="contain"
