@@ -36,21 +36,24 @@ const Finalization = () => {
   const { handleSubmit, values, styles } = useAddStudentFormContext();
 
   const handleErrorStyles = (formValues: StudentFormValues) => {
-    const { first_name, last_name, family_first_name, family_last_name, rate } =
+    const { first_name, last_name, rate, family_first_name, family_last_name } =
       formValues;
 
-    setTouched({
+    const touchedObject = {
       first_name: first_name.length === 0,
       last_name: last_name.length === 0,
       family_first_name: family_first_name.length === 0,
       family_last_name: family_last_name.length === 0,
       rate: rate.length === 0,
-    });
+    };
+
+    setTouched(touchedObject);
   };
 
   const handleOnFormSubmit = async () => {
-    const errors = await validateForm();
     handleErrorStyles(values);
+    const errors = await validateForm();
+
     const hasErrors = Object.keys(errors).length > 0;
 
     if (hasErrors) {

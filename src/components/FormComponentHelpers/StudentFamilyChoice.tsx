@@ -2,6 +2,7 @@
 import { useReducer } from "react";
 import { View, Text } from "react-native";
 import { Image } from "expo-image";
+import { useFormikContext } from "formik";
 
 import type { ImageStyle } from "expo-image";
 
@@ -16,10 +17,12 @@ import changingStyles from "./dynamicStyles";
 import {
   familyTypeInitialState,
   familyTypeReducer,
-} from "../../screens/AddButtonTabModalOptions/AddStudent/reducerHelper";
+} from "@src/screens/AddButtonTabModalOptions/AddStudent/reducerHelper";
 
 const StudentFamilyChoice = () => {
-  const { setFieldValue, setChosenExistingFamily, styles } =
+  const { setTouched, setValues } = useFormikContext();
+
+  const { setFieldValue, setChosenExistingFamily, values, styles } =
     useAddStudentFormContext();
 
   const [familyTypeState, familyTypeDispatch] = useReducer(
@@ -36,6 +39,19 @@ const StudentFamilyChoice = () => {
   };
 
   const handleExistingFamily = () => {
+    setValues({
+      ...values,
+      family_first_name: "",
+      family_last_name: "",
+      family_phone_number: "",
+      family_email: "",
+    });
+
+    setTouched({
+      family_first_name: false,
+      family_last_name: false,
+    });
+
     familyTypeDispatch({ type: "EXISTS" });
   };
 
