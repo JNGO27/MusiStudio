@@ -28,7 +28,7 @@ import {
   RateDetails,
   Finalization,
   AdditionalStudentDetails,
-} from "@src/components/FormComponentHelpers";
+} from "@src/components/FormComponentHelpersEditStudent";
 
 import createStyleSheet from "./styles";
 

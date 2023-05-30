@@ -1,6 +1,11 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 import { useAppSelector } from "@src/redux";
+
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+import type { CardsNavParamList } from "@src/types";
 
 import { getGlobalStudentData } from "@src/redux/selectors";
 
@@ -11,6 +16,11 @@ import { EditIcon, DeleteIcon } from "@src/assets/icons";
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 
+type NavigationProps = NativeStackNavigationProp<
+  CardsNavParamList,
+  "StudentCardDetails"
+>;
+
 const {
   colors: {
     gradients: { purpleGradient },
@@ -18,6 +28,7 @@ const {
 } = globalStyles;
 
 const StudentCardDetails = () => {
+  const navigator = useNavigation<NavigationProps>();
   const studentData = useAppSelector(getGlobalStudentData);
   let ratePerTime;
 
@@ -35,6 +46,8 @@ const StudentCardDetails = () => {
   } else if (studentData?.rate_per_time === "per_lesson") {
     ratePerTime = `Per ${studentData?.lesson_length || ""} minute session`;
   }
+
+  const handleEditNavigation = () => navigator.navigate("EditStudent");
 
   return (
     <View style={styles.detailsContainer}>
@@ -77,7 +90,7 @@ const StudentCardDetails = () => {
         </View>
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleEditNavigation}>
           <EditIcon style={styles.icon} />
           <Text style={styles.buttonText}>Edit</Text>
         </TouchableOpacity>

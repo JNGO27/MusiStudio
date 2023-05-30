@@ -4,7 +4,7 @@ import { Image } from "expo-image";
 
 import type { ImageStyle } from "expo-image";
 
-import { useEditStudentFormContext } from "@src/contexts/EditStudentFormContext";
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { useResponsiveness } from "@src/hooks";
 import { CheckboxCard } from "@src/components";
 
@@ -13,7 +13,7 @@ import { SuccessIcon } from "@src/assets/icons";
 import {
   rateInitialState,
   rateReducer,
-} from "@src/screens/Students/EditStudent/reducerHelper";
+} from "@src/screens/AddButtonTabModalOptions/AddStudent/reducerHelper";
 
 import globalStyles from "@src/globalStyles";
 import changingStyles from "./rateDynamicStyles";
@@ -31,7 +31,7 @@ const RateDetails = () => {
     handleBlur,
     setFieldValue,
     styles,
-  } = useEditStudentFormContext();
+  } = useAddStudentFormContext();
 
   const [rateState, rateDispatch] = useReducer(rateReducer, rateInitialState);
   const [, , moderateScale] = useResponsiveness();

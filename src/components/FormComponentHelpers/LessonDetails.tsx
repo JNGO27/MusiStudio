@@ -1,6 +1,6 @@
 import { View, Text, TextInput } from "react-native";
 
-import { useEditStudentFormContext } from "@src/contexts/EditStudentFormContext";
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 
 import globalStyles from "@src/globalStyles";
 
@@ -10,7 +10,7 @@ const {
 
 const LessonDetails = () => {
   const { values, handleChange, handleBlur, styles } =
-    useEditStudentFormContext();
+    useAddStudentFormContext();
 
   return (
     <View style={styles.formSection}>

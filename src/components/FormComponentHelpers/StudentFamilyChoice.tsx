@@ -6,7 +6,7 @@ import { useFormikContext } from "formik";
 
 import type { ImageStyle } from "expo-image";
 
-import { useEditStudentFormContext } from "@src/contexts/EditStudentFormContext";
+import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { CheckboxCard } from "@src/components";
 import { FamilyDetails, ExistingFamilyChoice } from ".";
@@ -17,13 +17,13 @@ import changingStyles from "./dynamicStyles";
 import {
   familyTypeInitialState,
   familyTypeReducer,
-} from "@src/screens/Students/EditStudent/reducerHelper";
+} from "@src/screens/AddButtonTabModalOptions/AddStudent/reducerHelper";
 
 const StudentFamilyChoice = () => {
   const { setTouched, setValues } = useFormikContext();
 
   const { setFieldValue, setChosenExistingFamily, values, styles } =
-    useEditStudentFormContext();
+    useAddStudentFormContext();
 
   const [familyTypeState, familyTypeDispatch] = useReducer(
     familyTypeReducer,

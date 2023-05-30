@@ -1,6 +1,6 @@
 import { View, Text, TextInput } from "react-native";
 
-import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
+import { useEditStudentFormContext } from "@src/contexts/EditStudentFormContext";
 
 import globalStyles from "@src/globalStyles";
 
@@ -10,7 +10,7 @@ const {
 
 const StudentDetails = () => {
   const { values, errors, touched, handleChange, handleBlur, styles } =
-    useAddStudentFormContext();
+    useEditStudentFormContext();
 
   const validationStyles = {
     firstName:
