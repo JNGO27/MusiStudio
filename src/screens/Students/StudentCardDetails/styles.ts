@@ -52,7 +52,8 @@ export default (
       width: "100%",
       paddingTop: spacing.multipleXL * 3,
       gap: spacing.multipleXL * 2,
-      paddingHorizontal: spacing.multipleXL * 2,
+      paddingLeft: spacing.multipleXL * 2,
+      paddingRight: spacing.multipleXL * 5,
     },
     rateContainer: {
       display: "flex",

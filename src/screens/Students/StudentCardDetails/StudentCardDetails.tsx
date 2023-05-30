@@ -33,7 +33,7 @@ const StudentCardDetails = () => {
   } else if (studentData?.rate_per_time === "per_month") {
     ratePerTime = "Per Month";
   } else if (studentData?.rate_per_time === "per_lesson") {
-    ratePerTime = `Per ${studentData?.lesson_length || ""} Minutes`;
+    ratePerTime = `Per ${studentData?.lesson_length || ""} minute session`;
   }
 
   return (
