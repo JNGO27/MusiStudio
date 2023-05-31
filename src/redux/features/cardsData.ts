@@ -1,24 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import type { CardsData, Student } from "@src/types";
+import type { CardsData, AllStudentFamilyDataCard } from "@src/types";
 
 const initialState: CardsData = {
-  studentData: null,
+  currentStudentFamilyData: null,
 };
 
 export const globalCardsData = createSlice({
   name: "globalCardsData",
   initialState,
   reducers: {
-    setStudentCardData: (state, { payload }: PayloadAction<Student>) => {
+    setCurrentStudentFamilyData: (
+      state,
+      { payload }: PayloadAction<AllStudentFamilyDataCard>,
+    ) => {
       return {
         ...state,
-        studentData: payload,
+        currentStudentFamilyData: payload,
       };
     },
   },
 });
 
-export const { setStudentCardData } = globalCardsData.actions;
+export const { setCurrentStudentFamilyData } = globalCardsData.actions;
 
 export default globalCardsData.reducer;

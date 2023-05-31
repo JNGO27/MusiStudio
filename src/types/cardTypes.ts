@@ -5,7 +5,7 @@ export type Student = {
   first_name: string;
   last_name: string;
   phone_number: string;
-  email: string;
+  email_address: string;
   instrument: string;
   skill_level: string;
   gender: string;
@@ -21,7 +21,7 @@ export type StudentCardType = {
   last_name: string;
   email_address: string;
   phone_number: string;
-  student_data: Student;
+  currentAllData: AllStudentFamilyDataCard;
 };
 
 export type Family = {

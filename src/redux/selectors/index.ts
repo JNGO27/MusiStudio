@@ -24,5 +24,11 @@ export const getGlobalCardsData = (state: RootState) => state.globalCardsData;
 
 export const getGlobalStudentData = createSelector(
   getGlobalCardsData,
-  (globalCardsState) => globalCardsState.studentData,
+  (globalCardsState) => globalCardsState.currentStudentFamilyData?.student_data,
+);
+
+export const getGlobalFamilyData = createSelector(
+  getGlobalCardsData,
+  (globalCardsState) =>
+    globalCardsState.currentStudentFamilyData?.associated_family,
 );

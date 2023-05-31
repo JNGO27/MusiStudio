@@ -2,7 +2,7 @@ import { store } from "@src/redux/app/store";
 
 import type { TimedStatusMessageTypes } from "./other";
 
-import type { Student } from "./cardTypes";
+import type { AllStudentFamilyDataCard } from "./cardTypes";
 
 export type GeneralGlobal = {
   isNestedScreen: boolean;
@@ -12,7 +12,7 @@ export type GeneralGlobal = {
 };
 
 export type CardsData = {
-  studentData: Student | null;
+  currentStudentFamilyData: AllStudentFamilyDataCard | null;
 };
 
 export type RootState = ReturnType<typeof store.getState>;
