@@ -4,11 +4,15 @@ import { useAppDispatch } from "@src/redux";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-import { setStudentCardData } from "@src/redux/features/cardsData";
+import { setCurrentStudentFamilyData } from "@src/redux/features/cardsData";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 
-import type { CardsNavParamList, CardsNavOptions, Student } from "@src/types";
+import type {
+  CardsNavParamList,
+  CardsNavOptions,
+  AllStudentFamilyDataCard,
+} from "@src/types";
 
 import { ChevronRight } from "@src/assets/icons";
 
@@ -16,7 +20,7 @@ import createStyleSheet from "./styles";
 
 type Props = {
   cardOption: CardsNavOptions;
-  student_data: Student;
+  currentAllData: AllStudentFamilyDataCard;
 };
 
 type CardNavigationProps = NativeStackNavigationProp<
@@ -24,7 +28,7 @@ type CardNavigationProps = NativeStackNavigationProp<
   "StudentsHome"
 >;
 
-const CardNavOption = ({ cardOption, student_data }: Props) => {
+const CardNavOption = ({ cardOption, currentAllData }: Props) => {
   const dispatch = useAppDispatch();
   const navigator = useNavigation<CardNavigationProps>();
   const [horizontalScale, verticalScale] = useResponsiveness();
@@ -33,7 +37,7 @@ const CardNavOption = ({ cardOption, student_data }: Props) => {
   const handleCardDetailsData = () => {
     switch (cardOption) {
       case "StudentCardDetails":
-        dispatch(setStudentCardData(student_data));
+        dispatch(setCurrentStudentFamilyData(currentAllData));
         break;
       default:
         throw new Error("Must be a valid card option.");

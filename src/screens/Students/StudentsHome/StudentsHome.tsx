@@ -73,7 +73,7 @@ const StudentsHome = () => {
                   last_name={item.student_data.last_name}
                   phone_number={item.student_data.phone_number}
                   email_address={item.student_data.email_address}
-                  student_data={item.student_data}
+                  currentAllData={item}
                 />,
                 <FamilyCard
                   key={item.id}
