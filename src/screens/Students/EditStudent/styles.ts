@@ -30,7 +30,7 @@ export default (
       justifyContent: "flex-start",
       alignItems: "flex-end",
       width: "100%",
-      height: "20%",
+      height: "24%",
     },
     addStudentImage: {
       display: "flex",
