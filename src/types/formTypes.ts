@@ -19,6 +19,21 @@ export type StudentFormValues = {
   rate: string;
 };
 
+export type EditStudentFormValues = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  phone_number: string;
+  email: string;
+  instrument: string;
+  skill_level: string;
+  age: string;
+  gender: string;
+  lesson_length: string;
+  rate_per_time: RateOptions;
+  rate: string;
+};
+
 export type FamilyTypeCheckboxesState = {
   NEW_FAMILY: boolean;
   EXISTS: boolean;

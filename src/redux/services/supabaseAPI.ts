@@ -5,6 +5,7 @@ import {
   getAllFamiliesDataQueryFn,
   insertStudentDataQueryFn,
   insertStudentDataExistingFamilyQueryFn,
+  editStudentDataMutationQueryFn,
 } from "./supabaseQueryFnHelpers";
 
 export const supabaseApi = createApi({
@@ -16,6 +17,7 @@ export const supabaseApi = createApi({
     insertStudentExistingFamilyData: builder.mutation(
       insertStudentDataExistingFamilyQueryFn,
     ),
+    editStudentData: builder.mutation(editStudentDataMutationQueryFn),
   }),
   tagTypes: ["Students", "Families"],
 });
@@ -25,4 +27,5 @@ export const {
   useGetAllFamilyDataQuery,
   useInsertStudentDataMutation,
   useInsertStudentExistingFamilyDataMutation,
+  useEditStudentDataMutation,
 } = supabaseApi;

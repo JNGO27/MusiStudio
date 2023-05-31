@@ -1,6 +1,6 @@
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
-import type { StudentFormValues } from "@src/types";
+import type { StudentFormValues, EditStudentFormValues } from "@src/types";
 
 import { convertToInt8 } from "@src/redux/helpers";
 
@@ -146,6 +146,38 @@ export const insertStudentDataExistingFamilyQueryFn = {
     const { data, error } = await supabaseConfig
       .from("Students_All_Data")
       .insert(newStudentAllData);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return { data };
+  },
+  invalidatesTags: [{ type: "Students" } as const],
+};
+
+export const editStudentDataMutationQueryFn = {
+  queryFn: async (formValues: EditStudentFormValues) => {
+    const studentData = {
+      first_name: formValues.first_name,
+      last_name: formValues.last_name,
+      phone_number: formValues.phone_number,
+      email_address: formValues.email,
+      rate: formValues.rate,
+      lesson_length: formValues.lesson_length,
+      rate_per_time: formValues.rate_per_time,
+      instrument: formValues.instrument,
+      skill_level: formValues.skill_level,
+      gender: formValues.gender,
+      age: formValues.age,
+    };
+
+    const id = String(formValues.id);
+
+    const { data, error } = await supabaseConfig
+      .from("Students")
+      .update(studentData)
+      .eq("id", id);
 
     if (error) {
       throw new Error(error.message);
