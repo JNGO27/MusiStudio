@@ -12,7 +12,7 @@ import {
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 
-import type { StudentFormValues, CardsNavParamList } from "@src/types";
+import type { EditStudentFormValues, CardsNavParamList } from "@src/types";
 
 import { useEditStudentFormContext } from "@src/contexts/EditStudentFormContext";
 
@@ -35,15 +35,12 @@ const Finalization = () => {
   const { validateForm, setTouched, resetForm } = useFormikContext();
   const { handleSubmit, values, styles } = useEditStudentFormContext();
 
-  const handleErrorStyles = (formValues: StudentFormValues) => {
-    const { first_name, last_name, rate, family_first_name, family_last_name } =
-      formValues;
+  const handleErrorStyles = (formValues: EditStudentFormValues) => {
+    const { first_name, last_name, rate } = formValues;
 
     const touchedObject = {
       first_name: first_name.length === 0,
       last_name: last_name.length === 0,
-      family_first_name: family_first_name.length === 0,
-      family_last_name: family_last_name.length === 0,
       rate: rate.length === 0,
     };
 

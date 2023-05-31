@@ -5,16 +5,14 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useAppSelector } from "@src/redux";
 
-import type { StudentFormValues } from "@src/types";
+import type { RateOptions, EditStudentFormValues } from "@src/types";
 
-import {
-  useInsertStudentDataMutation,
-  useInsertStudentExistingFamilyDataMutation,
-} from "@src/redux/services/supabaseAPI";
+import { useEditStudentDataMutation } from "@src/redux/services/supabaseAPI";
 
 import {
   getTimedStatusMessageOccurred,
   getTimedStatusMessageType,
+  getGlobalStudentData,
 } from "@src/redux/selectors";
 
 import { useResponsiveness, useResetTimedStatusMessage } from "@src/hooks";
@@ -23,7 +21,6 @@ import { TimedStatusMessage } from "@src/components";
 import {
   HeroSection,
   StudentDetails,
-  StudentFamilyChoice,
   LessonDetails,
   RateDetails,
   Finalization,
@@ -41,10 +38,9 @@ const EditStudent = () => {
 
   const timedStatusMessageType = useAppSelector(getTimedStatusMessageType);
 
-  const [insertStudentData] = useInsertStudentDataMutation();
+  const selectedStudentData = useAppSelector(getGlobalStudentData);
 
-  const [insertStudentExistingFamilyData] =
-    useInsertStudentExistingFamilyDataMutation();
+  const [editStudentData] = useEditStudentDataMutation();
 
   const [horizontalScale, verticalScale, moderateScale, dimensionHeight] =
     useResponsiveness();
@@ -56,53 +52,29 @@ const EditStudent = () => {
     dimensionHeight,
   );
 
-  const formValues: StudentFormValues = {
-    first_name: "",
-    last_name: "",
-    phone_number: "",
-    email: "",
-    instrument: "",
-    skill_level: "",
-    gender: "",
-    age: "",
-    family_first_name: "",
-    family_last_name: "",
-    family_phone_number: "",
-    family_email: "",
-    existing_family_id: "",
-    lesson_length: "",
-    rate: "",
-    rate_per_time: "per_hour",
+  const formValues: EditStudentFormValues = {
+    id: selectedStudentData?.id as number,
+    first_name: selectedStudentData?.first_name as string,
+    last_name: selectedStudentData?.last_name as string,
+    phone_number: selectedStudentData?.phone_number as string,
+    email: selectedStudentData?.email_address as string,
+    instrument: selectedStudentData?.instrument as string,
+    skill_level: selectedStudentData?.skill_level as string,
+    gender: selectedStudentData?.gender as string,
+    age: selectedStudentData?.age as string,
+    lesson_length: selectedStudentData?.lesson_length as string,
+    rate: selectedStudentData?.rate as string,
+    rate_per_time: selectedStudentData?.rate_per_time as RateOptions,
   };
 
   const validationSchema = Yup.object().shape({
     first_name: Yup.string().required("Student First Name Required"),
     last_name: Yup.string().required("Student Last Name Required"),
-    family_first_name: Yup.string().when(
-      "existing_family_id",
-      (existing_family_id, schema) => {
-        return existing_family_id && existing_family_id[0] !== undefined
-          ? schema
-          : schema.required("Family first name is required");
-      },
-    ),
-    family_last_name: Yup.string().when(
-      "existing_family_id",
-      (existing_family_id, schema) => {
-        return existing_family_id && existing_family_id[0] !== undefined
-          ? schema
-          : schema.required("Family last name is required");
-      },
-    ),
     rate: Yup.string().required("Rate Required"),
   });
 
-  const handleStudentSubmit = async (values: StudentFormValues) => {
-    if (values.existing_family_id.length === 0) {
-      await insertStudentData(values);
-    } else {
-      await insertStudentExistingFamilyData(values);
-    }
+  const handleStudentSubmit = async (values: EditStudentFormValues) => {
+    await editStudentData(values);
   };
 
   return (
@@ -142,10 +114,6 @@ const EditStudent = () => {
                 <View style={styles.divider} />
 
                 <AdditionalStudentDetails />
-
-                <View style={styles.divider} />
-
-                <StudentFamilyChoice />
 
                 <View style={styles.divider} />
 

@@ -8,18 +8,18 @@ import type {
   FormikTouched,
 } from "formik";
 
-import type { StudentFormValues, StyleSheetProps } from "@src/types";
+import type { EditStudentFormValues, StyleSheetProps } from "@src/types";
 
 interface FormProps {
-  values: StudentFormValues;
+  values: EditStudentFormValues;
   styles: StyleSheetProps;
   handleChange: FormikHandlers["handleChange"];
   handleSubmit: FormikHandlers["handleSubmit"];
   handleBlur: FormikHandlers["handleBlur"];
-  submitForm: FormikHelpers<StudentFormValues>["submitForm"];
-  setFieldValue: FormikHelpers<StudentFormValues>["setFieldValue"];
-  errors: FormikErrors<StudentFormValues>;
-  touched: FormikTouched<StudentFormValues>;
+  submitForm: FormikHelpers<EditStudentFormValues>["submitForm"];
+  setFieldValue: FormikHelpers<EditStudentFormValues>["setFieldValue"];
+  errors: FormikErrors<EditStudentFormValues>;
+  touched: FormikTouched<EditStudentFormValues>;
 }
 
 interface CompleteFormProps extends FormProps {
