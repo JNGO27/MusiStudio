@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { useEffect } from "react";
 import { Text } from "react-native";
 import Animated, {
@@ -11,11 +12,14 @@ import type { TimedStatusMessageTypes } from "@src/types";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import createStyleSheet from "./styles";
 
+import { getTypeStyleResults, getTypeMessage } from "./helpers";
+
 type Props = {
   type: TimedStatusMessageTypes;
+  isEdit?: boolean;
 };
 
-const TimedStatusMessage = ({ type }: Props) => {
+const TimedStatusMessage = ({ type, isEdit = false }: Props) => {
   const [horizontalScale, verticalScale, moderateScale, , dimensionHeight] =
     useResponsiveness();
 
@@ -35,27 +39,11 @@ const TimedStatusMessage = ({ type }: Props) => {
 
   const fiveSeconds = 5000;
 
-  let typeResults;
-  let typeMessage;
-
-  if (type === "Success") {
-    typeResults = styles.messageSuccessContainer;
-  } else if (type === "Error") {
-    typeResults = styles.messageErrorContainer;
-  } else {
-    typeResults = styles.messageCancelContainer;
-  }
-
-  if (type === "Success") {
-    typeMessage = "Student has successfully been added.";
-  } else if (type === "Error") {
-    typeMessage = "Please fill out the empty form values highlighted in red.";
-  } else {
-    typeMessage = "Student form submission has been canceled.";
-  }
+  const typeStyleResults = getTypeStyleResults(type, styles);
+  const typeMessage = getTypeMessage(type, isEdit);
 
   const successOrErrorStyles = {
-    messageContainer: typeResults,
+    messageContainer: typeStyleResults,
   };
 
   useEffect(() => {
