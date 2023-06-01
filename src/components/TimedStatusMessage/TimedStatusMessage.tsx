@@ -16,10 +16,9 @@ import { getTypeStyleResults, getTypeMessage } from "./helpers";
 
 type Props = {
   type: TimedStatusMessageTypes;
-  isEdit?: boolean;
 };
 
-const TimedStatusMessage = ({ type, isEdit = false }: Props) => {
+const TimedStatusMessage = ({ type }: Props) => {
   const [horizontalScale, verticalScale, moderateScale, , dimensionHeight] =
     useResponsiveness();
 
@@ -40,7 +39,7 @@ const TimedStatusMessage = ({ type, isEdit = false }: Props) => {
   const fiveSeconds = 5000;
 
   const typeStyleResults = getTypeStyleResults(type, styles);
-  const typeMessage = getTypeMessage(type, isEdit);
+  const typeMessage = getTypeMessage(type);
 
   const successOrErrorStyles = {
     messageContainer: typeStyleResults,

@@ -59,7 +59,7 @@ const Finalization = () => {
     } else {
       handleSubmit();
       navigator.navigate("StudentsHome");
-      dispatch(setTimedStatusMessageType("Success"));
+      dispatch(setTimedStatusMessageType("Success-Edit"));
       dispatch(setTimedStatusMessageOccured(true));
     }
   };
@@ -67,7 +67,7 @@ const Finalization = () => {
   const handleCancel = () => {
     resetForm();
     navigator.navigate("StudentsHome");
-    dispatch(setTimedStatusMessageType("Canceled"));
+    dispatch(setTimedStatusMessageType("Canceled-Edit"));
     dispatch(setTimedStatusMessageOccured(true));
   };
 

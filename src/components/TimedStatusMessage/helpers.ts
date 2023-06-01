@@ -9,11 +9,17 @@ export function getTypeStyleResults(
     case "Success":
       result = styles.messageSuccessContainer;
       break;
-    case "Error":
-      result = styles.messageErrorContainer;
+    case "Success-Edit":
+      result = styles.messageSuccessContainer;
       break;
     case "Canceled":
       result = styles.messageCancelContainer;
+      break;
+    case "Canceled-Edit":
+      result = styles.messageCancelContainer;
+      break;
+    case "Error":
+      result = styles.messageErrorContainer;
       break;
     default:
       throw new Error("Must be a valid TimedStatusMessage type");
@@ -22,25 +28,25 @@ export function getTypeStyleResults(
   return result;
 }
 
-export function getTypeMessage(type: TimedStatusMessageTypes, isEdit: boolean) {
+export function getTypeMessage(type: TimedStatusMessageTypes) {
   let result;
 
-  if (type === "Success") {
-    if (isEdit) {
-      console.log("edit");
-      result = "Student has successfully been edited.";
-    } else {
-      console.log("add");
+  switch (type) {
+    case "Success":
       result = "Student has successfully been added.";
-    }
-  } else if (type === "Canceled") {
-    if (isEdit) {
-      result = "Student form editing has been canceled.";
-    } else {
+      break;
+    case "Success-Edit":
+      result = "Student has successfully been edited.";
+      break;
+    case "Canceled":
       result = "Student form submission has been canceled.";
-    }
-  } else {
-    result = "Please fill out the empty form values highlighted in red.";
+      break;
+    case "Canceled-Edit":
+      result = "Student form editing has been canceled.";
+      break;
+    default:
+      result = "Please fill out the empty form values highlighted in red.";
+      break;
   }
 
   return result;
