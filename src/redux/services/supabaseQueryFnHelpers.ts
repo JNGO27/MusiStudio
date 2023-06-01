@@ -187,3 +187,21 @@ export const editStudentDataMutationQueryFn = {
   },
   invalidatesTags: [{ type: "Students" } as const],
 };
+
+export const deleteStudentDataMutationQueryFn = {
+  queryFn: async (studentId: number) => {
+    const id = String(studentId);
+
+    const { data, error } = await supabaseConfig
+      .from("Students")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return { data };
+  },
+  invalidatesTags: [{ type: "Students" } as const],
+};

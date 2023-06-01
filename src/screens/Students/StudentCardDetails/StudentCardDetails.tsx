@@ -7,6 +7,7 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import type { CardsNavParamList } from "@src/types";
 
+import { useDeleteStudentDataMutation } from "@src/redux/services/supabaseAPI";
 import { getGlobalStudentData } from "@src/redux/selectors";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
@@ -29,6 +30,8 @@ const {
 
 const StudentCardDetails = () => {
   const navigator = useNavigation<NavigationProps>();
+  const [deleteStudent] = useDeleteStudentDataMutation();
+
   const studentData = useAppSelector(getGlobalStudentData);
   let ratePerTime;
 
@@ -48,6 +51,11 @@ const StudentCardDetails = () => {
   }
 
   const handleEditNavigation = () => navigator.navigate("EditStudent");
+
+  const handleDeleteStudent = () => {
+    deleteStudent(studentData?.id as number);
+    navigator.navigate("StudentsHome");
+  };
 
   return (
     <View style={styles.detailsContainer}>
@@ -95,7 +103,7 @@ const StudentCardDetails = () => {
           <Text style={styles.buttonText}>Edit</Text>
         </TouchableOpacity>
         <View style={styles.divider} />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleDeleteStudent}>
           <DeleteIcon style={styles.icon} />
           <Text style={styles.buttonText}>Delete</Text>
         </TouchableOpacity>
