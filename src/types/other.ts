@@ -15,3 +15,5 @@ export type TimedStatusMessageTypes =
   | "Success-Edit"
   | "Canceled-Edit"
   | "";
+
+export type FunctionType = (...args: unknown[]) => unknown;
