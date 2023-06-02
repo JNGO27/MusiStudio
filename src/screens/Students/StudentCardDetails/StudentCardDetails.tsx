@@ -10,7 +10,8 @@ import type { CardsNavParamList } from "@src/types";
 import { useDeleteStudentDataMutation } from "@src/redux/services/supabaseAPI";
 import { getGlobalStudentData } from "@src/redux/selectors";
 
-import useResponsiveness from "@src/hooks/useResponsiveness";
+import { useResponsiveness, useNewModalState } from "@src/hooks";
+import { WarningModal } from "@src/components";
 
 import { EditIcon, DeleteIcon } from "@src/assets/icons";
 
@@ -31,6 +32,7 @@ const {
 const StudentCardDetails = () => {
   const navigator = useNavigation<NavigationProps>();
   const [deleteStudent] = useDeleteStudentDataMutation();
+  const [modalVisible, openOrCloseModal] = useNewModalState();
 
   const studentData = useAppSelector(getGlobalStudentData);
   let ratePerTime;
@@ -103,11 +105,19 @@ const StudentCardDetails = () => {
           <Text style={styles.buttonText}>Edit</Text>
         </TouchableOpacity>
         <View style={styles.divider} />
-        <TouchableOpacity style={styles.button} onPress={handleDeleteStudent}>
+        <TouchableOpacity style={styles.button} onPress={openOrCloseModal}>
           <DeleteIcon style={styles.icon} />
           <Text style={styles.buttonText}>Delete</Text>
         </TouchableOpacity>
       </View>
+      <WarningModal
+        dispatchWarningAction={handleDeleteStudent}
+        warningHeaderText="Are you sure?"
+        warningBodyText="Deleting this will delete all student data for this selected student."
+        warningActionText="Delete Student"
+        modalVisible={modalVisible}
+        openOrCloseModal={openOrCloseModal}
+      />
     </View>
   );
 };
