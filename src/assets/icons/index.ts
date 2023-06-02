@@ -19,4 +19,5 @@ export { default as DeleteIcon } from "./DeleteIcon";
 export { default as ErrorIcon } from "./error.png";
 export { default as SuccessIcon } from "./success.png";
 export { default as SecurityIcon } from "./security.png";
+export { default as WarningIcon } from "./warning.png";
 export { default as EmailImage } from "./EmailImage.png";
