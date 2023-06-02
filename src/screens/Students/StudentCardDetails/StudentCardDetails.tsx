@@ -56,6 +56,7 @@ const StudentCardDetails = () => {
 
   const handleDeleteStudent = () => {
     deleteStudent(studentData?.id as number);
+    openOrCloseModal();
     navigator.navigate("StudentsHome");
   };
 
