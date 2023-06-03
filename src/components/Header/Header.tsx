@@ -23,7 +23,7 @@ const Header = () => {
       <StatusBar />
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>ProtegeCoreSuite</Text>
-        <AccountNavOption />
+        {!isNestedScreen && <AccountNavOption />}
       </View>
     </>
   );

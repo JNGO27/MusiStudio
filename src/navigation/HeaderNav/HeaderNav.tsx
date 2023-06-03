@@ -12,8 +12,7 @@ const HeaderNav = () => {
       <Stack.Screen
         name="Account"
         options={{
-          headerTransparent: true,
-          headerTitle: "",
+          headerShown: false,
         }}
         component={AccountHome}
       />

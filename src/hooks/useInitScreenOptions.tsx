@@ -7,7 +7,7 @@ import type { TabNavigatorParamList } from "@src/types";
 
 import { useResponsiveness, useIsNestedScreen } from "@src/hooks";
 
-import createStyleSheet from "@src/navigation/TabNavigator/styles";
+import createStyleSheet from "@src/navigation/TabNavigator/tabBarStyles";
 
 type ScreenOptionsProps = {
   route: Route<keyof TabNavigatorParamList>;
