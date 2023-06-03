@@ -24,3 +24,4 @@ export { default as CallOrMessageModal } from "./CallOrMessageModal/CallOrMessag
 export { default as TimedStatusMessage } from "./TimedStatusMessage/TimedStatusMessage";
 export { default as Accordian } from "./Accordian/Accordian";
 export { default as WarningModal } from "./WarningModal/WarningModal";
+export { default as BackButtonCustom } from "./BackButtonCustom/BackButtonCustom";
