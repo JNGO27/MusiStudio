@@ -8,7 +8,11 @@ import type { AddTabParamList } from "@src/types";
 const Stack = createNativeStackNavigator<AddTabParamList>();
 
 const modalScreenPresentationOption = {
-  headerShown: false,
+  headerShown: true,
+  headerTransparent: true,
+  headerTintColor: "white",
+  title: "",
+  animation: "slide_from_right",
   presentation: "containedTransparentModal",
 } as const;
 
@@ -22,7 +26,9 @@ const AddButtonNav = () => {
       />
       <Stack.Screen
         name="AddStudent"
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
         component={AddStudent}
       />
     </Stack.Navigator>
