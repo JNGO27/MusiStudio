@@ -1,6 +1,7 @@
 import HeroSection from "./HeroSection";
 import StudentDetails from "./StudentDetails";
 import AdditionalStudentDetails from "./AdditionalStudentDetails";
+import AdditionalFamilyDetails from "./AdditionalFamilyDetails";
 import StudentFamilyChoice from "./StudentFamilyChoice";
 import ExistingFamilyChoice from "./ExistingFamilyChoice";
 import ExistingFamilyOptions from "./ExistingFamilyOptions";
@@ -13,6 +14,7 @@ export {
   HeroSection,
   StudentDetails,
   AdditionalStudentDetails,
+  AdditionalFamilyDetails,
   StudentFamilyChoice,
   ExistingFamilyChoice,
   ExistingFamilyOptions,

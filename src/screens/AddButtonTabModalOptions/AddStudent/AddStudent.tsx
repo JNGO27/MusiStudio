@@ -28,6 +28,7 @@ import {
   RateDetails,
   Finalization,
   AdditionalStudentDetails,
+  AdditionalFamilyDetails,
 } from "@src/components/FormComponentHelpers";
 
 import createStyleSheet from "./styles";
@@ -147,6 +148,10 @@ const AddStudent = () => {
                 <View style={styles.divider} />
 
                 <StudentFamilyChoice />
+
+                <View style={styles.divider} />
+
+                <AdditionalFamilyDetails />
 
                 <View style={styles.divider} />
 
