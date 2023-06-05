@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import type { NavigationProp } from "@react-navigation/native";
 
-import type { AllNavParamLists, AllNavOptions } from "@src/types";
+import type { AllNavParamLists } from "@src/types";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 
