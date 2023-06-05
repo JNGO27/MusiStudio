@@ -39,6 +39,9 @@ const CardNavOption = ({ cardOption, currentAllData }: Props) => {
       case "StudentCardDetails":
         dispatch(setCurrentStudentFamilyData(currentAllData));
         break;
+      case "FamilyCardDetails":
+        dispatch(setCurrentStudentFamilyData(currentAllData));
+        break;
       default:
         throw new Error("Must be a valid card option.");
     }
