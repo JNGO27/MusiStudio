@@ -19,7 +19,7 @@ import {
 
 import { useResponsiveness, useResetTimedStatusMessage } from "@src/hooks";
 import { AddStudentFormContext } from "@src/contexts/AddStudentFormContext";
-import { TimedStatusMessage } from "@src/components";
+import { TimedStatusMessage, BackButtonCustom } from "@src/components";
 import {
   HeroSection,
   StudentDetails,
@@ -107,6 +107,7 @@ const AddStudent = () => {
 
   return (
     <ScrollView style={styles.container}>
+      <BackButtonCustom />
       <HeroSection styles={styles} />
       <Formik
         initialValues={formValues}

@@ -11,7 +11,7 @@ import { useDeleteStudentDataMutation } from "@src/redux/services/supabaseAPI";
 import { getGlobalStudentData } from "@src/redux/selectors";
 
 import { useResponsiveness, useNewModalState } from "@src/hooks";
-import { WarningModal } from "@src/components";
+import { WarningModal, BackButtonCustom } from "@src/components";
 
 import { EditIcon, DeleteIcon } from "@src/assets/icons";
 
@@ -62,6 +62,7 @@ const StudentCardDetails = () => {
 
   return (
     <View style={styles.detailsContainer}>
+      <BackButtonCustom />
       <LinearGradient
         style={styles.gradientDecoration}
         colors={purpleGradient.colors}
