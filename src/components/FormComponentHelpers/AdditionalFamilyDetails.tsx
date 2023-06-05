@@ -38,34 +38,34 @@ const AdditionalFamilyDetails = () => {
         <View style={styles.accordianFormSection}>
           <TextInput
             style={styles.input}
-            value={values.family_first_name}
-            onChangeText={handleChange("family_first_name")}
-            onBlur={handleBlur("family_first_name")}
+            value={values.family_first_name_2}
+            onChangeText={handleChange("family_first_name_2")}
+            onBlur={handleBlur("family_first_name_2")}
             placeholder="Parent 2 First Name"
             selectionColor={purples.purple100}
           />
           <TextInput
             style={styles.input}
-            value={values.family_last_name}
-            onChangeText={handleChange("family_last_name")}
-            onBlur={handleBlur("family_last_name")}
+            value={values.family_last_name_2}
+            onChangeText={handleChange("family_last_name_2")}
+            onBlur={handleBlur("family_last_name_2")}
             placeholder="Parent 2 Last Name"
             selectionColor={purples.purple100}
           />
           <TextInput
             style={styles.input}
-            value={values.family_phone_number}
-            onChangeText={handleChange("family_phone_number")}
-            onBlur={handleBlur("family_phone_number")}
+            value={values.family_phone_number_2}
+            onChangeText={handleChange("family_phone_number_2")}
+            onBlur={handleBlur("family_phone_number_2")}
             placeholder="Parent 2 Phone Number"
             keyboardType="numeric"
             selectionColor={purples.purple100}
           />
           <TextInput
             style={styles.input}
-            value={values.family_email}
-            onChangeText={handleChange("family_email")}
-            onBlur={handleBlur("family_email")}
+            value={values.family_email_2}
+            onChangeText={handleChange("family_email_2")}
+            onBlur={handleBlur("family_email_2")}
             placeholder="Parent 2 Email"
             selectionColor={purples.purple100}
           />

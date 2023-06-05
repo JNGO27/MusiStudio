@@ -28,7 +28,6 @@ import {
   RateDetails,
   Finalization,
   AdditionalStudentDetails,
-  AdditionalFamilyDetails,
 } from "@src/components/FormComponentHelpers";
 
 import createStyleSheet from "./styles";
@@ -70,6 +69,10 @@ const AddStudent = () => {
     family_last_name: "",
     family_phone_number: "",
     family_email: "",
+    family_first_name_2: "",
+    family_last_name_2: "",
+    family_phone_number_2: "",
+    family_email_2: "",
     existing_family_id: "",
     lesson_length: "",
     rate: "",
@@ -148,10 +151,6 @@ const AddStudent = () => {
                 <View style={styles.divider} />
 
                 <StudentFamilyChoice />
-
-                <View style={styles.divider} />
-
-                <AdditionalFamilyDetails />
 
                 <View style={styles.divider} />
 
