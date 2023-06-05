@@ -9,7 +9,7 @@ export const getAllStudentsDataQueryFn = {
     const { data: studentData, error } = await supabaseConfig
       .from("Students_All_Data")
       .select(
-        "student_data (id, first_name, last_name, phone_number, email_address, lesson_length, rate_per_time, rate, instrument, skill_level, gender, age), associated_family (parent_guardian_first_name_1, parent_guardian_last_name_1, phone_number, email_address)",
+        "student_data (id, first_name, last_name, phone_number, email_address, lesson_length, rate_per_time, rate, instrument, skill_level, gender, age), associated_family (parent_guardian_first_name_1, parent_guardian_last_name_1, phone_number, email_address, parent_guardian_first_name_2, parent_guardian_last_name_2, phone_number_2, email_address_2)",
       );
 
     if (error) {
@@ -64,6 +64,10 @@ export const insertStudentDataQueryFn = {
         parent_guardian_last_name_1: formValues.family_last_name,
         phone_number: formValues.family_phone_number,
         email_address: formValues.family_email,
+        parent_guardian_first_name_2: formValues.family_first_name_2,
+        parent_guardian_last_name_2: formValues.family_last_name_2,
+        phone_number_2: formValues.family_phone_number_2,
+        email_address_2: formValues.family_email_2,
       },
     ];
 
