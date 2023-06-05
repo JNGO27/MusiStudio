@@ -57,3 +57,19 @@ export type AddStudentParamList = {
   AddStudent: undefined;
   StudentsNav: undefined;
 };
+
+export type AllNavParamLists =
+  | RootStackParamList
+  | HeaderStackParamList
+  | CardsNavParamList
+  | TabNavigatorParamList
+  | AddTabParamList
+  | AddStudentParamList;
+
+export type AllNavOptions =
+  | keyof RootStackParamList
+  | keyof HeaderStackParamList
+  | keyof CardsNavParamList
+  | keyof TabNavigatorParamList
+  | keyof AddTabParamList
+  | keyof AddStudentParamList;
