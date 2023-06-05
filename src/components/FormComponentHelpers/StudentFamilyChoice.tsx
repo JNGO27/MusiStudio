@@ -9,7 +9,12 @@ import type { ImageStyle } from "expo-image";
 import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { CheckboxCard } from "@src/components";
-import { FamilyDetails, ExistingFamilyChoice } from ".";
+
+import {
+  FamilyDetails,
+  ExistingFamilyChoice,
+  AdditionalFamilyDetails,
+} from ".";
 
 import { SuccessIcon } from "@src/assets/icons";
 import changingStyles from "./dynamicStyles";
@@ -96,7 +101,15 @@ const StudentFamilyChoice = () => {
           </CheckboxCard>
         </View>
       </View>
-      {!familyTypeState.EXISTS ? <FamilyDetails /> : <ExistingFamilyChoice />}
+      {!familyTypeState.EXISTS ? (
+        <>
+          <FamilyDetails />
+          <View style={styles.divider} />
+          <AdditionalFamilyDetails />
+        </>
+      ) : (
+        <ExistingFamilyChoice />
+      )}
     </>
   );
 };
