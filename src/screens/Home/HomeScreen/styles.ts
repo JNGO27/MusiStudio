@@ -11,6 +11,8 @@ export default (
   return StyleSheet.create({
     container: {
       display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       flex: 1,
     },
   });

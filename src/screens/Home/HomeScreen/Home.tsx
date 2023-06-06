@@ -1,7 +1,7 @@
-import { Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { DashboardCard } from "@src/components";
 
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
@@ -28,7 +28,7 @@ const Home = () => {
       start={primaryMixedGradient.start}
       end={primaryMixedGradient.end}
     >
-      <Text>Home</Text>
+      <DashboardCard type="Students" />
     </LinearGradient>
   );
 };
