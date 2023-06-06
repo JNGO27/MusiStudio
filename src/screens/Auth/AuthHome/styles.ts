@@ -122,7 +122,8 @@ export default (
       borderTopColor: grays.gray300,
       borderTopWidth: 1,
       opacity: 0.5,
-      marginTop: verticalScale(spacing.multipleReg * 2),
+      marginTop: verticalScale(spacing.multipleReg * 6),
+      paddingBottom: spacing.multipleXL,
     },
     footerText: {
       textAlign: "center",
