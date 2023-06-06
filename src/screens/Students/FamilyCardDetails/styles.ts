@@ -55,7 +55,7 @@ export default (
       paddingTop: spacing.multipleXL * 3,
       gap: spacing.multipleXL * 2,
       paddingLeft: spacing.multipleXL * 2,
-      paddingRight: spacing.multipleXL * 5,
+      paddingRight: spacing.multipleXL * 2,
     },
     familyDetailContainer: {
       display: "flex",
@@ -74,7 +74,7 @@ export default (
     },
     familyDetailSubline: {
       display: "flex",
-      flex: 1,
+      flex: 1.5,
       fontSize: moderateScale(14),
       fontFamily: typography.semiBold,
       color: whites.white200,
