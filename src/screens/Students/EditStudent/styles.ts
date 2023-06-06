@@ -32,10 +32,10 @@ export default (
       width: "100%",
       height: "24%",
     },
-    addStudentImage: {
+    editStudentImage: {
       display: "flex",
-      width: "50%",
-      height: 300,
+      width: "67%",
+      height: spacing.multipleL * 30,
     },
     headerText: {
       position: "relative",
