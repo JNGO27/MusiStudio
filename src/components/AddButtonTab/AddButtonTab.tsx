@@ -25,6 +25,7 @@ type ButtonScreenGradientChoice = {
 };
 
 const routeChoices: ButtonScreenGradientChoice = {
+  "": primaryMixedGradient,
   HomeTabScreen: primaryMixedGradient,
   StudentsHome: purpleGradient,
 } as const;
