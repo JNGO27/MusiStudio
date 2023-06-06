@@ -8,3 +8,4 @@ export { default as StudentChildFemale } from "./StudentChildFemale.png";
 export { default as StudentChildFemaleTwo } from "./StudentChildFemaleTwo.png";
 export { default as StudentPlayingStudentDancing } from "./StudentPlayingStudentDancing.png";
 export { default as TwoStudentsEnjoyingMusic } from "./TwoStudentsEnjoyingMusic.png";
+export { default as StudentSingingStudentGuitar } from "./StudentSingingStudentGuitar.png";
