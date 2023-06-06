@@ -17,3 +17,10 @@ export type TimedStatusMessageTypes =
   | "";
 
 export type FunctionType = (...args: unknown[]) => unknown;
+
+export type LinearGradientType = {
+  colors: string[];
+  locations: number[];
+  start: { x: number; y: number };
+  end: { x: number; y: number };
+};

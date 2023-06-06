@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { StyleSheet } from "react-native";
 
 import { DirectionalScale, CalculatedScale } from "@src/types";
