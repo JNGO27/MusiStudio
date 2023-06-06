@@ -32,7 +32,7 @@ const TabNavigator = () => {
     title: "Home",
     tabBarActiveTintColor: purples.purple100,
     tabBarHideOnKeyboard: true,
-    tabBarItemStyle: styles.tabBarItemStyleSheet,
+    tabBarItemStyle: styles.tabBarItemStyleSheet1,
   };
 
   const tabScreenOption2 = {
@@ -40,7 +40,7 @@ const TabNavigator = () => {
     title: "Students",
     tabBarActiveTintColor: purples.purple100,
     tabBarHideOnKeyboard: true,
-    tabBarItemStyle: styles.tabBarItemStyleSheet,
+    tabBarItemStyle: styles.tabBarItemStyleSheet2,
   };
 
   const AddButtonRenderer = useCallback(() => <AddButtonTab />, []);
