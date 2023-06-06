@@ -9,7 +9,7 @@ export const getAllStudentsDataQueryFn = {
     const { data: studentData, error } = await supabaseConfig
       .from("Students_All_Data")
       .select(
-        "student_data (id, first_name, last_name, phone_number, email_address, lesson_length, rate_per_time, rate, instrument, skill_level, gender, age), associated_family (parent_guardian_first_name_1, parent_guardian_last_name_1, phone_number, email_address, parent_guardian_first_name_2, parent_guardian_last_name_2, phone_number_2, email_address_2)",
+        "id, student_data (id, first_name, last_name, phone_number, email_address, lesson_length, rate_per_time, rate, instrument, skill_level, gender, age, family_id), associated_family (id, parent_guardian_first_name_1, parent_guardian_last_name_1, phone_number, email_address, parent_guardian_first_name_2, parent_guardian_last_name_2, phone_number_2, email_address_2)",
       );
 
     if (error) {
@@ -44,6 +44,7 @@ export const insertStudentDataQueryFn = {
   queryFn: async (formValues: StudentFormValues) => {
     const studentData = [
       {
+        family_id: 9999,
         first_name: formValues.first_name,
         last_name: formValues.last_name,
         phone_number: formValues.phone_number,
@@ -71,18 +72,20 @@ export const insertStudentDataQueryFn = {
       },
     ];
 
-    const { data: newStudentId, error: studentsTableError } =
-      await supabaseConfig.from("Students").insert(studentData).select("id");
-
-    if (studentsTableError) {
-      throw new Error(studentsTableError.message);
-    }
-
     const { data: newFamilyId, error: familiesTableError } =
       await supabaseConfig.from("Families").insert(familyData).select("id");
 
     if (familiesTableError) {
       throw new Error(familiesTableError.message);
+    }
+
+    studentData[0].family_id = convertToInt8(newFamilyId[0].id);
+
+    const { data: newStudentId, error: studentsTableError } =
+      await supabaseConfig.from("Students").insert(studentData).select("id");
+
+    if (studentsTableError) {
+      throw new Error(studentsTableError.message);
     }
 
     const newStudentAllData = [
@@ -109,6 +112,7 @@ export const insertStudentDataExistingFamilyQueryFn = {
   queryFn: async (formValues: StudentFormValues) => {
     const studentData = [
       {
+        family_id: 9999,
         first_name: formValues.first_name,
         last_name: formValues.last_name,
         phone_number: formValues.phone_number,
@@ -123,13 +127,6 @@ export const insertStudentDataExistingFamilyQueryFn = {
       },
     ];
 
-    const { data: newStudentId, error: studentsTableError } =
-      await supabaseConfig.from("Students").insert(studentData).select("id");
-
-    if (studentsTableError) {
-      throw new Error(studentsTableError.message);
-    }
-
     const idExists = formValues.existing_family_id.length >= 1;
     const noFamilyName =
       formValues.family_first_name.length === 0 &&
@@ -138,6 +135,15 @@ export const insertStudentDataExistingFamilyQueryFn = {
 
     if (idExists && noFamilyName) {
       existingFamilyData = convertToInt8(formValues.existing_family_id);
+    }
+
+    studentData[0].family_id = convertToInt8(formValues.existing_family_id);
+
+    const { data: newStudentId, error: studentsTableError } =
+      await supabaseConfig.from("Students").insert(studentData).select("id");
+
+    if (studentsTableError) {
+      throw new Error(studentsTableError.message);
     }
 
     const newStudentAllData = [
@@ -157,7 +163,10 @@ export const insertStudentDataExistingFamilyQueryFn = {
 
     return { data };
   },
-  invalidatesTags: [{ type: "Students" } as const],
+  invalidatesTags: [
+    { type: "Students" } as const,
+    { type: "Families" } as const,
+  ],
 };
 
 export const editStudentDataMutationQueryFn = {
@@ -208,4 +217,57 @@ export const deleteStudentDataMutationQueryFn = {
     return { data };
   },
   invalidatesTags: [{ type: "Students" } as const],
+};
+
+export const editFamilyDataMutationQueryFn = {
+  queryFn: async (formValues: EditStudentFormValues) => {
+    const studentData = {
+      first_name: formValues.first_name,
+      last_name: formValues.last_name,
+      phone_number: formValues.phone_number,
+      email_address: formValues.email,
+      rate: formValues.rate,
+      lesson_length: formValues.lesson_length,
+      rate_per_time: formValues.rate_per_time,
+      instrument: formValues.instrument,
+      skill_level: formValues.skill_level,
+      gender: formValues.gender,
+      age: formValues.age,
+    };
+
+    const id = String(formValues.id);
+
+    const { data, error } = await supabaseConfig
+      .from("Students")
+      .update(studentData)
+      .eq("id", id);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return { data };
+  },
+  invalidatesTags: [{ type: "Students" } as const],
+};
+
+export const deleteFamilyDataMutationQueryFn = {
+  queryFn: async (familyId: number) => {
+    const id = String(familyId);
+
+    const { data, error } = await supabaseConfig
+      .from("Families")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return { data };
+  },
+  invalidatesTags: [
+    { type: "Students" } as const,
+    { type: "Families" } as const,
+  ],
 };
