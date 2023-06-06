@@ -11,7 +11,7 @@ import { Formik } from "formik";
 
 import { useAuthModalContext } from "@src/contexts/AuthModalContext";
 import { useSetSession, useResponsiveness } from "@src/hooks";
-import { AuthModal } from "@src/components";
+import { AuthModal, BackButtonCustom } from "@src/components";
 
 import type { FormikSubmit } from "@src/types";
 
@@ -86,6 +86,7 @@ const EmailOnlyAuth = () => {
       start={purpleGradient.start}
       end={purpleGradient.end}
     >
+      <BackButtonCustom />
       <Formik initialValues={formValues} onSubmit={continueWithEmailOnly}>
         {({ handleChange, handleBlur, handleSubmit, values }) => {
           const isDisabled = !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
