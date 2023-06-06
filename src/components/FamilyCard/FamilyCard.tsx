@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { CardNavOption, SelectableText } from "@src/components";
 
-import type { FamilyCardType } from "@src/types";
+import type { FamilyCardType, AllStudentFamilyDataCard } from "@src/types";
 
 import { PhoneSvg, EmailSvg } from "@src/assets/icons";
 
@@ -15,6 +15,7 @@ type Props = {
   last_name: FamilyCardType["parent_guardian_last_name_1"];
   phone_number: FamilyCardType["phone_number"];
   email_address: FamilyCardType["email_address"];
+  currentAllData: AllStudentFamilyDataCard;
 };
 
 const FamilyCard = ({
@@ -22,6 +23,7 @@ const FamilyCard = ({
   last_name,
   phone_number,
   email_address,
+  currentAllData,
 }: Props) => {
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -55,7 +57,10 @@ const FamilyCard = ({
             </View>
           </View>
         </View>
-        <CardNavOption cardOption="FamilyCardDetails" />
+        <CardNavOption
+          cardOption="FamilyCardDetails"
+          currentAllData={currentAllData}
+        />
       </View>
     </View>
   );

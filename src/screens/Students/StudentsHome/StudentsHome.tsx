@@ -83,6 +83,7 @@ const StudentsHome = () => {
                   last_name={item.associated_family.parent_guardian_last_name_1}
                   phone_number={item.associated_family.phone_number}
                   email_address={item.associated_family.email_address}
+                  currentAllData={item}
                 />,
               ]}
             />
