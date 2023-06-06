@@ -32,7 +32,7 @@ const HeroSection = ({ styles }: Props) => {
       <Text style={styles.headerText}>Add New Student</Text>
       <Image
         source={StudentPlayingStudentDancing}
-        contentFit="contain"
+        contentFit="cover"
         style={styles.addStudentImage as ImageStyle}
       />
     </LinearGradient>

@@ -34,7 +34,7 @@ export default (
     },
     addStudentImage: {
       display: "flex",
-      width: "60%",
+      width: "70%",
       height: spacing.multipleL * 30,
     },
     headerText: {
