@@ -8,7 +8,7 @@ import globalStyles from "@src/globalStyles";
 const {
   spacing,
   typography,
-  colors: { whites },
+  colors: { whites, blacks },
 } = globalStyles;
 
 export default (
@@ -16,18 +16,29 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
 ) => {
+  const addTabSize = spacing.multipleXL * 5;
+
   return StyleSheet.create({
     addButton: {
-      width: spacing.multipleXL * 3.5,
-      height: spacing.multipleXL * 3.5,
-      borderRadius: (spacing.multipleXL * 3.5) / 2,
+      position: "absolute",
+      right: spacing.multipleXL,
+      bottom: spacing.multipleXL * 7,
+      width: addTabSize,
+      height: addTabSize,
+      borderRadius: addTabSize / 2,
       padding: spacing.multipleS,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      marginTop: -spacing.multipleL,
+      backgroundColor: whites.white200,
+      shadowColor: blacks.blackTransparent,
+      shadowOffset: { width: 0, height: -1.5 },
+      shadowOpacity: 0.25,
+      shadowRadius: 1,
+      elevation: 15,
     },
     addButtonTouchable: {
+      position: "relative",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -35,12 +46,9 @@ export default (
       height: "100%",
     },
     addButtonIcon: {
-      position: "relative",
-      alignSelf: "center",
-      bottom: verticalScale(spacing.multipleXS * 2.75),
       color: whites.white200,
       fontFamily: typography.semiBold,
-      fontSize: spacing.multipleReg * 3,
+      fontSize: moderateScale(spacing.multipleReg * 3.25),
     },
   });
 };

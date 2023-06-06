@@ -23,7 +23,7 @@ export default (
   return StyleSheet.create({
     tabBarStyleSheet: {
       position: "absolute",
-      bottom: isNested ? -100 : 0,
+      bottom: isNested ? -1000 : 0,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",

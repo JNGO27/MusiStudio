@@ -54,17 +54,17 @@ const TabNavigator = () => {
           component={HomeNav}
         />
         <Tab.Screen
+          options={tabScreenOption2}
+          name="StudentsNav"
+          component={StudentsNav}
+        />
+        <Tab.Screen
           options={{
             headerShown: false,
             tabBarButton: AddButtonRenderer,
           }}
           name="AddTab"
           component={AddButtonNav}
-        />
-        <Tab.Screen
-          options={tabScreenOption2}
-          name="StudentsNav"
-          component={StudentsNav}
         />
       </Tab.Navigator>
     </AddButtonModalContext>
