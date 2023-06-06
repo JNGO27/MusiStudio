@@ -8,7 +8,7 @@ import createStyleSheet from "./styles";
 
 const {
   colors: {
-    gradients: { purpleGradient },
+    gradients: { primaryMixedGradient },
   },
 } = globalStyles;
 
@@ -23,10 +23,10 @@ const Home = () => {
   return (
     <LinearGradient
       style={styles.container}
-      colors={purpleGradient.colors}
-      locations={purpleGradient.locations}
-      start={purpleGradient.start}
-      end={purpleGradient.end}
+      colors={primaryMixedGradient.colors}
+      locations={primaryMixedGradient.locations}
+      start={primaryMixedGradient.start}
+      end={primaryMixedGradient.end}
     >
       <Text>Home</Text>
     </LinearGradient>
