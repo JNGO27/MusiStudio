@@ -21,7 +21,6 @@ export type StudentFormValues = {
   lesson_length: string;
   rate_per_time: RateOptions;
   rate: string;
-  family_id: number;
 };
 
 export type EditStudentFormValues = {
