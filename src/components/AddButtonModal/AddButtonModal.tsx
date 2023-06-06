@@ -107,10 +107,15 @@ const AddButtonModal = () => {
               onStartShouldSetResponder={() => true}
               onTouchEnd={(e: GestureResponderEvent) => e.stopPropagation()}
             >
-              <View style={styles.movableCardVisualizer} />
-              <TouchableOpacity style={styles.exitButton} onPress={openOrClose}>
-                <Text style={styles.exitButtonIcon}>✖</Text>
-              </TouchableOpacity>
+              <View style={styles.modalTop}>
+                <View style={styles.movableCardVisualizer} />
+                <TouchableOpacity
+                  style={styles.exitButton}
+                  onPress={openOrClose}
+                >
+                  <Text style={styles.exitButtonIcon}>✖</Text>
+                </TouchableOpacity>
+              </View>
               <AddButtonTabNavOption
                 screenOption="AddStudent"
                 text="Add Student"
