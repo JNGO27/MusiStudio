@@ -58,13 +58,18 @@ export type AddStudentParamList = {
   StudentsNav: undefined;
 };
 
+export type HomeTabScreenParamList = {
+  HomeTabScreen: undefined;
+};
+
 export type AllNavParamLists =
   | RootStackParamList
   | HeaderStackParamList
   | CardsNavParamList
   | TabNavigatorParamList
   | AddTabParamList
-  | AddStudentParamList;
+  | AddStudentParamList
+  | HomeTabScreenParamList;
 
 export type AllNavOptions =
   | keyof RootStackParamList
@@ -72,4 +77,5 @@ export type AllNavOptions =
   | keyof CardsNavParamList
   | keyof TabNavigatorParamList
   | keyof AddTabParamList
-  | keyof AddStudentParamList;
+  | keyof AddStudentParamList
+  | keyof HomeTabScreenParamList;

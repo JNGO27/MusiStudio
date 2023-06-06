@@ -1,17 +1,22 @@
-import { View, Text } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import { Home } from "@src/screens";
+
+import { HomeTabScreenParamList } from "@src/types";
+
+const Stack = createNativeStackNavigator<HomeTabScreenParamList>();
 
 const HomeNav = () => {
+  const noHeaderOption = { headerShown: false };
+
   return (
-    <View
-      style={{
-        display: "flex",
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Text>Home</Text>
-    </View>
+    <Stack.Navigator initialRouteName="HomeTabScreen">
+      <Stack.Screen
+        name="HomeTabScreen"
+        options={noHeaderOption}
+        component={Home}
+      />
+    </Stack.Navigator>
   );
 };
 
