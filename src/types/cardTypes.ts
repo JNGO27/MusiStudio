@@ -35,13 +35,19 @@ export type Family = {
 };
 
 export type FamilyCardType = {
+  id: number;
   parent_guardian_first_name_1: string;
   parent_guardian_last_name_1: string;
   email_address: string;
   phone_number: string;
+  parent_guardian_first_name_2: string;
+  parent_guardian_last_name_2: string;
+  email_address_2: string;
+  phone_number_2: string;
 };
 
 export type StudentAndFamily = {
+  id: number;
   student_data: Student;
   associated_family: FamilyCardType;
 };
