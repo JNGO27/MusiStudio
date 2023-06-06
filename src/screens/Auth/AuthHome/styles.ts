@@ -41,7 +41,7 @@ export default (
       display: "flex",
       flexShrink: 1,
       position: "relative",
-      top: verticalScale(spacing.multipleReg * 5),
+      top: verticalScale(spacing.multipleReg * 4.5),
       width: horizontalScale(spacing.multipleReg * 36),
       maxWidth: spacing.multipleReg * 52,
       height: verticalScale(spacing.multipleReg * 24),

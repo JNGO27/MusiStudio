@@ -5,7 +5,7 @@ import { Image } from "expo-image";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { AuthOption, OAuthOption } from "@src/components";
 
-import { PeopleMusic } from "@src/assets/illustrations";
+import { StudentSingingStudentGuitar } from "@src/assets/illustrations";
 import { AccountPerson } from "@src/assets/icons";
 
 import globalStyles from "@src/globalStyles";
@@ -44,7 +44,11 @@ const AuthHome = () => {
             to get started.
           </Text>
         </View>
-        <Image source={PeopleMusic} contentFit="cover" style={styles.image} />
+        <Image
+          source={StudentSingingStudentGuitar}
+          contentFit="cover"
+          style={styles.image}
+        />
         <View style={styles.card}>
           <View style={styles.decorationsContainer}>
             <View style={styles.decorationsContainerInner}>
