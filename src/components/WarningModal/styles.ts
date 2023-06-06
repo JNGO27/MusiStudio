@@ -34,7 +34,7 @@ export default (
       borderRadius: spacing.multipleReg * 4,
       paddingVertical: verticalScale(spacing.multipleReg * 2),
       paddingHorizontal: horizontalScale(spacing.multipleReg),
-      height: "40%",
+      height: "45%",
       width: "95%",
     },
     innerContainer: {

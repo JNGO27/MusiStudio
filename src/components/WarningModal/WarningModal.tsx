@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import { Image } from "expo-image";
 
+import type { GestureResponderEvent } from "react-native";
+
 import type { FunctionType } from "@src/types";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
@@ -51,7 +53,11 @@ const WarningModal = ({
     >
       <TouchableWithoutFeedback onPress={openOrCloseModal}>
         <View style={styles.modalBackground}>
-          <View style={styles.modalCard}>
+          <View
+            style={styles.modalCard}
+            onStartShouldSetResponder={() => true}
+            onTouchEnd={(e: GestureResponderEvent) => e.stopPropagation()}
+          >
             <View style={styles.innerContainer}>
               <Image style={styles.icon} source={WarningIcon} />
               <View style={styles.optionsContainer}>
