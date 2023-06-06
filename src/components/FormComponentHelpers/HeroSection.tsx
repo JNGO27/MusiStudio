@@ -6,7 +6,7 @@ import type { ImageStyle } from "expo-image";
 
 import type { StyleSheetProps } from "@src/types";
 
-import { StudentIllustration } from "@src/assets/illustrations";
+import { StudentPlayingStudentDancing } from "@src/assets/illustrations";
 
 import globalStyles from "@src/globalStyles";
 
@@ -31,7 +31,7 @@ const HeroSection = ({ styles }: Props) => {
     >
       <Text style={styles.headerText}>Add New Student</Text>
       <Image
-        source={StudentIllustration}
+        source={StudentPlayingStudentDancing}
         contentFit="contain"
         style={styles.addStudentImage as ImageStyle}
       />
