@@ -103,8 +103,8 @@ const FamilyCardDetails = () => {
       <WarningModal
         dispatchWarningAction={handleDeleteStudent}
         warningHeaderText="Are you sure?"
-        warningBodyText="Deleting this will delete all student data for this selected student."
-        warningActionText="Delete Student"
+        warningBodyText="Deleting this will delete all family data for this selected family AND all student data that has this family associated as they're parent."
+        warningActionText="Delete Family"
         modalVisible={modalVisible}
         openOrCloseModal={openOrCloseModal}
       />
