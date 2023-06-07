@@ -35,6 +35,7 @@ export type CardsNavParamList = {
   FamilyCardDetails: undefined;
   PracticeCardDetails: undefined;
   EditStudent: undefined;
+  EditFamily: undefined;
 };
 
 export type CardsNavOptions = (typeof CardNavOptionsOnlyArr)[number];

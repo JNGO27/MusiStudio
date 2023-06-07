@@ -38,6 +38,18 @@ export type EditStudentFormValues = {
   rate: string;
 };
 
+export type EditFamilyFormValues = {
+  id: number;
+  family_first_name: string;
+  family_last_name: string;
+  family_phone_number: string;
+  family_email: string;
+  family_first_name_2: string;
+  family_last_name_2: string;
+  family_phone_number_2: string;
+  family_email_2: string;
+};
+
 export type FamilyTypeCheckboxesState = {
   NEW_FAMILY: boolean;
   EXISTS: boolean;
