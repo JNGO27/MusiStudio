@@ -1,6 +1,8 @@
 import { View, Text, TouchableHighlight } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+import { useGetStudentsCountQuery } from "@src/redux/services/supabaseAPI";
+
 import useResponsiveness from "@src/hooks/useResponsiveness";
 
 import { UserStudent } from "@src/assets/icons";
@@ -20,6 +22,8 @@ type Props = {
 };
 
 const DashboardCard = ({ type }: Props) => {
+  const { data: studentCount, isLoading } = useGetStudentsCountQuery({});
+
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
@@ -44,7 +48,13 @@ const DashboardCard = ({ type }: Props) => {
             <View style={styles.circleDecoration}>
               <UserStudent style={styles.studentsIcon} />
             </View>
-            <Text style={styles.studentsText}>7 / 50 Students</Text>
+            {isLoading ? (
+              <Text style={styles.loadingText}>...</Text>
+            ) : (
+              <Text style={styles.studentsText}>
+                {studentCount} / 50 Students
+              </Text>
+            )}
           </LinearGradient>
         </TouchableHighlight>
       )}
