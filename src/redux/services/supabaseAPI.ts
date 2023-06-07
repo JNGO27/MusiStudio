@@ -2,6 +2,7 @@ import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import {
   getAllStudentsDataQueryFn,
+  getStudentsCountQueryFn,
   getAllFamiliesDataQueryFn,
   insertStudentDataQueryFn,
   insertStudentDataExistingFamilyQueryFn,
@@ -14,6 +15,7 @@ export const supabaseApi = createApi({
   baseQuery: fakeBaseQuery(),
   endpoints: (builder) => ({
     getAllStudentsData: builder.query(getAllStudentsDataQueryFn),
+    getStudentsCount: builder.query(getStudentsCountQueryFn),
     getAllFamilyData: builder.query(getAllFamiliesDataQueryFn),
     insertStudentData: builder.mutation(insertStudentDataQueryFn),
     insertStudentExistingFamilyData: builder.mutation(
@@ -28,6 +30,7 @@ export const supabaseApi = createApi({
 
 export const {
   useGetAllStudentsDataQuery,
+  useGetStudentsCountQuery,
   useGetAllFamilyDataQuery,
   useInsertStudentDataMutation,
   useInsertStudentExistingFamilyDataMutation,

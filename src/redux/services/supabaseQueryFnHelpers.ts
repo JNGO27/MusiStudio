@@ -23,6 +23,19 @@ export const getAllStudentsDataQueryFn = {
   providesTags: [{ type: "Students" } as const],
 };
 
+export const getStudentsCountQueryFn = {
+  queryFn: async () => {
+    const { data, error } = await supabaseConfig.rpc("get_student_count");
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return { data };
+  },
+  providesTags: [{ type: "Students" } as const],
+};
+
 export const getAllFamiliesDataQueryFn = {
   queryFn: async () => {
     const { data: studentData, error } = await supabaseConfig
