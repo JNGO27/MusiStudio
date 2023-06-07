@@ -60,6 +60,7 @@ export type AddStudentParamList = {
 
 export type HomeTabScreenParamList = {
   HomeTabScreen: undefined;
+  StudentsNav: undefined;
 };
 
 export type AllNavParamLists =

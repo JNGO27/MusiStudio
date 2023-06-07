@@ -1,5 +1,10 @@
 import { View, Text, TouchableHighlight } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+import type { HomeTabScreenParamList } from "@src/types";
 
 import { useGetStudentsCountQuery } from "@src/redux/services/supabaseAPI";
 
@@ -17,12 +22,28 @@ const {
   },
 } = globalStyles;
 
-type Props = {
-  type: "Students";
+type TypePossibilities = "Students";
+
+type NavigationOptionsTypes = {
+  [type in TypePossibilities]: keyof HomeTabScreenParamList;
 };
+
+type DashboardCardNavigationProps = NativeStackNavigationProp<
+  HomeTabScreenParamList,
+  "HomeTabScreen"
+>;
+
+type Props = {
+  type: TypePossibilities;
+};
+
+const navigationOptions: NavigationOptionsTypes = {
+  Students: "StudentsNav",
+} as const;
 
 const DashboardCard = ({ type }: Props) => {
   const { data: studentCount, isLoading } = useGetStudentsCountQuery({});
+  const navigator = useNavigation<DashboardCardNavigationProps>();
 
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -31,12 +52,18 @@ const DashboardCard = ({ type }: Props) => {
     moderateScale,
   );
 
+  const handleNavigation = () => {
+    const screen = navigationOptions[type];
+    navigator.navigate(screen);
+  };
+
   return (
     <View style={styles.touchableBackground}>
       {type === "Students" && (
         <TouchableHighlight
           style={styles.touchableContainer}
           underlayColor={blackTransparent}
+          onPress={handleNavigation}
         >
           <LinearGradient
             style={styles.dashboardCardContainer}
