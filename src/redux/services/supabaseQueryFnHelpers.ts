@@ -1,6 +1,10 @@
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
-import type { StudentFormValues, EditStudentFormValues } from "@src/types";
+import type {
+  StudentFormValues,
+  EditStudentFormValues,
+  EditFamilyFormValues,
+} from "@src/types";
 
 import { convertToInt8 } from "@src/redux/helpers";
 
@@ -211,7 +215,10 @@ export const editStudentDataMutationQueryFn = {
 
     return { data };
   },
-  invalidatesTags: [{ type: "Students" } as const],
+  invalidatesTags: [
+    { type: "Students" } as const,
+    { type: "Families" } as const,
+  ],
 };
 
 export const deleteStudentDataMutationQueryFn = {
@@ -233,26 +240,24 @@ export const deleteStudentDataMutationQueryFn = {
 };
 
 export const editFamilyDataMutationQueryFn = {
-  queryFn: async (formValues: EditStudentFormValues) => {
-    const studentData = {
-      first_name: formValues.first_name,
-      last_name: formValues.last_name,
-      phone_number: formValues.phone_number,
-      email_address: formValues.email,
-      rate: formValues.rate,
-      lesson_length: formValues.lesson_length,
-      rate_per_time: formValues.rate_per_time,
-      instrument: formValues.instrument,
-      skill_level: formValues.skill_level,
-      gender: formValues.gender,
-      age: formValues.age,
+  queryFn: async (formValues: EditFamilyFormValues) => {
+    const familyData = {
+      id: formValues.id,
+      parent_guardian_first_name_1: formValues.family_first_name,
+      parent_guardian_last_name_1: formValues.family_last_name,
+      phone_number: formValues.family_phone_number,
+      email_address: formValues.family_email,
+      parent_guardian_first_name_2: formValues.family_first_name_2,
+      parent_guardian_last_name_2: formValues.family_last_name_2,
+      phone_number_2: formValues.family_phone_number_2,
+      email_address_2: formValues.family_email_2,
     };
 
     const id = String(formValues.id);
 
     const { data, error } = await supabaseConfig
-      .from("Students")
-      .update(studentData)
+      .from("Families")
+      .update(familyData)
       .eq("id", id);
 
     if (error) {
