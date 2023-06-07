@@ -30,7 +30,7 @@ export default (
       justifyContent: "flex-start",
       alignItems: "flex-end",
       width: "100%",
-      height: "24%",
+      height: "44%",
     },
     editStudentImage: {
       display: "flex",
@@ -54,7 +54,7 @@ export default (
       borderTopRightRadius: spacing.multipleReg * 7,
       borderTopLeftRadius: spacing.multipleReg * 7,
       paddingTop: spacing.multipleL * 3,
-      paddingBottom: verticalScale(spacing.multipleXL * 20),
+      paddingBottom: verticalScale(spacing.multipleXL * 17),
       gap: spacing.multipleReg * 4,
     },
     formSection: {
@@ -271,7 +271,8 @@ export default (
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      height: "8%",
+      height: "4%",
+      marginTop: spacing.multipleXL * 4,
     },
     saveButtonContainer: {
       display: "flex",

@@ -12,9 +12,9 @@ import {
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 
-import type { EditStudentFormValues, CardsNavParamList } from "@src/types";
+import type { EditFamilyFormValues, CardsNavParamList } from "@src/types";
 
-import { useEditStudentFormContext } from "@src/contexts/EditStudentFormContext";
+import { useEditFamilyFormContext } from "@src/contexts/EditFamilyFormContext";
 
 import globalStyles from "@src/globalStyles";
 
@@ -24,24 +24,23 @@ const {
   },
 } = globalStyles;
 
-type AddStudentNavigationProps = NativeStackNavigationProp<
+type AddFamilyNavigationProps = NativeStackNavigationProp<
   CardsNavParamList,
-  "StudentCardDetails"
+  "FamilyCardDetails"
 >;
 
 const Finalization = () => {
   const dispatch = useAppDispatch();
-  const navigator = useNavigation<AddStudentNavigationProps>();
+  const navigator = useNavigation<AddFamilyNavigationProps>();
   const { validateForm, setTouched, resetForm } = useFormikContext();
-  const { handleSubmit, values, styles } = useEditStudentFormContext();
+  const { handleSubmit, values, styles } = useEditFamilyFormContext();
 
-  const handleErrorStyles = (formValues: EditStudentFormValues) => {
-    const { first_name, last_name, rate } = formValues;
+  const handleErrorStyles = (formValues: EditFamilyFormValues) => {
+    const { family_first_name, family_last_name } = formValues;
 
     const touchedObject = {
-      first_name: first_name.length === 0,
-      last_name: last_name.length === 0,
-      rate: rate.length === 0,
+      family_first_name: family_first_name.length === 0,
+      family_last_name: family_last_name.length === 0,
     };
 
     setTouched(touchedObject);

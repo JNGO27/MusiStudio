@@ -1,6 +1,6 @@
-import { View, TextInput } from "react-native";
+import { View, Text, TextInput } from "react-native";
 
-import { useEditStudentFormContext } from "@src/contexts/EditStudentFormContext";
+import { useEditFamilyFormContext } from "@src/contexts/EditFamilyFormContext";
 
 import globalStyles from "@src/globalStyles";
 
@@ -10,7 +10,7 @@ const {
 
 const FamilyDetails = () => {
   const { values, errors, touched, handleChange, handleBlur, styles } =
-    useEditStudentFormContext();
+    useEditFamilyFormContext();
 
   const validationStyles = {
     parentFirstName:
@@ -25,6 +25,7 @@ const FamilyDetails = () => {
 
   return (
     <View style={styles.formSection}>
+      <Text style={styles.formSectionHeaderText}>Family Details</Text>
       <TextInput
         style={validationStyles.parentFirstName}
         value={values.family_first_name}

@@ -5,27 +5,25 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useAppSelector } from "@src/redux";
 
-import type { RateOptions, EditStudentFormValues } from "@src/types";
+import type { EditFamilyFormValues } from "@src/types";
 
-import { useEditStudentDataMutation } from "@src/redux/services/supabaseAPI";
+import { useEditFamilyDataMutation } from "@src/redux/services/supabaseAPI";
 
 import {
   getTimedStatusMessageOccurred,
   getTimedStatusMessageType,
-  getGlobalStudentData,
+  getGlobalFamilyData,
 } from "@src/redux/selectors";
 
 import { useResponsiveness, useResetTimedStatusMessage } from "@src/hooks";
-import { EditStudentFormContext } from "@src/contexts/EditStudentFormContext";
+import { EditFamilyFormContext } from "@src/contexts/EditFamilyFormContext";
 import { TimedStatusMessage, BackButtonCustom } from "@src/components";
 import {
   HeroSection,
-  StudentDetails,
-  LessonDetails,
-  RateDetails,
+  FamilyDetails,
   Finalization,
-  AdditionalStudentDetails,
-} from "@src/components/FormComponentHelpersEditStudent";
+  AdditionalFamilyDetails,
+} from "@src/components/FormComponentHelpersEditFamily";
 
 import createStyleSheet from "./styles";
 
@@ -38,9 +36,9 @@ const EditFamily = () => {
 
   const timedStatusMessageType = useAppSelector(getTimedStatusMessageType);
 
-  const selectedStudentData = useAppSelector(getGlobalStudentData);
+  const selectedFamilyData = useAppSelector(getGlobalFamilyData);
 
-  const [editStudentData] = useEditStudentDataMutation();
+  const [editFamilyData] = useEditFamilyDataMutation();
 
   const [horizontalScale, verticalScale, moderateScale, dimensionHeight] =
     useResponsiveness();
@@ -52,29 +50,28 @@ const EditFamily = () => {
     dimensionHeight,
   );
 
-  const formValues: EditStudentFormValues = {
-    id: selectedStudentData?.id as number,
-    first_name: selectedStudentData?.first_name as string,
-    last_name: selectedStudentData?.last_name as string,
-    phone_number: selectedStudentData?.phone_number as string,
-    email: selectedStudentData?.email_address as string,
-    instrument: selectedStudentData?.instrument as string,
-    skill_level: selectedStudentData?.skill_level as string,
-    gender: selectedStudentData?.gender as string,
-    age: selectedStudentData?.age as string,
-    lesson_length: selectedStudentData?.lesson_length as string,
-    rate: selectedStudentData?.rate as string,
-    rate_per_time: selectedStudentData?.rate_per_time as RateOptions,
+  const formValues: EditFamilyFormValues = {
+    id: selectedFamilyData?.id as number,
+    family_first_name:
+      selectedFamilyData?.parent_guardian_first_name_1 as string,
+    family_last_name: selectedFamilyData?.parent_guardian_last_name_1 as string,
+    family_phone_number: selectedFamilyData?.phone_number as string,
+    family_email: selectedFamilyData?.email_address as string,
+    family_first_name_2:
+      selectedFamilyData?.parent_guardian_first_name_2 as string,
+    family_last_name_2:
+      selectedFamilyData?.parent_guardian_last_name_2 as string,
+    family_phone_number_2: selectedFamilyData?.phone_number_2 as string,
+    family_email_2: selectedFamilyData?.email_address_2 as string,
   };
 
   const validationSchema = Yup.object().shape({
-    first_name: Yup.string().required("Student First Name Required"),
-    last_name: Yup.string().required("Student Last Name Required"),
-    rate: Yup.string().required("Rate Required"),
+    family_first_name: Yup.string().required("Parent First Name Required"),
+    family_last_name: Yup.string().required("Parent Last Name Required"),
   });
 
-  const handleStudentSubmit = async (values: EditStudentFormValues) => {
-    await editStudentData(values);
+  const handleFamilySubmit = async (values: EditFamilyFormValues) => {
+    await editFamilyData(values);
   };
 
   return (
@@ -83,7 +80,7 @@ const EditFamily = () => {
       <HeroSection styles={styles} />
       <Formik
         initialValues={formValues}
-        onSubmit={handleStudentSubmit}
+        onSubmit={handleFamilySubmit}
         validationSchema={validationSchema}
         validateOnBlur
       >
@@ -98,7 +95,7 @@ const EditFamily = () => {
           touched,
         }) => {
           return (
-            <EditStudentFormContext
+            <EditFamilyFormContext
               values={values}
               styles={styles}
               handleChange={handleChange}
@@ -110,19 +107,11 @@ const EditFamily = () => {
               touched={touched}
             >
               <View style={styles.formContainer}>
-                <StudentDetails />
+                <FamilyDetails />
 
                 <View style={styles.divider} />
 
-                <AdditionalStudentDetails />
-
-                <View style={styles.divider} />
-
-                <LessonDetails />
-
-                <View style={styles.divider} />
-
-                <RateDetails />
+                <AdditionalFamilyDetails />
 
                 <View style={styles.divider} />
 
@@ -132,7 +121,7 @@ const EditFamily = () => {
               {timedStatusMessageOccurred && (
                 <TimedStatusMessage type={timedStatusMessageType} />
               )}
-            </EditStudentFormContext>
+            </EditFamilyFormContext>
           );
         }}
       </Formik>

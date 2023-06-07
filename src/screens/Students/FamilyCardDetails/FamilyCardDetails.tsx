@@ -43,7 +43,7 @@ const FamilyCardDetails = () => {
     moderateScale,
   );
 
-  const handleEditNavigation = () => navigator.navigate("EditStudent");
+  const handleEditNavigation = () => navigator.navigate("EditFamily");
 
   const handleDeleteStudent = () => {
     deleteFamily(familyData?.id as number);
