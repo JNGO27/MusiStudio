@@ -18,7 +18,7 @@ export default (
   moderateScale: CalculatedScale,
   dimensionHeight: number,
 ) => {
-  const formContainerSpacing = verticalScale(spacing.multipleXL * 3);
+  const formContainerSpacing = verticalScale(spacing.multipleXL * 6);
 
   return StyleSheet.create({
     container: {
