@@ -50,11 +50,17 @@ export function getTypeMessage(type: TimedStatusMessageTypes) {
     case "Canceled":
       result = "Student form submission has been canceled.";
       break;
+    case "Canceled-Edit":
+      result = "Student form editing has been canceled.";
+      break;
     case "Canceled-Edit-Family":
       result = "Family form editing has been canceled.";
       break;
-    default:
+    case "Error":
       result = "Please fill out the empty form values highlighted in red.";
+      break;
+    default:
+      result = "Error. Find our email in settings screen and contact us.";
       break;
   }
 
