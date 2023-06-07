@@ -64,6 +64,7 @@ const Finalization = () => {
       navigator.navigate("StudentsNav");
       dispatch(setTimedStatusMessageType("Success"));
       dispatch(setTimedStatusMessageOccured(true));
+      resetForm();
     }
   };
 
