@@ -12,10 +12,16 @@ export function getTypeStyleResults(
     case "Success-Edit":
       result = styles.messageSuccessContainer;
       break;
+    case "Success-Edit-Family":
+      result = styles.messageSuccessContainer;
+      break;
     case "Canceled":
       result = styles.messageCancelContainer;
       break;
     case "Canceled-Edit":
+      result = styles.messageCancelContainer;
+      break;
+    case "Canceled-Edit-Family":
       result = styles.messageCancelContainer;
       break;
     case "Error":
@@ -38,11 +44,14 @@ export function getTypeMessage(type: TimedStatusMessageTypes) {
     case "Success-Edit":
       result = "Student has successfully been edited.";
       break;
+    case "Success-Edit-Family":
+      result = "Family has successfully been edited.";
+      break;
     case "Canceled":
       result = "Student form submission has been canceled.";
       break;
-    case "Canceled-Edit":
-      result = "Student form editing has been canceled.";
+    case "Canceled-Edit-Family":
+      result = "Family form editing has been canceled.";
       break;
     default:
       result = "Please fill out the empty form values highlighted in red.";

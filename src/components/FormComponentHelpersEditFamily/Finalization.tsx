@@ -58,7 +58,7 @@ const Finalization = () => {
     } else {
       handleSubmit();
       navigator.navigate("StudentsHome");
-      dispatch(setTimedStatusMessageType("Success-Edit"));
+      dispatch(setTimedStatusMessageType("Success-Edit-Family"));
       dispatch(setTimedStatusMessageOccured(true));
     }
   };
@@ -66,7 +66,7 @@ const Finalization = () => {
   const handleCancel = () => {
     resetForm();
     navigator.navigate("StudentsHome");
-    dispatch(setTimedStatusMessageType("Canceled-Edit"));
+    dispatch(setTimedStatusMessageType("Canceled-Edit-Family"));
     dispatch(setTimedStatusMessageOccured(true));
   };
 
