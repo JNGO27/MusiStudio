@@ -19,7 +19,6 @@ export const getAllStudentsDataQueryFn = {
     if (error) {
       throw new Error(error.message);
     }
-
     const data = studentData;
 
     return { data };
@@ -232,6 +231,14 @@ export const deleteStudentDataMutationQueryFn = {
 
     if (error) {
       throw new Error(error.message);
+    }
+
+    const { error: familyError } = await supabaseConfig.rpc(
+      "delete_families_without_students",
+    );
+
+    if (familyError) {
+      throw new Error(familyError.message);
     }
 
     return { data };
