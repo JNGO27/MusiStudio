@@ -100,8 +100,7 @@ export default (
       backgroundColor: whites.white300,
     },
     existingFamilyCardsContainer: {
-      display: "flex",
-      flex: 1,
+      height: verticalScale(spacing.multipleXL * 7),
       marginVertical: spacing.multipleReg,
     },
     existingFamilyCheckboxCard: {
