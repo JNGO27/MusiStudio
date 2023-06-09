@@ -14,6 +14,7 @@ import {
   FamilyCard,
   CallOrMessageModal,
   TimedStatusMessage,
+  ThreeDotsLoading,
 } from "@src/components";
 
 import { useAppSelector } from "@src/redux";
@@ -27,7 +28,9 @@ import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 
 const {
+  spacing,
   colors: {
+    purples,
     gradients: { purpleGradient },
   },
 } = globalStyles;
@@ -37,13 +40,16 @@ type MyRef = RefObject<FlatList>;
 const StudentsHome = () => {
   useResetTimedStatusMessage();
 
+  const { data: allStudentRelatedData, isLoading } = useGetAllStudentsDataQuery(
+    {},
+  );
+
   const timedStatusMessageOccurred = useAppSelector(
     getTimedStatusMessageOccurred,
   );
 
   const timedStatusMessageType = useAppSelector(getTimedStatusMessageType);
 
-  const { data: allStudentRelatedData } = useGetAllStudentsDataQuery({});
   const ref: MyRef = useRef<FlatList>(null);
 
   const styles = createStyleSheet();
@@ -59,37 +65,46 @@ const StudentsHome = () => {
         start={purpleGradient.start}
         end={purpleGradient.end}
       >
-        <FlatList
-          ref={ref}
-          style={styles.cardsContainer}
-          contentContainerStyle={styles.cardsContainerFlex}
-          data={allStudentRelatedData}
-          renderItem={({ item }) => (
-            <DataCardsContainer
-              allStudentData={[
-                <StudentCard
-                  key={item.student_data.id}
-                  first_name={item.student_data.first_name}
-                  last_name={item.student_data.last_name}
-                  phone_number={item.student_data.phone_number}
-                  email_address={item.student_data.email_address}
-                  currentAllData={item}
-                />,
-                <FamilyCard
-                  key={item.id}
-                  first_name={
-                    item.associated_family.parent_guardian_first_name_1
-                  }
-                  last_name={item.associated_family.parent_guardian_last_name_1}
-                  phone_number={item.associated_family.phone_number}
-                  email_address={item.associated_family.email_address}
-                  currentAllData={item}
-                />,
-              ]}
-            />
-          )}
-          keyExtractor={() => uuid.v4().toString()}
-        />
+        {isLoading ? (
+          <ThreeDotsLoading
+            dotSize={spacing.multipleReg * 2}
+            dotColor={purples.purple300}
+          />
+        ) : (
+          <FlatList
+            ref={ref}
+            style={styles.cardsContainer}
+            contentContainerStyle={styles.cardsContainerFlex}
+            data={allStudentRelatedData}
+            renderItem={({ item }) => (
+              <DataCardsContainer
+                allStudentData={[
+                  <StudentCard
+                    key={item.student_data.id}
+                    first_name={item.student_data.first_name}
+                    last_name={item.student_data.last_name}
+                    phone_number={item.student_data.phone_number}
+                    email_address={item.student_data.email_address}
+                    currentAllData={item}
+                  />,
+                  <FamilyCard
+                    key={item.id}
+                    first_name={
+                      item.associated_family.parent_guardian_first_name_1
+                    }
+                    last_name={
+                      item.associated_family.parent_guardian_last_name_1
+                    }
+                    phone_number={item.associated_family.phone_number}
+                    email_address={item.associated_family.email_address}
+                    currentAllData={item}
+                  />,
+                ]}
+              />
+            )}
+            keyExtractor={() => uuid.v4().toString()}
+          />
+        )}
         <CallOrMessageModal />
         {timedStatusMessageOccurred && (
           <TimedStatusMessage type={timedStatusMessageType} />

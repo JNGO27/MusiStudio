@@ -9,6 +9,7 @@ import type { HomeTabScreenParamList } from "@src/types";
 import { useGetStudentsCountQuery } from "@src/redux/services/supabaseAPI";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
+import { ThreeDotsLoading } from "@src/components";
 
 import { UserStudent } from "@src/assets/icons";
 
@@ -16,7 +17,9 @@ import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 
 const {
+  spacing,
   colors: {
+    grays,
     blacks: { blackTransparent },
     gradients: { purpleGradient },
   },
@@ -75,13 +78,18 @@ const DashboardCard = ({ type }: Props) => {
             <View style={styles.circleDecoration}>
               <UserStudent style={styles.studentsIcon} />
             </View>
-            {isLoading ? (
-              <Text style={styles.loadingText}>...</Text>
-            ) : (
-              <Text style={styles.studentsText}>
-                {studentCount} / 50 Students
-              </Text>
-            )}
+            <View style={styles.textAndLoadingContainer}>
+              {isLoading ? (
+                <ThreeDotsLoading
+                  dotSize={spacing.multipleReg}
+                  dotColor="white"
+                />
+              ) : (
+                <Text style={styles.studentsText}>
+                  {studentCount} / 50 Students
+                </Text>
+              )}
+            </View>
           </LinearGradient>
         </TouchableHighlight>
       )}

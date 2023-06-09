@@ -53,14 +53,12 @@ export default (
       height: spacing.multipleXL * 3.5,
       color: whites.white200,
     },
-    loadingText: {
-      fontFamily: typography.bold,
-      fontSize: moderateScale(16),
-      color: whites.white300,
-      opacity: 0.85,
-      width: "80%",
-      marginTop: spacing.multipleXL,
-      textAlign: "center",
+    textAndLoadingContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "40%",
     },
     studentsText: {
       fontFamily: typography.medium,

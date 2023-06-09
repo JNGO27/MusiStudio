@@ -4,9 +4,13 @@ import { View, Text } from "react-native";
 import type { GestureResponderEvent } from "react-native";
 
 import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
-import { CheckboxFamilyCard } from "@src/components";
+import { CheckboxFamilyCard, ThreeDotsLoading } from "@src/components";
 
 import { useGetAllFamilyDataQuery } from "@src/redux/services/supabaseAPI";
+
+import globalStyles from "@src/globalStyles";
+
+const { spacing } = globalStyles;
 
 type Props = {
   openOrCloseModal: () => void;
@@ -33,8 +37,11 @@ const ExistingFamilyOptions = ({ openOrCloseModal }: Props) => {
   if (isLoading) {
     return (
       <View style={styles.existingFamilyOptionsContainer}>
-        <View style={styles.existingFamilyCardsContainer}>
-          <Text>...Loading</Text>
+        <View style={styles.loadingContainer}>
+          <ThreeDotsLoading
+            dotSize={spacing.multipleReg * 2}
+            dotColor="white"
+          />
         </View>
       </View>
     );

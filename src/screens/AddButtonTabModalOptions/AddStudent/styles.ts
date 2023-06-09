@@ -103,6 +103,13 @@ export default (
       height: verticalScale(spacing.multipleXL * 7),
       marginVertical: spacing.multipleReg,
     },
+    loadingContainer: {
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      marginBottom: spacing.multipleXL * 4,
+    },
     existingFamilyCheckboxCard: {
       position: "relative",
       display: "flex",
