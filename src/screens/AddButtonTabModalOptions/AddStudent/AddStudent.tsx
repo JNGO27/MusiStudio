@@ -1,9 +1,12 @@
 /* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/naming-convention */
+import { useRef } from "react";
 import { ScrollView, View } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useAppSelector } from "@src/redux";
+
+import type { RefObject } from "react";
 
 import type { StudentFormValues } from "@src/types";
 
@@ -32,16 +35,20 @@ import {
 
 import createStyleSheet from "./styles";
 
+type MyRef = RefObject<ScrollView>;
+
 const AddStudent = () => {
   useResetTimedStatusMessage();
+
+  const ref: MyRef = useRef(null);
+
+  const [insertStudentData] = useInsertStudentDataMutation();
 
   const timedStatusMessageOccurred = useAppSelector(
     getTimedStatusMessageOccurred,
   );
 
   const timedStatusMessageType = useAppSelector(getTimedStatusMessageType);
-
-  const [insertStudentData] = useInsertStudentDataMutation();
 
   const [insertStudentExistingFamilyData] =
     useInsertStudentExistingFamilyDataMutation();
@@ -104,13 +111,19 @@ const AddStudent = () => {
   const handleStudentSubmit = async (values: StudentFormValues) => {
     if (values.existing_family_id.length === 0) {
       await insertStudentData(values);
+      if (ref.current) {
+        ref.current.scrollTo({ x: 0, y: 0, animated: true });
+      }
     } else {
+      if (ref.current) {
+        ref.current.scrollTo({ x: 0, y: 0, animated: true });
+      }
       await insertStudentExistingFamilyData(values);
     }
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} ref={ref}>
       <BackButtonCustom />
       <HeroSection styles={styles} />
       <Formik
