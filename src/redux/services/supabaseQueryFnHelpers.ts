@@ -6,8 +6,6 @@ import type {
   EditFamilyFormValues,
 } from "@src/types";
 
-import { convertToInt8 } from "@src/redux/helpers";
-
 export const getAllStudentsDataQueryFn = {
   queryFn: async () => {
     const { data: studentData, error } = await supabaseConfig
@@ -95,7 +93,7 @@ export const insertStudentDataQueryFn = {
       throw new Error(familiesTableError.message);
     }
 
-    studentData[0].family_id = convertToInt8(newFamilyId[0].id);
+    studentData[0].family_id = Number(newFamilyId[0].id);
 
     const { data: newStudentId, error: studentsTableError } =
       await supabaseConfig.from("Students").insert(studentData).select("id");
@@ -106,8 +104,8 @@ export const insertStudentDataQueryFn = {
 
     const newStudentAllData = [
       {
-        student_data: convertToInt8(newStudentId[0].id),
-        associated_family: convertToInt8(newFamilyId[0].id),
+        student_data: Number(newStudentId[0].id),
+        associated_family: Number(newFamilyId[0].id),
       },
     ];
 
@@ -150,10 +148,10 @@ export const insertStudentDataExistingFamilyQueryFn = {
     let existingFamilyData: number | null = null;
 
     if (idExists && noFamilyName) {
-      existingFamilyData = convertToInt8(formValues.existing_family_id);
+      existingFamilyData = Number(formValues.existing_family_id);
     }
 
-    studentData[0].family_id = convertToInt8(formValues.existing_family_id);
+    studentData[0].family_id = Number(formValues.existing_family_id);
 
     const { data: newStudentId, error: studentsTableError } =
       await supabaseConfig.from("Students").insert(studentData).select("id");
@@ -164,7 +162,7 @@ export const insertStudentDataExistingFamilyQueryFn = {
 
     const newStudentAllData = [
       {
-        student_data: convertToInt8(newStudentId[0].id),
+        student_data: Number(newStudentId[0].id),
         associated_family: existingFamilyData,
       },
     ];
