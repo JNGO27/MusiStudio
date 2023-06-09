@@ -19,7 +19,6 @@ import createStyleSheet from "./styles";
 const {
   spacing,
   colors: {
-    grays,
     blacks: { blackTransparent },
     gradients: { purpleGradient },
   },

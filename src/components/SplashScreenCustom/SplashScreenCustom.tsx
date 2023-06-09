@@ -33,7 +33,7 @@ const SplashScreenCustom = () => {
       duration: 1200,
       easing: Easing.ease,
     });
-  }, []);
+  }, [opacity, scale]);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
