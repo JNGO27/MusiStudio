@@ -33,7 +33,7 @@ const Finalization = () => {
   const dispatch = useAppDispatch();
   const navigator = useNavigation<AddStudentNavigationProps>();
   const { validateForm, setTouched, resetForm } = useFormikContext();
-  const { handleSubmit, values, styles } = useAddStudentFormContext();
+  const { submitForm, values, styles } = useAddStudentFormContext();
 
   const handleErrorStyles = (formValues: StudentFormValues) => {
     const { first_name, last_name, rate, family_first_name, family_last_name } =
@@ -60,10 +60,10 @@ const Finalization = () => {
       dispatch(setTimedStatusMessageType("Error"));
       dispatch(setTimedStatusMessageOccured(true));
     } else {
-      handleSubmit();
       navigator.navigate("StudentsNav");
       dispatch(setTimedStatusMessageType("Success"));
       dispatch(setTimedStatusMessageOccured(true));
+      await submitForm();
       resetForm();
     }
   };
