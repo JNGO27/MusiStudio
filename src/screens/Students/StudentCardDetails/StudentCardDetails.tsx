@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import { useAppSelector } from "@src/redux";
+import { useAppDispatch, useAppSelector } from "@src/redux";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
@@ -9,6 +9,10 @@ import type { CardsNavParamList } from "@src/types";
 
 import { useDeleteStudentDataMutation } from "@src/redux/services/supabaseAPI";
 import { getGlobalStudentData } from "@src/redux/selectors";
+import {
+  setTimedStatusMessageOccured,
+  setTimedStatusMessageType,
+} from "@src/redux/features/generalGlobalData";
 
 import { useResponsiveness, useNewModalState } from "@src/hooks";
 import { WarningModal, BackButtonCustom } from "@src/components";
@@ -30,6 +34,7 @@ const {
 } = globalStyles;
 
 const StudentCardDetails = () => {
+  const dispatch = useAppDispatch();
   const navigator = useNavigation<NavigationProps>();
   const [deleteStudent] = useDeleteStudentDataMutation();
   const [modalVisible, openOrCloseModal] = useNewModalState();
@@ -55,9 +60,11 @@ const StudentCardDetails = () => {
   const handleEditNavigation = () => navigator.navigate("EditStudent");
 
   const handleDeleteStudent = () => {
-    deleteStudent(studentData?.id as number);
     openOrCloseModal();
     navigator.navigate("StudentsHome");
+    dispatch(setTimedStatusMessageType("Delete-Student"));
+    dispatch(setTimedStatusMessageOccured(true));
+    deleteStudent(studentData?.id as number);
   };
 
   return (

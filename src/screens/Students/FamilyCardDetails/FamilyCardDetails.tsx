@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import { useAppSelector } from "@src/redux";
+import { useAppDispatch, useAppSelector } from "@src/redux";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
@@ -9,6 +9,10 @@ import type { CardsNavParamList } from "@src/types";
 
 import { useDeleteFamilyDataMutation } from "@src/redux/services/supabaseAPI";
 import { getGlobalFamilyData } from "@src/redux/selectors";
+import {
+  setTimedStatusMessageOccured,
+  setTimedStatusMessageType,
+} from "@src/redux/features/generalGlobalData";
 
 import { useResponsiveness, useNewModalState } from "@src/hooks";
 import { WarningModal, BackButtonCustom } from "@src/components";
@@ -30,6 +34,7 @@ const {
 } = globalStyles;
 
 const FamilyCardDetails = () => {
+  const dispatch = useAppDispatch();
   const navigator = useNavigation<NavigationProps>();
   const [deleteFamily] = useDeleteFamilyDataMutation();
   const [modalVisible, openOrCloseModal] = useNewModalState();
@@ -45,10 +50,12 @@ const FamilyCardDetails = () => {
 
   const handleEditNavigation = () => navigator.navigate("EditFamily");
 
-  const handleDeleteStudent = () => {
-    deleteFamily(familyData?.id as number);
+  const handleDeleteFamily = () => {
     openOrCloseModal();
     navigator.navigate("StudentsHome");
+    dispatch(setTimedStatusMessageType("Delete-Family"));
+    dispatch(setTimedStatusMessageOccured(true));
+    deleteFamily(familyData?.id as number);
   };
 
   return (
@@ -101,7 +108,7 @@ const FamilyCardDetails = () => {
         </TouchableOpacity>
       </View>
       <WarningModal
-        dispatchWarningAction={handleDeleteStudent}
+        dispatchWarningAction={handleDeleteFamily}
         warningHeaderText="Are you sure?"
         warningBodyText="Deleting this will delete all family data for this selected family AND all student data that has this family associated as they're parent."
         warningActionText="Delete Family"
