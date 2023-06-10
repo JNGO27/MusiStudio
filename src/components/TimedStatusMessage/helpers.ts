@@ -12,6 +12,12 @@ export function getTypeStyleResults(
     case "Success-Edit":
       result = styles.messageSuccessContainer;
       break;
+    case "Delete-Student":
+      result = styles.messageSuccessContainer;
+      break;
+    case "Delete-Family":
+      result = styles.messageSuccessContainer;
+      break;
     case "Success-Edit-Family":
       result = styles.messageSuccessContainer;
       break;
@@ -55,6 +61,12 @@ export function getTypeMessage(type: TimedStatusMessageTypes) {
       break;
     case "Canceled-Edit-Family":
       result = "Family form editing has been canceled.";
+      break;
+    case "Delete-Student":
+      result = "Student has successfully been deleted.";
+      break;
+    case "Delete-Family":
+      result = "Family has successfully been deleted.";
       break;
     case "Error":
       result = "Please fill out the empty form values highlighted in red.";
