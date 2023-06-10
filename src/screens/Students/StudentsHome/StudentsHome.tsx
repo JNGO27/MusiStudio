@@ -104,7 +104,8 @@ const StudentsHome = () => {
                 contentFit="cover"
               />
               <Text style={styles.bodyText}>
-                You currently have no students. Consider adding a student.
+                You currently have no students available. Consider adding a
+                student.
               </Text>
             </View>
           </View>

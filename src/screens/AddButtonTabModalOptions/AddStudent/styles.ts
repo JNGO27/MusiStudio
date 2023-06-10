@@ -9,7 +9,7 @@ import globalStyles from "@src/globalStyles";
 const {
   typography,
   spacing,
-  colors: { lightPurples, whites, grays, blacks, greens, reds },
+  colors: { lightPurples, purples, whites, grays, blacks, greens, reds },
 } = globalStyles;
 
 export default (
@@ -345,6 +345,32 @@ export default (
       alignItems: "center",
       gap: spacing.multipleReg,
       paddingTop: spacing.multipleReg * 2,
+    },
+    noFamiliesDecoration: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: verticalScale(spacing.multipleXL * 25),
+      height: verticalScale(spacing.multipleXL * 25),
+      marginBottom: spacing.multipleXL * 8,
+      paddingHorizontal: spacing.multipleXL * 2,
+      borderRadius: verticalScale(spacing.multipleXL * 12.5),
+      backgroundColor: whites.white100,
+    },
+    noFamiliesContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+      paddingHorizontal: spacing.multipleXL * 2,
+    },
+    noFamiliesText: {
+      color: purples.purple100,
+      textAlign: "center",
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(14),
+      opacity: 0.75,
     },
   });
 };

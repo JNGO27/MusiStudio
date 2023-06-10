@@ -18,8 +18,12 @@ type Props = {
 
 const ExistingFamilyOptions = ({ openOrCloseModal }: Props) => {
   const { data, isLoading } = useGetAllFamilyDataQuery({});
+
+  const isEmpty = data?.length === 0;
+
   const { setFieldValue, setChosenExistingFamily, styles } =
     useAddStudentFormContext();
+
   const [, setSelectedCard] = useState<number | null>(null);
   const [isChosen, setIsChosen] = useState<{ [key: number]: boolean }>({});
 
@@ -53,8 +57,8 @@ const ExistingFamilyOptions = ({ openOrCloseModal }: Props) => {
       onStartShouldSetResponder={() => true}
       onTouchEnd={(e: GestureResponderEvent) => e.stopPropagation()}
     >
-      {data ? (
-        data.map((parent) => (
+      {!isEmpty ? (
+        data?.map((parent) => (
           <View key={parent.id} style={styles.existingFamilyCardsContainer}>
             <CheckboxFamilyCard
               isChosen={isChosen[parent.id]}
@@ -75,7 +79,14 @@ const ExistingFamilyOptions = ({ openOrCloseModal }: Props) => {
           </View>
         ))
       ) : (
-        <Text>No Available Families</Text>
+        <View style={styles.noFamiliesContainer}>
+          <View style={styles.noFamiliesDecoration}>
+            <Text style={styles.noFamiliesText}>
+              You currently have no families available. Consider adding a
+              family.
+            </Text>
+          </View>
+        </View>
       )}
     </View>
   );
