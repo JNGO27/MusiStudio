@@ -1,6 +1,7 @@
 import { useRef } from "react";
-import { FlatList } from "react-native";
+import { FlatList, View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Image } from "expo-image";
 import uuid from "react-native-uuid";
 import { useScrollToTop } from "@react-navigation/native";
 
@@ -24,6 +25,10 @@ import {
   getTimedStatusMessageType,
 } from "@src/redux/selectors";
 
+import useResponsiveness from "@src/hooks/useResponsiveness";
+
+import { MusicBarsCurvedHorizontal } from "@src/assets/illustrations";
+
 import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
 
@@ -44,6 +49,17 @@ const StudentsHome = () => {
     {},
   );
 
+  const isEmpty = allStudentRelatedData?.length === 0;
+
+  const [horizontalScale, verticalScale, moderateScale, dimensionWidth] =
+    useResponsiveness();
+  const styles = createStyleSheet(
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+    dimensionWidth,
+  );
+
   const timedStatusMessageOccurred = useAppSelector(
     getTimedStatusMessageOccurred,
   );
@@ -51,13 +67,10 @@ const StudentsHome = () => {
   const timedStatusMessageType = useAppSelector(getTimedStatusMessageType);
 
   const ref: MyRef = useRef<FlatList>(null);
-
-  const styles = createStyleSheet();
-
   useScrollToTop(ref);
 
-  return (
-    <CallOrMessageContext>
+  if (isLoading) {
+    return (
       <LinearGradient
         style={styles.container}
         colors={purpleGradient.colors}
@@ -65,11 +78,36 @@ const StudentsHome = () => {
         start={purpleGradient.start}
         end={purpleGradient.end}
       >
-        {isLoading ? (
-          <ThreeDotsLoading
-            dotSize={spacing.multipleReg * 2}
-            dotColor={purples.purple300}
-          />
+        <ThreeDotsLoading
+          dotSize={spacing.multipleReg * 2}
+          dotColor={purples.purple300}
+        />
+      </LinearGradient>
+    );
+  }
+
+  return (
+    <CallOrMessageContext>
+      <LinearGradient
+        style={isEmpty ? styles.emptyContainer : styles.container}
+        colors={purpleGradient.colors}
+        locations={purpleGradient.locations}
+        start={purpleGradient.start}
+        end={purpleGradient.end}
+      >
+        {isEmpty ? (
+          <View style={styles.backgroundDecoration}>
+            <View style={styles.noStudentsContainer}>
+              <Image
+                style={styles.noStudentsImage}
+                source={MusicBarsCurvedHorizontal}
+                contentFit="cover"
+              />
+              <Text style={styles.bodyText}>
+                You currently have no students. Consider adding a student.
+              </Text>
+            </View>
+          </View>
         ) : (
           <FlatList
             ref={ref}
