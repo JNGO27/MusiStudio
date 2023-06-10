@@ -6,6 +6,7 @@ import type { AllStudentFamilyDataCard } from "./cardTypes";
 
 export type GeneralGlobal = {
   isNestedScreen: boolean;
+  isFormSubmitting: boolean;
   currentRoute: string;
   timedStatusMessageOccurred: boolean;
   timedStatusMessageType: TimedStatusMessageTypes;

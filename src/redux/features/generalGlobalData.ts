@@ -4,6 +4,7 @@ import type { GeneralGlobal, TimedStatusMessageTypes } from "@src/types";
 
 const initialState: GeneralGlobal = {
   isNestedScreen: false,
+  isFormSubmitting: false,
   currentRoute: "",
   timedStatusMessageOccurred: false,
   timedStatusMessageType: "",
@@ -14,6 +15,12 @@ export const generalGlobalData = createSlice({
   initialState,
   reducers: {
     setIsNestedScreen: (state, { payload }: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        isNestedScreen: payload,
+      };
+    },
+    setIsFormSubmitting: (state, { payload }: PayloadAction<boolean>) => {
       return {
         ...state,
         isNestedScreen: payload,
@@ -48,6 +55,7 @@ export const generalGlobalData = createSlice({
 
 export const {
   setIsNestedScreen,
+  setIsFormSubmitting,
   setRoute,
   setTimedStatusMessageOccured,
   setTimedStatusMessageType,
