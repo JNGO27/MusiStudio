@@ -2,6 +2,13 @@ import { StyleSheet } from "react-native";
 
 import { DirectionalScale, CalculatedScale } from "@src/types";
 
+export const appStyles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+  },
+});
+
 const SPACING = {
   multipleXS: 2,
   multipleS: 4,

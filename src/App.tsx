@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import { registerRootComponent } from "expo";
 import { Provider } from "react-redux";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -8,12 +7,7 @@ import { useAuthenticateUser, useLoadFonts } from "@src/hooks";
 
 import { store } from "@src/redux/app/store";
 
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100%",
-  },
-});
+import { appStyles } from "./globalStyles";
 
 const App = () => {
   const userSession = useAuthenticateUser();
@@ -25,7 +19,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <GestureHandlerRootView style={styles.container}>
+      <GestureHandlerRootView style={appStyles.container}>
         {userSession && userSession?.user ? <RootNav /> : <AuthNav />}
       </GestureHandlerRootView>
     </Provider>
