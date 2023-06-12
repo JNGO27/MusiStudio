@@ -1,3 +1,4 @@
+import useAuthenticateUser from "./useAuthenticateUser";
 import useLoadFonts from "./useLoadFonts";
 import useResponsiveness from "./useResponsiveness";
 import useSetSession from "./useSetSession";
@@ -9,6 +10,7 @@ import useIsNestedScreen from "./useIsNestedScreen";
 import useResetTimedStatusMessage from "./useResetTimedStatusMessage";
 
 export {
+  useAuthenticateUser,
   useLoadFonts,
   useResponsiveness,
   useSetSession,
