@@ -1,0 +1,4 @@
+CREATE OR REPLACE FUNCTION get_student_count()
+RETURNS INTEGER AS $$
+  SELECT COUNT(*) FROM "Students";
+$$ LANGUAGE SQL;
