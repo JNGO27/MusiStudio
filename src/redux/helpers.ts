@@ -37,8 +37,3 @@ export async function formatStudentData(data: AllStudentFamilyDataCard[]) {
 
   return formattedData;
 }
-
-export function convertToInt8(str: string) {
-  const int8Array = new Int8Array([parseInt(str)]);
-  return int8Array[0];
-}
