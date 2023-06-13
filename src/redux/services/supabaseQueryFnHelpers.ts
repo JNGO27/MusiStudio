@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
 import type {
@@ -56,8 +57,12 @@ export const getAllFamiliesDataQueryFn = {
 
 export const insertStudentDataQueryFn = {
   queryFn: async (formValues: StudentFormValues) => {
+    const userData = await supabaseConfig.auth.getUser();
+    const user_id = String(userData.data.user?.id);
+
     const studentData = [
       {
+        user_id,
         family_id: 9999,
         first_name: formValues.first_name,
         last_name: formValues.last_name,
@@ -75,6 +80,7 @@ export const insertStudentDataQueryFn = {
 
     const familyData = [
       {
+        user_id,
         parent_guardian_first_name_1: formValues.family_first_name,
         parent_guardian_last_name_1: formValues.family_last_name,
         phone_number: formValues.family_phone_number,
@@ -104,6 +110,7 @@ export const insertStudentDataQueryFn = {
 
     const newStudentAllData = [
       {
+        user_id,
         student_data: Number(newStudentId[0].id),
         associated_family: Number(newFamilyId[0].id),
       },
@@ -124,8 +131,12 @@ export const insertStudentDataQueryFn = {
 
 export const insertStudentDataExistingFamilyQueryFn = {
   queryFn: async (formValues: StudentFormValues) => {
+    const userData = await supabaseConfig.auth.getUser();
+    const user_id = String(userData.data.user?.id);
+
     const studentData = [
       {
+        user_id,
         family_id: 9999,
         first_name: formValues.first_name,
         last_name: formValues.last_name,
@@ -162,6 +173,7 @@ export const insertStudentDataExistingFamilyQueryFn = {
 
     const newStudentAllData = [
       {
+        user_id,
         student_data: Number(newStudentId[0].id),
         associated_family: existingFamilyData,
       },
