@@ -4,9 +4,13 @@ import * as WebBrowser from "expo-web-browser";
 
 import type { Session } from "@supabase/supabase-js";
 
+import { useAppDispatch } from "@src/redux";
+
+import { supabaseApi } from "@src/redux/services/supabaseAPI";
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
 const useAuthenticateUser = () => {
+  const dispatch = useAppDispatch();
   const [userSession, setUserSession] = useState<Session | null>(null);
 
   useEffect(() => {
@@ -25,10 +29,14 @@ const useAuthenticateUser = () => {
       setUserSession(session);
     });
 
-    supabaseConfig.auth.onAuthStateChange((_event, session) => {
+    supabaseConfig.auth.onAuthStateChange((event, session) => {
       setUserSession(session);
+
+      if (event === "SIGNED_OUT") {
+        dispatch(supabaseApi.util.resetApiState());
+      }
     });
-  }, []);
+  }, [dispatch]);
 
   return userSession;
 };
