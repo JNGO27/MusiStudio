@@ -1,3 +1,4 @@
+export { default as AuthProvider } from "./AuthProvider/AuthProvider";
 export { default as HomeOption } from "./HomeOption/HomeOption";
 export { default as NavigationMenu } from "./NavigationMenu/NavigationMenu";
 export { default as AccountNavOption } from "./AccountNavOption/AccountNavOption";
