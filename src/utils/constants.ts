@@ -45,3 +45,8 @@ export const noHeaderOptions = new Set([
   "StudentCardDetails",
   "FamilyCardDetails",
 ]);
+
+export const TIERS = {
+  FREE_TIER_ID: 1,
+  PAID_TIER_ID: 2,
+} as const;
