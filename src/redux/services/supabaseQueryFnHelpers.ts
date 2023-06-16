@@ -7,6 +7,40 @@ import type {
   EditFamilyFormValues,
 } from "@src/types";
 
+import { TIERS } from "@src/utils/constants";
+
+export const syncNewUserProfileQueryFn = {
+  queryFn: async () => {
+    const userData = await supabaseConfig.auth.getUser();
+
+    const user_id = String(userData.data.user?.id);
+
+    const { data: userExists, error: userExistsError } =
+      await supabaseConfig.rpc("user_exists", {
+        p_user_id: user_id,
+      });
+
+    if (userExistsError) {
+      throw new Error(userExistsError.message);
+    }
+
+    if (!userExists) {
+      const { FREE_TIER_ID } = TIERS;
+      const profileData = [{ user_id, tier: FREE_TIER_ID }];
+
+      const { error } = await supabaseConfig
+        .from("Profiles")
+        .insert(profileData);
+
+      if (error) {
+        throw new Error(error.message);
+      }
+    }
+
+    return { data: {} };
+  },
+};
+
 export const getAllStudentsDataQueryFn = {
   queryFn: async () => {
     const { data: studentData, error } = await supabaseConfig
