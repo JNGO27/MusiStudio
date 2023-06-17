@@ -136,6 +136,7 @@ const Finalization = ({ scrollRef }: Props) => {
         <TouchableOpacity
           style={styles.saveButton}
           onPress={handleOnFormSubmit}
+          disabled={isOnFormSubmission}
         >
           <Text style={styles.saveButtonText}>
             {isOnFormSubmission ? "Submitting..." : "Save"}
