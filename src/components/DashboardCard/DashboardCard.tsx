@@ -85,7 +85,7 @@ const DashboardCard = ({ type }: Props) => {
                 />
               ) : (
                 <Text style={styles.studentsText}>
-                  {studentCount} / 50 Students
+                  {studentCount} / 25 Students
                 </Text>
               )}
             </View>

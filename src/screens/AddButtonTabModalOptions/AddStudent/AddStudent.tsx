@@ -175,7 +175,7 @@ const AddStudent = () => {
 
                 <View style={styles.divider} />
 
-                <Finalization />
+                <Finalization scrollRef={ref} />
               </View>
 
               {timedStatusMessageOccurred && (
