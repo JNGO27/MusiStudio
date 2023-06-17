@@ -42,7 +42,7 @@ const AddStudent = () => {
 
   const ref: MyRef = useRef(null);
 
-  const [insertStudentData] = useInsertStudentDataMutation();
+  const [insertStudentData, { isLoading }] = useInsertStudentDataMutation();
 
   const timedStatusMessageOccurred = useAppSelector(
     getTimedStatusMessageOccurred,
@@ -153,6 +153,7 @@ const AddStudent = () => {
               setFieldValue={setFieldValue}
               errors={errors}
               touched={touched}
+              isLoading={isLoading}
             >
               <View style={styles.formContainer}>
                 <StudentDetails />

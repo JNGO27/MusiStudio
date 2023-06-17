@@ -20,6 +20,7 @@ interface FormProps {
   setFieldValue: FormikHelpers<StudentFormValues>["setFieldValue"];
   errors: FormikErrors<StudentFormValues>;
   touched: FormikTouched<StudentFormValues>;
+  isLoading: boolean;
 }
 
 interface CompleteFormProps extends FormProps {
@@ -44,6 +45,7 @@ export const AddStudentFormContext = ({
   handleBlur,
   setFieldValue,
   children,
+  isLoading,
 }: ContextProps) => {
   const [chosenExistingFamily, setChosenExistingFamily] = useState("");
 
@@ -60,6 +62,7 @@ export const AddStudentFormContext = ({
       setFieldValue,
       chosenExistingFamily,
       setChosenExistingFamily,
+      isLoading,
     }),
     [
       chosenExistingFamily,
@@ -72,6 +75,7 @@ export const AddStudentFormContext = ({
       setFieldValue,
       styles,
       values,
+      isLoading,
     ],
   );
 

@@ -51,9 +51,12 @@ const Finalization = ({ scrollRef }: Props) => {
     familyTypeInitialState,
   );
   const navigator = useNavigation<AddStudentNavigationProps>();
-  const { validateForm, setTouched, resetForm } = useFormikContext();
-  const { submitForm, setChosenExistingFamily, values, styles } =
+  const { validateForm, setTouched, resetForm, isSubmitting, isValidating } =
+    useFormikContext();
+  const { submitForm, setChosenExistingFamily, values, styles, isLoading } =
     useAddStudentFormContext();
+
+  const isOnFormSubmission = isLoading || isSubmitting || isValidating;
 
   const handleErrorStyles = (formValues: StudentFormValues) => {
     const { first_name, last_name, rate, family_first_name, family_last_name } =
@@ -106,10 +109,10 @@ const Finalization = ({ scrollRef }: Props) => {
       dispatch(setTimedStatusMessageType("Error"));
       dispatch(setTimedStatusMessageOccured(true));
     } else {
+      await submitForm();
       navigator.navigate("StudentsNav");
       dispatch(setTimedStatusMessageType("Success"));
       dispatch(setTimedStatusMessageOccured(true));
-      await submitForm();
       handleReset();
     }
   };
@@ -134,7 +137,9 @@ const Finalization = ({ scrollRef }: Props) => {
           style={styles.saveButton}
           onPress={handleOnFormSubmit}
         >
-          <Text style={styles.saveButtonText}>Save</Text>
+          <Text style={styles.saveButtonText}>
+            {isOnFormSubmission ? "Submitting..." : "Save"}
+          </Text>
         </TouchableOpacity>
       </LinearGradient>
       <View style={styles.cancelButtonContainer}>
