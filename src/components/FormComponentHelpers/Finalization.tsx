@@ -80,6 +80,12 @@ const Finalization = ({ scrollRef }: Props) => {
     }
   };
 
+  const handleReset = () => {
+    setChosenExistingFamily("");
+    familyTypeDispatch({ type: "NEW_FAMILY" });
+    resetForm();
+  };
+
   const handleOnFormSubmit = async () => {
     handleErrorStyles(values);
     const errors = await validateForm();
@@ -104,7 +110,7 @@ const Finalization = ({ scrollRef }: Props) => {
       dispatch(setTimedStatusMessageType("Success"));
       dispatch(setTimedStatusMessageOccured(true));
       await submitForm();
-      resetForm();
+      handleReset();
     }
   };
 
