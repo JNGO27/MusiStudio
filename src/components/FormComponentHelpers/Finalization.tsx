@@ -19,6 +19,8 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack/l
 import type { StudentFormValues, AddStudentParamList } from "@src/types";
 
 import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
+import { WarningModal } from "@src/components";
+import { useNewModalState } from "@src/hooks";
 
 import {
   familyTypeInitialState,
@@ -46,13 +48,17 @@ type Props = {
 
 const Finalization = ({ scrollRef }: Props) => {
   const dispatch = useAppDispatch();
+  const navigator = useNavigation<AddStudentNavigationProps>();
+
   const [, familyTypeDispatch] = useReducer(
     familyTypeReducer,
     familyTypeInitialState,
   );
-  const navigator = useNavigation<AddStudentNavigationProps>();
+  const [modalVisible, openOrCloseModal] = useNewModalState();
+
   const { validateForm, setTouched, resetForm, isSubmitting, isValidating } =
     useFormikContext();
+
   const { submitForm, setChosenExistingFamily, values, styles, isLoading } =
     useAddStudentFormContext();
 
@@ -74,6 +80,7 @@ const Finalization = ({ scrollRef }: Props) => {
   };
 
   const handleLimitReset = () => {
+    openOrCloseModal();
     setChosenExistingFamily("");
     familyTypeDispatch({ type: "NEW_FAMILY" });
     resetForm();
@@ -148,6 +155,15 @@ const Finalization = ({ scrollRef }: Props) => {
           <Text style={styles.cancelButtonText}>Cancel</Text>
         </TouchableOpacity>
       </View>
+      <WarningModal
+        dispatchWarningAction={openOrCloseModal}
+        warningHeaderText="Limit reached"
+        warningBodyText="Thanks for using this app so much! We are still in beta and a free product. If you really want more storage please contact us at: protegecoresuite@gmail.com"
+        warningActionText="Ok"
+        modalVisible={modalVisible}
+        openOrCloseModal={openOrCloseModal}
+        isLimit
+      />
     </View>
   );
 };

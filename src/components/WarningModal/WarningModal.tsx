@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Modal,
@@ -25,6 +26,7 @@ type Props = {
   warningActionText: string;
   modalVisible: boolean;
   openOrCloseModal: () => void;
+  isLimit?: boolean;
 };
 
 const WarningModal = ({
@@ -33,6 +35,7 @@ const WarningModal = ({
   warningBodyText,
   warningActionText,
   modalVisible,
+  isLimit = false,
   openOrCloseModal,
 }: Props) => {
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
@@ -66,18 +69,29 @@ const WarningModal = ({
               </View>
             </View>
             <View style={styles.buttonsContainer}>
-              <TouchableOpacity
-                style={styles.buttonWarningAction}
-                onPress={dispatchWarningAction}
-              >
-                <Text style={styles.buttonText}>{warningActionText}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.buttonCancel}
-                onPress={openOrCloseModal}
-              >
-                <Text style={styles.buttonText}>Cancel</Text>
-              </TouchableOpacity>
+              {isLimit ? (
+                <TouchableOpacity
+                  style={styles.buttonCancel}
+                  onPress={dispatchWarningAction}
+                >
+                  <Text style={styles.buttonText}>{warningActionText}</Text>
+                </TouchableOpacity>
+              ) : (
+                <>
+                  <TouchableOpacity
+                    style={styles.buttonWarningAction}
+                    onPress={dispatchWarningAction}
+                  >
+                    <Text style={styles.buttonText}>{warningActionText}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.buttonCancel}
+                    onPress={openOrCloseModal}
+                  >
+                    <Text style={styles.buttonText}>Cancel</Text>
+                  </TouchableOpacity>
+                </>
+              )}
             </View>
           </View>
         </View>

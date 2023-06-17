@@ -8,7 +8,7 @@ import { useScrollToTop } from "@react-navigation/native";
 import type { RefObject } from "react";
 
 import { CallOrMessageContext } from "@src/contexts/CallOrMessageContext";
-import { useResetTimedStatusMessage } from "@src/hooks";
+import { useResponsiveness, useResetTimedStatusMessage } from "@src/hooks";
 import {
   DataCardsContainer,
   StudentCard,
@@ -24,8 +24,6 @@ import {
   getTimedStatusMessageOccurred,
   getTimedStatusMessageType,
 } from "@src/redux/selectors";
-
-import useResponsiveness from "@src/hooks/useResponsiveness";
 
 import { MusicBarsCurvedHorizontal } from "@src/assets/illustrations";
 
@@ -53,6 +51,7 @@ const StudentsHome = () => {
 
   const [horizontalScale, verticalScale, moderateScale, dimensionWidth] =
     useResponsiveness();
+
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
