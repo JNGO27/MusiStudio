@@ -139,7 +139,20 @@ export const insertStudentDataQueryFn = {
       await supabaseConfig.from("Students").insert(studentData).select("id");
 
     if (studentsTableError) {
-      throw new Error(studentsTableError.message);
+      if (
+        studentsTableError?.message === "TIER LIMIT: Cannot insert new data"
+      ) {
+        const { error } = await supabaseConfig
+          .from("Families")
+          .delete()
+          .eq("id", newFamilyId[0].id);
+
+        if (error) {
+          throw new Error(error.message);
+        }
+      } else {
+        throw new Error(studentsTableError.message);
+      }
     }
 
     const newStudentAllData = [
