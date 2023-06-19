@@ -116,10 +116,10 @@ const Finalization = ({ scrollRef }: Props) => {
       dispatch(setTimedStatusMessageType("Error"));
       dispatch(setTimedStatusMessageOccured(true));
     } else {
-      await submitForm();
       navigator.navigate("StudentsNav");
       dispatch(setTimedStatusMessageType("Success"));
       dispatch(setTimedStatusMessageOccured(true));
+      await submitForm();
       handleReset();
     }
   };
