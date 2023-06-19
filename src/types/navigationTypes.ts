@@ -13,7 +13,11 @@ export type HomeNavOptions = (typeof HomeOptionsOnlyArr)[number];
 
 export type HeaderStackParamList = {
   HeaderNav: { screen: AccountScreenOptions };
-  Account: undefined;
+  AccountHome: undefined;
+  AccountInformation: undefined;
+  About: undefined;
+  PrivacyPolicy: undefined;
+  TermsAndService: undefined;
 };
 
 export type AccountScreenOptions = keyof HeaderStackParamList;
