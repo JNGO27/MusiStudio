@@ -1,3 +1,5 @@
+export const APP_NAME = "ProtegeCoreSuite";
+
 export const HomeOptionsArr = [
   {
     title: "Students",
