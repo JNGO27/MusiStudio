@@ -2,8 +2,20 @@ import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 
 const SvgComponent = (props: SvgProps) => (
-  <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" {...props}>
-    <Path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v336c0 44.2-43 80-96 80s-96-35.8-96-80 43-80 96-80c11.2 0 22 1.6 32 4.6V147l-256 76.8V432c0 44.2-43 80-96 80S0 476.2 0 432s43-80 96-80c11.2 0 22 1.6 32 4.6V128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z" />
+  <Svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.5}
+    className="w-6 h-6"
+    viewBox="0 0 24 24"
+    {...props}
+  >
+    <Path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553z"
+    />
   </Svg>
 );
 export default SvgComponent;
