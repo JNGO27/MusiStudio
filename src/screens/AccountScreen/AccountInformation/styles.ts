@@ -92,6 +92,8 @@ export default (
       color: whites.white100,
     },
     lockIcon: {
+      position: "relative",
+      bottom: 2.3,
       width: verticalScale(spacing.multipleXL * 1.7),
       height: verticalScale(spacing.multipleXL * 1.7),
       opacity: 0.75,
