@@ -49,7 +49,7 @@ const AccountHome = () => {
       </TouchableOpacity>
       <WarningModal
         warningHeaderText="Are you sure?"
-        warningBodyText="Logging out will restrict data to your account. You will need to log back in to access your data."
+        warningBodyText="Logging out will restrict data access to your account. You will need to log back in to access your data."
         warningActionText="Log Out"
         modalVisible={modalVisible}
         openOrCloseModal={openOrCloseModal}
