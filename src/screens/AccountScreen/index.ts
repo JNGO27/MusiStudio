@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as AccountHome } from "./AccountHome/AccountHome";
+export { default as AccountInformation } from "./AccountInformation/AccountInformation";
