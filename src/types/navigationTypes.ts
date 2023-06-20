@@ -2,7 +2,15 @@ import {
   HomeOptionsOnlyArr,
   AuthOptionsOnlyArr,
   CardNavOptionsOnlyArr,
+  HeaderNavOptionsOnlyArr,
 } from "@src/utils/constants";
+
+export type NavigationOptionsTypes<
+  TypePossibilities extends string,
+  ScreenStack,
+> = {
+  [type in TypePossibilities]: keyof ScreenStack;
+};
 
 export type RootStackParamList = {
   TabNavigator: undefined;
@@ -19,6 +27,8 @@ export type HeaderStackParamList = {
   PrivacyPolicy: undefined;
   TermsAndService: undefined;
 };
+
+export type HeaderAccountNavOptions = (typeof HeaderNavOptionsOnlyArr)[number];
 
 export type AccountScreenOptions = keyof HeaderStackParamList;
 

@@ -4,7 +4,10 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-import type { HomeTabScreenParamList } from "@src/types";
+import type {
+  HomeTabScreenParamList,
+  NavigationOptionsTypes,
+} from "@src/types";
 
 import { useGetStudentsCountQuery } from "@src/redux/services/supabaseAPI";
 
@@ -26,10 +29,6 @@ const {
 
 type TypePossibilities = "Students";
 
-type NavigationOptionsTypes = {
-  [type in TypePossibilities]: keyof HomeTabScreenParamList;
-};
-
 type DashboardCardNavigationProps = NativeStackNavigationProp<
   HomeTabScreenParamList,
   "HomeTabScreen"
@@ -39,7 +38,10 @@ type Props = {
   type: TypePossibilities;
 };
 
-const navigationOptions: NavigationOptionsTypes = {
+const navigationOptions: NavigationOptionsTypes<
+  TypePossibilities,
+  HomeTabScreenParamList
+> = {
   Students: "StudentsNav",
 } as const;
 
