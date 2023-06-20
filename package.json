@@ -27,6 +27,7 @@
     "expo-dev-client": "^2.2.1",
     "expo-font": "~11.1.1",
     "expo-image": "^1.0.0",
+    "expo-image-picker": "~14.1.1",
     "expo-linear-gradient": "^12.1.2",
     "expo-linking": "^4.0.1",
     "expo-random": "~13.1.1",
@@ -50,9 +51,7 @@
     "react-redux": "^8.0.5",
     "reselect": "^4.1.8",
     "victory-native": "^36.6.8",
-    "yup": "^1.0.2",
-    "expo-image-picker": "~14.1.1",
-    "expo-permissions": "~14.1.1"
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
