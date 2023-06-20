@@ -38,6 +38,24 @@ export const CardNavOptionsOnlyArr = [
   "PracticeCardDetails",
 ] as const;
 
+export const HeaderNavOptionsOnlyArr = [
+  {
+    header: "Account",
+    screenName: "AccountInformation",
+    content: "Account email, Change profile picture",
+  },
+  {
+    header: "About",
+    screenName: "About",
+    content: "Learn about us and the creator of the app",
+  },
+  {
+    header: "Privacy Policy",
+    screenName: "PrivacyPolicy",
+    content: "Privacy Policy content information",
+  },
+] as const;
+
 export const noHeaderOptions = new Set([
   "AddStudent",
   "EditStudent",

@@ -1,41 +1,34 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 
-import { supabaseConfig } from "@src/lib/supabaseConfig";
+import useResponsiveness from "@src/hooks/useResponsiveness";
+import { BackButtonCustom, AccountScreenNavOption } from "@src/components";
+
+import { HeaderNavOptionsOnlyArr } from "@src/utils/constants";
+
+import createStyleSheet from "./styles";
 
 const AccountHome = () => {
-  const handleSignOut = async () => {
-    const { error } = await supabaseConfig.auth.signOut();
-    if (error) return null;
-
-    return null;
-  };
+  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const styles = createStyleSheet(
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+  );
 
   return (
-    <View
-      style={{
-        display: "flex",
-        flex: 1,
-        width: "100%",
-        height: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "pink",
-      }}
-    >
-      <TouchableOpacity
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "100%",
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "pink",
-        }}
-        onPress={handleSignOut}
-      >
-        <Text>Sign Out</Text>
-      </TouchableOpacity>
+    <View style={styles.screenContainer}>
+      <BackButtonCustom />
+      <Text style={styles.headlineText}>Settings / Account</Text>
+      <View style={styles.settingsCardsContainer}>
+        {HeaderNavOptionsOnlyArr.map(({ header, screenName, content }) => (
+          <AccountScreenNavOption
+            key={header}
+            header={header}
+            screenName={screenName}
+            content={content}
+          />
+        ))}
+      </View>
     </View>
   );
 };
