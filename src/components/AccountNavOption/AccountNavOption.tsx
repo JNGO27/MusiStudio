@@ -3,15 +3,13 @@ import { useNavigation } from "@react-navigation/native";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 
-import type { HeaderStackParamList } from "@src/types";
-
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { UserAccountIcon } from "@src/assets/icons";
 
 import createStyleSheet from "./styles";
 
 type AccountNavigationProps = NativeStackNavigationProp<
-  HeaderStackParamList,
+  { HeaderNav: { screen: "AccountHome" } },
   "HeaderNav"
 >;
 
@@ -27,7 +25,7 @@ const AccountNavOption = () => {
 
   const onPress = () => {
     navigator.navigate("HeaderNav", {
-      screen: "Account",
+      screen: "AccountHome",
     });
   };
 
