@@ -1,41 +1,56 @@
+import { useState, useLayoutEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
 import { supabaseConfig } from "@src/lib/supabaseConfig";
 
-const AccountInformation = () => {
-  const handleSignOut = async () => {
-    const { error } = await supabaseConfig.auth.signOut();
-    if (error) return null;
+import useResponsiveness from "@src/hooks/useResponsiveness";
+import { BackButtonCustom } from "@src/components";
 
-    return null;
-  };
+import { UserAccountIcon, LockIcon } from "@src/assets/icons";
+
+import createStyleSheet from "./styles";
+
+const AccountInformation = () => {
+  const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    async function getUserEmail() {
+      const {
+        data: { user },
+      } = await supabaseConfig.auth.getUser();
+
+      setUserEmail(user?.email);
+    }
+
+    getUserEmail();
+  }, []);
+
+  console.log(userEmail);
+
+  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const styles = createStyleSheet(
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+  );
 
   return (
-    <View
-      style={{
-        display: "flex",
-        flex: 1,
-        width: "100%",
-        height: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "pink",
-      }}
-    >
-      <TouchableOpacity
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "100%",
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "pink",
-        }}
-        onPress={handleSignOut}
-      >
-        <Text>Sign Out</Text>
-      </TouchableOpacity>
+    <View style={styles.screenContainer}>
+      <BackButtonCustom />
+      <Text style={styles.headlineText}>Profile</Text>
+      <View style={styles.contentContainer}>
+        <TouchableOpacity style={styles.profileContainer} onPress={() => {}}>
+          <UserAccountIcon style={styles.accountIconOrPicture} />
+        </TouchableOpacity>
+        <Text style={styles.uploadMessage}>Tap to upload profile picture</Text>
+        <View style={styles.emailContainer}>
+          <Text style={styles.emailLabelText}>Email:</Text>
+          <View style={styles.userEmailContainer}>
+            <Text style={styles.userEmailText}>{userEmail}</Text>
+            <LockIcon style={styles.lockIcon} color="white" />
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
