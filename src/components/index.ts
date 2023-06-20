@@ -2,6 +2,7 @@ export { default as AuthProvider } from "./AuthProvider/AuthProvider";
 export { default as HomeOption } from "./HomeOption/HomeOption";
 export { default as NavigationMenu } from "./NavigationMenu/NavigationMenu";
 export { default as AccountNavOption } from "./AccountNavOption/AccountNavOption";
+export { default as AccountScreenNavOption } from "./AccountScreenNavOption/AccountScreenNavOption";
 export { default as AuthOption } from "./AuthOption/AuthOption";
 export { default as OAuthOption } from "./OAuthOption/OAuthOption";
 export { default as CardNavOption } from "./CardNavOption/CardNavOption";
