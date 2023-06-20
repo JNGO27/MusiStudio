@@ -25,8 +25,6 @@ const AccountInformation = () => {
     getUserEmail();
   }, []);
 
-  console.log(userEmail);
-
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
