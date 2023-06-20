@@ -50,7 +50,9 @@
     "react-redux": "^8.0.5",
     "reselect": "^4.1.8",
     "victory-native": "^36.6.8",
-    "yup": "^1.0.2"
+    "yup": "^1.0.2",
+    "expo-image-picker": "~14.1.1",
+    "expo-permissions": "~14.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
