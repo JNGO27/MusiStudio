@@ -39,6 +39,7 @@ export const syncNewUserProfileQueryFn = {
 
     return { data: {} };
   },
+  providesTags: [{ type: "Profile" } as const],
 };
 
 export const getUserProfileDataQueryFn = {
@@ -51,7 +52,7 @@ export const getUserProfileDataQueryFn = {
 
     return { data };
   },
-  providesTags: [{ type: "Students" } as const],
+  providesTags: [{ type: "Profile" } as const],
 };
 
 export const getAllStudentsDataQueryFn = {

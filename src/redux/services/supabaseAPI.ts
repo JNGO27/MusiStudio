@@ -31,7 +31,7 @@ export const supabaseApi = createApi({
     editFamilyData: builder.mutation(editFamilyDataMutationQueryFn),
     deleteFamilyData: builder.mutation(deleteFamilyDataMutationQueryFn),
   }),
-  tagTypes: ["Students", "Families"],
+  tagTypes: ["Profile", "Students", "Families"],
 });
 
 export const {
