@@ -9,7 +9,13 @@ import { BackButtonCustom } from "@src/components";
 
 import { LockIcon, MusicNote } from "@src/assets/icons";
 
+import globalStyles from "@src/globalStyles";
+
 import createStyleSheet from "./styles";
+
+const {
+  colors: { purples },
+} = globalStyles;
 
 const AccountInformation = () => {
   const userEmail = useAppSelector(getUserEmail);
@@ -31,7 +37,10 @@ const AccountInformation = () => {
           {userAvatarUrl ? (
             <Image source={userAvatarUrl} style={styles.accountIconOrPicture} />
           ) : (
-            <MusicNote style={styles.accountIconOrPicture} color="white" />
+            <MusicNote
+              style={styles.accountIconOrPicture}
+              color={purples.purple300}
+            />
           )}
         </View>
         <View style={styles.emailContainer}>

@@ -10,7 +10,13 @@ import { getUserAvatarUrl } from "@src/redux/selectors";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { MusicNote } from "@src/assets/icons";
 
+import globalStyles from "@src/globalStyles";
+
 import createStyleSheet from "./styles";
+
+const {
+  colors: { purples },
+} = globalStyles;
 
 type AccountNavigationProps = NativeStackNavigationProp<
   { HeaderNav: { screen: "AccountHome" } },
@@ -39,7 +45,7 @@ const AccountNavOption = () => {
       {userAvatarUrl ? (
         <Image source={userAvatarUrl} style={styles.accountIcon} />
       ) : (
-        <MusicNote style={styles.accountIcon} color="white" />
+        <MusicNote style={styles.accountIcon} color={purples.purple300} />
       )}
     </TouchableOpacity>
   );
