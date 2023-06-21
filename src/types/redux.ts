@@ -5,6 +5,8 @@ import type { TimedStatusMessageTypes } from "./other";
 import type { AllStudentFamilyDataCard } from "./cardTypes";
 
 export type GeneralGlobal = {
+  userEmail: undefined | string;
+  userAvatarUrl: null | string;
   isNestedScreen: boolean;
   currentRoute: string;
   timedStatusMessageOccurred: boolean;
