@@ -41,6 +41,19 @@ export const syncNewUserProfileQueryFn = {
   },
 };
 
+export const getUserProfileDataQueryFn = {
+  queryFn: async () => {
+    const { data, error } = await supabaseConfig.auth.getUser();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return { data };
+  },
+  providesTags: [{ type: "Students" } as const],
+};
+
 export const getAllStudentsDataQueryFn = {
   queryFn: async () => {
     const { data: studentData, error } = await supabaseConfig
