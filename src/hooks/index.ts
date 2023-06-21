@@ -8,6 +8,7 @@ import useBottomTabGoneOnKeyboardFocus from "./useBottomTabGoneOnKeyboardFocus";
 import useInitScreenOptions from "./useInitScreenOptions";
 import useIsNestedScreen from "./useIsNestedScreen";
 import useResetTimedStatusMessage from "./useResetTimedStatusMessage";
+import useSetProfileData from "./useSetProfileData";
 
 export {
   useAuthenticateUser,
@@ -20,4 +21,5 @@ export {
   useInitScreenOptions,
   useIsNestedScreen,
   useResetTimedStatusMessage,
+  useSetProfileData,
 };
