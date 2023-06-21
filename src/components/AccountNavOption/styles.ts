@@ -22,14 +22,18 @@ export default (
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      width: accountSize,
-      height: accountSize,
-      borderRadius: accountSize / 2,
+      width: accountSize + spacing.multipleReg,
+      height: accountSize + spacing.multipleReg,
+      borderRadius: accountSize + spacing.multipleReg / 2,
+      borderWidth: spacing.multipleXS,
+      borderColor: grays.gray300,
+      margin: spacing.multipleXL,
     },
     accountIcon: {
       width: accountSize,
       height: accountSize,
       color: grays.gray300,
+      borderRadius: accountSize / 2,
     },
   });
 };
