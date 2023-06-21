@@ -5,6 +5,16 @@ import { RootState } from "@src/types";
 export const getGeneralGlobalData = (state: RootState) =>
   state.generalGlobalData;
 
+export const getUserEmail = createSelector(
+  getGeneralGlobalData,
+  (globalState) => globalState.userEmail,
+);
+
+export const getUserAvatarUrl = createSelector(
+  getGeneralGlobalData,
+  (globalState) => globalState.userAvatarUrl,
+);
+
 export const getTimedStatusMessageOccurred = createSelector(
   getGeneralGlobalData,
   (globalState) => globalState.timedStatusMessageOccurred,
