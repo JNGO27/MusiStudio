@@ -3,10 +3,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useAppDispatch } from "@src/redux";
-import { useSyncNewUserProfileQuery } from "@src/redux/services/supabaseAPI";
 import { setRoute } from "@src/redux/features/generalGlobalData";
 
+import {
+  useSyncNewUserProfileQuery,
+  useGetUserProfileDataQuery,
+} from "@src/redux/services/supabaseAPI";
+
 import { TabNavigator, HeaderNav } from "@src/navigation";
+import { useSetProfileData } from "@src/hooks";
 import { Header } from "@src/components";
 
 import type { NavigationState } from "@react-navigation/native";
@@ -18,6 +23,8 @@ import { getActiveRouteName } from "./helpers";
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNav = () => {
+  const { data } = useGetUserProfileDataQuery({});
+  useSetProfileData(data);
   useSyncNewUserProfileQuery({});
 
   const dispatch = useAppDispatch();
