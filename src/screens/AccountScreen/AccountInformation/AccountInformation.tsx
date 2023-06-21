@@ -1,29 +1,19 @@
-import { useState, useLayoutEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
+import { Image } from "expo-image";
 
-import { supabaseConfig } from "@src/lib/supabaseConfig";
+import { useAppSelector } from "@src/redux";
+import { getUserEmail, getUserAvatarUrl } from "@src/redux/selectors";
 
-import useResponsiveness from "@src/hooks/useResponsiveness";
+import { useResponsiveness } from "@src/hooks";
 import { BackButtonCustom } from "@src/components";
 
-import { UserAccountIcon, LockIcon } from "@src/assets/icons";
+import { LockIcon, MusicNote } from "@src/assets/icons";
 
 import createStyleSheet from "./styles";
 
 const AccountInformation = () => {
-  const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
-
-  useLayoutEffect(() => {
-    async function getUserEmail() {
-      const {
-        data: { user },
-      } = await supabaseConfig.auth.getUser();
-
-      setUserEmail(user?.email);
-    }
-
-    getUserEmail();
-  }, []);
+  const userEmail = useAppSelector(getUserEmail);
+  const userAvatarUrl = useAppSelector(getUserAvatarUrl);
 
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
@@ -37,10 +27,13 @@ const AccountInformation = () => {
       <BackButtonCustom />
       <Text style={styles.headlineText}>Profile</Text>
       <View style={styles.contentContainer}>
-        <TouchableOpacity style={styles.profileContainer} onPress={() => {}}>
-          <UserAccountIcon style={styles.accountIconOrPicture} />
-        </TouchableOpacity>
-        <Text style={styles.uploadMessage}>Tap to upload profile picture</Text>
+        <View style={styles.profileContainer}>
+          {userAvatarUrl ? (
+            <Image source={userAvatarUrl} style={styles.accountIconOrPicture} />
+          ) : (
+            <MusicNote style={styles.accountIconOrPicture} color="white" />
+          )}
+        </View>
         <View style={styles.emailContainer}>
           <Text style={styles.emailLabelText}>Email:</Text>
           <View style={styles.userEmailContainer}>
