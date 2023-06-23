@@ -5,7 +5,7 @@ import { DirectionalScale, CalculatedScale } from "@src/types";
 import globalStyles from "@src/globalStyles";
 
 const {
-  colors: { whites, grays, purples },
+  colors: { whites, grays, purples, reds },
   spacing,
   typography,
 } = globalStyles;
@@ -98,6 +98,29 @@ export default (
       width: verticalScale(spacing.multipleXL * 1.7),
       height: verticalScale(spacing.multipleXL * 1.7),
       opacity: 0.75,
+    },
+    deleteUserButton: {
+      position: "absolute",
+      bottom: verticalScale(spacing.multipleXL * 6),
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: horizontalScale(spacing.multipleXL * 15),
+      height: verticalScale(spacing.multipleReg * 5),
+      borderColor: reds.red900,
+      borderWidth: spacing.multipleXS,
+      borderRadius: spacing.multipleReg * 2.5,
+      backgroundColor: reds.red700,
+      shadowColor: reds.red900,
+      shadowOffset: { width: 0, height: -1.5 },
+      shadowOpacity: 0.25,
+      shadowRadius: 1,
+      elevation: 3,
+    },
+    buttonText: {
+      color: "white",
+      fontFamily: typography.bold,
+      fontSize: moderateScale(16),
     },
   });
 };
