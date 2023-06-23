@@ -17,6 +17,7 @@ export { default as EditIcon } from "./EditIcon";
 export { default as DeleteIcon } from "./DeleteIcon";
 export { default as BackIcon } from "./BackIcon";
 export { default as LockIcon } from "./LockIcon";
+export { default as CriticalIcon } from "./CriticalIcon";
 
 export { default as ErrorIcon } from "./error.png";
 export { default as SuccessIcon } from "./success.png";
