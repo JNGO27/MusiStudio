@@ -4,7 +4,7 @@ import useResponsiveness from "./useResponsiveness";
 import useSetSession from "./useSetSession";
 import useUnFocusedScreenToParent from "./useUnFocusedScreenToParent";
 import useNewModalState from "./useNewModalState";
-import useBottomTabGoneOnKeyboardFocus from "./useBottomTabGoneOnKeyboardFocus";
+import useIsKeyboardVisible from "./useIsKeyboardVisible";
 import useInitScreenOptions from "./useInitScreenOptions";
 import useIsNestedScreen from "./useIsNestedScreen";
 import useResetTimedStatusMessage from "./useResetTimedStatusMessage";
@@ -17,7 +17,7 @@ export {
   useSetSession,
   useUnFocusedScreenToParent,
   useNewModalState,
-  useBottomTabGoneOnKeyboardFocus,
+  useIsKeyboardVisible,
   useInitScreenOptions,
   useIsNestedScreen,
   useResetTimedStatusMessage,
