@@ -1,8 +1,14 @@
 import type { GestureResponderEvent, ViewStyle, TextStyle } from "react-native";
+import type { FormikHelpers } from "formik";
 
 export type FormikSubmit = (
   values: GestureResponderEvent | React.FormEvent<HTMLFormElement> | undefined,
 ) => void;
+
+export type FormikDeleteAccount = (
+  values: { email: string },
+  formikHelpers: FormikHelpers<{ email: string }>,
+) => void | Promise<unknown>;
 
 export type StyleSheetProps = {
   [key: string]: ViewStyle | TextStyle;
