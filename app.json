@@ -5,20 +5,12 @@
     "scheme": "pocket-music-teacher-helper",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/icon.png",
+    "icon": "./src/assets/splash/icon.png",
     "userInterfaceStyle": "light",
-    "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "The app accesses your photos to let you share them with your friends."
-        }
-      ]
-    ],
     "splash": {
-      "image": "./src/assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./src/assets/splash/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#584abf"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -29,8 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./src/assets/splash/adaptive-icon.png"
       },
 
       "package": "com.jngo27.revenuecat"
