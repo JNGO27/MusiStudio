@@ -20,10 +20,6 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./src/assets/splash/adaptive-icon.png"
-      },
-
       "package": "com.jngo27.revenuecat"
     },
     "web": {
