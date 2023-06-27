@@ -51,7 +51,8 @@ const CriticalModal = ({
   const userEmail = useAppSelector(getUserEmail);
 
   const isKeyboardVisible = useIsKeyboardVisible();
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale, dimensionWidth] =
+    useResponsiveness();
 
   const styles = createStyleSheet(
     horizontalScale,
@@ -59,6 +60,7 @@ const CriticalModal = ({
     moderateScale,
     modalVisible,
     isKeyboardVisible,
+    dimensionWidth,
   );
 
   const initialValues = {

@@ -8,6 +8,7 @@ const {
   spacing,
   colors: { whites, lightPurples, purples, reds, grays },
   typography,
+  getBreakpoints,
 } = globalStyles;
 
 export default (
@@ -16,7 +17,11 @@ export default (
   moderateScale: CalculatedScale,
   modalVisible: boolean,
   isKeyboardVisible: boolean,
+  dimensionWidth: number,
 ) => {
+  const deviceSize = getBreakpoints(dimensionWidth);
+  const isXS = deviceSize === "XS";
+
   return StyleSheet.create({
     modalContainer: modalVisible
       ? {
@@ -39,7 +44,7 @@ export default (
       borderRadius: spacing.multipleReg * 4,
       paddingVertical: verticalScale(spacing.multipleReg * 2),
       paddingHorizontal: horizontalScale(spacing.multipleReg),
-      height: "90%",
+      height: isKeyboardVisible && isXS ? "100%" : "90%",
       width: "95%",
     },
     innerContainer: {
@@ -87,7 +92,7 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       width: "80%",
-      height: spacing.multipleReg * 6,
+      height: verticalScale(spacing.multipleReg * 5),
       borderRadius: spacing.multipleReg * 4.5,
       borderWidth: spacing.multipleXS,
       borderColor: reds.red900,
@@ -99,7 +104,7 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       width: "80%",
-      height: spacing.multipleReg * 6,
+      height: verticalScale(spacing.multipleReg * 5),
       borderRadius: spacing.multipleReg * 4.5,
       borderWidth: spacing.multipleXS,
       borderColor: reds.red900,
@@ -112,7 +117,7 @@ export default (
       justifyContent: "center",
       alignItems: "center",
       width: "80%",
-      height: spacing.multipleReg * 6,
+      height: verticalScale(spacing.multipleReg * 5),
       borderRadius: spacing.multipleReg * 4.5,
       borderWidth: spacing.multipleXS,
       borderColor: lightPurples.lightPurple100,
@@ -135,8 +140,8 @@ export default (
       flex: 1,
       marginTop: verticalScale(spacing.multipleXL),
       marginBottom: verticalScale(spacing.multipleXL * 2),
-      height: moderateScale(spacing.multipleXL * 3),
-      maxHeight: spacing.multipleXL * 4,
+      height: verticalScale(spacing.multipleXL),
+      maxHeight: isXS ? spacing.multipleXL * 2.75 : spacing.multipleXL * 4,
       paddingLeft: moderateScale(spacing.multipleReg * 4, 0.25),
       paddingRight: horizontalScale(spacing.multipleReg * 2),
       borderWidth: spacing.multipleXS,
