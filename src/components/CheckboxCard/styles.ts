@@ -7,6 +7,7 @@ import globalStyles from "@src/globalStyles";
 const {
   spacing,
   colors: { grays, greens },
+  getBreakpoints,
 } = globalStyles;
 
 export default (
@@ -14,12 +15,18 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
   isChosen: boolean,
+  dimensionWidth: number,
 ) => {
+  const deviceSize = getBreakpoints(dimensionWidth);
+  const isXS = deviceSize === "XS";
+
   return StyleSheet.create({
     checkboxCard: {
       position: "relative",
       display: "flex",
-      width: horizontalScale(spacing.multipleXL * 13),
+      width: isXS
+        ? horizontalScale(spacing.multipleXL * 11)
+        : horizontalScale(spacing.multipleXL * 13),
       height: verticalScale(spacing.multipleXL * 10),
       borderRadius: spacing.multipleReg * 4,
       opacity: 2,

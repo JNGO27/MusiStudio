@@ -11,12 +11,14 @@ type Props = {
 };
 
 const CheckboxCard = ({ onPress, isChosen, children }: Props) => {
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale, dimensionWidth] =
+    useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
     isChosen,
+    dimensionWidth,
   );
   return (
     <TouchableOpacity style={styles.checkboxCard} onPress={onPress}>

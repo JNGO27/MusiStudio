@@ -18,7 +18,7 @@ export default (
   moderateScale: CalculatedScale,
   dimensionHeight: number,
 ) => {
-  const formContainerSpacing = verticalScale(spacing.multipleXL * 3);
+  const formContainerSpacing = verticalScale(spacing.multipleXL * 4.5);
 
   return StyleSheet.create({
     container: {
@@ -35,7 +35,7 @@ export default (
     addStudentImage: {
       display: "flex",
       width: "70%",
-      height: spacing.multipleL * 30,
+      height: horizontalScale(spacing.multipleL * 27),
     },
     headerText: {
       position: "relative",
@@ -185,8 +185,8 @@ export default (
     checkIcon: {
       alignSelf: "center",
       marginTop: spacing.multipleXL,
-      width: spacing.multipleReg * 5,
-      height: spacing.multipleReg * 5,
+      width: verticalScale(spacing.multipleReg * 4),
+      height: verticalScale(spacing.multipleReg * 4),
     },
     checkIconChosenFamily: {
       position: "absolute",
@@ -197,17 +197,17 @@ export default (
     },
     checkIconRate: {
       position: "absolute",
-      top: -spacing.multipleReg * 3.6,
-      right: spacing.multipleReg * 2,
-      width: spacing.multipleReg * 2.5,
-      height: spacing.multipleReg * 2.5,
+      top: horizontalScale(-spacing.multipleXL * 1.75),
+      right: horizontalScale(spacing.multipleReg * 1.75),
+      width: verticalScale(spacing.multipleReg * 2),
+      height: verticalScale(spacing.multipleReg * 2),
     },
     checkIconRateLessonLength: {
       position: "absolute",
-      top: -spacing.multipleReg * 6.6,
-      right: spacing.multipleReg * 2,
-      width: spacing.multipleReg * 2.5,
-      height: spacing.multipleReg * 2.5,
+      top: horizontalScale(-spacing.multipleReg * 5),
+      right: horizontalScale(spacing.multipleReg * 1.25),
+      width: verticalScale(spacing.multipleReg * 2),
+      height: verticalScale(spacing.multipleReg * 2),
     },
     rateOptionsTop2Container: {
       marginTop: spacing.multipleReg * 4,
@@ -352,7 +352,7 @@ export default (
       alignItems: "center",
       width: verticalScale(spacing.multipleXL * 25),
       height: verticalScale(spacing.multipleXL * 25),
-      marginBottom: spacing.multipleXL * 8,
+      marginBottom: verticalScale(spacing.multipleXL * 10),
       paddingHorizontal: spacing.multipleXL * 2,
       borderRadius: verticalScale(spacing.multipleXL * 12.5),
       backgroundColor: whites.white100,
