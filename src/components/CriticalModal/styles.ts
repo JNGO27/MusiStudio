@@ -22,7 +22,6 @@ export default (
   const deviceSize = getBreakpoints(dimensionWidth);
   const isXS = deviceSize === "XS";
   const isIOS = Platform.OS === "ios";
-  const isAndroid = Platform.OS === "android";
 
   const modalCardHeightAndroid = isKeyboardVisible && isXS ? "100%" : "90%";
   const modalCardHeightIOS = isKeyboardVisible ? "65%" : "90%";
