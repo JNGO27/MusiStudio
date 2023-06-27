@@ -1,6 +1,7 @@
+/* eslint-disable consistent-return */
 import { StyleSheet } from "react-native";
 
-import { DirectionalScale, CalculatedScale } from "@src/types";
+import { DirectionalScale, CalculatedScale, BreakPointSizes } from "@src/types";
 
 export const appStyles = StyleSheet.create({
   container: {
@@ -305,9 +306,26 @@ const ComponentStyles = {
   },
 };
 
+const BREAKPOINTS = {
+  xs: 360,
+  s: 475,
+  m: 600,
+  l: 750,
+  xl: 1024,
+};
+
+function getBreakpoints(width: number): BreakPointSizes | undefined {
+  if (width <= BREAKPOINTS.xs) return "XS";
+  if (width <= BREAKPOINTS.s && width < BREAKPOINTS.m) return "S";
+  if (width <= BREAKPOINTS.m && width < BREAKPOINTS.l) return "M";
+  if (width <= BREAKPOINTS.l && width < BREAKPOINTS.xl) return "L";
+  if (width <= BREAKPOINTS.xl) return "XL";
+}
+
 export default {
   spacing: SPACING,
   colors: COLORS,
   typography: TYPOGRAPHY,
   componentStyles: ComponentStyles,
-};
+  getBreakpoints,
+} as const;
