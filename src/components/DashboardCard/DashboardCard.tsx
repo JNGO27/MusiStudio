@@ -1,4 +1,5 @@
-import { View, Text, TouchableHighlight } from "react-native";
+/* eslint-disable no-nested-ternary */
+import { View, Text, TouchableHighlight, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -48,6 +49,7 @@ const navigationOptions: NavigationOptionsTypes<
 const DashboardCard = ({ type }: Props) => {
   const { data: studentCount, isLoading } = useGetStudentsCountQuery({});
   const navigator = useNavigation<DashboardCardNavigationProps>();
+  const isIOS = Platform.OS === "ios";
 
   const [horizontalScale, verticalScale, moderateScale, dimensionWidth] =
     useResponsiveness();
@@ -82,7 +84,21 @@ const DashboardCard = ({ type }: Props) => {
               <UserStudent style={styles.studentsIcon} />
             </View>
             <View style={styles.textAndLoadingContainer}>
-              {isLoading ? (
+              {isIOS ? (
+                isLoading ? (
+                  <ThreeDotsLoading
+                    dotSize={spacing.multipleReg}
+                    dotColor="white"
+                  />
+                ) : (
+                  <View style={styles.iosStudentTextContainer}>
+                    <Text style={styles.iosStudentsText}>
+                      {studentCount} / 25
+                    </Text>
+                    <Text style={styles.iosStudentsText}>Students</Text>
+                  </View>
+                )
+              ) : isLoading ? (
                 <ThreeDotsLoading
                   dotSize={spacing.multipleReg}
                   dotColor="white"

@@ -23,7 +23,7 @@ export default (
 
   const circleSize = isXS
     ? horizontalScale(spacing.multipleXL * 4.25)
-    : horizontalScale(spacing.multipleXL * 5.5);
+    : horizontalScale(spacing.multipleXL * 5.25);
 
   return StyleSheet.create({
     touchableBackground: {
@@ -81,6 +81,20 @@ export default (
       opacity: 0.85,
       width: "80%",
       marginTop: isXS ? spacing.multipleReg : spacing.multipleXL,
+      textAlign: "center",
+    },
+    iosStudentTextContainer: {
+      display: "flex",
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    iosStudentsText: {
+      fontFamily: typography.medium,
+      fontSize: moderateScale(14),
+      color: whites.white300,
+      opacity: 0.85,
+      width: "80%",
       textAlign: "center",
     },
   });
