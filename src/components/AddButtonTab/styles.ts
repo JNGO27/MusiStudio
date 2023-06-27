@@ -7,7 +7,6 @@ import globalStyles from "@src/globalStyles";
 
 const {
   spacing,
-  typography,
   colors: { whites, blacks },
 } = globalStyles;
 
@@ -16,7 +15,7 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
 ) => {
-  const addTabSize = spacing.multipleXL * 5;
+  const addTabSize = horizontalScale(spacing.multipleXL * 4);
 
   return StyleSheet.create({
     addButton: {
@@ -26,7 +25,6 @@ export default (
       width: addTabSize,
       height: addTabSize,
       borderRadius: addTabSize / 2,
-      padding: spacing.multipleS,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -38,7 +36,6 @@ export default (
       elevation: 15,
     },
     addButtonTouchable: {
-      position: "relative",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -47,8 +44,7 @@ export default (
     },
     addButtonIcon: {
       color: whites.white200,
-      fontFamily: typography.semiBold,
-      fontSize: moderateScale(spacing.multipleReg * 3.25),
+      fontSize: moderateScale(spacing.multipleXL * 2.25),
     },
   });
 };
