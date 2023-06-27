@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { useEffect } from "react";
-import { Text } from "react-native";
+import { View, Text, Platform } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -19,6 +19,8 @@ type Props = {
 };
 
 const TimedStatusMessage = ({ type }: Props) => {
+  const isIOS = Platform.OS === "ios";
+
   const [horizontalScale, verticalScale, moderateScale, , dimensionHeight] =
     useResponsiveness();
 
@@ -45,6 +47,12 @@ const TimedStatusMessage = ({ type }: Props) => {
     messageContainer: typeStyleResults,
   };
 
+  const iosArrMessage = typeMessage.split(" ");
+  const iosFirstHalf = iosArrMessage
+    .slice(0, iosArrMessage.length / 2)
+    .join(" ");
+  const iosSecondHalf = iosArrMessage.slice(iosArrMessage.length / 2).join(" ");
+
   useEffect(() => {
     translateY.value = withTiming(-dimensionHeight / 17, { duration: 350 });
 
@@ -60,7 +68,14 @@ const TimedStatusMessage = ({ type }: Props) => {
     <Animated.View
       style={[successOrErrorStyles.messageContainer, animatedStyle]}
     >
-      <Text style={styles.messageText}>{typeMessage}</Text>
+      {isIOS ? (
+        <View>
+          <Text style={styles.iosMessageText}>{iosFirstHalf}</Text>
+          <Text style={styles.iosMessageText}>{iosSecondHalf}</Text>
+        </View>
+      ) : (
+        <Text style={styles.messageText}>{typeMessage}</Text>
+      )}
     </Animated.View>
   );
 };

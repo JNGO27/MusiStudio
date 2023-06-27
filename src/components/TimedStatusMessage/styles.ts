@@ -80,6 +80,15 @@ export default (
     messageText: {
       position: "relative",
       top: spacing.multipleXS,
+      display: "flex",
+      lineHeight: spacing.multipleReg * 3,
+      textAlign: "center",
+      fontFamily: typography.semiBold,
+      fontSize: moderateScale(14),
+      color: blacks.black,
+    },
+    iosMessageText: {
+      display: "flex",
       lineHeight: spacing.multipleReg * 3,
       textAlign: "center",
       fontFamily: typography.semiBold,
