@@ -1,4 +1,4 @@
-import { ScrollView, View, Text } from "react-native";
+import { ScrollView, View, Text, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
 
@@ -26,46 +26,49 @@ const AuthHome = () => {
   );
 
   return (
-    <LinearGradient
-      style={styles.container}
-      colors={purpleGradient.colors}
-      locations={purpleGradient.locations}
-      start={purpleGradient.start}
-      end={purpleGradient.end}
-    >
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.headlineContainer}>
-          <Text style={styles.headlineText}>Welcome to ProtegeCoreSuite</Text>
-          <Text style={styles.headlineSubText}>
-            Your all-in-one music studio management solution. Create an account
-            to get started.
-          </Text>
-        </View>
-        <Image
-          source={StudentSingingStudentGuitar}
-          contentFit="cover"
-          style={styles.image}
-        />
-        <View style={styles.card}>
-          <View style={styles.decorationsContainer}>
-            <View style={styles.decorationsContainerInner}>
-              <View style={styles.decorationCircle} />
-              <View style={styles.decorationBox} />
-              <View style={styles.decorationCircle} />
-            </View>
-            <AccountPerson style={styles.accountPerson} />
+    <>
+      <StatusBar />
+      <LinearGradient
+        style={styles.container}
+        colors={purpleGradient.colors}
+        locations={purpleGradient.locations}
+        start={purpleGradient.start}
+        end={purpleGradient.end}
+      >
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.headlineContainer}>
+            <Text style={styles.headlineText}>Welcome to ProtegeCoreSuite</Text>
+            <Text style={styles.headlineSubText}>
+              Your all-in-one music studio management solution. Create an
+              account to get started.
+            </Text>
           </View>
-          <AuthOption authOption="Email" />
-          <OAuthOption provider="google" />
-        </View>
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>
-            By continuing, you agree to ProtegeCoreSuite&apos;s Terms And
-            Conditions and Privacy Policy.
-          </Text>
-        </View>
-      </ScrollView>
-    </LinearGradient>
+          <Image
+            source={StudentSingingStudentGuitar}
+            contentFit="cover"
+            style={styles.image}
+          />
+          <View style={styles.card}>
+            <View style={styles.decorationsContainer}>
+              <View style={styles.decorationsContainerInner}>
+                <View style={styles.decorationCircle} />
+                <View style={styles.decorationBox} />
+                <View style={styles.decorationCircle} />
+              </View>
+              <AccountPerson style={styles.accountPerson} />
+            </View>
+            <AuthOption authOption="Email" />
+            <OAuthOption provider="google" />
+          </View>
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>
+              By continuing, you agree to ProtegeCoreSuite&apos;s Terms And
+              Conditions and Privacy Policy.
+            </Text>
+          </View>
+        </ScrollView>
+      </LinearGradient>
+    </>
   );
 };
 
