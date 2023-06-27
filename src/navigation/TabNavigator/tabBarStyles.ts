@@ -19,6 +19,7 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
   isNested: boolean,
+  isXS: boolean,
 ) => {
   return StyleSheet.create({
     tabBarStyleSheet: {
@@ -29,9 +30,10 @@ export default (
       alignItems: "center",
       borderTopLeftRadius: spacing.multipleReg * 6,
       borderTopRightRadius: spacing.multipleReg * 6,
+      paddingTop: isXS ? spacing.multipleReg : 0,
       height: "7.25%",
       width: "100%",
-      gap: spacing.multipleReg,
+      gap: isXS ? spacing.multipleM : spacing.multipleXL,
       backgroundColor: whites.white200,
       shadowColor: blacks.blackTransparent,
       shadowOffset: { width: 0, height: -1.5 },
