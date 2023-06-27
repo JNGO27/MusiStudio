@@ -15,7 +15,7 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
 ) => {
-  const addTabSize = horizontalScale(spacing.multipleXL * 4);
+  const addTabSize = horizontalScale(spacing.multipleXL * 4.5);
 
   return StyleSheet.create({
     addButton: {
@@ -24,6 +24,8 @@ export default (
       bottom: spacing.multipleXL * 7,
       width: addTabSize,
       height: addTabSize,
+      maxWidth: spacing.multipleXL * 7,
+      maxHeight: spacing.multipleXL * 7,
       borderRadius: addTabSize / 2,
       display: "flex",
       alignItems: "center",

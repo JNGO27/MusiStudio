@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 import { DirectionalScale, CalculatedScale } from "@src/types";
 import globalStyles from "@src/globalStyles";
@@ -21,6 +21,12 @@ export default (
 ) => {
   const deviceSize = getBreakpoints(dimensionWidth);
   const isXS = deviceSize === "XS";
+  const isIOS = Platform.OS === "ios";
+  const isAndroid = Platform.OS === "android";
+
+  const modalCardHeightAndroid = isKeyboardVisible && isXS ? "100%" : "90%";
+  const modalCardHeightIOS = isKeyboardVisible ? "65%" : "90%";
+  const modalCardHeight = isIOS ? modalCardHeightIOS : modalCardHeightAndroid;
 
   return StyleSheet.create({
     modalContainer: modalVisible
@@ -32,7 +38,7 @@ export default (
       : {},
     modalBackground: {
       flex: 1,
-      justifyContent: "center",
+      justifyContent: isIOS && isKeyboardVisible ? "flex-start" : "center",
       alignItems: "center",
       backgroundColor: "black",
     },
@@ -44,7 +50,7 @@ export default (
       borderRadius: spacing.multipleReg * 4,
       paddingVertical: verticalScale(spacing.multipleReg * 2),
       paddingHorizontal: horizontalScale(spacing.multipleReg),
-      height: isKeyboardVisible && isXS ? "100%" : "90%",
+      height: modalCardHeight,
       width: "95%",
     },
     innerContainer: {
