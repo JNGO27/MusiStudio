@@ -41,11 +41,19 @@ const FamilyCardDetails = () => {
 
   const familyData = useAppSelector(getGlobalFamilyData);
 
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const [
+    horizontalScale,
+    verticalScale,
+    moderateScale,
+    dimensionWidth,
+    dimensionHeight,
+  ] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
+    dimensionWidth,
+    dimensionHeight,
   );
 
   const handleEditNavigation = () => navigator.navigate("EditFamily");

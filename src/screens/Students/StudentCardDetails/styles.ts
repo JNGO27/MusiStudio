@@ -15,11 +15,13 @@ export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  dimensionWidth: number,
+  dimensionHeight: number,
 ) => {
   const circleDimension = verticalScale(spacing.multipleReg * 90);
   const circleBorder = verticalScale(circleDimension / 2);
-  const circleTopOffset = verticalScale(
-    -circleBorder - spacing.multipleReg * 2,
+  const circleTopOffset = horizontalScale(
+    -dimensionWidth + -dimensionHeight / 3,
   );
 
   return StyleSheet.create({
@@ -40,7 +42,7 @@ export default (
     },
     headlineText: {
       position: "absolute",
-      bottom: spacing.multipleReg * 6,
+      bottom: verticalScale(spacing.multipleReg * 5),
       fontFamily: typography.bold,
       fontSize: moderateScale(18),
       color: lightPurples.lightPurple100,
