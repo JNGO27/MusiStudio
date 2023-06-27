@@ -9,14 +9,21 @@ const {
   spacing,
   typography,
   colors: { purples, whites },
+  getBreakpoints,
 } = globalStyles;
 
 export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  dimensionWidth: number,
 ) => {
-  const circleSize = horizontalScale(spacing.multipleXL * 5.5);
+  const deviceSize = getBreakpoints(dimensionWidth);
+  const isXS = deviceSize === "XS";
+
+  const circleSize = isXS
+    ? horizontalScale(spacing.multipleXL * 4.25)
+    : horizontalScale(spacing.multipleXL * 5.5);
 
   return StyleSheet.create({
     touchableBackground: {
@@ -30,8 +37,11 @@ export default (
     dashboardCardContainer: {
       display: "flex",
       alignItems: "center",
-      width: horizontalScale(spacing.multipleXL * 11.5),
+      width: isXS
+        ? verticalScale(spacing.multipleXL * 10)
+        : verticalScale(spacing.multipleXL * 11.5),
       height: verticalScale(spacing.multipleXL * 12.25),
+      maxWidth: spacing.multipleXL * 13,
       borderRadius: spacing.multipleXL * 3,
       shadowOffset: { width: 0, height: -1.5 },
       shadowOpacity: 0.25,
@@ -49,8 +59,12 @@ export default (
       backgroundColor: purples.purple100,
     },
     studentsIcon: {
-      width: spacing.multipleXL * 3.5,
-      height: spacing.multipleXL * 3.5,
+      width: isXS
+        ? verticalScale(spacing.multipleXL * 2.5)
+        : verticalScale(spacing.multipleXL * 3),
+      height: isXS
+        ? verticalScale(spacing.multipleXL * 2.5)
+        : verticalScale(spacing.multipleXL * 3),
       color: whites.white200,
     },
     textAndLoadingContainer: {
@@ -66,7 +80,7 @@ export default (
       color: whites.white300,
       opacity: 0.85,
       width: "80%",
-      marginTop: spacing.multipleXL,
+      marginTop: isXS ? spacing.multipleReg : spacing.multipleXL,
       textAlign: "center",
     },
   });

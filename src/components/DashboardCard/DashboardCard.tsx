@@ -49,11 +49,13 @@ const DashboardCard = ({ type }: Props) => {
   const { data: studentCount, isLoading } = useGetStudentsCountQuery({});
   const navigator = useNavigation<DashboardCardNavigationProps>();
 
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale, dimensionWidth] =
+    useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
+    dimensionWidth,
   );
 
   const handleNavigation = () => {
