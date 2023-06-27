@@ -18,11 +18,8 @@ export default (
   dimensionWidth: number,
   dimensionHeight: number,
 ) => {
-  const circleDimension = verticalScale(spacing.multipleReg * 90);
-  const circleBorder = verticalScale(circleDimension / 2);
-  const circleTopOffset = horizontalScale(
-    -dimensionWidth + -dimensionHeight / 3,
-  );
+  const circleDimension = horizontalScale(spacing.multipleReg * 10);
+  const circleBorder = horizontalScale(dimensionWidth);
 
   return StyleSheet.create({
     detailsContainer: {
@@ -35,23 +32,23 @@ export default (
       display: "flex",
       alignItems: "center",
       position: "relative",
-      top: circleTopOffset,
+      top: 0,
       height: circleDimension,
-      width: circleDimension,
+      width: "100%",
       borderRadius: circleBorder,
     },
     headlineText: {
       position: "absolute",
-      bottom: verticalScale(spacing.multipleReg * 3),
+      bottom: verticalScale(spacing.multipleS),
       fontFamily: typography.bold,
       fontSize: moderateScale(18),
       color: lightPurples.lightPurple100,
       textAlign: "center",
-      width: "30%",
+      width: "50%",
     },
     detailsContent: {
       position: "relative",
-      top: circleTopOffset,
+      top: 0,
       height: "100%",
       width: "100%",
       paddingTop: spacing.multipleXL * 3,

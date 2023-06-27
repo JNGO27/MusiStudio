@@ -18,11 +18,8 @@ export default (
   dimensionWidth: number,
   dimensionHeight: number,
 ) => {
-  const circleDimension = verticalScale(spacing.multipleReg * 90);
-  const circleBorder = verticalScale(circleDimension / 2);
-  const circleTopOffset = horizontalScale(
-    -dimensionWidth + -dimensionHeight / 3,
-  );
+  const circleDimension = horizontalScale(spacing.multipleReg * 10);
+  const circleBorder = horizontalScale(dimensionWidth);
 
   return StyleSheet.create({
     detailsContainer: {
@@ -34,22 +31,23 @@ export default (
     gradientDecoration: {
       display: "flex",
       alignItems: "center",
+      justifyContent: "center",
       position: "relative",
-      top: circleTopOffset,
+      top: 0,
       height: circleDimension,
-      width: circleDimension,
+      width: "100%",
       borderRadius: circleBorder,
     },
     headlineText: {
       position: "absolute",
-      bottom: verticalScale(spacing.multipleReg * 5),
+      bottom: verticalScale(spacing.multipleReg * 2),
       fontFamily: typography.bold,
       fontSize: moderateScale(18),
       color: lightPurples.lightPurple100,
     },
     detailsContent: {
       position: "relative",
-      top: circleTopOffset,
+      top: 0,
       height: "100%",
       width: "100%",
       paddingTop: spacing.multipleXL * 3,
