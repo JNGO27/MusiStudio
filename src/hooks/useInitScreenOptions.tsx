@@ -40,7 +40,7 @@ const useInitScreenOptions = () => {
 
   return ({ route }: ScreenOptionsProps): BottomTabNavigationOptions => ({
     // eslint-disable-next-line consistent-return
-    tabBarIcon: ({ color, size }) => {
+    tabBarIcon: ({ color }) => {
       if (route.name === "HomeNav") {
         return <HomeIcon color={color} width={iconSize} height={iconSize} />;
       }

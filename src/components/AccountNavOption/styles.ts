@@ -15,7 +15,7 @@ export default (
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
 ) => {
-  const accountSize = spacing.multipleL * 4.5;
+  const accountSize = verticalScale(spacing.multipleL * 3.75);
 
   return StyleSheet.create({
     accountNavContainer: {

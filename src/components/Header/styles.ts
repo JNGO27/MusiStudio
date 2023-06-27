@@ -23,7 +23,7 @@ export default (
       top: 0,
       backgroundColor: whites.white100,
       width: "100%",
-      height: spacing.multipleXL * 5.5,
+      height: verticalScale(spacing.multipleXL * 4.5),
       paddingHorizontal: spacing.multipleXL * 2,
       borderBottomLeftRadius: spacing.multipleXL * 4,
       borderBottomRightRadius: spacing.multipleXL * 4,
