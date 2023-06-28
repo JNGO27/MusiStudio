@@ -1,4 +1,3 @@
-import { Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import type { HeaderStackParamList } from "@src/types";
@@ -8,6 +7,7 @@ import {
   AccountInformation,
   About,
   PrivacyPolicy,
+  TermsAndConditions,
 } from "@src/screens";
 
 const Stack = createNativeStackNavigator<HeaderStackParamList>();
@@ -42,6 +42,13 @@ const HeaderNav = () => {
           headerShown: false,
         }}
         component={PrivacyPolicy}
+      />
+      <Stack.Screen
+        name="TermsAndConditions"
+        options={{
+          headerShown: false,
+        }}
+        component={TermsAndConditions}
       />
     </Stack.Navigator>
   );

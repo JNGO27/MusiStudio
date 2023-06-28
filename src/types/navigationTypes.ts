@@ -25,7 +25,7 @@ export type HeaderStackParamList = {
   AccountInformation: undefined;
   About: undefined;
   PrivacyPolicy: undefined;
-  TermsAndService: undefined;
+  TermsAndConditions: undefined;
 };
 
 export type HeaderAccountNavOptions = (typeof HeaderNavOptionsOnlyArr)[number];
@@ -39,6 +39,8 @@ export type AuthStackParamList = {
   SignIn: undefined;
   ForgotPassword: undefined;
   ResetForm: undefined;
+  PrivacyPolicy: undefined;
+  TermsAndConditions: undefined;
 };
 
 export type AuthNavOptions = (typeof AuthOptionsOnlyArr)[number];
