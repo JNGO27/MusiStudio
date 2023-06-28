@@ -23,14 +23,14 @@ export default (
     },
     scrollContentContainer: {
       display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
       paddingHorizontal: horizontalScale(spacing.multipleXL * 1.5),
     },
     screenContainer: {
       display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
       flex: 1,
     },
     headlineText: {
@@ -44,15 +44,15 @@ export default (
     allContentContainer: {
       alignSelf: "flex-start",
       display: "flex",
-      alignItems: "center",
+      alignItems: "flex-start",
       flex: 1,
       marginTop: headlinePosition + verticalScale(spacing.multipleXL * 2),
       paddingBottom: spacing.multipleXL * 5,
     },
     contentContainer: {
       display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      alignItems: "flex-start",
+      justifyContent: "flex-start",
       flex: 1,
       gap: spacing.multipleXL * 2,
     },
