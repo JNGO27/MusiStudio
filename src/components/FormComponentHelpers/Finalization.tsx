@@ -18,6 +18,8 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack/l
 
 import type { StudentFormValues, AddStudentParamList } from "@src/types";
 
+import { APP_EMAIL } from "@src/utils/constants";
+
 import { useAddStudentFormContext } from "@src/contexts/AddStudentFormContext";
 import { WarningModal } from "@src/components";
 import { useNewModalState } from "@src/hooks";
@@ -158,7 +160,7 @@ const Finalization = ({ scrollRef }: Props) => {
       <WarningModal
         dispatchWarningAction={openOrCloseModal}
         warningHeaderText="Limit reached"
-        warningBodyText="Thanks for using this app so much! We are still in beta and a free product. If you really want more storage please contact us at: protegecoresuite@gmail.com"
+        warningBodyText={`Thanks for using this app so much! We are still in beta and a free product. If you really want more storage please contact us at: ${APP_EMAIL}`}
         warningActionText="Ok"
         modalVisible={modalVisible}
         openOrCloseModal={openOrCloseModal}
