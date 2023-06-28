@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { HomeIcon, UserStudent } from "@src/assets/icons";
 
 import type { Route } from "@react-navigation/native";
@@ -25,6 +26,7 @@ const useInitScreenOptions = () => {
 
   const getDeviceSize = getBreakpoints(dimensionWidth);
   const isXS = getDeviceSize === "XS";
+  const isTabletSize = getDeviceSize === "XL" || getDeviceSize === "L";
 
   const styles = createStyleSheet(
     horizontalScale,
@@ -36,6 +38,8 @@ const useInitScreenOptions = () => {
 
   const iconSize = isXS
     ? horizontalScale(spacing.multipleL * 1.75)
+    : isTabletSize
+    ? horizontalScale(spacing.multipleL * 1.25)
     : horizontalScale(spacing.multipleL * 2);
 
   return ({ route }: ScreenOptionsProps): BottomTabNavigationOptions => ({
@@ -50,6 +54,7 @@ const useInitScreenOptions = () => {
       }
     },
     tabBarStyle: styles.tabBarStyleSheet,
+    tabBarLabelPosition: "below-icon",
     tabBarHideOnKeyboard: true,
   });
 };

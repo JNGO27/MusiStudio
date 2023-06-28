@@ -9,6 +9,7 @@ const {
   spacing,
   typography,
   colors: { lightPurples, purples, whites },
+  getBreakpoints,
 } = globalStyles;
 
 export default (
@@ -17,14 +18,18 @@ export default (
   moderateScale: CalculatedScale,
   dimensionWidth: number,
 ) => {
+  const deviceSize = getBreakpoints(dimensionWidth);
   const circleSize = dimensionWidth;
+  const isTabletSize = deviceSize === "XL" || deviceSize === "L";
 
   return StyleSheet.create({
     container: {
       display: "flex",
       flex: 1,
       backgroundColor: lightPurples.lightPurple100,
-      paddingTop: spacing.multipleXL * 7,
+      paddingTop: isTabletSize
+        ? spacing.multipleXL * 9
+        : spacing.multipleXL * 7,
       paddingBottom: spacing.multipleXL * 6.5,
     },
     emptyContainer: {
@@ -36,7 +41,7 @@ export default (
     },
     cardsContainer: {
       width: "100%",
-      paddingLeft: spacing.multipleL * 1,
+      paddingHorizontal: spacing.multipleL * 1,
     },
     cardsContainerFlex: {
       display: "flex",

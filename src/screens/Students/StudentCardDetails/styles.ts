@@ -9,6 +9,7 @@ const {
   spacing,
   colors: { lightPurples, purples, whites, blacks, grays },
   typography,
+  getBreakpoints,
 } = globalStyles;
 
 export default (
@@ -18,7 +19,11 @@ export default (
   dimensionWidth: number,
   dimensionHeight: number,
 ) => {
-  const circleDimension = horizontalScale(spacing.multipleReg * 10);
+  const deviceSize = getBreakpoints(dimensionWidth);
+  const isTabletSize = deviceSize === "XL" || deviceSize === "L";
+  const circleDimension = isTabletSize
+    ? horizontalScale(spacing.multipleReg * 7.5)
+    : horizontalScale(spacing.multipleReg * 10);
   const circleBorder = horizontalScale(dimensionWidth);
 
   return StyleSheet.create({

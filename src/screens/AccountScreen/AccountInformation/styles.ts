@@ -8,13 +8,17 @@ const {
   colors: { whites, grays, purples, reds },
   spacing,
   typography,
+  getBreakpoints,
 } = globalStyles;
 
 export default (
   horizontalScale: DirectionalScale,
   verticalScale: DirectionalScale,
   moderateScale: CalculatedScale,
+  dimensionWidth: number,
 ) => {
+  const deviceSize = getBreakpoints(dimensionWidth);
+  const isTabletSize = deviceSize === "XL" || deviceSize === "L";
   const headlinePosition = verticalScale(spacing.multipleReg * 6.5);
   const accountSize = spacing.multipleL * 12.5;
 
@@ -105,8 +109,12 @@ export default (
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      width: horizontalScale(spacing.multipleXL * 20),
-      height: horizontalScale(spacing.multipleReg * 7),
+      width: isTabletSize
+        ? horizontalScale(spacing.multipleXL * 14)
+        : horizontalScale(spacing.multipleXL * 20),
+      height: isTabletSize
+        ? horizontalScale(spacing.multipleXL * 3)
+        : horizontalScale(spacing.multipleReg * 7),
       borderColor: reds.red900,
       borderWidth: spacing.multipleXS,
       borderRadius: spacing.multipleReg * 2.5,

@@ -20,6 +20,7 @@ export default (
 ) => {
   const deviceSize = getBreakpoints(dimensionWidth);
   const isXS = deviceSize === "XS";
+  const isTabletSize = deviceSize === "XL" || deviceSize === "L";
 
   const circleSize = isXS
     ? horizontalScale(spacing.multipleXL * 4.25)
@@ -55,6 +56,8 @@ export default (
       marginTop: spacing.multipleXL * 2,
       width: circleSize,
       height: circleSize,
+      maxWidth: spacing.multipleXL * 7.5,
+      maxHeight: spacing.multipleXL * 7.5,
       borderRadius: circleSize / 2,
       backgroundColor: purples.purple100,
     },
@@ -66,6 +69,8 @@ export default (
         ? verticalScale(spacing.multipleXL * 2.5)
         : verticalScale(spacing.multipleXL * 3),
       color: whites.white200,
+      maxWidth: spacing.multipleXL * 4.5,
+      maxHeight: spacing.multipleXL * 4.5,
     },
     textAndLoadingContainer: {
       display: "flex",
@@ -76,7 +81,7 @@ export default (
     },
     studentsText: {
       fontFamily: typography.medium,
-      fontSize: moderateScale(14),
+      fontSize: isTabletSize ? moderateScale(12) : moderateScale(14),
       color: whites.white300,
       opacity: 0.85,
       width: "80%",

@@ -24,11 +24,13 @@ const AccountInformation = () => {
   const userEmail = useAppSelector(getUserEmail);
   const userAvatarUrl = useAppSelector(getUserAvatarUrl);
 
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale, dimensionWidth] =
+    useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
+    dimensionWidth,
   );
 
   const handleSignOut = async () => {
