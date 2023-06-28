@@ -1,5 +1,7 @@
 export const APP_NAME = "ProtegeCoreSuite";
 
+export const APP_EMAIL = "protegecoresuite@gmail.com";
+
 export const HomeOptionsArr = [
   {
     title: "Students",
@@ -54,7 +56,7 @@ export const HeaderNavOptionsOnlyArr = [
   {
     header: "Privacy Policy",
     screenName: "PrivacyPolicy",
-    content: "Privacy Policy content information",
+    content: "Privacy Policy, contact us(bottom of page)",
   },
 ] as const;
 
