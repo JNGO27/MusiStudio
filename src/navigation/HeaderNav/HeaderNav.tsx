@@ -3,11 +3,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import type { HeaderStackParamList } from "@src/types";
 
-import { AccountHome, AccountInformation, About } from "@src/screens";
+import {
+  AccountHome,
+  AccountInformation,
+  About,
+  PrivacyPolicy,
+} from "@src/screens";
 
 const Stack = createNativeStackNavigator<HeaderStackParamList>();
-
-const PlaceHolder = () => <Text>PlaceHolder</Text>;
 
 const HeaderNav = () => {
   return (
@@ -38,7 +41,7 @@ const HeaderNav = () => {
         options={{
           headerShown: false,
         }}
-        component={PlaceHolder}
+        component={PrivacyPolicy}
       />
     </Stack.Navigator>
   );
