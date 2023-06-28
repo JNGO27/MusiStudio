@@ -156,5 +156,10 @@ export default (
       fontSize: moderateScale(10),
       fontFamily: typography.medium,
     },
+    privacyPolicyText: {
+      color: pinks.pink300,
+      textDecorationLine: "underline",
+      textDecorationColor: pinks.pink300,
+    },
   });
 };

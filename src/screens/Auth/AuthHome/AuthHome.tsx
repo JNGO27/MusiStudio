@@ -1,6 +1,11 @@
 import { ScrollView, View, Text, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
+import { useNavigation } from "@react-navigation/native";
+
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
+
+import { APP_NAME } from "@src/utils/constants";
 
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { AuthOption, OAuthOption } from "@src/components";
@@ -17,13 +22,32 @@ const {
   },
 } = globalStyles;
 
+type PrivacyPolicyNavigation = NativeStackNavigationProp<
+  {
+    AuthHome: undefined;
+    PrivacyPolicy: undefined;
+    TermsAndConditions: undefined;
+  },
+  "AuthHome"
+>;
+
 const AuthHome = () => {
+  const navigator = useNavigation<PrivacyPolicyNavigation>();
+
   const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
     moderateScale,
   );
+
+  const handleTermsAndConditionsScreen = () => {
+    navigator.navigate("TermsAndConditions");
+  };
+
+  const handlePrivacyPolicyScreen = () => {
+    navigator.navigate("PrivacyPolicy");
+  };
 
   return (
     <>
@@ -39,8 +63,8 @@ const AuthHome = () => {
           <View style={styles.headlineContainer}>
             <Text style={styles.headlineText}>Welcome to ProtegeCoreSuite</Text>
             <Text style={styles.headlineSubText}>
-              Your all-in-one music studio management solution. Create an
-              account to get started.
+              Your music studio student management solution. Create an account
+              to get started.
             </Text>
           </View>
           <Image
@@ -62,8 +86,20 @@ const AuthHome = () => {
           </View>
           <View style={styles.footer}>
             <Text style={styles.footerText}>
-              By continuing, you agree to ProtegeCoreSuite&apos;s Terms And
-              Conditions and Privacy Policy.
+              By continuing, you agree to {APP_NAME}&apos;s{" "}
+              <Text
+                style={styles.privacyPolicyText}
+                onPress={handleTermsAndConditionsScreen}
+              >
+                Terms And Conditions
+              </Text>{" "}
+              and{" "}
+              <Text
+                style={styles.privacyPolicyText}
+                onPress={handlePrivacyPolicyScreen}
+              >
+                Privacy Policy
+              </Text>
             </Text>
           </View>
         </ScrollView>
