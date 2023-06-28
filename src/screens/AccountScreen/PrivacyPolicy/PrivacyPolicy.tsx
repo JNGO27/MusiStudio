@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
       <View style={styles.allContentContainer}>
         <View style={styles.contentContainer}>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionText}>Introduction</Text>
+            <Text style={styles.sectionText}>1. Introduction</Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               At {APP_NAME}, we take your privacy seriously. This Privacy Policy
               explains what personal information we collect, why we collect it,
@@ -33,7 +33,9 @@ const PrivacyPolicy = () => {
             </Text>
           </View>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionText}>What Information We Collect</Text>
+            <Text style={styles.sectionText}>
+              2. What Information We Collect
+            </Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               Our app collects the following information directly from our
               users: {"\n"}- Parent names {"\n"}- Student names {"\n"}- Parent
@@ -45,7 +47,7 @@ const PrivacyPolicy = () => {
           </View>
           <View style={styles.sectionContainer}>
             <Text style={styles.sectionText}>
-              How We Use the Collected Information
+              3. How We Use the Collected Information
             </Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               We use your information to provide our services, respond to your
@@ -54,7 +56,7 @@ const PrivacyPolicy = () => {
             </Text>
           </View>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionText}>Data Storage and Security</Text>
+            <Text style={styles.sectionText}>4. Data Storage and Security</Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               Your data is stored in a secure manner using Supabase, a modern
               backend service. Supabase uses secure, encrypted servers to ensure
@@ -63,7 +65,7 @@ const PrivacyPolicy = () => {
           </View>
           <View style={styles.sectionContainer}>
             <Text style={styles.sectionText}>
-              Data Sharing and Third Party Services
+              5. Data Sharing and Third Party Services
             </Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               We do not share your personal information with any third parties,
@@ -75,7 +77,7 @@ const PrivacyPolicy = () => {
             </Text>
           </View>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionText}>User Rights</Text>
+            <Text style={styles.sectionText}>6. User Rights</Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               You have the right to access, correct, or delete your personal
               information at any time. Please contact us directly if you wish to
@@ -84,7 +86,7 @@ const PrivacyPolicy = () => {
           </View>
 
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionText}>Children’s Privacy</Text>
+            <Text style={styles.sectionText}>7. Children’s Privacy</Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               Our services are primarily intended for adults, specifically music
               teachers, who input student information. While we collect student
@@ -100,7 +102,7 @@ const PrivacyPolicy = () => {
 
           <View style={styles.sectionContainer}>
             <Text style={styles.sectionText}>
-              Updates to This Privacy Policy
+              8. Updates to This Privacy Policy
             </Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               We may update our Privacy Policy from time to time. We will notify
@@ -111,7 +113,7 @@ const PrivacyPolicy = () => {
           </View>
 
           <View style={styles.sectionContainerContact}>
-            <Text style={styles.sectionText}>Contact Us</Text>
+            <Text style={styles.sectionText}>9. Contact Us</Text>
             <Text style={styles.privacyPolicyAppTextContent}>
               If you have any questions or suggestions about our Privacy Policy,
               do not hesitate to contact us at:

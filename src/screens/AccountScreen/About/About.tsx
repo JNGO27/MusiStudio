@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import useResponsiveness from "@src/hooks/useResponsiveness";
 import { BackButtonCustom } from "@src/components";
 
-import { APP_NAME } from "@src/utils/constants";
+import { APP_NAME, APP_EMAIL } from "@src/utils/constants";
 
 import createStyleSheet from "./styles";
 
@@ -37,6 +37,12 @@ const About = () => {
             by music teachers. Now, as a software engineer, he aims to create a
             custom solution for the problems experienced by music teachers,
             based on his own experiences and those of his network.
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.aboutCreatorHeadline}>Contact Us</Text>
+          <Text style={styles.aboutMeTextContent} selectable>
+            {APP_EMAIL}
           </Text>
         </View>
       </View>

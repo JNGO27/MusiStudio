@@ -51,12 +51,17 @@ export const HeaderNavOptionsOnlyArr = [
   {
     header: "About",
     screenName: "About",
-    content: "Learn about us and the creator of the app",
+    content: "About Us, About Creator, Contact Us",
   },
   {
     header: "Privacy Policy",
     screenName: "PrivacyPolicy",
-    content: "Privacy Policy, contact us(bottom of page)",
+    content: "Privacy Policy information",
+  },
+  {
+    header: "Terms And Conditions",
+    screenName: "TermsAndConditions",
+    content: "Terms And Conditions information",
   },
 ] as const;
 
