@@ -27,6 +27,7 @@ const linking: LinkingOptions<AuthStackParamList> = {
       AuthHome: "home",
       Email: "email",
       PrivacyPolicy: "privacypolicy",
+      TermsAndConditions: "termsandconditions",
     },
   },
 };

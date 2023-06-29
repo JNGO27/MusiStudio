@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "MusiStudio",
-    "slug": "MusiStudio",
+    "slug": "musistudio",
     "scheme": "musistudio",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,20 +15,23 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "package": "com.jngo27.revenuecat"
+      "package": "com.jngo27.musistudio"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "fd6c79b4-e092-4bdb-abfe-b5adf835ee70"
+        "projectId": "4554bb24-6fed-4647-ab29-99da32903180"
       }
-    }
+    },
+    "owner": "jngo27"
   }
 }
