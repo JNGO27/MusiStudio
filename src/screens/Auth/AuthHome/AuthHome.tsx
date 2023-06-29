@@ -61,7 +61,7 @@ const AuthHome = () => {
       >
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.headlineContainer}>
-            <Text style={styles.headlineText}>Welcome to ProtegeCoreSuite</Text>
+            <Text style={styles.headlineText}>Welcome to {APP_NAME}</Text>
             <Text style={styles.headlineSubText}>
               Your music studio student management solution. Create an account
               to get started.

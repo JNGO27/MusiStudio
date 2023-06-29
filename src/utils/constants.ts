@@ -1,6 +1,6 @@
 export const APP_NAME = "MusiStudio";
 
-export const APP_EMAIL = "protegecoresuite@gmail.com";
+export const APP_EMAIL = "musistudioservice@gmail.com";
 
 export const HomeOptionsArr = [
   {

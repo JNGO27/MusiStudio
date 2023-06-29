@@ -83,11 +83,13 @@ const TermsAndConditions = () => {
             </Text>
           </View>
 
-          <View style={styles.sectionContainer}>
+          <View style={styles.sectionContainerContact}>
             <Text style={styles.sectionText}>7. Contact Us</Text>
             <Text style={styles.termsConditionsTextContent}>
-              If you have any questions about these terms, please contact us at
-              {APP_EMAIL}.
+              If you have any questions about these terms, please contact us at:
+            </Text>
+            <Text style={styles.contactUsEmail} selectable>
+              {APP_EMAIL}
             </Text>
           </View>
         </View>
