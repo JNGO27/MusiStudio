@@ -9,7 +9,7 @@ const useSetSession = () => {
   const mostRecentURL = Linking.useURL();
   const desiredScreenUrl = "auth";
   const redirectUri = makeRedirectUri({
-    scheme: "pocket-music-teacher-helper",
+    scheme: "musistudio",
     path: desiredScreenUrl,
   });
 

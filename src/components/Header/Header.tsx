@@ -4,6 +4,8 @@ import { StatusBar, View, Text } from "react-native";
 import { useResponsiveness, useIsNestedScreen } from "@src/hooks";
 import { AccountNavOption } from "@src/components";
 
+import { APP_NAME } from "@src/utils/constants";
+
 import createStyleSheet from "./styles";
 
 const Header = () => {
@@ -22,7 +24,7 @@ const Header = () => {
     <>
       <StatusBar />
       <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>ProtegeCoreSuite</Text>
+        <Text style={styles.headerText}>{APP_NAME}</Text>
         {!isNestedScreen && <AccountNavOption />}
       </View>
     </>

@@ -11,7 +11,7 @@ import createStyleSheet from "./styles";
 
 type NewHeaderStackParamList = keyof Omit<
   HeaderStackParamList,
-  "HeaderNav" | "AccountHome" | "TermsAndConditions"
+  "HeaderNav" | "AccountHome"
 >;
 
 type Props = {

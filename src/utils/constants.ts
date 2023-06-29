@@ -1,4 +1,4 @@
-export const APP_NAME = "ProtegeCoreSuite";
+export const APP_NAME = "MusiStudio";
 
 export const APP_EMAIL = "protegecoresuite@gmail.com";
 
