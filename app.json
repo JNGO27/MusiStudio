@@ -15,14 +15,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "package": "com.jngo27.musistudio"
+      "package": "com.jngo27.musistudio",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
