@@ -40,9 +40,9 @@ const PrivacyPolicy = () => {
               Our app collects the following information directly from our
               users: {"\n"}- Parent names {"\n"}- Student names {"\n"}- Parent
               emails {"\n"}- Student emails {"\n"}- Parent phone numbers {"\n"}-
-              Student phone numbers {"\n"}
-              If you choose to sign in via Google OAuth, we may also collect
-              your Google username, profile picture, and email address.
+              Student phone numbers {"\n"}- Student age {"\n"}- Student Gender{" "}
+              {"\n"} If you choose to sign in via Google OAuth, we may also
+              collect your Google username, profile picture, and email address.
             </Text>
           </View>
           <View style={styles.sectionContainer}>
