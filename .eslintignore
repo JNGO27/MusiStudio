@@ -2,3 +2,5 @@ app.d.ts
 babel.config.js
 env.d.ts
 tailwind.config.js
+next-env.d.ts
+next.config.js
