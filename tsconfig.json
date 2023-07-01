@@ -8,6 +8,6 @@
       "@src/*": ["./src/*"]
     }
   },
-  "include": ["./src/**/*", "web/landing-page/**/*.tsx"],
+  "include": ["./src/**/*", "**/*.ts", "web/landing-page/**/*.tsx"],
   "typeRoots": ["./types"]
 }
