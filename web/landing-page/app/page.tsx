@@ -1,5 +1,6 @@
-import Image from "next/image";
+import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 import { PRIVACY_POLICY_LINK, TERMS_AND_SERVICE_LINK } from "../constants";
 
@@ -9,6 +10,12 @@ import styles from "./page.module.css";
 const Home = () => {
   return (
     <>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="qSsSz77jF6L4dTaQWBvGiJkSA5QhCdZDIhumZYW6MSc"
+        />
+      </Head>
       <main className={styles.background}>
         <span />
         <span />
