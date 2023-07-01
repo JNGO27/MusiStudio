@@ -20,6 +20,22 @@
     hsl(305deg 78% 81%) 91%,
     hsl(311deg 73% 87%) 100%
   );
+
+  --gradient-text: -webkit-linear-gradient(
+    320deg,
+    hsl(290deg 85% 18%) 1%,
+    hsl(290deg 79% 21%) 7%,
+    hsl(290deg 74% 25%) 10%,
+    hsl(290deg 71% 29%) 22%,
+    hsl(290deg 66% 33%) 30%,
+    hsl(290deg 59% 37%) 38%,
+    hsl(290deg 54% 41%) 47%,
+    hsl(290deg 49% 45%) 56%,
+    hsl(290deg 47% 47%) 65%,
+    hsl(290deg 45% 48%) 75%,
+    hsl(290deg 43% 50%) 87%,
+    hsl(290deg 43% 51%) 100%
+  );
 }
 
 html,
