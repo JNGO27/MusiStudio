@@ -69,10 +69,10 @@ const FamilyCard = ({
               <EmailSvg style={styles.emailIcon} color="black" />
               {isTablet ? (
                 <Text style={styles.contactInfoText} selectable>
-                  {phone_number}
+                  {email_address}
                 </Text>
               ) : (
-                <SelectableText content={phone_number} styles={styles} />
+                <SelectableText content={email_address} styles={styles} />
               )}
             </View>
           </View>
