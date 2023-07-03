@@ -8,7 +8,10 @@ import type { StudentCardType } from "@src/types";
 
 import { PhoneSvg, EmailSvg } from "@src/assets/icons";
 
+import globalStyles from "@src/globalStyles";
 import createStyleSheet from "./styles";
+
+const { getBreakpoints } = globalStyles;
 
 const StudentCard = ({
   first_name,
@@ -17,7 +20,12 @@ const StudentCard = ({
   email_address,
   currentAllData,
 }: StudentCardType) => {
-  const [horizontalScale, verticalScale, moderateScale] = useResponsiveness();
+  const [horizontalScale, verticalScale, moderateScale, dimensionWidth] =
+    useResponsiveness();
+
+  const deviceSize = getBreakpoints(dimensionWidth);
+  const isTablet = deviceSize === "L" || deviceSize === "XL";
+
   const styles = createStyleSheet(
     horizontalScale,
     verticalScale,
@@ -41,11 +49,23 @@ const StudentCard = ({
           <View style={styles.contactInformationContainer}>
             <View style={styles.iconContainer}>
               <PhoneSvg style={styles.phoneIcon} />
-              <SelectableText content={phone_number} styles={styles} />
+              {isTablet ? (
+                <Text style={styles.contactInfoText} selectable>
+                  {phone_number}
+                </Text>
+              ) : (
+                <SelectableText content={phone_number} styles={styles} />
+              )}
             </View>
             <View style={styles.iconContainer}>
               <EmailSvg style={styles.emailIcon} color="black" />
-              <SelectableText content={email_address} styles={styles} />
+              {isTablet ? (
+                <Text style={styles.contactInfoText} selectable>
+                  {email_address}
+                </Text>
+              ) : (
+                <SelectableText content={email_address} styles={styles} />
+              )}
             </View>
           </View>
         </View>
