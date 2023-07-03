@@ -4,6 +4,7 @@ src/utils/styleSheetBoilerPlate.ts
 .VSCodeCounter
 .expo/
 dist/
+src/assets/screenshots
 npm-debug.*
 .env
 *.jks
