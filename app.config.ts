@@ -23,7 +23,7 @@ const expoConfig = ({ config }: ConfigContext) => ({
   },
   android: {
     package: "com.jngo27.musistudio",
-    versionCode: 1.1,
+    versionCode: 2,
   },
   web: {
     favicon: "./src/assets/favicon.png",
