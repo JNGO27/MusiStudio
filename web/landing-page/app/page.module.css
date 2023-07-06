@@ -12,7 +12,6 @@
   left: 0;
   background-image: var(--gradient-main);
   overflow: hidden;
-  z-index: -2;
 }
 
 .background span {
@@ -254,12 +253,19 @@
   background-filter: -1;
 }
 
-.background-card {
-  position: absolute;
-  inset: 0;
-  margin: auto;
+.content-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.background-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
   width: clamp(300px, 50%, 700px);
   height: clamp(240px, 60%, 600px);
   background: rgba(255, 255, 255, 0.45);
@@ -268,16 +274,16 @@
   -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.36);
-  z-index: 1;
 }
 
 .logo-image {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  transform: translateY(-60%);
   border-radius: 20px;
-  z-index: 2;
+}
+
+.google-play {
+  width: 100%;
+  height: 80%;
+  max-height: 200px;
 }
 
 .headline-text {
@@ -288,6 +294,5 @@
   -webkit-text-fill-color: transparent;
   font-size: clamp(2.5rem, 4.2vw + 1rem, 4.25rem);
   line-height: 78px;
-  z-index: 2;
   margin-top: 20px;
 }

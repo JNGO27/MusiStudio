@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { PRIVACY_POLICY_LINK, TERMS_AND_SERVICE_LINK } from "../constants";
+import {
+  GOOGLE_PLAY_LINK,
+  PRIVACY_POLICY_LINK,
+  TERMS_AND_SERVICE_LINK,
+} from "../constants";
 
 import MusiStudioLogo from "../public/icon.png";
+import GooglePlay from "../public/google-play-badge.png";
 import styles from "./page.module.css";
 
 const Home = () => {
@@ -20,15 +25,24 @@ const Home = () => {
         <span />
         <span />
         <span />
-        <div className={styles["background-card"]}>
-          <Image
-            className={styles["logo-image"]}
-            src={MusiStudioLogo}
-            width={150}
-            height={150}
-            alt="MusiStudio Logo"
-          />
-          <h1 className={styles["headline-text"]}>MusiStudio</h1>
+        <div className={styles["content-container"]}>
+          <div className={styles["background-card"]}>
+            <h1 className={styles["headline-text"]}>MusiStudio</h1>
+            <Image
+              className={styles["logo-image"]}
+              src={MusiStudioLogo}
+              width={150}
+              height={150}
+              alt="MusiStudio Logo"
+            />
+            <Link href={GOOGLE_PLAY_LINK}>
+              <Image
+                className={styles["google-play"]}
+                src={GooglePlay}
+                alt="Google Play"
+              />
+            </Link>
+          </div>
         </div>
       </main>
       <footer>
