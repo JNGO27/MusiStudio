@@ -24,11 +24,18 @@
         "buildType": "app-bundle"
       },
       "ios": {
-        "resourceClass": "m1-medium"
+        "resourceClass": "m-medium",
+        "fastlane": "2.213.0"
       }
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "musistudioservice@gmail.com",
+        "ascAppId": "6451071834",
+        "appleTeamId": "T4MT8K5DN9"
+      }
+    }
   }
 }
